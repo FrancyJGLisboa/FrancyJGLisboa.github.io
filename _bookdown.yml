@@ -1,4 +1,6 @@
-rmd_files: 
-    - "index.Rmd"
-#new_session: yes
-#before_chapter_script: ["code/before_script.R"]
+book_filename: "bookdown-demo"
+language:
+  ui:
+    chapter_name: "Chapter "
+output_dir: "../docs"    
+delete_merged_file: true

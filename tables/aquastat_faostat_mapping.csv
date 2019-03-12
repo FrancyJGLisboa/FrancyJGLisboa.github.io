@@ -1,0 +1,11 @@
+aqua_element_code,element_name,item_code,element_code,element_code_sws
+4100,Total area of the country,6600,5110,5115
+4101,Arable land area,6621,5110,5710
+4102,Permanent crops area,6650,5110,5011
+4103,Cultivated area (arable land + permanent crops),6620,5110,5522
+4104,Total population,3010,511,511
+4105,Rural population,3010,551,551
+4106,Urban population,3010,561,561
+4558,GDP Deflator (2015),22024,6107,9999
+4559,Land area,6601,5110,6601
+4560,Inland waters,6680,5110,6680

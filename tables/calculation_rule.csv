@@ -1,0 +1,74 @@
+calculation_rule,indicator_code,primary_variable,indicator_unit,indicator_name,component_code,component_name
+[4103]=[4101] + [4102],[4103],none,1000 ha,[Cultivated area (arable land + permanent crops)],[4101] + [4102],[Arable land area]  + [Permanent crops area]
+[4105]=[4104] - [4106],[4105],none,1000 inhab,[Rural population],[4104] - [4106],[Total population]-[Urban population]
+[4107]=[4104]/([4100]/100),[4107],none,inhab/km2,[Population density],[4104]/([4100]/100,[Total population]/([Total area of the country]/100
+[4108]=[4109]+[4110],[4108],none,1000 inhab,[Population economically active in agriculture],[4109]+[4110],[Male population economically active in agriculture]+[Female population economically active in agriculture]
+[4150]=[4100] * [4151] / 100000,[4150],none,10^9 m3/year,[Long-term average annual precipitation in volume],[4100] * [4151] / 100000,[Total area of the country]*[Long-term average annual precipitation in depth]/100000
+[4157]=[4154]+[4155]-[4156],[4157],none,10^9 m3/year,[Total internal renewable water resources (IRWR)],[4154]+[4155]-[4156],[Groundwater produced internally]+[Surface water produced internally]-[Overlap between surface water and groundwater]
+[4158]=[4157]*1000000/[4104],[4158],[4157],m3/inhab/year,[Total internal renewable water resources per capita],[4157]*1000000/[4104],[Total internal renewable water resources (IRWR)]*1000000/[Total population]
+[4164]=[4160]+[4162]+[4168],[4164],none,10^9 m3/year,[Surface water: accounted inflow],[4160]+[4162]+[4168],[Surface water: inflow not submitted to treaties]+[Surface water: inflow secured through treaties]+[Surface water: accounted flow of border rivers]
+[4176]=[4160]+[4162]+[4168]-[4174],[4176],none,10^9 m3/year,[Surface water: total external renewable],[4160]+[4162]+[4168]-[4174],[Surface water: inflow not submitted to treaties]+[Surface water: inflow secured through treaties]+[Surface water: accounted flow of border rivers]-[Surface water: outflow to other countries secured through treaties]
+[4182]=[4176]+[4452],[4182],none,10^9 m3/year,[Water resources: total external renewable],[4176]+[4452],[Surface water: total external renewable]+[Groundwater: accounted inflow]
+[4185]=[4176]+[4155],[4185],none,10^9 m3/year,[Total renewable surface water],[4176]+[4155],[Surface water: total external renewable]+[Surface water produced internally]
+[4187]=[4154]+[4452],[4187],none,10^9 m3/year,[Total renewable groundwater],[4154]+[4452],[Groundwater produced internally]+[Groundwater: accounted inflow]
+[4188]=[4185]+[4187]-[4156],[4188],none,10^9 m3/year,[Total renewable water resources],[4185]+[4187]-[4156],[Total renewable surface water]+[Total renewable groundwater]-[Overlap between surface water and groundwater]
+[4190]=[4188]*1000000/[4104],[4190],[4188],m3/inhab/year,[Total renewable water resources per capita],[4188]*1000000/[4104],[Total renewable water resources]*1000000/[Total population]
+[4192]=100*([4164]+[4452])/([4164]+[4452]+[4157]),[4192],none,%,[Dependency ratio] ,100*([4164]+[4452])/([4164]+[4452]+[4157]),100*([Surface water: accounted inflow]+[Groundwater: accounted inflow])/([Surface water: accounted inflow]+[Groundwater: accounted inflow]+[Total internal renewable water resources (IRWR)]
+[4509]=[4193]+[4194],[4509],none,10^9 m3/year,[Exploitable: total renewable surface water] ,[4193]+[4194],[Exploitable: regular renewable surface water]+[Exploitable: irregular renewable surface water]
+[4196]=[4509]+[4195],[4196],none,10^9 m3/year,[Total exploitable water resources],[4509]+[4195],[Exploitable: total renewable surface water]+[Exploitable: regular renewable groundwater]
+[4253]=[4251]+[4252]+[4250],[4253],none,10^9 m3/year,[Total water withdrawal] ,[4251]+[4252]+[4250],[Municipal water withdrawal]+[Industrial water withdrawal]+[Agricultural water withdrawal]
+[4254]=[4250]/[4253]*100,[4254],none,%,[Agricultural water withdrawal as % of total water withdrawal],[4250]/[4253]*100,[Agricultural water withdrawal]/[Total water withdrawal]*100
+[4255]=[4251]/[4253]*100,[4255],none,%,[Municipal water withdrawal as % of total water withdrawal],[4251]/[4253]*100,[Municipal water withdrawal]/[Total water withdrawal]*100
+[4256]=[4252]/[4253]*100,[4256],none,%,[Industrial water withdrawal as % of total water withdrawal],[4252]/[4253]*100,"[Industrial water withdrawal]/[Total water withdrawal]*100
+"
+[4257]=[4253]*1000000/[4104],[4257],[4253],m3/inhab/year,[Total water withdrawal per capita] ,[4253]*1000000/[4104],[Total water withdrawal]*1000000/[Total population]
+[4263]=[4253]-[4264]-[4265]-[4451],[4263],none,10^9 m3/year,[Total freshwater withdrawal (primary and secondary)],[4253]-[4264]-[4265]-[4451],[Total water withdrawal]-[Desalinated water produced]-[Direct use of treated municipal wastewater]-[Direct use of agricultural drainage water]
+[4271]=100*[4260]/[4250],[4271],none,%,[Agricultural water requirement as % of agricultural water withdrawal],100*[4260]/[4250],"100*[Irrigation water requirement]/[Agricultural water withdrawal]
+"
+[4273]=100*[4250]/[4188],[4273],[4250],%,[Agricultural water withdrawal as % of total renewable water resources] ,100*[4250]/[4188],100*[Agricultural water withdrawal]/[Total renewable water resources]
+[4275]=100*[4263]/[4188],[4275],[4263],%,[MDG 7.5. Freshwater withdrawal as % of total renewable water resources] ,100*[4263]/[4188],100*[Total freshwater withdrawal (primary and secondary)]/[Total renewable water resources]
+[4300]=[4303]+[4304],[4300],none,1000 ha,[Total cultivated area drained],[4303]+[4304],[Area equipped for irrigation drained]+[Non-irrigated cultivated area drained]
+[4305]=100*[4300]/[4103],[4305],[4300],%,[% of total cultivated area drained] ,100*[4300]/[4103],100*[Total cultivated area drained]/[Cultivated area (arable land + permanent crops)]
+[4311]=[4308]+[4309]+[4310],[4311],[4308],1000 ha,[Area equipped for full control irrigation: total],[4308]+[4309]+[4310],"[Area equipped for full control irrigation: surface irrigation]+[Area equipped for full control irrigation: sprinkler irrigation]+[Area equipped for full control irrigation: localized irrigation]
+"
+[4313]= [4311]+[4312]+[4316],[4313],[4311],1000 ha,[Area equipped for irrigation: total] ,[4311]+[4312]+[4316],[Area equipped for full control irrigation: total]+[Area equipped for irrigation: equipped lowland areas]+[Area equipped for irrigation: spate irrigation]
+[4317]= [4313]+[4314]+[4315],[4317],[4313],1000 ha,[Total agricultural water managed area],[4313]+[4314]+[4315],[Area equipped for irrigation: total]+[Flood recession cropping area non-equipped]+[Cultivated wetlands and inland valley bottoms non-equipped]
+[4319]=100*[4313]/[4317],[4319],none,%,[% of agricultural water managed area equipped for irrigation],100*[4313]/[4317],100*[Area equipped for irrigation: total]/[Total agricultural water managed area]
+[4323]=100*[4320]/[4313],[4323],none,%,[% of area equipped for irrigation by groundwater ] ,100*[4320]/[4313],100*[Area equipped for irrigation by groundwater]/[Area equipped for irrigation: total]
+[4324]=100*[4321]/[4313],[4324],none,%,[% of area equipped for irrigation by surface water] ,100*[4321]/[4313],100*[Area equipped for irrigation by surface water]/[Area equipped for irrigation: total]
+[4325]=100*[4322]/[4313],[4325],none,%,[% of area equipped for irrigation by mixed surface water and groundwater] ,100*[4322]/[4313],100*[Area equipped for irrigation by mixed surface water and groundwater]/[Area equipped for irrigation: total]
+[4327]=100*[4326]/[4313],[4327],none,%,[% of area equipped for irrigation power irrigated],100*[4326]/[4313],100*[Area equipped for power irrigation (surface water or groundwater)]/[Area equipped for irrigation: total]
+[4328]=100*[4318]/[4313],[4328],none,%,[% of the area equipped for irrigation actually irrigated] ,100*[4318]/[4313],100*[Area equipped for irrigation: actually irrigated]/[Area equipped for irrigation: total]
+[4330]=100*[4313]/[4307],[4330],[4313],%,[% of irrigation potential equipped for irrigation] ,100*[4313]/[4307],100*[Area equipped for irrigation: total]/[Irrigation potential]
+[4331]=100*[4313]/[4103],[4331],[4313],%,[% of the cultivated area equipped for irrigation] ,100*[4313]/[4103],100*[Area equipped for irrigation: total]/[Cultivated area (arable land + permanent crops)]
+[4445]=100*[4400]/[4313],[4445],none,%,[% of area equipped for irrigation salinized],100*[4400]/[4313],"100*[Area salinized by irrigation]/[Area equipped for irrigation: total]
+"
+[4446]=100*[4303]/[4313],[4446],none,%,[% of area equipped for irrigation drained],100*[4303]/[4313],100*[Area equipped for irrigation drained]/[Area equipped for irrigation: total]
+[4448]=[4314]+[4315],[4448],none,1000 ha,[Other agricultural water managed area] ,[4314]+[4315],[Flood recession cropping area non-equipped]+[Cultivated wetlands and inland valley bottoms non-equipped]
+[4450]=100*[4263]/[4157],[4450],[4263],%,[Freshwater withdrawal as % of internal renewable water resources] ,100*[4263]/[4157],100*[Total freshwater withdrawal (primary and secondary)]/[Total internal renewable water resources (IRWR)]
+[4455]=100*[4454]/[4101],[4455],[4454],%,[Conservation agriculture area as % of arable land area],100*[4454]/[4101],"100*[Conservation agriculture area]/[Arable land area]
+"
+[4457]=[4251]*1000000/[4104],[4457],[4251],m3/inhab/year,[Municipal water withdrawal per capita (total population)],[4251]*1000000/[4104],[Municipal water withdrawal]*1000000/[Total population]
+[4458]=[4112]/[4104]/1000,[4458],[4112],current US$/inhab,[GDP per capita],[4112]/[4104]/1000,[Gross Domestic Product (GDP)]/[Total population]/1000
+[4459]=[4309]+[4310],[4459],[4309],1000 ha,[Area equipped for full control irrigation: pressurized (sprinkler + localized)],[4309]+[4310],[Area equipped for full control irrigation: sprinkler irrigation]+[Area equipped for full control irrigation: localized irrigation]
+[4462]=100*[4379]/[4461],[4462],none,%,[Harvested irrigated crop area as % of the full control irrigation area actually irrigated],100*[4379]/[4461],100*[Total harvested irrigated crop area (full control irrigation)]/[Area equipped for full control irrigation: actually irrigated]
+[4463]=100*[4461]/[4311],[4463],none,%,[% of area equipped for full control irrigation actually irrigated],100*[4461]/[4311],100*[Area equipped for full control irrigation: actually irrigated]/[Area equipped for full control irrigation: total]
+[4464]=100*[4379]/[4461],[4464],none,%,[Irrigated cropping intensity],100*[4379]/[4461],100*[Total harvested irrigated crop area (full control irrigation)]/[Area equipped for full control irrigation: actually irrigated]
+[4466]=100*[4465]/[4313],[4466],none,%,[% of area equipped by direct use of treated municipal wastewater],100*[4465]/[4313],100*[Area equipped by direct use of treated municipal wastewater]/[Area equipped for irrigation: total]
+[4467]=100*[4263]/[4253],[4467],[4263],%,[Freshwater withdrawal as % of total water withdrawal,100*[4263]/[4253],100*[Total freshwater withdrawal (primary and secondary)]/[Total water withdrawal]
+[4468]=[4251]*1000000/[4106],[4468],[4251],m3/inhab/year,[Municipal water withdrawal per capita (urban population)],[4251]*1000000/[4106],[Municipal water withdrawal]*1000000/[Urban population]
+[4470]=100*[4103]/[4100],[4470],[4103],%,[% of total country area cultivated],100*[4103]/[4100],100*[Cultivated area (arable land + permanent crops)]/[Total area of the country]
+[4471]=1000000*[4197]/[4104],[4471],[4197],m3/inhab,[Dam capacity per capita],1000000*[4197]/[4104],1000000*[Total dam capacity]/[Total population]
+[4514]=100*[4513]/[4313],[4514],none,%,[% of area equipped for irrigation by direct use of non-treated municipal wastewater],100*[4513]/[4313],100*[Area equipped for irrigation by direct use of non-treated municipal wastewater]/[Area equipped for irrigation: total]
+[4527]=100*[4526]/[4313],[4527],none,%,[% of area equipped for irrigation by direct use of agricultural drainage water],100*[4526]/[4313],100*[Area equipped for irrigation by direct use of agricultural drainage water]/[Area equipped for irrigation: total]
+[4531]= [4252]*1000000/[4104],[4531],none,m3/inhab/year,[Industrial water withdrawal per capita], [4252]*1000000/[4104],[Industrial water withdrawal]*1000000/[Total population]
+[4532]=[4250]*1000000/[4104],[4532],none,m3/inhab/year,[Agricultural water withdrawal per capita],[4250]*1000000/[4104],[Agricultural water withdrawal]*1000000/[Total population]
+[4538]=100*[4108]/[4449],[4538],none,%,[% of economically active population active in agriculture],100*[4108]/[4449],100*[Population economically active in agriculture]/[Population economically active]
+[4540]=100*[4539]/[4313],[4540],none,%,[% of area equipped for irrigation by desalinated water],100*[4539]/[4313],100*[Area equipped for irrigation by desalinated water]/[Area equipped for irrigation: total]
+[4550]=100*[4263]/([4188]-[4549]),[4550],[4263],%,[SDG 6.4.2. Water Stress],100*[4263]/([4188]-[4549]),100*[Total freshwater withdrawal (primary and secondary)]/([Total renewable water resources]-[Environmental Flow Requirements]
+[4556]=100*[4379]/[4103],[4556],[4379],%,[% of arable land irrigated],100*[4379]/[4103],100*[Total harvested irrigated crop area (full control irrigation)]/[Arable land area]
+[4555]=1/(1+((1-([4556]/100))/(([4556]/100)*[4557]))),[4555],[4556],%,[% of agricultural GVA produced by irrigated agriculture],1/(1+((1-([4556]/100))/(([4556]/100)*[4557]))),1/(1+((1-([% of arable land irrigated]/100))/(([% of arable land irrigated]/100)*[4557])))
+[4552]= ((([4548]/[4558]*100)*[4555]/100)/[4250])/10000000,[4552],[4250],US$/m3,[SDG 6.4.1. Irrigated Agriculture Water Use Efficiency], (([4548]*[4555]/100)/[4250])/10000000,"(([Agriculture, value added to GDP]*[% of agricultural GVA produced by irrigated agriculture]/100)/[Agricultural water withdrawal])/1000000000"
+[4553]=(([4546]/[4558]*100)/[4252])/1000000000,[4553],[4252],US$/m3,[SDG 6.4.1. Industrial Water Use Efficiency],([4546]/[4252])/1000000000,"([Industry, value added to GDP]/[Industrial water withdrawal])/1000000000"
+[4554]= (([4547]/[4558]*100)/[4251])/1000000000,[4554],[4251],US$/m3,[SDG 6.4.1. Services Water Use Efficiency],([4547]/[4251])/1000000000,"([Services, value added to GDP]/[Municipal water withdrawal])/1000000000"
+[4551]=([4552]*[4254]/100)+([4553]*[4256]/100)+([4554]*[4255]/100),[4551],none,US$/m3,[SDG 6.4.1. Water Use Efficiency],([4552]*[4254]/100)+([4553]*[4256]/100)+([4554]*[4255]/100),([SDG 6.4.1. Irrigated Agriculture Water Use Efficiency]*[Agricultural water withdrawal as % of total water withdrawal]) + ([SDG 6.4.1. Industrial Water Use Efficiency]*[Industrial water withdrawal as % of total water withdrawal]) + ([SDG 6.4.1. Services Water Use Efficiency]*[Municipal water withdrawal as % of total withdrawal])

@@ -1,0 +1,6 @@
+indicator_code,indicator_description,primary_variable_code,primary_variable_description
+4263,Total freshwater withdrawal (primary and secondary),4253,Total water withdrawal
+4311,Area equipped for full control irrigation: total,4308,Area equipped for full control irrigation: surface irrigation
+4313,Area equipped for irrigation: total,4311,Area equipped for full control irrigation: total
+4317,Total agricultural water managed area,4313,Area equipped for irrigation: total
+4459,Area equipped for full control irrigation: pressurized (sprinkler + localized),4309,Area equipped for full control irrigation: sprinkler irrigation

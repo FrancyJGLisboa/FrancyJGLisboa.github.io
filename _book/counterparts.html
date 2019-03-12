@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Counterparts | Migration of AQUASTAT Statistical Processes into the SWS</title>
+  <meta name="description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Counterparts | Migration of AQUASTAT Statistical Processes into the SWS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Counterparts | Migration of AQUASTAT Statistical Processes into the SWS" />
+  
+  <meta name="twitter:description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)" />
+  
+
+<meta name="author" content="Francy Lisboa (ESSD - Mehtodological Innovation Team)">
+
+
+<meta name="date" content="2019-03-12">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="sws-resources.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+
+
+
+<link rel="stylesheet" href="ess.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="counterparts.html"><a href="counterparts.html"><i class="fa fa-check"></i>Counterparts</a></li>
+<li class="chapter" data-level="" data-path="sws-resources.html"><a href="sws-resources.html"><i class="fa fa-check"></i>SWS resources</a><ul>
+<li class="chapter" data-level="" data-path="sws-resources.html"><a href="sws-resources.html#code-lists"><i class="fa fa-check"></i>Code lists</a></li>
+<li class="chapter" data-level="" data-path="sws-resources.html"><a href="sws-resources.html#data-tables"><i class="fa fa-check"></i>Data tables</a></li>
+<li class="chapter" data-level="" data-path="sws-resources.html"><a href="sws-resources.html#datasets"><i class="fa fa-check"></i>Datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="aquastat-data.html"><a href="aquastat-data.html"><i class="fa fa-check"></i>AQUASTAT data</a></li>
+<li class="chapter" data-level="" data-path="the-faoswsaquastatbaseline-module.html"><a href="the-faoswsaquastatbaseline-module.html"><i class="fa fa-check"></i>The faoswsAquastatBaseline module</a><ul>
+<li class="chapter" data-level="" data-path="the-faoswsaquastatbaseline-module.html"><a href="the-faoswsaquastatbaseline-module.html#aims"><i class="fa fa-check"></i>Aims</a></li>
+<li class="chapter" data-level="" data-path="the-faoswsaquastatbaseline-module.html"><a href="the-faoswsaquastatbaseline-module.html#add-indicators"><i class="fa fa-check"></i>Add indicators</a></li>
+<li class="chapter" data-level="" data-path="the-faoswsaquastatbaseline-module.html"><a href="the-faoswsaquastatbaseline-module.html#long-term-variables"><i class="fa fa-check"></i>Long-term variables</a></li>
+<li class="chapter" data-level="" data-path="the-faoswsaquastatbaseline-module.html"><a href="the-faoswsaquastatbaseline-module.html#time-series-completeness"><i class="fa fa-check"></i>Time-Series completeness</a></li>
+<li class="chapter" data-level="" data-path="the-faoswsaquastatbaseline-module.html"><a href="the-faoswsaquastatbaseline-module.html#geographic-coverage"><i class="fa fa-check"></i>Geographic coverage</a></li>
+<li class="chapter" data-level="" data-path="the-faoswsaquastatbaseline-module.html"><a href="the-faoswsaquastatbaseline-module.html#faostat-data"><i class="fa fa-check"></i>FAOSTAT data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i>Workflow</a><ul>
+<li class="chapter" data-level="" data-path="workflow.html"><a href="workflow.html#faostat-annexation"><i class="fa fa-check"></i>FAOSTAT annexation</a></li>
+<li class="chapter" data-level="" data-path="workflow.html"><a href="workflow.html#calculation"><i class="fa fa-check"></i>Calculation</a></li>
+<li class="chapter" data-level="" data-path="workflow.html"><a href="workflow.html#imputations"><i class="fa fa-check"></i>Imputations</a></li>
+<li class="chapter" data-level="" data-path="workflow.html"><a href="workflow.html#recalculation"><i class="fa fa-check"></i>Recalculation</a></li>
+<li class="chapter" data-level="" data-path="workflow.html"><a href="workflow.html#flag-mapping-observation"><i class="fa fa-check"></i>Flag mapping (Observation)</a></li>
+<li class="chapter" data-level="" data-path="workflow.html"><a href="workflow.html#flag-mapping-method"><i class="fa fa-check"></i>Flag mapping (Method)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="running-the-module-in-the-sws.html"><a href="running-the-module-in-the-sws.html"><i class="fa fa-check"></i>Running the module in the SWS</a></li>
+<li class="chapter" data-level="" data-path="did-the-module.html"><a href="did-the-module.html"><i class="fa fa-check"></i>Did the module…</a><ul>
+<li class="chapter" data-level="" data-path="did-the-module.html"><a href="did-the-module.html#add-new-indicators"><i class="fa fa-check"></i>Add new indicators ?</a></li>
+<li class="chapter" data-level="" data-path="did-the-module.html"><a href="did-the-module.html#promote-time-series-completeness-and-higher-geographic-coverage"><i class="fa fa-check"></i>promote time-series completeness and higher geographic coverage ?</a></li>
+<li class="chapter" data-level="" data-path="did-the-module.html"><a href="did-the-module.html#correct-values-of-long-term-average-variables"><i class="fa fa-check"></i>correct values of Long-Term Average variables ?</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Migration of AQUASTAT Statistical Processes into the SWS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="counterparts" class="section level1 unnumbered">
+<h1>Counterparts</h1>
+<p>Any migration into the SWS requires the interaction between at least three actors:</p>
+<ol style="list-style-type: decimal">
+<li>The <strong>technical unit</strong> interested in automating either some or all its analytical processes in the SWS;</li>
+<li>The <strong>ESS - Methodological Innovation Team</strong> (ESS - SWS) responsible for the implementation and documentaion of the required statistical processes;</li>
+<li>The <strong>CIO - SWS</strong> the primary maintainer of the SWS and responsible for the implementation and documentation of non-statistical processes.</li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sws-resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,621 @@
+--- 
+title: "Migration of AQUASTAT Statistical Processes into the SWS"
+author: "Francy Lisboa (ESSD - Mehtodological Innovation Team)"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+css: ess.css
+documentclass: book
+link-citations: yes
+description: "This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global's Water Information System into the Corporate Statistical Working System (SWS)"
+---
+
+# Preface {-}
+
+AQUASTAT - FAO Global's Water Statistics System has agreed to migrate its statistical processes into the Corporate Statistical Working System (SWS). This document presents the major steps that have been taken so far in regard to this migration. 
+
+# Counterparts {-}
+
+Any migration into the SWS requires the interaction between at least three actors: 
+
+1. The **technical unit** interested in automating either some or all its analytical processes in the SWS; 
+2. The **ESS - Methodological Innovation Team** (ESS - SWS) responsible for the implementation and documentaion of the required statistical processes;
+3. The **CIO - SWS** the primary maintainer of the SWS and responsible for the implementation and documentation of non-statistical processes.
+
+
+# SWS resources {-}
+
+SWS resources are R modules, data tables, datasets, and code lists comprising a migration framework. Data tables are typically used as auxiliary data to help R modules to achieve their goals, often a long-format four-to-six dimensional dataset. The dimensions of the datasets are defined by statistical domain - specific code lists (reference lists) containing codes and descriptions. Therefore, datasets are primarily used to store code list - referenced values as either inputs and/or outputs in the SWS. The generic relationship among data table, datasets, and R modules is given as follow:
+
+
+```{r fig1, echo=FALSE, fig.cap='Generic data table, dataset, and R module relationship in the SWS context', message=FALSE, warning=FALSE}
+require(DiagrammeR)
+DiagrammeR::grViz("digraph {
+                  
+                  graph [layout = dot, rankdir = TB]
+                  
+                  # define the global styles of the nodes. We can override these in box if we wish
+                  node [shape = rectangle, style = filled, fillcolor = Linen]
+                  
+                  # Inputs
+                  SWSdb [label = 'Storage \n Input data living in SWS datatabe', shape = folder, fillcolor = Beige]
+                  SWSsharedrive [label = 'Storage \n Input data living in the SWS share drive', shape = folder, fillcolor = Beige]
+                  SWSsession [label = 'Storage \n Input data living in the session', shape = folder, fillcolor = Beige]
+
+                  SWSdb2 [label = 'Storage \n Output data saved in SWS datatabe', shape = folder, fillcolor = Beige]
+                  SWSsharedrive2 [label = 'Storage \n Output data saved in the SWS share drive', shape = folder, fillcolor = Beige]
+                  SWSsession2 [label = 'Storage \n Output data saved in the session', shape = folder, fillcolor = Beige]
+
+
+                  dataset1 [label = 'Input \n long-format four-to-six dimensional dataset', shape = folder, fillcolor = Beige]
+                  module [label = 'R module \n data processing and analysis', shape = square, fillcolor = LightBlue]
+                  datatable1 [label = 'Data table(s) \n (auxiliary information)', shape = folder, fillcolor = Beige]
+                  dataset2 [label =  'Output \n long-format four-to-six dimensional dataset', shape = folder, fillcolor = Beige]
+                  
+                  # Flow
+                  # edge definitions with the node IDs
+                  {SWSdb, SWSsharedrive, SWSsession} -> dataset1 -> module  
+                  {datatable1} -> module
+                  dataset2 -> {SWSdb2, SWSsharedrive2, SWSsession2}
+                  {module} -> dataset2
+                  }")
+```
+
+
+## Code lists {-}
+
+Code lists, also called reference lists in SWS parlance, are the dimensions making up the datasets that are designed by the user to store analytical results from SWS modules. The dimensions are statistical - domain specific and are defined by the technical unit in order to reflect its needs regarding data collection, processing, and dissemination while meeting FAO standards. Each dataset dimension has a set of codes and their associated descriptions. Thus, code lists serve to the purpose of standardization, visualization, and metadata by associating standardized codes to  standardized names in the SWS dataset outputs. A typical SWS compliant dataset has, therefore, the following dimensions/reference lists:
+
+
+1. *Geographic area*. Representing a spatial scale the information is measured at. For example, countries, territories, regional aggregates, regional special groups aggregates, global aggregates. In SWS, the geographic area dimension used by AQUASTAT datasets is named **geographicAreaM49**.
+
+2. *Items*. Those one wants to take a measurement from. For example, commodities, commodity groups, land use types, species, etc. Typical item dimension names are **measuredItemCPC**, ***measuredItemHS**, **measuredItem**.
+
+3. *Elements*. Often representing a measurement  that can be taken across different items. For example, area, production, share. In SWS, the element dimension used by AQUASTAT datasets is named **aquastatElement**.
+
+4. *Time* (the time unit the data is displayed for: year, months, etc). In SWS, the time dimension used by AQUASTAT datasets is named **timePointYears**.
+
+5. *Flag* (A standardized label indicating origin and/or nature of a number in the dataset, e.g. <blank> (official number)). In SWS, the flag dimension used by AQUASTAT datasets is named **flagObservationStatus**.
+
+6. *Method* (A standardized label indicating method utilized to obtain a number in the dataset, e.g. 'e' (estimate), 'p' (collected)). In SWS, the method dimension used by AQUASTAT datasets is named **flagMethod**.
+   
+ 
+```{block1 , type='rmdnote'}
+In the SWS context, AQUASTAT datasets do not refer to its variables and indicators as items, but as elements.
+```
+
+
+Finally, the AQUASTAT dataset  in the SWS have, in most of the cases, the following makeup:
+```{r fig2, echo=FALSE, fig.cap='Typical dimensions (SWS code/reference lists) composing a AQUASTAT input/output.', message=FALSE, warning=FALSE}
+require(DiagrammeR)
+DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = TB]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = Linen]
+
+# Inputs
+area [label = 'geographicAreaM49', shape = folder, fillcolor = Beige]
+element [label = 'aquastatElement', shape = folder, fillcolor = Beige]
+time [label = 'timePointYears', shape = folder, fillcolor = Beige]
+flagObs [label = 'flagObservationStatus', shape = folder, fillcolor = Beige]
+flagMeth [label = 'flagMethod', shape = folder, fillcolor = Beige]
+aquadataset [label = 'Typical aquastat dataset',  fillcolor = LightBlue]
+
+
+# Flow
+# edge definitions with the node IDs
+{area, element, time, flagObs, flagMeth} -> aquadataset 
+}")
+```
+
+## Data tables {-} 
+
+As mentioned, data tables are mainly used to store information that help R modules to output analytical results. Information in data tables can be of a number of types. For example, conversion factors, arithmetic formulas, mapping between flags, mapping between international calssifications, etc. In SWS hierarchy. all data tables reside in a given statistical domain. In the AQUASTAT - SWS migration framework, the data tables are in the **Aquastat domain**. Below is a list of current available and filled data tables in the Aquastat domain:
+
+1. **aquastat_faostat_mapping**. A data table mapping out AQUASTAT elements to FAOSTAT elements.
+
+2. **aquastat_sources**. A data table storing AQUASTAT data source references. 
+
+3. **calculation_rule**. A data table storing the pre-defined calculation rules used to obtain AQUASTAT indicators/derived variables.
+
+4. **aquastat_validation**. A data table storing the a set of logic tests to be applied to AQUASTAT inputs and outputs for the purpose of quality assurance and quality check
+
+5. **Global Dam Reservoir**. A data table storing national expert - provided information on the major Dams at the country level.
+
+6. **Global Map of Irrigated Area**. A data table storing information for the update of spatial representation of irrigated areas at the national level.
+
+7. **Global Map of Irrigated Area/subnational**. A data table storing information for the update of spatial representation of irrigated areas at the national and subnational levels.
+
+
+## Datasets {-}
+
+Datasets in the SWS are interchangebly used as module inputs/output, and are composed by dimensions (aka reference/code lists). Currently, in the AQUASTAT - SWS framework, the available datasets are:
+
+1. **aquastat_enr**. A SWS dataset with the latest available data from the AQUASTAT working system and migrated by CIO - SWS counterpart. This dataset is the bare minimum of AQUASTAT meaning that none analytical process has been applied to it, including the calculation of AQUASTAT indicators (aka derived variables).
+
+
+```{r  fig3, echo=FALSE, out.width="100%", fig.cap='Snapshot of the aquastat_enr dataset.'}
+knitr::include_graphics("images/aquastat_enr.jpg")
+```
+
+
+2. **aquastat_baseline**. A SWS dataset output from the faoswsAquastatBaseline module representing:
+   - The add of AQUASTAT indicators/derived variables to the aquastat_enr dataset; 
+   - The increase of time-series length for AQUASTAT variables and indicators by imputations;
+   - The expansion of the geographic coverage of the SDG 6.4.1 (Water Use Efficiency) and SDG 6.4.2 (Water Stress).
+   
+```{r  fig4, echo=FALSE, out.width="100%", fig.cap='Snapshot of the aquastat_baseline dataset yet to be validated by the technical unit.'}
+knitr::include_graphics("images/aquastatbaseline.jpg")
+```  
+   
+# AQUASTAT data {-}
+
+The next sections will treat the faoswsAquastatBaseline module as well as its datasets and data tables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at the data collected and disseminated by AQUASTAT. with the validation from the AQUASTAT focal point, The ESS - SWS counterpart has adapated and updated a reference table with the following information:
+
+1. **element_code**. The SWS code of AQUASTAT variable and indicators;
+2. **element_name**. The description of the AQUASTAT variables and indicators;
+3. **disseminated**. Column indicating whether the variable/indicator is for dissemination (**D**) or internal use (**I**);
+4. **calculated**. Column indicating whether the variable is an ordinary variable (**V**) or an indicator (calculated varaible) (**C**);
+5. **Source**. Column indicating the data source: 
+    - **A:** data collected by AQUASTAT; 
+    - **O:** data copied by AQUASTAT from other international databases;
+    - **C:** data calculated.
+6. **source**. Collumn with the source description of AQUASTAT variables/indicators.
+    - **AQUASTAT** ordinary variable collected by AQUASTAT;
+    - **DERIVED** indicator calculated from ordinary variables;
+    - **FAOSTAT** variable or indicator collected from FAOSTAT database;
+    - **WORLD BANK** variable or indicator collected from the World Bank;
+    - **ILO** variable or indicator collected from the Internation Labour Organization;
+    - **JMP(WHO/UNICEF)** variable or indicator collected from the World Health Organization/UNICEF.
+    
+
+```{r tab1, echo=FALSE, message=FALSE}
+require(data.table)
+# lta <- c(4150L, 4151L, 4154L, 4155L, 4156L, 4157L, 4159L, 4160L,
+#          4161L, 4162L, 4164L, 4165L, 4168L, 4170L, 4171L, 4172L, 4173L,
+#          4174L, 4176L, 4177L, 4178L, 4182L, 4185L, 4187L, 4188L, 4192L,
+#          4193L, 4194L, 4195L, 4196L, 4452L, 4453L, 4509L, 4536L,
+#          4549L)
+d = data.table::fread("tables/aquastat_meta_FL_sources.csv")
+knitr::kable(x = d, 
+             caption = paste("The description of AQUASTAT data"),
+             booktabs = TRUE)
+```
+ 
+
+
+# The faoswsAquastatBaseline module {-}
+
+## Aims {-}
+
+The faoswsAquastatBaseline is meant to run and generates the updated benchmark for AQUASTAT activities in the SWS context. The module, therefore, seeks to fullfill AQUASTAT demands described below.
+
+## Add indicators {-}
+
+The datasets used as input by the faoswsAquastatBaseline module  is free from AQUASTAT indicators/derived variables. Thus, the first motivation of the module is to bring indicators up by applying the calculation rules provided by the technical unit and store in the SWS as  the **calculation_rule** data table. Below the description of the AQUASTAT calculation_rule data table.
+
+```{r tab2, echo=FALSE, message=FALSE}
+require(dplyr)
+d = readr::read_csv("tables/calculation_rule.csv")
+knitr::kable(x = d %>% dplyr::select(calculation_rule, indicator_name, component_name), 
+             caption = paste("The AQUASTAT calculation rules data table"),
+             booktabs = TRUE)
+```
+
+
+## Long-term variables {-}
+
+According to the technical unit, there a set of AQUASTAT variables and indicators that should have the same value over time. These variables are called by the technical unit **Long-term average variables** and are shown in the table below.
+
+```{r tab3, echo=FALSE, message=FALSE}
+require(dplyr)
+lta <- c(4150L, 4151L, 4154L, 4155L, 4156L, 4157L, 4159L, 4160L,
+         4161L, 4162L, 4164L, 4165L, 4168L, 4170L, 4171L, 4172L, 4173L,
+         4174L, 4176L, 4177L, 4178L, 4182L, 4185L, 4187L, 4188L, 4192L,
+         4193L, 4194L, 4195L, 4196L, 4452L, 4453L, 4509L, 4536L,
+         4549L)
+d = readr::read_csv("tables/aquastat_meta_FL_sources.csv")
+knitr::kable(x = d %>% dplyr::filter(lement_code %in%  lta) %>%  dplyr::rename(element_code = lement_code), 
+             caption = paste("The Long-term average variables in AQUASTAT"),
+             booktabs = TRUE)
+```
+
+Thus, the second motivation of the module is to ensure the correct value of the Long-term variable in the final output. 
+
+
+## Time-Series completeness {-}
+
+One of the main criticisms at the AQUASTAT database is the low level of completeness of the variable/indicators time-series. In fact, 
+water data collection and standardization are not simple tasks due to the high fragmentation and scarcity of the water information at multiple spatial scales. According to the technical unit, on top of the inherent challenges to obtain reliable water data,  there has also been a long period of humman resources shortage. These issues eventually hinder the timely collection, processing, and dissemination data and ultimately have been leading to lack of the harmonization between countries in terms of time-series length across several AQUASTAT variables and indicators.
+
+To solve this problem, and at the same time respect the variable/indicator characteristics, the ESS - SWS team has proposed the application of imputation methods to increase time-series completeness of AQUASTAT variables and indicators. Through meetings with the technical unit, it was agreed that due to the nature of AQUASTAT variables showing little to moderate variation over time, the imputation mehtods of choice would be **Last Observation Carried Forward (LOCF)** and **Linear Interpolation**.
+
+Therefore, the third motivation of the module is to increase the time-series completness of each variable/indicator
+
+
+## Geographic coverage {-}
+
+Having aggred on the imputation methods to be applied to AQUASTAT variables/indicators, the obvious expected consequence of the imputations is the possibility of increasing the geographic coverage of important indicators such as the SDGs 6.4.1 (Water USe Efficiency) and 6.4.2 (Water Stress). Therefore, the fourth motivation of the module is the paved the way for the aggregation of SDG indicators at regional and global levels.
+
+
+## FAOSTAT data {-}
+
+The technical unit has been re-disseminating FAOSTAT data as a way to provide supporting statistics in a single data dissemination platform. From a data processing perspective, an effective way to streamline the use of FAOSTAT data by AQUATSAT would be to take the data from datasets already residing in other SWS statistical domains. However, it has been proven to be problematic because the SWS datasets where the FAOSTAT data were suppose to be are actually empty. Currently, the AQUASTAT focal point responsible for the updates of the AQUASTAT working system has been proceed as follow:
+
+1. Downloading normalized data from  FAOSTAT;
+2. Mapping FAOSTAT code to AQUASTAT code;
+3. Uploading the recoded FAOSTAT data into the AQUASTAT working System.
+
+To avoid the manual download -> mapping -> upload  the module is also automatically harvisting the FAOSTAT data from the FAOSTAT website. The FAOSTAT code to AQUASTAT code mapping is done by using the information stored in the **aquastat_faostat_mapping** data table.
+
+
+```{r tab5, echo=FALSE, message=FALSE}
+require(dplyr)
+d = readr::read_csv("tables/aquastat_faostat_mapping.csv")
+knitr::kable(x = d, 
+             caption = paste("FAOSTAT-to-AQUASTAT mapping"),
+             booktabs = TRUE)
+```
+
+
+# Workflow {-}
+
+After having seen the main motivations of the faoswsAquastatBaseline module, its workflow can be divided into five main steps:
+
+1. **FAOSTAT Annexation**
+
+2. **Calculation** 
+
+3. **Imputation**
+
+4. **Recalculation**
+
+5. **Flag mapping**
+
+
+## FAOSTAT annexation {-}
+
+1. Get FAOSTAT data from FAOSTAT website and mapping them to AQUASATAT code using the **aquastat_faostat_mapping** data table;
+
+2. Downlaod the dataset **aquastat_enr** from SWS (no indicators in the dataset);
+
+3. **Annex** the recoded FAOSTAT data to the AQUASTAT aquastat_enr dataset to form a single dataset used as **input** in the next steps of the faoswsAquastatBaseline Workflow.
+
+```{r fig5, echo=FALSE, fig.cap='FAOSTAT annexation to AQUASTAT SWS data'}
+require(DiagrammeR)
+DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = TB]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = Linen]
+
+# Inputs
+FAOSTAT [label = 'Input \n FAOSTAT data \n from FAOSTAT website', shape = folder, fillcolor = Beige]
+
+FAOSTATSWS [label = 'FAOSTAT - FAOSTAT mapping \n using aquastat_faostat_mapping data table', fillcolor = LightBlue]
+SWSenr [label = 'Input \n AQUASTAT dataset \n from SWS',  shape = folder, fillcolor = Beige]
+
+# Output
+Dataset1 [label = 'SWS AQUASTAT dataset \n with recoded FAOSTAT data', shape = folder, fillcolor = Beige]
+
+# Flow
+# edge definitions with the node IDs
+{SWSenr} -> Dataset1  
+{FAOSTAT} -> FAOSTATSWS
+{FAOSTATSWS} -> Dataset1
+}")
+
+```
+
+
+## Calculation {-}
+
+1. Pass the resulting dataset from the FAOSTAT annexation into the prep_for_calculation function in order to:
+
+  i) Get all aquastat variables and indicators from the calculation rules in the **calculation_rule** data table;
+  ii) Check and collect variables and/or indicators that do not exist in the dataset.
+  
+2. Add the detected missing variables and/or indicators to the dataset in order to avoid crash when applying calculation rules;
+
+3. According to AQUASTAT focal point, before calculations all variables belonging to calculation rules representing addiction or subtraction **MUST** be converted to zero **IF** their respective time-series are completely empty. Below the variables pre-defined by AQUASTAT for which this is applicable.
+  
+```{r tab6, echo=FALSE, message=FALSE}
+require(dplyr)
+zeroel <- c(4308, 4309, 4310, 4312, 4316, 4314, 4315, 4264, 4265, 4451)
+d = readr::read_csv("tables/aquastat_meta_FL_sources.csv")
+knitr::kable(x = d %>% dplyr::filter(lement_code %in%  zeroel) %>%  dplyr::rename(element_code = lement_code), 
+             caption = paste("AQUASTAT variables with missing values made zero before calculations IF the time-series was fully empty"),
+             booktabs = TRUE)
+```
+
+4. **Calculation** of indicators by applying the information in the **calculation_rule** data table (see Table \@ref(tab:tab2));
+
+5. After calculations, replace missing values (NAs) by the value of primary variable of the indicator when applicable following the rule:
+
+```{block2 , type='rmdnote'}
+ IF indicator/derived variable is empty after the caculation and its correspondent primary variable is avaialble, replace the missing value of the indicator by the value of the primary variable.
+
+```
+  
+  
+  
+```{r tab7, echo=FALSE, message=FALSE}
+require(dplyr)
+d = readr::read_csv("tables/primary_variable.csv")
+knitr::kable(x = d, 
+             caption = paste("Indicators which the primary variable rule was applied to after the calculations"),
+             booktabs = TRUE)
+```
+
+
+
+```{r fig6, echo=FALSE, fig.cap='AQUASTAT Calculation using SWS calculation_rule data table.'}
+require(DiagrammeR)
+DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = TB]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = Linen]
+
+# Inputs
+Input [label = 'Input: \n SWS AQUASTAT dataset with FAOSTAT data', shape = folder, fillcolor = Beige]
+
+# processing
+Processing [label = 'Processing steps: \n 1 - Add missing elements to the input \n 2-NAs to zero if full TS is emmpty \n 3-Calculations using calculation_rule \n 4-Primary variable rule after calculation', shape = square, fillcolor = LightBlue]
+
+# Output
+Output [label = 'Output: \n Calculated data', shape = folder, fillcolor = Beige]
+
+# Flow
+# edge definitions with the node IDs
+{Input} -> Processing  -> Output
+}")
+```
+
+
+
+## Imputations {-}
+
+The calculation step added new indicators but  did not solve the issue of time-series completeness. The Imputation step comes in to: 
+
+1. Expand variables and indicators time-series **from the first observed value until 2018** as agreed by the technical unit;
+
+2. Fill the generated missing values using the following guideline:
+
+   - Apply **Last Observation Carried Forward** to missing values in time-series where the observed values **DO NOT VARY**;
+   - Apply **Last Observation Carried Forward** to missing values in time-series of Long-Term average variables (see Table \@ref(tab:tab3) for reference);
+   - Apply **Last Observation Carried Forward** to missing values in time-series with only one observed value;
+   - Apply **Linear Interpolation** to missing values in time-series with two or more different observed values.
+   
+   
+ 
+```{r fig7, echo=FALSE, fig.cap='AQUASTAT Imputations using the data resulting from the calculation step.'}
+require(DiagrammeR)
+DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = TB]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = Linen]
+
+# Inputs
+Input [label = 'Input: \n Calculated data', shape = folder, fillcolor = Beige]
+
+# processing
+Expansion  [label = 'Time-series expansion: \n from first observation to 2018', fillcolor = LightBlue]
+Imputation [label = 'Imputations: \n LOCF \n Linear Interpolation', fillcolor = LightBlue]
+
+# Output
+Output [label = 'Output: \n Imputed data', shape = folder, fillcolor = Beige]
+
+# Flow
+# edge definitions with the node IDs
+{Input} -> Expansion -> Imputation -> Output
+}")
+```
+
+
+## Recalculation {-}
+
+The completeness brought by imputations is used by the recalculation step to replace indicator imputed values by calculated values. To do so, the recalculation step:
+
+1. Takes the imputed dataset resulting from the Imputation step;
+
+2. Applies the calculation rules to the imputed dataset with the help of the calculation_rule data table (Table \@ref(tab:tab2));
+
+3. Re-applies the primary variable variable rule using the variables in the Table \@ref(tab:tab2);
+
+4. Replace indicators brought by imputations by values brought by the recalculation when applicable.
+
+ 
+```{r fig8, echo=FALSE, fig.cap='Recalculations using imputed dataset and the calculation_rule data table.'}
+require(DiagrammeR)
+DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = TB]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = Linen]
+
+# Inputs
+Input [label = 'Input: \n Imputed data', shape = folder, fillcolor = Beige]
+
+# processing
+Calculation [label = 'Calculation: \n using calculation_rule data table', fillcolor = LightBlue]
+PrimaryVariable [label = 'Primary Variable rule: \n re-applied', fillcolor = LightBlue]
+Replacement  [label = 'Replace: \n imputed values by recalculated values', fillcolor = LightBlue]
+
+
+# Output
+Output [label = 'Output: \n Recalculated data', shape = folder, fillcolor = Beige]
+
+# Flow
+# edge definitions with the node IDs
+{Input} -> Calculation -> PrimaryVariable  -> Replacement -> Output
+}")
+```
+
+
+
+## Flag mapping (Observation) {-}
+
+The mapping between the original flags in AQUASTAT to valid flags in the SWS was made possible with the following conversions:
+
+```{r tab8, echo=FALSE, message=FALSE}
+require(dplyr)
+d = readr::read_csv("tables/flagobs.csv")
+knitr::kable(x = d, 
+             caption = paste("AQUASTAT to SWS flag conversion"),
+             booktabs = TRUE)
+```
+
+Besides the basic conversion described above, values emerged from the faoswsAquastatBaseline module processing were flagged according as follow:
+
+1. All indicators emerging from calculations/recalculations have SWS flag **'E'**;
+
+2. All missing values filled by the imputations have  SWS flag **'I'**.
+
+
+## Flag mapping (Method) {-}
+
+With regard to flag of methods in SWS, the conversion following criteria:
+
+1. When the value is imputed from the module AND the imputation method is LOCF, the flag method is **'t'**;
+
+2. When the value is imputed from the module and the method is LOCF, the flag of method is **'e'**;
+
+3. When the value is calculated or recalculated the flag of method is **'i'**.
+
+4. When the value has flagObservationStatus **'E'** and DOES NOT COME FROM PROCESSING, the flag of method is **'-'**;
+
+5. When the value has flagObservationStatus **blank** and DOES NOT COME FROM PROCESSING, the flag of method is **'p'** ;
+
+6. When the value has flagObservationStatus **'X'** and DOES NOT COME FROM PROCESSING, the flag of method is **'c'**;
+
+
+```{r tab9, echo=FALSE, message=FALSE}
+require(dplyr)
+d = readr::read_csv("tables/flagmeth.csv")
+knitr::kable(x = d %>% dplyr::mutate(flagObservationStatus = ifelse(is.na(flagObservationStatus), 'blank', flagObservationStatus)), 
+             caption = paste("flagObservationStatus - flagMethod combination brought by the faoswsAquastatBaseline module"),
+             booktabs = TRUE)
+```
+
+
+
+
+# Running the module in the SWS {-}
+
+
+To run the faoswsAquastatBaseline after any updated of either aquastat_enr SWS dataset or FAOSTAT - based variables, the user need to:
+
+1. Login in the SWS;
+
+
+2. CLick on New Query;
+
+```{r  fig9, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/newquery.jpg")
+```  
+
+3. Select **Aquastat domain** and **Aquastat Baseline dataset**;
+
+4. Select **all countries**, **all elements**, and **all years**;
+
+```{r  fig10, echo=FALSE, out.width="100%", fig.cap='Aquastat baseline query'}
+knitr::include_graphics("images/query.jpg")
+```  
+
+5. Click on the **Run** button to query the data;
+
+6. After running the query the user will see an empty session waiting for being populated by the module;
+
+```{r  fig11, echo=FALSE, out.width="100%", fig.cap='Aquastat baseline empty session'}
+knitr::include_graphics("images/emptysession.jpg")
+```  
+
+7. Click on the **Run plugin** button and then select the faoswsAquastatBaseline module
+```{r  fig12, echo=FALSE, out.width="100%", fig.cap='Select Aquastat baseline module'}
+knitr::include_graphics("images/plugin.jpg")
+```  
+
+
+8. Once the user has selected the faoswsAquastatBaseline plugin, click on the button **Run plugin**;
+```{r  fig13, echo=FALSE, out.width="100%", fig.cap='Run Aquastat baseline module'}
+knitr::include_graphics("images/runplugin.jpg")
+```  
+
+9. The module will start and the user should wait for the output.
+```{r  fig14, echo=FALSE, out.width="100%", fig.cap=' Aquastat baseline dataset populated in the session'}
+knitr::include_graphics("images/outputbaselinesws.jpg")
+```  
+
+
+# Did the module... {-}
+
+## Add new indicators ? {-}
+```{r tab10, echo=FALSE, message=FALSE}
+require(dplyr)
+d = readr::read_csv("tables/base_add_indicators.csv")
+knitr::kable(x = d,
+             caption = paste("The new indicators resulting from the faoswsAquastatBaseline module"),
+             booktabs = TRUE)
+```
+
+## promote time-series completeness and higher geographic coverage ? {-}
+
+
+**For the SDG 6.4.1 (Water Use Efficiency)...**
+
+
+```{r tab11, echo=FALSE, message=FALSE}
+require(dplyr)
+require(data.table)
+d = data.table::fread("tables/map4551.csv")
+d <- d[,.(geographicAreaM49_description, count_bef, count_after)]
+setnames(d, 'count_bef', 'before_module')
+setnames(d, 'count_after','after_module')
+knitr::kable(x = d,
+             caption = paste("Increase in time-series completeness and geographic expansion of SDG 6.4.1 (Water Use Efficiency"),
+             booktabs = TRUE)
+```
+
+
+
+**And for the SDG 6.4.2 (Water Stress)...**
+
+```{r tab12, echo=FALSE, message=FALSE}
+require(dplyr)
+require(data.table)
+d = data.table::fread("tables/map4550.csv")
+d <- d[,.(geographicAreaM49_description, count_bef, count_after)]
+setnames(d, 'count_bef', 'before_module')
+setnames(d, 'count_after','after_module')
+knitr::kable(x = d,
+             caption = paste("Increase in time-series completeness and geographic expansion of SDG 6.4.2 (Water Stress"),
+             booktabs = TRUE)
+```
+
+
+## correct values of Long-Term Average variables ? {-}
+```{r tab13, echo=FALSE, message=FALSE}
+require(dplyr)
+require(data.table)
+d = data.table::fread("tables/daf4157.csv")
+knitr::kable(x = d,
+             caption = paste("LTA correction in Afghanistan on the element 'Total internal renewable water resources (IRWR) [10^9 m3/year]'"),
+             booktabs = TRUE)
+```
+
+
+
+
+
+
+
+
+

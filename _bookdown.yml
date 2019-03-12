@@ -1,6 +1,3 @@
 book_filename: "bookdown-demo"
-language:
-  ui:
-    chapter_name: "Chapter "
+language: 'r'
 output_dir: "docs"    
-delete_merged_file: true

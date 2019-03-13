@@ -1,0 +1,34 @@
+# **Next** {#nextsteps}
+
+## **Pending activities**
+
+### Validation comment
+
+  - Need more clarifications on what "remind to use a source for each data point" means.
+
+### National dam capacity time-series (using SWS dam data table)
+
+  - easy to implement by creating a R module. 
+
+### Show the latest value and the corresponding year
+
+  - Is this a dissemination tool?
+
+### Automatic generation of PDF
+
+  - Need clarification from the technical unit.
+  
+  - What does the technical unit want to report? To whom?
+  
+  - Potential solution after sttling the doubts: a shiny app (overcomes outdated R packages for data reporting in SWS)
+  
+  
+### Aggregations
+
+  - Once the baseline output is validate, the technical unit needs to clarify the regions, special regions the aggregation should be compiled for. 
+  - A SWS plugin tailored for aggregating the results by the regions defined by the technical unit can easily be implemented.
+  
+  
+  
+  
+  

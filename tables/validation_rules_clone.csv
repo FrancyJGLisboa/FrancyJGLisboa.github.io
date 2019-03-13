@@ -1,0 +1,187 @@
+lhs,operator,rhs,priority
+Value_4100,>,Value_4103,1.0
+Value_4100,>,Value_4300,1.0
+Value_4100,>,Value_4313,1.0
+Value_4100,>,Value_4317,1.0
+Value_4100,>,Value_4102,1.0
+Value_4100,>,Value_4303,1.0
+Value_4100,>,Value_4304,1.0
+Value_4100,>,Value_4306,1.0
+Value_4100,>,Value_4307,1.0
+Value_4100,>,Value_4308,1.0
+Value_4100,>,Value_4309,1.0
+Value_4100,>,Value_4310,1.0
+Value_4100,>,Value_4311,1.0
+Value_4100,>,Value_4314,1.0
+Value_4100,>,Value_4315,1.0
+Value_4100,>,Value_4316,1.0
+Value_4100,>,Value_4318,1.0
+Value_4100,>,Value_4321,1.0
+Value_4100,>,Value_4320,1.0
+Value_4100,>,Value_4322,1.0
+Value_4100,>,Value_4326,1.0
+Value_4100,>,Value_4333,1.0
+Value_4100,>,Value_4334,1.0
+Value_4100,>,Value_4345,1.0
+Value_4100,>,Value_4379,1.0
+Value_4100,>,Value_4400,1.0
+Value_4100,>,Value_4401,1.0
+Value_4100,>,Value_4402,1.0
+Value_4100,>,Value_4465,1.0
+Value_4100,>,Value_4526,1.0
+Value_4100,>,Value_4513,1.0
+Value_4101,<=,Value_4100,1.0
+Value_4102,<=,Value_4101,0.0
+Value_4103,>,Value_4313,0.0
+Value_4103,>,Value_4300,0.0
+Value_4103,>=,Value_4102,1.0
+Value_4103,> ,Value_4304,0.0
+Value_4103,>,Value_4314,1.0
+Value_4103,>,Value_4315,1.0
+Value_4103,>,Value_4303,0.0
+Value_4103,>,Value_4332,0.0
+Value_4103,>,Value_4333,0.0
+Value_4103,>,Value_4334,0.0
+Value_4103,>,Value_4400,0.0
+Value_4103,>,Value_4401,0.0
+Value_4103,>,Value_4402,0.0
+Value_4103,>,Value_4316,0.0
+Value_4103,>,Value_4318,0.0
+Value_4103,>,Value_4320,0.0
+Value_4103,>,Value_4321,0.0
+Value_4103,>,Value_4322,0.0
+Value_4103,>,Value_4326,0.0
+Value_4103,>,Value_4308,0.0
+Value_4103,>,Value_4309,0.0
+Value_4103,>,Value_4311,0.0
+Value_4103,>,Value_4101,1.0
+Value_4103,>,Value_4465,0.0
+Value_4103,>,Value_4513,0.0
+Value_4103,>,Value_4526,0.0
+Value_4104 *Value_4114,"""==""",Value_4105*Value_4115*Value_4106*Value_4116,0.0
+Value_4105/Value_4104,>=,0.12,0.0
+Value_4105/Value_4104,<=,0.85,0.0
+Value_4106/Value_4104,>=,0.14,0.0
+Value_4106/Value_4104,<=,0.88,0.0
+Value_4111,<=,1.0,1.0
+Value_4113,<=,100.0,1.0
+Value_4114,<=,100.0,1.0
+Value_4114,>=,48.0,0.0
+Value_4114,<=,90.0,0.0
+Value_4115,<=,100.0,1.0
+Value_4115,>=,36.0,0.0
+Value_4115,<=,90.0,0.0
+Value_4116,<=,100.0,1.0
+Value_4116,>=,76.0,0.0
+Value_4116,>=,90.0,0.0
+(Value_4150*100000)/Value_4100,>=,50.0,0.0
+(Value_4150*100000)/Value_4100,<=,2000.0,0.0
+Value_4154,<=,Value_4157,0.0
+Value_4154,<=,Value_4150,0.0
+Value_4155,<=,Value_4157,0.0
+Value_4155,<=,Value_4150,0.0
+Value_4156,<=,Value_4154,1.0
+Value_4156,<=,Value_4155,1.0
+Value_4157,<=,Value_4150,1.0
+Value_4157/Value_4150,<=,0.5,0.0
+(Value_4157*100000)/Value_4100,>= ,10.0,0.0
+(Value_4157*100000)/Value_4100,<=,1500.0,0.0
+Value_4158,>=,350.0,0.0
+Value_4160,<= ,Value_4159,0.0
+Value_4161,<=,Value_4159,0.0
+Value_4167,<=,Value_4165,0.0
+Value_4168,<=,Value_4167,0.0
+Value_4170,<=,Value_4169,0.0
+Value_4171,<=,Value_4157+Value_4456,0.0
+Value_4174,<=,Value_4173,0.0
+Value_4188,>=,Value_4157,0.0
+Value_4188,>=,Value_4182,0.0
+Value_4190,>=,560.0,0.0
+Value_4190,<=,93500.0,0.0
+Value_4192,<=,100.0,1.0
+Value_4250/Value_4253,>=,0.1,0.0
+Value_4250/Value_4253,<=,0.9,0.0
+Value_4250/Value_4317,>=,0.002,0.0
+Value_4250/Value_4317,<=,0.02,0.0
+Value_4250/Value_4317,>=,0.005,0.0
+Value_4250/Value_4317,<=,0.025,0.0
+Value_4251/Value_4253,>=,0.03,0.0
+Value_4251/Value_4253,<=,0.46,0.0
+Value_4252/Value_4253,>=,0.01,0.0
+Value_4252/Value_4253,<=,0.45,0.0
+Value_4254,<=,100.0,1.0
+Value_4255,<=,100.0,1.0
+Value_4256,<=,100.0,1.0
+Value_4257,>=,50.0,0.0
+Value_4258,<=,1430.0,0.0
+Value_4263,"""==""",Value_4261+Value_4262,0.0
+Value_4263,<,2000.0,0.0
+Value_4263,<=,Value_4253,1.0
+Value_4265,>=,Value_4490,0.0
+Value_4269,<= ,Value_4253,0.0
+Value_4269,>= ,Value_4493,0.0
+Value_4269,"""==""",Value_4270+Value_4491,0.0
+Value_4270,<=,Value_4269,0.0
+Value_4270,>=,Value_4265,0.0
+Value_4271,<=,100.0,1.0
+Value_4273,<=,100.0,0.0
+Value_4275,<=,100.0,0.0
+Value_4300,<=,Value_4317,0.0
+Value_4303,<=,Value_4300,0.0
+Value_4303+Value_4304,"""==""",Value_4300,0.0
+Value_4304,<=,Value_4300,0.0
+Value_4305,<=,100.0,1.0
+Value_4305,<=,70.0,0.0
+Value_4308/Value_4313,>=,0.5,0.0
+Value_4308+Value_4309+Value_4310,"""==""",Value_4332+Value_4333+Value_4334,0.0
+Value_4309/Value_4313,<=,0.6,0.0
+Value_4310/Value_4313,<=,0.2,0.0
+Value_4311,>=,Value_4308,1.0
+Value_4311,>=,Value_4310,1.0
+Value_4311,>=,Value_4310,1.0
+Value_4313,<=,Value_4317,1.0
+Value_4313,>=,Value_4326,1.0
+Value_4313,>=,Value_4320+Value_4321+Value_4322+Value_4465+Value_4513+Value_4526,1.0
+Value_4311,>=,Value_4321,1.0
+Value_4313,>=,Value_4322,1.0
+Value_4313,>=,Value_4303,1.0
+Value_4313,>,Value_4465,1.0
+Value_4313,> ,Value_4513,1.0
+Value_4313,>,Value_4526,1.0
+Value_4317,<=,Value_4103,0.0
+Value_4318,<=,Value_4313,1.0
+Value_4319,<= ,100.0,1.0
+Value_4320/Value_4313,<= ,0.7,1.0
+Value_4321/Value_4313,<= ,0.9,0.0
+Value_4323,<= ,100.0,0.0
+Value_4324,<= ,100.0,1.0
+Value_4325,<= ,100.0,1.0
+Value_4327,<= ,100.0,1.0
+Value_4328,<= ,100.0,1.0
+Value_4329,<= ,100.0,1.0
+Value_4330,<= ,100.0,0.0
+Value_4331,<= ,100.0,0.0
+Value_4335,>=,1000.0,0.0
+Value_4335,<=,20000.0,0.0
+Value_4339,>=,1000.0,0.0
+Value_4339,<=,20000.0,0.0
+Value_4343,>=,1000.0,0.0
+Value_4343,<=,20000.0,0.0
+Value_4344,>=,1000.0,0.0
+Value_4344,<=,20000.0,0.0
+Value_4379/Value_4317,>=,0.5,0.0
+Value_4400,<=,Value_4313,0.0
+Value_4401,<=,Value_4313,0.0
+Value_4401/Value_4313,<=,0.5,0.0
+Value_4403,<=,Value_4104,1.0
+Value_4445,<=,100.0,1.0
+Value_4446,<=,100.0,1.0
+Value_4450,<=,100.0,1.0
+Value_4475,<=,Value_4250,0.0
+Value_4493,>=,Value_4270,1.0
+Value_4546,<=,Value_4112,0.0
+Value_4547,<= ,Value_4112,1.0
+Value_4548,<= ,Value_4112,1.0
+Value_4550,<= ,100.0,1.0
+Value_4555,<= ,100.0,0.0
+Value_4556,<= ,100.0,1.0

@@ -96,7 +96,8 @@ After having seen the main motivations of the faoswsAquastatBaseline module, its
 3. **Annex** the recoded FAOSTAT data to the AQUASTAT aquastat_enr dataset to form a single dataset used as **input** in the next steps of the faoswsAquastatBaseline Workflow.
 
 ```{r fig5, echo=FALSE, fig.cap='FAOSTAT annexation to AQUASTAT SWS data'}
-require(DiagrammeR)
+
+library(DiagrammeR)
 DiagrammeR::grViz("digraph {
 
 graph [layout = dot, rankdir = TB]
@@ -382,8 +383,6 @@ knitr::kable(x = d,
 
 
 **For the SDG 6.4.1 (Water Use Efficiency)...**
-
-
 ```{r tab11, echo=FALSE, message=FALSE}
 require(dplyr)
 require(data.table)

@@ -8,7 +8,7 @@
 
 ### National dam capacity time-series (using SWS dam data table)
 
-  - easy to implement by creating a R module. 
+  - easy to implement by creating an R module. 
 
 ### Show the latest value and the corresponding year
 
@@ -26,7 +26,7 @@
 ### Aggregations
 
   - Once the baseline output is validated, the technical unit needs to clarify the regions and/or special regions the aggregation should be compiled for. 
-  - A SWS plugin, tailored for aggregating the results by the regions defined by the technical unit, can easily be implemented.
+  - An SWS plugin, tailored for aggregating the results by the regions defined by the technical unit, can easily be implemented.
   
   
   

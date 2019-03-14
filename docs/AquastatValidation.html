@@ -71,7 +71,7 @@
 <li><a href="index.html#introduction"><strong>Introduction</strong></a><ul>
 <li><a href="index.html#data-collection"><strong>Data Collection</strong></a></li>
 <li><a href="index.html#questionnaire"><strong>Questionnaire</strong></a></li>
-<li><a href="index.html#the-aquastat-information"><strong>The AQUASTAT information</strong></a></li>
+<li><a href="index.html#the-aquastat-information-management"><strong>The AQUASTAT information management</strong></a></li>
 <li><a href="index.html#code-lists"><strong>Code lists</strong></a></li>
 <li><a href="index.html#data-tables"><strong>Data tables</strong></a></li>
 <li><a href="index.html#datasets"><strong>Datasets</strong></a></li>
@@ -146,10 +146,10 @@
 <h1><span class="header-section-number">Chapter 2</span> <strong>The faoswsAquastatValidation module</strong></h1>
 <div id="aims-1" class="section level2">
 <h2><span class="header-section-number">2.1</span> <strong>Aims</strong></h2>
-<p>The faoswsAquastatValidation emerges as a demand for a quality assurance and quality checking tool (QA/QC) that screens AQUASTAT data sets to identify potential issues in the data. The idea is to identify and output a data set containing the information on <strong>what</strong> (elements), <strong>where</strong> (geographic areas), and <strong>when</strong> (year) the domain-knowledge in form of validation rules (logical tests) was violated.</p>
+<p>The faoswsAquastatValidation emerges as a demand for quality assurance and quality checking tool (QA/QC) that screens AQUASTAT data sets to identify potential issues in the data. The idea is to identify and output a data set containing the information on <strong>what</strong> (elements), <strong>where</strong> (geographic areas), and <strong>when</strong> (year) the domain-knowledge in form of validation rules (logical tests) was violated.</p>
 <div id="use-validation-rules" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> <strong>Use validation rules</strong></h3>
-<p>The validation modules uses the AQUASTAT domain-knowledge converted into validation rules to identify errors in the data. The validation rules are logical test pre-defined by the technical unit and stored by the ESS-SWS team as a SWS data table called <strong>validation_rule_clone</strong> see @ (tab:tab14).</p>
+<p>The validation module uses the AQUASTAT domain-knowledge converted into validation rules to identify errors in the data. The validation rules are logical test pre-defined by the technical unit and stored by the ESS-SWS team as an SWS data table called <strong>validation_rule_clone</strong> see @ (tab:tab14).</p>
 <ul>
 <li>The columns <strong>lhs</strong> and <strong>rhs</strong> represent the left and right side of the validation rule expression.</li>
 <li>The <strong>operator</strong> the relationship between lhs and rhs that should be tested.</li>
@@ -1300,7 +1300,7 @@
 <div id="generalization" class="section level3">
 <h3><span class="header-section-number">2.1.4</span> <strong>Generalization</strong></h3>
 <ul>
-<li>The module is a generic, meaning that it can check and identify potential error of different SWS - AQUASTAT data sets.</li>
+<li>The module is generic, meaning that it can check and identify the potential errors in different SWS - AQUASTAT data sets.</li>
 </ul>
 </div>
 </div>
@@ -1322,8 +1322,8 @@
 </ul>
 <p>Currently, the two data sets which the module can be executed on are either the AQUASTAT data set migrated by CIO - SWS (<strong>aquastat_enr</strong>) and the data set resulting from the faoswsAquastatBaseline module (<strong>aquastat_baseline</strong>).</p>
 <div class="figure"><span id="fig:fig15"></span>
-<div id="htmlwidget-2c5b037a99c20a2b46e6" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2c5b037a99c20a2b46e6">{"x":{"diagram":"digraph {\n                  \n                  graph [layout = dot, rankdir = TB]\n                  \n                  # define the global styles of the nodes. We can override these in box if we wish\n                  node [shape = rectangle, style = filled, fillcolor = Linen]\n                  \n                  # Inputs\n                  enrico [label = \"aquastat_enr \n AQUASTAT data migrated into SWS \", shape = folder, fillcolor = Beige]\n                  baseline [label = \"aquastat_baseline \n faoswsAquastatBaseline module output\", shape = folder, fillcolor = Beige]                          \n                  module [label = \"faoswsAquastatValidation module\", shape = folder, fillcolor = LightBlue]\n                  \n                 \n                \n                  # Flow\n                  # edge definitions with the node IDs\n                  {enrico, baseline} -> module   \n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e9e7a4ee56330af92955" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e9e7a4ee56330af92955">{"x":{"diagram":"digraph {\n                  \n                  graph [layout = dot, rankdir = TB]\n                  \n                  # define the global styles of the nodes. We can override these in box if we wish\n                  node [shape = rectangle, style = filled, fillcolor = Linen]\n                  \n                  # Inputs\n                  enrico [label = \"aquastat_enr \n AQUASTAT data migrated into SWS \", shape = folder, fillcolor = Beige]\n                  baseline [label = \"aquastat_baseline \n faoswsAquastatBaseline module output\", shape = folder, fillcolor = Beige]                          \n                  module [label = \"faoswsAquastatValidation module\", shape = folder, fillcolor = LightBlue]\n                  \n                 \n                \n                  # Flow\n                  # edge definitions with the node IDs\n                  {enrico, baseline} -> module   \n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.1: faoswsAquastatValidation module workflow: Input datasets
 </p>
@@ -1333,8 +1333,8 @@ Figure 2.1: faoswsAquastatValidation module workflow: Input datasets
 <h3><span class="header-section-number">2.2.2</span> Apply validation rules</h3>
 The inputs are then processed by the faoswsAquastatValidation module.
 <div class="figure"><span id="fig:fig16"></span>
-<div id="htmlwidget-a2d6c56649b1e0ee0146" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a2d6c56649b1e0ee0146">{"x":{"diagram":"digraph {\n                  \n                  graph [layout = dot, rankdir = TB]\n                  \n                  # define the global styles of the nodes. We can override these in box if we wish\n                  node [shape = rectangle, style = filled, fillcolor = Linen]\n                  \n                  # Inputs\n                  inputs [label = \"Input \n aquastat_enr/aquastat_baseline\", shape = folder, fillcolor = Beige]\n                                        \n                  module [label = \"faoswsAquastatValidation module \n 1. Call validation_rules_clone data table; \n 2. Confront validation rules against the rows of the input dataset; \n 3. Select the rows of the input where the rules failed; \n 4. Add dimension descriptions to these rows; \n 5. Send the output data to the user corporate email.\", shape = folder, fillcolor = LightBlue]\n                  \n                  # Flow\n                  # edge definitions with the node IDs\n                  {inputs} -> module   \n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-294fdd9ea83b351283ec" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-294fdd9ea83b351283ec">{"x":{"diagram":"digraph {\n                  \n                  graph [layout = dot, rankdir = TB]\n                  \n                  # define the global styles of the nodes. We can override these in box if we wish\n                  node [shape = rectangle, style = filled, fillcolor = Linen]\n                  \n                  # Inputs\n                  inputs [label = \"Input \n aquastat_enr/aquastat_baseline\", shape = folder, fillcolor = Beige]\n                                        \n                  module [label = \"faoswsAquastatValidation module \n 1. Call validation_rules_clone data table; \n 2. Confront validation rules against the rows of the input dataset; \n 3. Select the rows of the input where the rules failed; \n 4. Add dimension descriptions to these rows; \n 5. Send the output data to the user corporate email.\", shape = folder, fillcolor = LightBlue]\n                  \n                  # Flow\n                  # edge definitions with the node IDs\n                  {inputs} -> module   \n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.2: faoswsAquastatValidation module workflow: Processing
 </p>
@@ -1342,15 +1342,15 @@ Figure 2.2: faoswsAquastatValidation module workflow: Processing
 </div>
 <div id="output-to-the-user" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Output to the user</h3>
-<p>After processing, and correctly identifying the rows where one or more validation rules were violated,, the module sends the output as <strong>.csv file</strong> to the user email (FAO corporate account). The output .csv file attached in the email is named <strong>validation_<name of the dataset input in SWS>.csv</strong> and has the following columns:</p>
+<p>After processing, and correctly identifying the rows where one or more validation rules were violated, the module sends the output as <strong>.csv file</strong> to the user email (FAO corporate account). The output .csv file attached in the email is named <strong>validation_<name of the dataset input in SWS>.csv</strong> and has the following columns:</p>
 <ul>
 <li><p><strong>geographic_area_description</strong>. The name of the country indicating <em>where</em> the validation rule (expression) did not pass the logical test;</p></li>
 <li><p><strong>timePointYears</strong>. The year indicating <em>when</em> the validation rule (expression) did not pass the logical test;</p></li>
 <li><p><strong>aquastatElement</strong>. The aquastatElement code;</p></li>
 <li><p><strong>aquastatElement description</strong>. The aquastatElement name(s) in the failing validation rule (expression);</p></li>
 <li><p><strong>Value</strong>. The values of aquastatElement(s) in the geographic area and year that may be potentially erroneous;</p></li>
-<li><p><strong>flagObservationStatus</strong> (if input has flagObservationStatus) or <strong>flagAquastat</strong> (if input is the aquastat_enr data set). The flag of the potentially erroneous values;</p></li>
-<li><p><strong>flagMethod</strong> (if input has flagMethod). The flag pointing the method used to obtain the potentially erroneous values;</p></li>
+<li><p><strong>flagObservationStatus</strong> (if input has the flagObservationStatus dimension) or <strong>flagAquastat</strong> (if input is the aquastat_enr data set). The flag of the potentially erroneous values;</p></li>
+<li><p><strong>flagMethod</strong> (if input has the flagMethod dimension). The flag pointing the method used to obtain the potentially erroneous values;</p></li>
 <li><p><strong>expression</strong>. The validation rule that was violated and detected by the module.</p></li>
 </ul>
 <table>
@@ -1496,7 +1496,7 @@ Figure 2.2: faoswsAquastatValidation module workflow: Processing
 <li><p>Choose <strong>Aquastat domain</strong>;</p></li>
 <li><p>Choose either <strong>aquastat_enr</strong> or Aquastat Baseline as the data set (remember they are the inputs!);</p></li>
 <li><p>Select all countries, all elements, and all years;</p></li>
-<li><p>Click on <strong>Run</strong> besides the save button to query the data;</p></li>
+<li><p>Click on <strong>Run</strong> beside the save button to query the data;</p></li>
 </ol>
 <div class="figure"><span id="fig:fig17"></span>
 <img src="images/query.JPG" alt=" Running the module in SWS: steps 1 to 6" width="100%" />
@@ -1540,8 +1540,8 @@ Figure 2.6:  Running the module in SWS: step 10
 <h2><span class="header-section-number">2.4</span> <strong>Did the module</strong>…</h2>
 <div id="execute-what-it-was-designed-for" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> execute what it was designed for?</h3>
-<p>The faoswsAquastatValidation module shows that it is possible to use the domain-knowledge translated into validation rules, and stored as SWS data table, to identify and locate potential errors in AQUASTAT - SWS framework data sets. By returning the areas, years, elements, values, flags, and expressions with potentially erroneous values, the module gives ammunition to the user to reduce the scope of the Quality Assurance and Quality Control process. As a consequence, the tool makes easier to identify the nature of the errors (e.g. from data source, from the module processing, from data revision, etc) and implement data correction based on the user domain - knowledge.</p>
-<p>It is recognized though that the level of human-intervention on the module’s result is proportional to the number of rows in the data set identified as violated. The more processed the input data set is, the higher is the probability of more rows with violation. Even so, the burden reduction with the automatic detection of faulty rules is a advance that will help the technical division to improve its data flow.</p>
+<p>The faoswsAquastatValidation module shows that it is possible to use the domain-knowledge translated into validation rules stored as SWS data table to identify and locate potential errors in AQUASTAT - SWS framework data sets. By returning the areas, years, elements, values, flags, and expressions with potentially erroneous values, the module gives ammunition to the user to reduce the scope of the Quality Assurance and Quality Control process. As a consequence, the tool makes easier to identify the nature of the errors and implement data correction based on the user domain - knowledge.</p>
+<p>It is recognized though that the level of human intervention on the module’s result is proportional to the number of rows in the data set identified as violated. The more processed the input data set is, the higher is the probability of more rows with the violation. Even so, the burden reduction with the automatic detection of faulty rules is an advance that will help the technical division to improve its data flow.</p>
 
 </div>
 </div>

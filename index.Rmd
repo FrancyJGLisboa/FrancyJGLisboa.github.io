@@ -12,14 +12,14 @@ description: "This online book describes the migration the statistical processes
 
 # **Introduction** {-}
 
-AQUASTAT - FAO Global's Water Statistics System is migrating its statistical processes into the Corporate Statistical Working System (SWS). This online book documents the major steps that have been taken so far in regard to this migration. The book describes the main institutional actors involved in the migration as well as the AQUASTAT - SWS resources (**code lists**, **datasets**, **data tables**) that have been created to support the SWS plugins (R modules) to meet technical unit requirements. Furthermore, the  The SWS plugins are presented in the form of chapters providing detailed description of their workflows involving **input -> processing -> output** as well as results showing whether the modules have lived up to expectations. 
+AQUASTAT - FAO Global's Water Statistics System is migrating its statistical processes into the Corporate Statistical Working System (SWS). This online book documents the major steps that have been taken so far in regard to this migration. The book describes the main institutional actors involved in the migration as well as the AQUASTAT - SWS resources (**code lists**, **datasets**, **data tables**) that have been created to support the SWS plugins (R modules) to meet technical unit requirements. Furthermore, the SWS plugins are presented in the form of chapters providing detailed description of their workflows involving **input -> processing -> output** as well as results showing whether the modules have lived up to expectations. 
 
 
 # **Migration actors** {-}
 
 Any migration into the SWS requires the interaction between at least three actors: 
 
-1. The **technical unit** interested in automating either some or all its analytical processes in the SWS. The technical unit can treated as client demanding services from the counterparts responsible for the implementation of the its data and statistical assets in the SWS. Therefore, a successful AQUASTAT - SWS migration depends on the coordination between the technical division and other parts. In the AQUASTAT - SWS migration framework the technical unit is called AQUASTAT and is represented by:
+1. The **technical unit** interested in automating either some or all its analytical processes in the SWS. The technical unit can be treated as client demanding services from the counterparts responsible for the implementation of its data and statistical assets in the SWS. Therefore, a successful AQUASTAT - SWS migration depends on the coordination between the technical division and other parts. In the AQUASTAT - SWS migration framework the technical unit is called AQUASTAT and is represented by:
 
   - **Virginie Gillet** *AQUASTAT coordination consultant (CBLD)*
   - **Jippe Hoogeveen** *Technical Officer (CBL)*
@@ -29,7 +29,7 @@ Any migration into the SWS requires the interaction between at least three actor
   - **Francy Lisboa** *Agronomist/Statistician (ESSD)*
   - **Carola Fabi** *Statistician (ESSD)*
   
-3. The **CIO - SWS** the **primary beckend and frontend maintainer of the SWS** and responsible for the implementation and documentation of non-statistical processes (IT infrastructure). The CIO - SWS team have as interlocutors:
+3. The **CIO - SWS** the **primary backend and frontend maintainer of the SWS** and responsible for the implementation and documentation of non-statistical processes (IT infrastructure). The CIO - SWS team have as interlocutors:
 
   - **Enrico Anello** *Full Stack Developer (CIO)*
   - **John Rowell** *Information Technology Officer (CIO)*
@@ -37,7 +37,7 @@ Any migration into the SWS requires the interaction between at least three actor
 
 # **New AQUASTAT methodology**{-}
 
-The book focus on SWS statistical processes on progress. However, for those interested, AQUASTAT has a dedicated FAO website where the [new methodology](http://www.fao.org/aquastat/overview/methodology) for data collection and data management can be accessed. The next sections summarize the AQUASTAT data collection and information management methodology.
+The book focuses on SWS statistical processes on progress. However, for those interested, AQUASTAT has a dedicated FAO website where the [new methodology](http://www.fao.org/aquastat/overview/methodology) for data collection and data management can be accessed. The next sections summarize the AQUASTAT data collection and information management methodology.
 
 
 ## **Data Collection** {-}
@@ -50,7 +50,7 @@ The book focus on SWS statistical processes on progress. However, for those inte
 
   4. The annual **Water and Agriculture** questionnaire was cleared by **FAO Office of the Chief Statistician (OCS)**;
 
-  5. The Questionnaire compiles **water and irrigation** statistics collected by National Correspondents and is sent out first semester of each year.
+  5. The Questionnaire compiles **water and irrigation** statistics collected by National Correspondents and is sent out the first semester of each year.
 
 ## **Questionnaire** {-}
 
@@ -58,7 +58,7 @@ The **Water and Agriculture** questionnaire has the following characteristics:
 
   1. Three introductory sections: Cover page, Instructions, Definitions;
   
-  2. One data reporting section, including national data on water withdrawal, dam capacity, municipal waste water, irrigation and drainage;
+  2. One data reporting section, including national data on water withdrawal, dam capacity, municipal wastewater, irrigation and drainage;
   
   3. Two Supplementary Information sections: Metadata, Feedback.
   
@@ -66,7 +66,7 @@ The **Water and Agriculture** questionnaire has the following characteristics:
   
   5. To download the **Water and Agriculture** questionnaire, please click on this [link](https://firebasestorage.googleapis.com/v0/b/fao-aquastat.appspot.com/o/Excel%2FAQUASTATQuestionnaire2018ENG.xlsm?alt=media&token=43a81b96-1853-46c9-bf38-e94de717efef).
 
-## **The AQUASTAT information** {-} 
+## **The AQUASTAT information management** {-} 
 
 ```{r   echo=FALSE, out.width="100%", fig.cap=' Aquastat Information Management'}
 knitr::include_graphics("images/aqua_methodology_new.png")
@@ -74,7 +74,8 @@ knitr::include_graphics("images/aqua_methodology_new.png")
 
 
 # **AQUASTAT data** {-}
-The Chapter \@ref(AquastatBaseline) will treat the  module as well as its data sets and data tables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at the data collected and disseminated by AQUASTAT. with the validation from the AQUASTAT focal point, The ESS - SWS counterpart has adapted and updated a reference table with the following information:
+
+Chapter \@ref(AquastatBaseline) will treat the module as well as its data sets and data tables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at the data collected and disseminated by AQUASTAT. with the validation from the AQUASTAT focal point, The ESS - SWS counterpart has adapted and updated a reference table with the following information:
 
 1. **element_code**. The SWS code of AQUASTAT variable and indicators;
 2. **element_name**. The description of the AQUASTAT variables and indicators;
@@ -102,14 +103,14 @@ require(data.table)
 #          4193L, 4194L, 4195L, 4196L, 4452L, 4453L, 4509L, 4536L,
 #          4549L)
 d = data.table::fread("tables/aquastat_meta_FL_sources.csv")
-knitr::kable(x = d[, Comments := NULL], 
+knitr::kable(x = d, 
              caption = paste("The description of AQUASTAT data"),
              booktabs = TRUE)
 ```
  
 # **SWS resources** {-}
 
-SWS resources are R modules, data tables, data sets, and code lists comprising a migration framework. Data tables are typically used as auxiliary data to help R modules to achieve their goals, often a long-format four-to-six dimensional data set. The dimensions of the data sets are defined by statistical domain - specific code lists (reference lists) containing codes and descriptions. Therefore, data sets are primarily used to store code list - referenced values as either inputs and/or outputs in the SWS. The generic relationship among data table, data sets, and R modules is given as follow:
+SWS resources are R modules, data tables, data sets, and code lists comprising a migration framework. Data tables are typically used as auxiliary data to help R modules to achieve their goals, often a long-format four-to-six dimensional data set. The dimensions of the data sets are defined by statistical domain-specific code lists (reference lists) containing codes and descriptions. Therefore, data sets are primarily used to store code list - referenced values as either input and/or output in the SWS. The generic relationship among data table, data sets, and R modules is given as follow:
 
 
 ```{r fig1, echo=FALSE, fig.cap='Generic data table, dataset, and R module relationship in the SWS context', message=FALSE, warning=FALSE}
@@ -191,7 +192,7 @@ aquadataset [label = 'Typical aquastat dataset',  fillcolor = LightBlue]
 
 ## **Data tables** {-} 
 
-As mentioned, data tables are mainly used to store information that help R modules to output analytical results. Information in data tables can be of a number of types. For example, conversion factors, arithmetic formulas, mapping between flags, mapping between international classifications, etc. In SWS hierarchy. all data tables reside in a given statistical domain. In the AQUASTAT - SWS migration framework, the data tables are in the **Aquastat domain**. Below is a list of current available and filled data tables in the Aquastat domain:
+As mentioned, data tables are mainly used to store information helping R modules to output analytical results. Information in data tables can be of a number of types. For example, conversion factors, arithmetic formulas, mapping between flags, mapping between international classifications, etc. In SWS hierarchy. all data tables reside in a given statistical domain. In the AQUASTAT - SWS migration framework, the data tables are in the **Aquastat domain**. Below is a list of current available and filled data tables in the Aquastat domain:
 
 1. **aquastat_faostat_mapping**. A data table mapping out AQUASTAT elements to FAOSTAT elements.
 
@@ -210,9 +211,9 @@ As mentioned, data tables are mainly used to store information that help R modul
 
 ## **Datasets** {-}
 
-Datasets in the SWS are interchangeably used as module inputs/outputs, and are composed by dimensions (aka reference/code lists). Currently, in the AQUASTAT - SWS framework, the available data sets are:
+Datasets in the SWS are interchangeably used as module inputs/outputs and are composed by dimensions (aka reference/code lists). Currently, in the AQUASTAT - SWS framework, the available data sets are:
 
-1. **aquastat_enr**. A SWS data set with the latest available data from the AQUASTAT working system and migrated by CIO - SWS counterpart. This data set is the bare minimum of AQUASTAT meaning that none analytical process has been applied to it, including the calculation of AQUASTAT indicators (aka derived variables).
+1. **aquastat_enr**. An SWS data set with the latest available data from the AQUASTAT working system and migrated by CIO - SWS counterpart. This data set is the bare minimum of AQUASTAT meaning that none analytical process has been applied to it, including the calculation of AQUASTAT indicators (aka derived variables).
 
 
 ```{r  fig3, echo=FALSE, out.width="100%", fig.cap='Snapshot of the aquastat_enr dataset.'}
@@ -220,7 +221,7 @@ knitr::include_graphics("images/aquastat_enr.jpg")
 ```
 
 
-2. **aquastat_baseline**. A SWS data set output from the  module representing:
+2. **aquastat_baseline**. An SWS data set output from the  module representing:
    - The add of AQUASTAT indicators/derived variables to the aquastat_enr data set; 
    - The increase of time-series length for AQUASTAT variables and indicators by imputations;
    - The expansion of the geographic coverage of the SDG 6.4.1 (Water Use Efficiency) and SDG 6.4.2 (Water Stress).

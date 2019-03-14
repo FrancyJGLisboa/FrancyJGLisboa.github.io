@@ -2,11 +2,11 @@
 
 ## **Aims**
 
-The faoswsAquastatBaseline is meant to run and generates the updated benchmark for AQUASTAT activities in the SWS context. The module, therefore, seeks to fullfill AQUASTAT demands described below.
+The faoswsAquastatBaseline is meant to run and generates the updated benchmark for AQUASTAT activities in the SWS context. The module, therefore, seeks to fulfill AQUASTAT demands described below.
 
 ### Add indicators
 
-The datasets used as input by the faoswsAquastatBaseline module  is free from AQUASTAT indicators/derived variables. Thus, the first motivation of the module is to bring indicators up by applying the calculation rules provided by the technical unit and store in the SWS as  the **calculation_rule** data table. Below the description of the AQUASTAT calculation_rule data table.
+The data sets used as input by the faoswsAquastatBaseline module  is free from AQUASTAT indicators/derived variables. Thus, the first motivation of the module is to bring indicators up by applying the calculation rules provided by the technical unit and store in the SWS as  the **calculation_rule** data table. Below the description of the AQUASTAT calculation_rule data table.
 
 ```{r tab2, echo=FALSE, message=FALSE}
 require(dplyr)
@@ -40,27 +40,27 @@ Thus, the second motivation of the module is to ensure the correct value of the 
 ### Time-Series completeness 
 
 One of the main criticisms at the AQUASTAT database is the low level of completeness of the variable/indicators time-series. In fact, 
-water data collection and standardization are not simple tasks due to the high fragmentation and scarcity of the water information at multiple spatial scales. According to the technical unit, on top of the inherent challenges to obtain reliable water data,  there has also been a long period of humman resources shortage. These issues eventually hinder the timely collection, processing, and dissemination data and ultimately have been leading to lack of the harmonization between countries in terms of time-series length across several AQUASTAT variables and indicators.
+water data collection and standardization are not simple tasks due to the high fragmentation and scarcity of the water information at multiple spatial scales. According to the technical unit, on top of the inherent challenges to obtain reliable water data,  there has also been a long period of human resources shortage. These issues eventually hinder the timely collection, processing, and dissemination data and ultimately have been leading to lack of the harmonization between countries in terms of time-series length across several AQUASTAT variables and indicators.
 
-To solve this problem, and at the same time respect the variable/indicator characteristics, the ESS - SWS team has proposed the application of imputation methods to increase time-series completeness of AQUASTAT variables and indicators. Through meetings with the technical unit, it was agreed that due to the nature of AQUASTAT variables showing little to moderate variation over time, the imputation mehtods of choice would be **Last Observation Carried Forward (LOCF)** and **Linear Interpolation**.
+To solve this problem, and at the same time respect the variable/indicator characteristics, the ESS - SWS team has proposed the application of imputation methods to increase time-series completeness of AQUASTAT variables and indicators. Through meetings with the technical unit, it was agreed that due to the nature of AQUASTAT variables showing little to moderate variation over time, the imputation methods of choice would be **Last Observation Carried Forward (LOCF)** and **Linear Interpolation**.
 
-Therefore, the third motivation of the module is to increase the time-series completness of each variable/indicator
+Therefore, the third motivation of the module is to increase the time-series completeness of each variable/indicator
 
 
 ### Geographic coverage
 
-Having aggred on the imputation methods to be applied to AQUASTAT variables/indicators, the obvious expected consequence of the imputations is the possibility of increasing the geographic coverage of important indicators such as the SDGs 6.4.1 (Water USe Efficiency) and 6.4.2 (Water Stress). Therefore, the fourth motivation of the module is the paved the way for the aggregation of SDG indicators at regional and global levels.
+Having agreed on the imputation methods to be applied to AQUASTAT variables/indicators, the obvious expected consequence of the imputations is the possibility of increasing the geographic coverage of important indicators such as the SDGs 6.4.1 (Water Use Efficiency) and 6.4.2 (Water Stress). Therefore, the fourth motivation of the module is the paved the way for the aggregation of SDG indicators at regional and global levels.
 
 
 ### FAOSTAT data sourcing
 
-The technical unit has been re-disseminating FAOSTAT data as a way to provide supporting statistics in a single data dissemination platform. From a data processing perspective, an effective way to streamline the use of FAOSTAT data by AQUATSAT would be to take the data from datasets already residing in other SWS statistical domains. However, it has been proven to be problematic because the SWS datasets where the FAOSTAT data were suppose to be are actually empty. Currently, the AQUASTAT focal point responsible for the updates of the AQUASTAT working system has been proceed as follow:
+The technical unit has been re-disseminating FAOSTAT data as a way to provide supporting statistics in a single data dissemination platform. From a data processing perspective, an effective way to streamline the use of FAOSTAT data by AQUATSAT would be to take the data from data sets already residing in other SWS statistical domains. However, it has been proven to be problematic because the SWS data sets where the FAOSTAT data were suppose to be are actually empty. Currently, the AQUASTAT focal point responsible for the updates of the AQUASTAT working system has been proceed as follow:
 
 1. Downloading normalized data from  FAOSTAT;
 2. Mapping FAOSTAT code to AQUASTAT code;
-3. Uploading the recoded FAOSTAT data into the AQUASTAT working System.
+3. Uploading the re coded FAOSTAT data into the AQUASTAT working System.
 
-To avoid the manual download -> mapping -> upload  the module is also automatically harversting the FAOSTAT data from the FAOSTAT website. The FAOSTAT code to AQUASTAT code mapping is done by using the information stored in the **aquastat_faostat_mapping** data table.
+To avoid the manual download -> mapping -> upload  the module is also automatically harvesting the FAOSTAT data from the FAOSTAT website. The FAOSTAT code to AQUASTAT code mapping is done by using the information stored in the **aquastat_faostat_mapping** data table.
 
 
 ```{r tab5, echo=FALSE, message=FALSE}
@@ -91,9 +91,9 @@ After having seen the main motivations of the faoswsAquastatBaseline module, its
 
 1. Get FAOSTAT data from FAOSTAT website and mapping them to AQUASATAT code using the **aquastat_faostat_mapping** data table;
 
-2. Downlaod the dataset **aquastat_enr** from SWS (no indicators in the dataset);
+2. Download the data set **aquastat_enr** from SWS (no indicators in the data set);
 
-3. **Annex** the recoded FAOSTAT data to the AQUASTAT aquastat_enr dataset to form a single dataset used as **input** in the next steps of the faoswsAquastatBaseline Workflow.
+3. **Annex** the re coded FAOSTAT data to the AQUASTAT aquastat_enr data set to form a single data set used as **input** in the next steps of the faoswsAquastatBaseline Workflow.
 
 ```{r fig5, echo=FALSE, fig.cap='FAOSTAT annexation to AQUASTAT SWS data'}
 
@@ -126,12 +126,12 @@ Dataset1 [label = 'SWS AQUASTAT dataset \n with recoded FAOSTAT data', shape = f
 
 ### Calculation
 
-1. Pass the resulting dataset from the FAOSTAT annexation into the prep_for_calculation function in order to:
+1. Pass the resulting data set from the FAOSTAT annexation into the prep_for_calculation function in order to:
 
   i) Get all aquastat variables and indicators from the calculation rules in the **calculation_rule** data table;
-  ii) Check and collect variables and/or indicators that do not exist in the dataset.
+  ii) Check and collect variables and/or indicators that do not exist in the data set.
   
-2. Add the detected missing variables and/or indicators to the dataset in order to avoid crash when applying calculation rules;
+2. Add the detected missing variables and/or indicators to the data set in order to avoid crash when applying calculation rules;
 
 3. According to AQUASTAT focal point, before calculations all variables belonging to calculation rules representing addiction or subtraction **MUST** be converted to zero **IF** their respective time-series are completely empty. Below the variables pre-defined by AQUASTAT for which this is applicable.
   
@@ -236,9 +236,9 @@ Output [label = 'Output: \n Imputed data', shape = folder, fillcolor = Beige]
 
 The completeness brought by imputations is used by the recalculation step to replace indicator imputed values by calculated values. To do so, the recalculation step:
 
-1. Takes the imputed dataset resulting from the Imputation step;
+1. Takes the imputed data set resulting from the Imputation step;
 
-2. Applies the calculation rules to the imputed dataset with the help of the calculation_rule data table (Table \@ref(tab:tab2));
+2. Applies the calculation rules to the imputed data set with the help of the calculation_rule data table (Table \@ref(tab:tab2));
 
 3. Re-applies the primary variable variable rule using the variables in the Table \@ref(tab:tab2);
 
@@ -324,7 +324,7 @@ knitr::kable(x = d %>% dplyr::mutate(flagObservationStatus = ifelse(is.na(flagOb
 ## **Running the module in the SWS**
 
 
-To run the faoswsAquastatBaseline after any updated of either aquastat_enr SWS dataset or FAOSTAT - based variables, the user need to:
+To run the faoswsAquastatBaseline after any updated of either aquastat_enr SWS data set or FAOSTAT - based variables, the user need to:
 
 1. Login in the SWS;
 

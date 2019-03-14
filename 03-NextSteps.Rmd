@@ -20,13 +20,13 @@
   
   - What does the technical unit want to report? To whom?
   
-  - Potential solution after sttling the doubts: a shiny app (overcomes outdated R packages for data reporting in SWS)
+  - Potential solution after settling the doubts: a shiny app (overcomes outdated R packages for data reporting in SWS)
   
   
 ### Aggregations
 
-  - Once the baseline output is validate, the technical unit needs to clarify the regions, special regions the aggregation should be compiled for. 
-  - A SWS plugin tailored for aggregating the results by the regions defined by the technical unit can easily be implemented.
+  - Once the baseline output is validated, the technical unit needs to clarify the regions and/or special regions the aggregation should be compiled for. 
+  - A SWS plugin, tailored for aggregating the results by the regions defined by the technical unit, can easily be implemented.
   
   
   

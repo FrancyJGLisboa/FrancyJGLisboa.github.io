@@ -2,7 +2,7 @@
 
 ## **Aims**
 
-The faoswsAquastatValidation emerges as a demand for a quality assurance and quality checking tool (QA/QC) that screens AQUASTAT datasets to identify potential issues in the data. The idea is to identify and output a dataset containing the information on **what** (elements), **where** (geographic areas), and **when** (year) the domain-knowledge in form of validation rules (logical tests) was violated. 
+The faoswsAquastatValidation emerges as a demand for a quality assurance and quality checking tool (QA/QC) that screens AQUASTAT data sets to identify potential issues in the data. The idea is to identify and output a data set containing the information on **what** (elements), **where** (geographic areas), and **when** (year) the domain-knowledge in form of validation rules (logical tests) was violated. 
 
 
 ### **Use validation rules**
@@ -35,7 +35,7 @@ knitr::kable(x = d,
 
 ### **Generalization**
 
-- The module is a generic, meaning that it can check and identifypotential error of different SWS - AQUASTAT datasets.
+- The module is a generic, meaning that it can check and identify potential error of different SWS - AQUASTAT data sets.
 
 
 ## **Workflow**
@@ -50,14 +50,14 @@ knitr::kable(x = d,
 
 ### The input dataset
 
-As requested, the module is designed to be generic and execute on whatever SWS - AQUASTAT dataset with at least the following dimensions:
+As requested, the module is designed to be generic and execute on whatever SWS - AQUASTAT data set with at least the following dimensions:
 
 - **geographicAreaM49**
 - **aquastatElement**
 - **timePointYears**
 - **flagObservationStatus** or **flagAquastat**
 
-Currently, the two datasets which the module can be executed on are either the AQUASTAT dataset migrated by CIO - SWS (**aquastat_enr**) and the dataset resulting from the faoswsAquastatBaseline module (**aquastat_baseline**).
+Currently, the two data sets which the module can be executed on are either the AQUASTAT data set migrated by CIO - SWS (**aquastat_enr**) and the data set resulting from the faoswsAquastatBaseline module (**aquastat_baseline**).
 
 
 ```{r fig15, echo=FALSE, fig.cap='faoswsAquastatValidation module workflow: Input datasets', message=FALSE, warning=FALSE}
@@ -120,7 +120,7 @@ After processing, and correctly identifying the rows where one or more validatio
 
 - **Value**. The values of aquastatElement(s) in the geographic area and year that may be potentially erroneous;
 
-- **flagObservationStatus** (if input has flagObservationStatus) or **flagAquastat** (if imput is the aquastat_enr dataset). The flag of the potentially erroneous values;
+- **flagObservationStatus** (if input has flagObservationStatus) or **flagAquastat** (if input is the aquastat_enr data set). The flag of the potentially erroneous values;
 
 - **flagMethod** (if input has flagMethod). The flag pointing the method used to obtain the potentially erroneous values;
 
@@ -148,7 +148,7 @@ knitr::kable(x = d,
 
 3. Choose **Aquastat domain**;
 
-4. Choose either **aquastat_enr** or Aquastat Baseline as the dataset (remember they are the inputs!);
+4. Choose either **aquastat_enr** or Aquastat Baseline as the data set (remember they are the inputs!);
 
 5. Select all countries, all elements, and all years;
 
@@ -186,8 +186,8 @@ knitr::include_graphics("images/validationfaoemail.PNG")
 
 ### execute what it was designed for?
 
-The faoswsAquastatValidation module shows that it is possible to use the domain-knowledged translated into validation rules, and stored as SWS data table, to identify and locate potential errors in AQUASTAT - SWS framework datasets. By returning the areas, years, elements, values, flags, and expressions with potentially erroneous values, the module gives ammunition to the user to reduce the scope of the Quality Assurance and Quality Control process. As a consequence, the tool makes easier to identify the nature of the errors (e.g. from data source, from the module processing, from data revision, etc) and implement data correction based on the user domain - knowledge. 
+The faoswsAquastatValidation module shows that it is possible to use the domain-knowledge translated into validation rules, and stored as SWS data table, to identify and locate potential errors in AQUASTAT - SWS framework data sets. By returning the areas, years, elements, values, flags, and expressions with potentially erroneous values, the module gives ammunition to the user to reduce the scope of the Quality Assurance and Quality Control process. As a consequence, the tool makes easier to identify the nature of the errors (e.g. from data source, from the module processing, from data revision, etc) and implement data correction based on the user domain - knowledge. 
 
-It is recognized though that the level of human-intervation on the module's result is proprotional to the number of rows in the dataset identidied as violated. The more processed the input dataset is, the higher is the probability of more rows with violation. Even so, the burden reduction with the automatic detection of faulty rules is a advance that will help the technical devision to improve its dataflow.
+It is recognized though that the level of human-intervention on the module's result is proportional to the number of rows in the data set identified as violated. The more processed the input data set is, the higher is the probability of more rows with violation. Even so, the burden reduction with the automatic detection of faulty rules is a advance that will help the technical division to improve its data flow.
 
 

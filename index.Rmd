@@ -12,7 +12,7 @@ description: "This online book describes the migration the statistical processes
 
 # **Introduction** {-}
 
-AQUASTAT - FAO Global's Water Statistics System is migrating its statistical processes into the Corporate Statistical Working System (SWS). This online book documents the major steps that have been taken so far in regard to this migration. The book describes the main institutional actors involved in the migration as well as the AQUASTAT - SWS resources (**code lists**, **datasets**, **data tables**) that have been created to support the SWS plugins (R modules) to meet technical unit requirements. Furthermore, the  The SWS plugins are presented in the form of Chapters providing detailed description of their workflows involving **inputs -> processing -> outputs** as well as results showing whether the modules have lived up expectations. 
+AQUASTAT - FAO Global's Water Statistics System is migrating its statistical processes into the Corporate Statistical Working System (SWS). This online book documents the major steps that have been taken so far in regard to this migration. The book describes the main institutional actors involved in the migration as well as the AQUASTAT - SWS resources (**code lists**, **datasets**, **data tables**) that have been created to support the SWS plugins (R modules) to meet technical unit requirements. Furthermore, the  The SWS plugins are presented in the form of chapters providing detailed description of their workflows involving **input -> processing -> output** as well as results showing whether the modules have lived up to expectations. 
 
 
 # **Migration actors** {-}
@@ -35,7 +35,78 @@ Any migration into the SWS requires the interaction between at least three actor
   - **John Rowell** *Information Technology Officer (CIO)*
   
 
+# **New AQUASTAT methodology**{-}
 
+The book focus on SWS statistical processes on progress. However, for those interested, AQUASTAT has a dedicated FAO website where the [new methodology](http://www.fao.org/aquastat/overview/methodology) for data collection and data management can be accessed. The next sections summarize the AQUASTAT data collection and information management methodology.
+
+
+## **Data Collection** {-}
+
+  1. Data collection relies on a network of AQUASTAT national correspondents in charge of the provision of official national data
+
+  2. As of January of 2019, 107 countries have nominated AQUASTAT national correspondents as requested by FAO Land and Water Division   between April-May 2018;
+
+  3. Alternate correspondents from different agencies are also used to improve the data collection;
+
+  4. The annual **Water and Agriculture** questionnaire was cleared by **FAO Office of the Chief Statistician (OCS)**;
+
+  5. The Questionnaire compiles **water and irrigation** statistics collected by National Correspondents and is sent out first semester of each year.
+
+## **Questionnaire** {-}
+
+The **Water and Agriculture** questionnaire has the following characteristics:
+
+  1. Three introductory sections: Cover page, Instructions, Definitions;
+  
+  2. One data reporting section, including national data on water withdrawal, dam capacity, municipal waste water, irrigation and drainage;
+  
+  3. Two Supplementary Information sections: Metadata, Feedback.
+  
+  4. In addition, to the annual data collection, a more complete questionnaire will be sent every 5 years to populate other AQUASTAT [databases](http://www.fao.org/aquastat/databases/).
+  
+  5. To download the **Water and Agriculture** questionnaire, please click on this [link](https://firebasestorage.googleapis.com/v0/b/fao-aquastat.appspot.com/o/Excel%2FAQUASTATQuestionnaire2018ENG.xlsm?alt=media&token=43a81b96-1853-46c9-bf38-e94de717efef).
+
+## **The AQUASTAT information** {-} 
+
+```{r   echo=FALSE, out.width="100%", fig.cap=' Aquastat Information Management'}
+knitr::include_graphics("images/aqua_methodology_new.png")
+```
+
+
+# **AQUASTAT data** {-}
+The Chapter \@ref(AquastatBaseline) will treat the  module as well as its data sets and data tables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at the data collected and disseminated by AQUASTAT. with the validation from the AQUASTAT focal point, The ESS - SWS counterpart has adapted and updated a reference table with the following information:
+
+1. **element_code**. The SWS code of AQUASTAT variable and indicators;
+2. **element_name**. The description of the AQUASTAT variables and indicators;
+3. **disseminated**. Column indicating whether the variable/indicator is for dissemination (**D**) or internal use (**I**);
+4. **calculated**. Column indicating whether the variable is an ordinary variable (**V**) or an indicator (calculated variable) (**C**);
+5. **Source**. Column indicating the data source: 
+    - **A:** data collected by AQUASTAT; 
+    - **O:** data copied by AQUASTAT from other international databases;
+    - **C:** data calculated.
+6. **source**. Column with the source description of AQUASTAT variables/indicators.
+    - **AQUASTAT**. Ordinary variable collected by AQUASTAT;
+    - **DERIVED**. Indicator calculated from ordinary variables;
+    - **FAOSTAT**. variable or indicator collected from FAOSTAT database;
+    - **WORLD BANK**. variable or indicator collected from the World Bank;
+    - **ILO**. variable or indicator collected from the International Labor Organization;
+    - **JMP(WHO/UNICEF)**. variable or indicator collected from the World Health Organization/UNICEF.
+    - **CRU CL 2.0**. Variable collected from the Tyndall Center for Climate Change Research. 
+    - **UNDP**. Variable collected from United Nations Development Programme.
+
+```{r tab1, echo=FALSE, message=FALSE}
+require(data.table)
+# lta <- c(4150L, 4151L, 4154L, 4155L, 4156L, 4157L, 4159L, 4160L,
+#          4161L, 4162L, 4164L, 4165L, 4168L, 4170L, 4171L, 4172L, 4173L,
+#          4174L, 4176L, 4177L, 4178L, 4182L, 4185L, 4187L, 4188L, 4192L,
+#          4193L, 4194L, 4195L, 4196L, 4452L, 4453L, 4509L, 4536L,
+#          4549L)
+d = data.table::fread("tables/aquastat_meta_FL_sources.csv")
+knitr::kable(x = d[, Comments := NULL], 
+             caption = paste("The description of AQUASTAT data"),
+             booktabs = TRUE)
+```
+ 
 # **SWS resources** {-}
 
 SWS resources are R modules, data tables, data sets, and code lists comprising a migration framework. Data tables are typically used as auxiliary data to help R modules to achieve their goals, often a long-format four-to-six dimensional data set. The dimensions of the data sets are defined by statistical domain - specific code lists (reference lists) containing codes and descriptions. Therefore, data sets are primarily used to store code list - referenced values as either inputs and/or outputs in the SWS. The generic relationship among data table, data sets, and R modules is given as follow:
@@ -158,40 +229,7 @@ knitr::include_graphics("images/aquastat_enr.jpg")
 knitr::include_graphics("images/aquastatbaseline.jpg")
 ```  
    
-# **AQUASTAT data** {-}
 
-The Chapter \@ref(AquastatBaseline) will treat the  module as well as its data sets and data tables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at the data collected and disseminated by AQUASTAT. with the validation from the AQUASTAT focal point, The ESS - SWS counterpart has adapted and updated a reference table with the following information:
-
-1. **element_code**. The SWS code of AQUASTAT variable and indicators;
-2. **element_name**. The description of the AQUASTAT variables and indicators;
-3. **disseminated**. Column indicating whether the variable/indicator is for dissemination (**D**) or internal use (**I**);
-4. **calculated**. Column indicating whether the variable is an ordinary variable (**V**) or an indicator (calculated variable) (**C**);
-5. **Source**. Column indicating the data source: 
-    - **A:** data collected by AQUASTAT; 
-    - **O:** data copied by AQUASTAT from other international databases;
-    - **C:** data calculated.
-6. **source**. Column with the source description of AQUASTAT variables/indicators.
-    - **AQUASTAT** ordinary variable collected by AQUASTAT;
-    - **DERIVED** indicator calculated from ordinary variables;
-    - **FAOSTAT** variable or indicator collected from FAOSTAT database;
-    - **WORLD BANK** variable or indicator collected from the World Bank;
-    - **ILO** variable or indicator collected from the International Labor Organization;
-    - **JMP(WHO/UNICEF)** variable or indicator collected from the World Health Organization/UNICEF.
-    
-
-```{r tab1, echo=FALSE, message=FALSE}
-require(data.table)
-# lta <- c(4150L, 4151L, 4154L, 4155L, 4156L, 4157L, 4159L, 4160L,
-#          4161L, 4162L, 4164L, 4165L, 4168L, 4170L, 4171L, 4172L, 4173L,
-#          4174L, 4176L, 4177L, 4178L, 4182L, 4185L, 4187L, 4188L, 4192L,
-#          4193L, 4194L, 4195L, 4196L, 4452L, 4453L, 4509L, 4536L,
-#          4549L)
-d = data.table::fread("tables/aquastat_meta_FL_sources.csv")
-knitr::kable(x = d, 
-             caption = paste("The description of AQUASTAT data"),
-             booktabs = TRUE)
-```
- 
 
 
 

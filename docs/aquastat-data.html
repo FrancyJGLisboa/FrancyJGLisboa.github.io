@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sws-resources.html">
-<link rel="next" href="AquastatBaseline.html">
+<link rel="prev" href="new-aquastat-methodology.html">
+<link rel="next" href="sws-resources.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -70,12 +70,17 @@
 <ul class="summary">
 <li><a href="index.html#introduction"><strong>Introduction</strong></a></li>
 <li><a href="migration-actors.html#migration-actors"><strong>Migration actors</strong></a></li>
+<li><a href="new-aquastat-methodology.html#new-aquastat-methodology"><strong>New AQUASTAT methodology</strong></a><ul>
+<li><a href="new-aquastat-methodology.html#data-collection"><strong>Data Collection</strong></a></li>
+<li><a href="new-aquastat-methodology.html#questionnaire"><strong>Questionnaire</strong></a></li>
+<li><a href="new-aquastat-methodology.html#the-aquastat-information"><strong>The AQUASTAT information</strong></a></li>
+</ul></li>
+<li><a href="aquastat-data.html#aquastat-data"><strong>AQUASTAT data</strong></a></li>
 <li><a href="sws-resources.html#sws-resources"><strong>SWS resources</strong></a><ul>
 <li><a href="sws-resources.html#code-lists"><strong>Code lists</strong></a></li>
 <li><a href="sws-resources.html#data-tables"><strong>Data tables</strong></a></li>
 <li><a href="sws-resources.html#datasets"><strong>Datasets</strong></a></li>
 </ul></li>
-<li><a href="aquastat-data.html#aquastat-data"><strong>AQUASTAT data</strong></a></li>
 <li class="chapter" data-level="1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html"><i class="fa fa-check"></i><b>1</b> <strong>The faoswsAquastatBaseline module</strong></a><ul>
 <li class="chapter" data-level="1.1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#aims"><i class="fa fa-check"></i><b>1.1</b> <strong>Aims</strong></a><ul>
 <li class="chapter" data-level="1.1.1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#add-indicators"><i class="fa fa-check"></i><b>1.1.1</b> Add indicators</a></li>
@@ -158,19 +163,23 @@
 </ul></li>
 <li><strong>source</strong>. Column with the source description of AQUASTAT variables/indicators.
 <ul>
-<li><strong>AQUASTAT</strong> ordinary variable collected by AQUASTAT;</li>
-<li><strong>DERIVED</strong> indicator calculated from ordinary variables;</li>
-<li><strong>FAOSTAT</strong> variable or indicator collected from FAOSTAT database;</li>
-<li><strong>WORLD BANK</strong> variable or indicator collected from the World Bank;</li>
-<li><strong>ILO</strong> variable or indicator collected from the International Labor Organization;</li>
-<li><strong>JMP(WHO/UNICEF)</strong> variable or indicator collected from the World Health Organization/UNICEF.</li>
+<li><strong>AQUASTAT</strong>. Ordinary variable collected by AQUASTAT;</li>
+<li><strong>DERIVED</strong>. Indicator calculated from ordinary variables;</li>
+<li><strong>FAOSTAT</strong>. variable or indicator collected from FAOSTAT database;</li>
+<li><strong>WORLD BANK</strong>. variable or indicator collected from the World Bank;</li>
+<li><strong>ILO</strong>. variable or indicator collected from the International Labor Organization;</li>
+<li><strong>JMP(WHO/UNICEF)</strong>. variable or indicator collected from the World Health Organization/UNICEF.</li>
+<li><strong>CRU CL 2.0</strong>. Variable collected from the Tyndall Center for Climate Change Research.</li>
+<li><strong>UNDP</strong>. Variable collected from United Nations Development Programme.</li>
 </ul></li>
 </ol>
+<pre><code>## Warning in `[.data.table`(d, , `:=`(Comments, NULL)): Adding new column
+## &#39;Comments&#39; then assigning NULL (deleting it).</code></pre>
 <table>
 <caption><span id="tab:tab1">Table .: </span>The description of AQUASTAT data</caption>
 <thead>
 <tr class="header">
-<th align="right">lement_code</th>
+<th align="right">element_code</th>
 <th align="left">element_name</th>
 <th align="left">disseminated</th>
 <th align="left">calculated</th>
@@ -207,7 +216,7 @@
 <td align="right">4103</td>
 <td align="left">Cultivated area (arable land + permanent crops)</td>
 <td align="left">D</td>
-<td align="left">V</td>
+<td align="left">C</td>
 <td align="left">O</td>
 <td align="left">FAOSTAT</td>
 </tr>
@@ -223,7 +232,7 @@
 <td align="right">4105</td>
 <td align="left">Rural population</td>
 <td align="left">D</td>
-<td align="left">V</td>
+<td align="left">C</td>
 <td align="left">O</td>
 <td align="left">FAOSTAT</td>
 </tr>
@@ -329,7 +338,7 @@
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">O</td>
-<td align="left">DERIVED</td>
+<td align="left">CRU CL 2.0 dataset</td>
 </tr>
 <tr class="even">
 <td align="right">4152</td>
@@ -2361,7 +2370,7 @@
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">O</td>
-<td align="left">UNKNOWN</td>
+<td align="left">UNDP</td>
 </tr>
 <tr class="even">
 <td align="right">4538</td>
@@ -2457,7 +2466,7 @@
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">O</td>
-<td align="left">UNKNOWN</td>
+<td align="left">FAO/IWMI</td>
 </tr>
 <tr class="even">
 <td align="right">4550</td>
@@ -2534,7 +2543,7 @@
 <tr class="odd">
 <td align="right">4559</td>
 <td align="left">Land area</td>
-<td align="left">D</td>
+<td align="left">I</td>
 <td align="left">V</td>
 <td align="left">O</td>
 <td align="left">FAOSTAT</td>
@@ -2542,22 +2551,21 @@
 <tr class="even">
 <td align="right">4560</td>
 <td align="left">Inland waterd</td>
-<td align="left">D</td>
+<td align="left">I</td>
 <td align="left">V</td>
 <td align="left">O</td>
 <td align="left">FAOSTAT</td>
 </tr>
 </tbody>
 </table>
-
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="sws-resources.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="AquastatBaseline.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="new-aquastat-methodology.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sws-resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

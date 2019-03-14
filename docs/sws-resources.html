@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="migration-actors.html">
-<link rel="next" href="aquastat-data.html">
+<link rel="prev" href="aquastat-data.html">
+<link rel="next" href="AquastatBaseline.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -70,12 +70,17 @@
 <ul class="summary">
 <li><a href="index.html#introduction"><strong>Introduction</strong></a></li>
 <li><a href="migration-actors.html#migration-actors"><strong>Migration actors</strong></a></li>
+<li><a href="new-aquastat-methodology.html#new-aquastat-methodology"><strong>New AQUASTAT methodology</strong></a><ul>
+<li><a href="new-aquastat-methodology.html#data-collection"><strong>Data Collection</strong></a></li>
+<li><a href="new-aquastat-methodology.html#questionnaire"><strong>Questionnaire</strong></a></li>
+<li><a href="new-aquastat-methodology.html#the-aquastat-information"><strong>The AQUASTAT information</strong></a></li>
+</ul></li>
+<li><a href="aquastat-data.html#aquastat-data"><strong>AQUASTAT data</strong></a></li>
 <li><a href="sws-resources.html#sws-resources"><strong>SWS resources</strong></a><ul>
 <li><a href="sws-resources.html#code-lists"><strong>Code lists</strong></a></li>
 <li><a href="sws-resources.html#data-tables"><strong>Data tables</strong></a></li>
 <li><a href="sws-resources.html#datasets"><strong>Datasets</strong></a></li>
 </ul></li>
-<li><a href="aquastat-data.html#aquastat-data"><strong>AQUASTAT data</strong></a></li>
 <li class="chapter" data-level="1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html"><i class="fa fa-check"></i><b>1</b> <strong>The faoswsAquastatBaseline module</strong></a><ul>
 <li class="chapter" data-level="1.1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#aims"><i class="fa fa-check"></i><b>1.1</b> <strong>Aims</strong></a><ul>
 <li class="chapter" data-level="1.1.1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#add-indicators"><i class="fa fa-check"></i><b>1.1.1</b> Add indicators</a></li>
@@ -146,8 +151,8 @@
 <h1><strong>SWS resources</strong></h1>
 <p>SWS resources are R modules, data tables, data sets, and code lists comprising a migration framework. Data tables are typically used as auxiliary data to help R modules to achieve their goals, often a long-format four-to-six dimensional data set. The dimensions of the data sets are defined by statistical domain - specific code lists (reference lists) containing codes and descriptions. Therefore, data sets are primarily used to store code list - referenced values as either inputs and/or outputs in the SWS. The generic relationship among data table, data sets, and R modules is given as follow:</p>
 <div class="figure"><span id="fig:fig1"></span>
-<div id="htmlwidget-a1062df0248b53c57034" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a1062df0248b53c57034">{"x":{"diagram":"digraph {\n                  \n                  graph [layout = dot, rankdir = TB]\n                  \n                  # define the global styles of the nodes. We can override these in box if we wish\n                  node [shape = rectangle, style = filled, fillcolor = Linen]\n                  \n                  # Inputs\n                  SWSdb [label = \"Storage \n Input data living in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive [label = \"Storage \n Input data living in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession [label = \"Storage \n Input data living in the session\", shape = folder, fillcolor = Beige]\n\n                  SWSdb2 [label = \"Storage \n Output data saved in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive2 [label = \"Storage \n Output data saved in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession2 [label = \"Storage \n Output data saved in the session\", shape = folder, fillcolor = Beige]\n\n\n                  dataset1 [label = \"Input \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  module [label = \"R module \n data processing and analysis\", shape = square, fillcolor = LightBlue]\n                  datatable1 [label = \"Data table(s) \n (auxiliary information)\", shape = folder, fillcolor = Beige]\n                  dataset2 [label =  \"Output \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  \n                  # Flow\n                  # edge definitions with the node IDs\n                  {SWSdb, SWSsharedrive, SWSsession} -> dataset1 -> module  \n                  {datatable1} -> module\n                  dataset2 -> {SWSdb2, SWSsharedrive2, SWSsession2}\n                  {module} -> dataset2\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8bf0b90e60d8f4a7c4d1" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8bf0b90e60d8f4a7c4d1">{"x":{"diagram":"digraph {\n                  \n                  graph [layout = dot, rankdir = TB]\n                  \n                  # define the global styles of the nodes. We can override these in box if we wish\n                  node [shape = rectangle, style = filled, fillcolor = Linen]\n                  \n                  # Inputs\n                  SWSdb [label = \"Storage \n Input data living in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive [label = \"Storage \n Input data living in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession [label = \"Storage \n Input data living in the session\", shape = folder, fillcolor = Beige]\n\n                  SWSdb2 [label = \"Storage \n Output data saved in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive2 [label = \"Storage \n Output data saved in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession2 [label = \"Storage \n Output data saved in the session\", shape = folder, fillcolor = Beige]\n\n\n                  dataset1 [label = \"Input \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  module [label = \"R module \n data processing and analysis\", shape = square, fillcolor = LightBlue]\n                  datatable1 [label = \"Data table(s) \n (auxiliary information)\", shape = folder, fillcolor = Beige]\n                  dataset2 [label =  \"Output \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  \n                  # Flow\n                  # edge definitions with the node IDs\n                  {SWSdb, SWSsharedrive, SWSsession} -> dataset1 -> module  \n                  {datatable1} -> module\n                  dataset2 -> {SWSdb2, SWSsharedrive2, SWSsession2}\n                  {module} -> dataset2\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure .: Generic data table, dataset, and R module relationship in the SWS context
 </p>
@@ -164,8 +169,8 @@ Figure .: Generic data table, dataset, and R module relationship in the SWS cont
 <li><p><em>Method</em> (A standardized label indicating method utilized to obtain a number in the data set, e.g. ‘e’ (estimate), ‘p’ (collected)). In SWS, the method dimension used by AQUASTAT data sets is named <strong>flagMethod</strong>.</p></li>
 </ol>
 <div class="figure"><span id="fig:fig2"></span>
-<div id="htmlwidget-9dfbb13313dc5f75b4c6" style="width:100%;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9dfbb13313dc5f75b4c6">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\narea [label = \"geographicAreaM49\", shape = folder, fillcolor = Beige]\nelement [label = \"aquastatElement\", shape = folder, fillcolor = Beige]\ntime [label = \"timePointYears\", shape = folder, fillcolor = Beige]\nflagObs [label = \"flagObservationStatus\", shape = folder, fillcolor = Beige]\nflagMeth [label = \"flagMethod\", shape = folder, fillcolor = Beige]\naquadataset [label = \"Typical aquastat dataset\",  fillcolor = LightBlue]\n\n\n# Flow\n# edge definitions with the node IDs\n{area, element, time, flagObs, flagMeth} -> aquadataset \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-698ad9f3103f3367974c" style="width:100%;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-698ad9f3103f3367974c">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\narea [label = \"geographicAreaM49\", shape = folder, fillcolor = Beige]\nelement [label = \"aquastatElement\", shape = folder, fillcolor = Beige]\ntime [label = \"timePointYears\", shape = folder, fillcolor = Beige]\nflagObs [label = \"flagObservationStatus\", shape = folder, fillcolor = Beige]\nflagMeth [label = \"flagMethod\", shape = folder, fillcolor = Beige]\naquadataset [label = \"Typical aquastat dataset\",  fillcolor = LightBlue]\n\n\n# Flow\n# edge definitions with the node IDs\n{area, element, time, flagObs, flagMeth} -> aquadataset \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure .: Typical dimensions (SWS code/reference lists) composing a AQUASTAT input/output.
 </p>
@@ -210,6 +215,7 @@ Figure .: Snapshot of the aquastat_enr dataset.
 Figure .: Snapshot of the aquastat_baseline dataset yet to be validated by the technical unit.
 </p>
 </div>
+
 </div>
 </div>
             </section>
@@ -217,8 +223,8 @@ Figure .: Snapshot of the aquastat_baseline dataset yet to be validated by the t
           </div>
         </div>
       </div>
-<a href="migration-actors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="aquastat-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="aquastat-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="AquastatBaseline.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

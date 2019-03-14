@@ -1,10 +1,10 @@
-lement_code,element_name,disseminated,calculated,Source,source
+element_code,element_name,disseminated,calculated,Source,source
 4100,Total area of the country,D,V,O,FAOSTAT
 4101,Arable land area,D,V,O,FAOSTAT
 4102,Permanent crops area,D,V,O,FAOSTAT
-4103,Cultivated area (arable land + permanent crops),D,V,O,FAOSTAT
+4103,Cultivated area (arable land + permanent crops),D,C,O,FAOSTAT
 4104,Total population,D,V,O,FAOSTAT
-4105,Rural population,D,V,O,FAOSTAT
+4105,Rural population,D,C,O,FAOSTAT
 4106,Urban population,D,V,O,FAOSTAT
 4107,Population density,D,C,C,DERIVED
 4108,Population economically active in agriculture,I,C,C,DERIVED
@@ -17,7 +17,7 @@ lement_code,element_name,disseminated,calculated,Source,source
 4115,Rural population with access to improved drinking-water source (JMP),D,V,O,JMP(WHO/UNICEF)
 4116,Urban population with access to improved drinking-water source (JMP),D,V,O,JMP(WHO/UNICEF)
 4150,Long-term average annual precipitation in volume,D,C,C,DERIVED
-4151,Long-term average annual precipitation in depth,D,V,O,DERIVED
+4151,Long-term average annual precipitation in depth,D,V,O,CRU CL 2.0 dataset
 4152,Evaporation from artificial lakes and reservoirs,I,V,A,AQUASTAT
 4153,Water resources produced internally in a 10th dry year frequency,I,V,A,AQUASTAT
 4154,Groundwater produced internally,D,V,A,AQUASTAT
@@ -271,7 +271,7 @@ lement_code,element_name,disseminated,calculated,Source,source
 4534,Area equipped by direct use of not treated municipal wastewater,D,C,C,DERIVED
 4535,Direct use of treated municipal wastewater,D,C,C,DERIVED
 4536,Overlap: between surface water and groundwater,D,C,C,DERIVED
-4537,Gender Inequality Index (GII),D,V,O,UNKNOWN
+4537,Gender Inequality Index (GII),D,V,O,UNDP
 4538,% of economically active population active in agriculture,I,C,C,DERIVED
 4539,Area equipped for irrigation by desalinated water,D,V,A,AQUASTAT
 4540,% of area equipped for irrigation by desalinated water,D,C,C,DERIVED
@@ -283,7 +283,7 @@ lement_code,element_name,disseminated,calculated,Source,source
 4546,"Industry, value added to GDP",I,V,O,WORLD_BANK
 4547,"Services, value added to GDP",I,V,O,WORLD_BANK
 4548,"Agriculture, value added to GDP",I,V,O,WORLD_BANK
-4549,Environmental Flow Requirements,D,V,O,UNKNOWN
+4549,Environmental Flow Requirements,D,V,O,FAO/IWMI
 4550,SDG 6.4.2. Water Stress,D,C,C,DERIVED
 4551,SDG 6.4.1. Water Use Efficiency,I,C,C,DERIVED
 4552,SDG 6.4.1. Irrigated Agriculture Water Use Efficiency,I,C,C,DERIVED
@@ -293,5 +293,5 @@ lement_code,element_name,disseminated,calculated,Source,source
 4556,% of arable land irrigated,I,C,C,DERIVED
 4557,Ratio between rainfed and irrigated yields,I,V,A,AQUASTAT
 4558,GDP deflator (2015),I,C,C,DERIVED
-4559,Land area,D,V,O,FAOSTAT
-4560,Inland waterd,D,V,O,FAOSTAT
+4559,Land area,I,V,O,FAOSTAT
+4560,Inland waterd,I,V,O,FAOSTAT

@@ -77,7 +77,7 @@ knitr::include_graphics("images/aqua_methodology_new.png")
 
 Chapter \@ref(AquastatBaseline) will treat the module as well as its data sets and data tables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at how the technical unist references its data and the list of the data collected, processed, and disseminated.
 
-## International Classification Systems {-}
+## **International Classification Systems** {-}
 
 AQUASTAT datasets use the following international classification systems to reference its elements:
 
@@ -88,7 +88,7 @@ AQUASTAT datasets use the following international classification systems to refe
   -  The World Census of Agriculture 2020: [WCA](http://www.fao.org/world-census-agriculture) (Volume 1), for irrigation definitions.
 
 
-## AQUASTAT element description {-}
+## **AQUASTAT element description** {-}
 
 With the agreement of the AQUASTAT focal point, the ESS - SWS team has adapted and updated a reference table with the following information on AQUASTAT elements:
 

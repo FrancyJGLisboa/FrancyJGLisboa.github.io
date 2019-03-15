@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="new-aquastat-methodology.html">
-<link rel="next" href="aquastat-data.html">
+<link rel="next" href="current-aquastat-data.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -80,9 +80,9 @@
 <li><a href="sws-resources.html#data-tables"><strong>Data tables</strong></a></li>
 <li><a href="sws-resources.html#datasets"><strong>Datasets</strong></a></li>
 </ul></li>
-<li><a href="aquastat-data.html#aquastat-data"><strong>AQUASTAT Data</strong></a><ul>
-<li><a href="aquastat-data.html#international-classification-systems"><strong>International Classification Systems</strong></a></li>
-<li><a href="aquastat-data.html#the-sws-aquastat_reference-data-table"><strong>The SWS aquastat_reference data table</strong></a></li>
+<li class="chapter" data-level="" data-path="current-aquastat-data.html"><a href="current-aquastat-data.html"><i class="fa fa-check"></i>** Current AQUASTAT Data**</a><ul>
+<li><a href="current-aquastat-data.html#international-classification-systems"><strong>International Classification Systems</strong></a></li>
+<li><a href="current-aquastat-data.html#the-sws-aquastat_reference-data-table"><strong>The SWS aquastat_reference data table</strong></a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html"><i class="fa fa-check"></i><b>1</b> <strong>The faoswsAquastatBaseline module</strong></a><ul>
 <li class="chapter" data-level="1.1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#aims"><i class="fa fa-check"></i><b>1.1</b> <strong>Aims</strong></a><ul>
@@ -134,6 +134,19 @@
 <li class="chapter" data-level="3.2.5" data-path="nextsteps.html"><a href="nextsteps.html#aggregations"><i class="fa fa-check"></i><b>3.2.5</b> Aggregations</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="nextsteps.html"><a href="nextsteps.html#nextsteps"><i class="fa fa-check"></i><b>4</b> <strong>AQUASTAT UPDATE workflow</strong></a><ul>
+<li class="chapter" data-level="4.1" data-path="nextsteps.html"><a href="nextsteps.html#from-input-to-dissemination-1"><i class="fa fa-check"></i><b>4.1</b> <strong>From input to dissemination</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="nextsteps.html"><a href="nextsteps.html#nextsteps"><i class="fa fa-check"></i><b>5</b> <strong>Next</strong></a><ul>
+<li class="chapter" data-level="5.1" data-path="nextsteps.html"><a href="nextsteps.html#from-input-to-dissemination-2"><i class="fa fa-check"></i><b>5.1</b> <strong>From input to dissemination</strong></a></li>
+<li class="chapter" data-level="5.2" data-path="nextsteps.html"><a href="nextsteps.html#pending-activities-1"><i class="fa fa-check"></i><b>5.2</b> <strong>Pending activities</strong></a><ul>
+<li class="chapter" data-level="5.2.1" data-path="nextsteps.html"><a href="nextsteps.html#validation-comment-1"><i class="fa fa-check"></i><b>5.2.1</b> Validation comment</a></li>
+<li class="chapter" data-level="5.2.2" data-path="nextsteps.html"><a href="nextsteps.html#national-dam-capacity-time-series-using-sws-dam-data-table-1"><i class="fa fa-check"></i><b>5.2.2</b> National dam capacity time-series (using SWS dam data table)</a></li>
+<li class="chapter" data-level="5.2.3" data-path="nextsteps.html"><a href="nextsteps.html#show-the-latest-value-and-the-corresponding-year-1"><i class="fa fa-check"></i><b>5.2.3</b> Show the latest value and the corresponding year</a></li>
+<li class="chapter" data-level="5.2.4" data-path="nextsteps.html"><a href="nextsteps.html#automatic-generation-of-pdf-1"><i class="fa fa-check"></i><b>5.2.4</b> Automatic generation of PDF</a></li>
+<li class="chapter" data-level="5.2.5" data-path="nextsteps.html"><a href="nextsteps.html#aggregations-1"><i class="fa fa-check"></i><b>5.2.5</b> Aggregations</a></li>
+</ul></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -155,8 +168,8 @@
 <h1><strong>SWS resources</strong></h1>
 <p>SWS resources are R modules, data tables, data sets, and code lists comprising a migration framework. Data tables are typically used as auxiliary data to help R modules to achieve their goals, often a long-format four-to-six dimensional data set. The dimensions of the data sets are defined by statistical domain-specific code lists (reference lists) containing codes and descriptions. Therefore, data sets are primarily used to store code list - referenced values as either input and/or output in the SWS. The generic relationship among data table, data sets, and R modules is given as follow:</p>
 <div class="figure"><span id="fig:fig1"></span>
-<div id="htmlwidget-16ec0d60abbc5a0892b8" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-16ec0d60abbc5a0892b8">{"x":{"diagram":"digraph {\n                  \n                  graph [layout = dot, rankdir = TB]\n                  \n                  # define the global styles of the nodes. We can override these in box if we wish\n                  node [shape = rectangle, style = filled, fillcolor = Linen]\n                  \n                  # Inputs\n                  SWSdb [label = \"Storage \n Input data living in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive [label = \"Storage \n Input data living in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession [label = \"Storage \n Input data living in the session\", shape = folder, fillcolor = Beige]\n\n                  SWSdb2 [label = \"Storage \n Output data saved in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive2 [label = \"Storage \n Output data saved in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession2 [label = \"Storage \n Output data saved in the session\", shape = folder, fillcolor = Beige]\n\n\n                  dataset1 [label = \"Input \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  module [label = \"R module \n data processing and analysis\", shape = square, fillcolor = LightBlue]\n                  datatable1 [label = \"Data table(s) \n (auxiliary information)\", shape = folder, fillcolor = Beige]\n                  dataset2 [label =  \"Output \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  \n                  # Flow\n                  # edge definitions with the node IDs\n                  {SWSdb, SWSsharedrive, SWSsession} -> dataset1 -> module  \n                  {datatable1} -> module\n                  dataset2 -> {SWSdb2, SWSsharedrive2, SWSsession2}\n                  {module} -> dataset2\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-dfda8e892f90548f8409" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dfda8e892f90548f8409">{"x":{"diagram":"digraph {\n                  \n                  graph [layout = dot, rankdir = TB]\n                  \n                  # define the global styles of the nodes. We can override these in box if we wish\n                  node [shape = rectangle, style = filled, fillcolor = Linen]\n                  \n                  # Inputs\n                  SWSdb [label = \"Input \n data living in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive [label = \"Input \n  data living in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession [label = \"Input \n  data living in the session\", shape = folder, fillcolor = Beige]\n\n                  SWSdb2 [label = \"Output \n  data saved in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive2 [label = \"Output \n  data saved in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession2 [label = \"Output \n  data saved in the session\", shape = folder, fillcolor = Beige]\n\n\n                  dataset1 [label = \"Input \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  module [label = \"R module \n data processing and analysis\", shape = square, fillcolor = LightBlue]\n                  datatable1 [label = \"Data table(s) \n (auxiliary information)\", shape = folder, fillcolor = LightGrey]\n                  dataset2 [label =  \"Output \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  \n                  # Flow\n                  # edge definitions with the node IDs\n                  {SWSdb, SWSsharedrive, SWSsession} -> dataset1 -> module  \n                  {datatable1} -> module\n                  dataset2 -> {SWSdb2, SWSsharedrive2, SWSsession2}\n                  {module} -> dataset2\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure .: Generic data table, dataset, and R module relationship in the SWS context
 </p>
@@ -180,8 +193,8 @@ The <strong>aquastatElement</strong> variable in the aquastat_legacy dataset is 
 <li><p><strong>Method</strong> (A standardized label indicating method utilized to obtain a number in the data set. In SWS, the method dimension used by AQUASTAT data sets is named <strong>flagMethod</strong>. Please check the <a href="http://intranet.fao.org/statistics_coordination_portal/standards_for_quality_compliance/">OCS statistical standards</a> and the <a href="http://intranet.fao.org/fileadmin/user_upload/scp/Standards_for_quality_compliance/SSS1_Flags.pdf">flags document</a> to understand the flagMethod rational and obtain the description of flags.</p></li>
 </ol>
 <div class="figure"><span id="fig:fig2"></span>
-<div id="htmlwidget-532ea6c3f4b12db72d09" style="width:100%;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-532ea6c3f4b12db72d09">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\narea [label = \"geographicAreaM49\", shape = folder, fillcolor = Beige]\nelement [label = \"measuredElement\", shape = folder, fillcolor = Beige]\ntime [label = \"timePointYears\", shape = folder, fillcolor = Beige]\nflagObs [label = \"flagObservationStatus\", shape = folder, fillcolor = Beige]\nflagMeth [label = \"flagMethod\", shape = folder, fillcolor = Beige]\naquadataset [label = \"Typical aquastat dataset\",  fillcolor = LightBlue]\n\n\n# Flow\n# edge definitions with the node IDs\n{area, element, time, flagObs, flagMeth} -> aquadataset \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-962a0f3ee133fbb9e4ba" style="width:100%;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-962a0f3ee133fbb9e4ba">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\narea [label = \"geographicAreaM49\", shape = folder, fillcolor = Beige]\nelement [label = \"measuredElement\", shape = folder, fillcolor = Beige]\ntime [label = \"timePointYears\", shape = folder, fillcolor = Beige]\nflagObs [label = \"flagObservationStatus\", shape = folder, fillcolor = Beige]\nflagMeth [label = \"flagMethod\", shape = folder, fillcolor = Beige]\naquadataset [label = \"Typical aquastat dataset\",  fillcolor = LightBlue]\n\n\n# Flow\n# edge definitions with the node IDs\n{area, element, time, flagObs, flagMeth} -> aquadataset \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure .: Typical dimensions (SWS code/reference lists) composing a AQUASTAT SWS - compliant input/output dataset.
 </p>
@@ -239,7 +252,7 @@ Figure .: Snapshot of the aquastat_baseline dataset as the benchmark (input) for
         </div>
       </div>
 <a href="new-aquastat-methodology.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="aquastat-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="current-aquastat-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

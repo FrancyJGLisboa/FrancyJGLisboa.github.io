@@ -1,4 +1,4 @@
-# **AQUASTAT UPDATE workflow** {#nextsteps}
+# **AQUASTAT UPDATE workflow** {#propworkflow}
 
 ## **From input to dissemination**
 The main R plugins are ready. With the **faoswsAquastatBaseline** and **faoswsAquastatValidation** at the phase of small adjustments, it will possible to go from data collection to dissemination (speaking only about data) after finishing the **faoswsAquastatUpdate module** that will be a small variation of the faoswsAquastatBaseline module. Therefore, the proposed workflow is:

@@ -73,9 +73,24 @@ knitr::include_graphics("images/aqua_methodology_new.png")
 ```
 
 
-# **AQUASTAT data** {-}
+# **AQUASTAT Data** {-}
 
-Chapter \@ref(AquastatBaseline) will treat the module as well as its data sets and data tables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at the data collected and disseminated by AQUASTAT. with the validation from the AQUASTAT focal point, The ESS - SWS counterpart has adapted and updated a reference table with the following information:
+Chapter \@ref(AquastatBaseline) will treat the module as well as its data sets and data tables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at how the technical unist references its data and the list of the data collected, processed, and disseminated.
+
+## International Classification Systems {-}
+
+AQUASTAT datasets use the following international classification systems to reference its elements:
+
+  -  The International Standard Industrial Classification of All Economic Activities: [ISIC4](https://unstats.un.org/unsd/publication/seriesm/seriesm_4rev4e.pdf);
+  
+  -  The System of Environmental-Economic Accounting for Water: [SEEA-Water](https://unstats.un.org/unsd/envaccounting/seeaw/) for water resources and withdrawals;
+  
+  -  The World Census of Agriculture 2020: [WCA](http://www.fao.org/world-census-agriculture) (Volume 1), for irrigation definitions.
+
+
+## AQUASTAT element description {-}
+
+With the agreement of the AQUASTAT focal point, the ESS - SWS team has adapted and updated a reference table with the following information on AQUASTAT elements:
 
 1. **element_code**. The SWS code of AQUASTAT variable and indicators;
 2. **element_name**. The description of the AQUASTAT variables and indicators;
@@ -97,11 +112,6 @@ Chapter \@ref(AquastatBaseline) will treat the module as well as its data sets a
 
 ```{r tab1, echo=FALSE, message=FALSE}
 require(data.table)
-# lta <- c(4150L, 4151L, 4154L, 4155L, 4156L, 4157L, 4159L, 4160L,
-#          4161L, 4162L, 4164L, 4165L, 4168L, 4170L, 4171L, 4172L, 4173L,
-#          4174L, 4176L, 4177L, 4178L, 4182L, 4185L, 4187L, 4188L, 4192L,
-#          4193L, 4194L, 4195L, 4196L, 4452L, 4453L, 4509L, 4536L,
-#          4549L)
 d = data.table::fread("tables/aquastat_meta_FL_sources.csv")
 knitr::kable(x = d, 
              caption = paste("The description of AQUASTAT data"),
@@ -152,17 +162,19 @@ DiagrammeR::grViz("digraph {
 Code lists, also called reference lists in SWS parlance, are the dimensions making up the data sets that are designed by the user to store analytical results from SWS modules. The dimensions are statistical - domain specific and are defined by the technical unit in order to reflect its needs regarding data collection, processing, and dissemination while meeting FAO standards. Each data set dimension has a set of codes and their associated descriptions. Thus, code lists serve to the purpose of standardization, visualization, and metadata by associating standardized codes to  standardized names in the SWS data set outputs. A typical SWS compliant data set has, therefore, the following dimensions/reference lists:
 
 
-1. *Geographic area*. Representing a spatial scale the information is measured at. For example, countries, territories, regional aggregates, regional special groups aggregates, global aggregates. In SWS, the geographic area dimension used by AQUASTAT data sets is named **geographicAreaM49**.
+1. **Geographic area**. Representing a spatial scale the information is measured at. For example, countries, territories, regional aggregates, regional special groups aggregates, global aggregates. In SWS, the geographic area dimension used by AQUASTAT data sets is named **geographicAreaM49**.
 
-2. *Items*. Those one wants to take a measurement from. For example, commodities, commodity groups, land use types, species, etc. Typical item dimension names are **measuredItemCPC**, ***measuredItemHS**, **measuredItem**. The AQUASTAT - SWS framework does not include item code/reference list.
+2. **Items**. Those one wants to take a measurement from. For example, commodities, commodity groups, land use types, species, etc. Typical item dimension names are **measuredItemCPC**, ***measuredItemHS**, **measuredItem**. The AQUASTAT - SWS framework does not include item code/reference list.
 
-3. *Elements*. Often representing a measurement  that can be taken across different items. For example, area, production, share. In SWS, the element dimension used by AQUASTAT data sets is named **aquastatElement**.
+3. **Elements**. Often representing a measurement  that can be taken across different items. For example, area, production, share. In SWS, the element dimension used by AQUASTAT data sets is named **aquastatElement**. 
 
-4. *Time* (the time unit the data is displayed for: year, months, etc). In SWS, the time dimension used by AQUASTAT data sets is named **timePointYears**.
+4. **Time** (the time unit the data is displayed for: year, months, etc). In SWS, the time dimension used by AQUASTAT data sets is named **timePointYears**.
 
-5. *Flag* (A standardized label indicating origin and/or nature of a number in the data set, e.g. <blank> (official number)). In SWS, the flag dimension used by AQUASTAT data sets is named **flagObservationStatus**.
+5. **Flag*** (A standardized label indicating origin and/or nature of a number in the data set, e.g. <blank> (official number)). In SWS, the flag dimension used by AQUASTAT data sets is named **flagObservationStatus**.
 
-6. *Method* (A standardized label indicating method utilized to obtain a number in the data set, e.g. 'e' (estimate), 'p' (collected)). In SWS, the method dimension used by AQUASTAT data sets is named **flagMethod**.
+  - The [SDMX](https://sdmx.org/) is the standard for the flagObservationStatus in the SWS
+
+6. **Method** (A standardized label indicating method utilized to obtain a number in the data set, e.g. 'e' (estimate), 'p' (collected)). In SWS, the method dimension used by AQUASTAT data sets is named **flagMethod**.
  
    
 

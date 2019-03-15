@@ -42,9 +42,13 @@ Thus, the second motivation of the module is to ensure the correct value of the 
 One of the main criticisms at the AQUASTAT database is the low level of completeness of the variable/indicators time-series. In fact, 
 water data collection and standardization are not simple tasks due to the high fragmentation and scarcity of the water information at multiple spatial scales. According to the technical unit, on top of the inherent challenges to obtain reliable water data,  there has also been a long period of human resources shortage. These issues eventually hinder the timely collection, processing, and dissemination data and ultimately have been leading to a lack of harmonization between countries in terms of time-series length across several AQUASTAT variables and indicators.
 
-To solve this problem, and at the same time respecting the variable/indicator characteristics, the ESS - SWS team has proposed the application of imputation methods to increase time-series completeness of AQUASTAT variables and indicators. Through meetings with the technical unit, it was agreed that due to the nature of AQUASTAT variables showing little to moderate variation over time, the imputation methods of choice would be **Last Observation Carried Forward (LOCF)** and **Linear Interpolation**.
+To solve this problem, and at the same time respecting the variable/indicator characteristics, the ESS - SWS team has proposed the application of imputation methods to increase time-series completeness of AQUASTAT variables and indicators. Through meetings with the technical unit, it was agreed that due to the nature of AQUASTAT variables showing little to moderate variation over time, the imputation methods of choice would be **Last Observation Carried Forward (LOCF)** and **Linear Interpolation**. 
 
 Therefore, the third motivation of the module is to increase the time-series completeness of each variable/indicator
+
+```{block , type='rmdnote'}
+The Interpolation method used by the faoswsAquastatBaseline module applies to time-series with **two or more different observed values**. 
+```
 
 
 ### Geographic coverage
@@ -95,12 +99,20 @@ After having seen the main motivations of the faoswsAquastatBaseline module, its
   
   - [Population](http://www.fao.org/faostat/en/#data/OA);
   
-  - [GDP deflator](http://www.fao.org/faostat/en/#data/PD).
+  - [GDP deflator](http://www.fao.org/faostat/en/#data/PD) (**to calculate GDP deflator based on 2015 value**).
 2. Map FAOSTAT to AQUASATAT code using the **aquastat_faostat_mapping** data table;
 
-3. Read in the data set **aquastat_enr** from SWS database (no indicators in the data set);
+3. Read in the data set **aquastat_legacy** from SWS database (no indicators in the data set);
 
 4. **Annex** the re coded FAOSTAT data to the AQUASTAT aquastat_enr data set to form a single data set used as **input** in the next steps of the faoswsAquastatBaseline Workflow.
+
+
+```{block , type='rmdnote'}
+Important to notice that while a new reference list for aquastat_baseline dataset is not available in the SWS, the reference list to used on this dataset will be the same as the one used on the aquasta_legacy data (aquastatElement). The AQUASTAT reference list for elements in datasets **from the aquastat_baseline** onwards will be called **measuredElement**. In this SWS new AQUASTAT reference list, FAOSTAT codes will be SWS compliant and no longe recoded in order to avoid code duplication.  
+
+```
+
+
 
 ```{r fig5, echo=FALSE, fig.cap='FAOSTAT annexation to AQUASTAT SWS data'}
 

@@ -1,0 +1,83 @@
+# **Next** {#nextsteps}
+
+## **From input to dissemination**
+The main R plugins are ready. With the **faoswsAquastatBaseline** and **faoswsAquastatValidation**, it is possible to go from data collection to dissemination (speaking only about data) with the following workflow:
+
+```{r fig21, echo=FALSE, out.width="100%", fig.cap='AQUASTAT - SWS framework: from input to dissemination.'}
+library(DiagrammeR)
+DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = TB]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = Linen]
+
+# Inputs
+Quest[label = 'Source: \n Data from questionnaire', shape = folder, fillcolor = Beige]
+Literature [label = 'Source: \n Data from literature', shape = folder, fillcolor = Beige]
+otherDB [label = 'Source: \n Da from other databases', shape = folder, fillcolor = Beige]
+
+QH [label = 'Processing: \n Questionnaire harvesting \n by CIO - SWS', shape = folder, fillcolor = LightBlue]
+AWS [label = 'Database: \n Aquastat Working System', shape = folder, fillcolor = Beige]
+SWS [label = 'Database: \n Statistical Working System \n Dataset MUST have: \n 1. geographicAreaM49, 2. aquastatElement, 3. timePointYears, 4. flagObservationStatus or flagAquastat', shape = folder, fillcolor = Beige]
+
+
+FAOSTATDB [label = 'Source: \n FAOSTAT database', shape = folder, fillcolor = Beige]
+
+Rbase [label = 'Processing: \n faoswsAquastatBaseline \n 1. FAOSTAT annexation, 2. Calculation, 3. Imputation, 4. Recalculation, 5. Flag conversion', fillcolor = LightBlue]
+
+baselinedata [label = 'Output: \n faoswsAquastatBaseline output', shape = folder, fillcolor = Beige]
+
+Rvali [label = 'Processing: \n find errors in \n faoswsAquastatBaseline output \n using faoswsAquastatValidation module', fillcolor = LightBlue]
+
+TUvalidation [label = 'QA/QC: \n manual check of \n faoswsAquastatValidation output \n by the technical unit', fillcolor = LightBlue]
+
+Dissemination [label = 'Output: \n dissemination of the validated/corrected \n faoswsAquastatBaseline output' shape = folder, fillcolor = Beige]
+
+
+
+# Flow
+# edge definitions with the node IDs
+{Literature, otherDB } -> AWS  
+{Quest} -> QH
+{QH, AWS} -> SWS
+{SWS, FAOSTATDB} -> Rbase
+{Rbase} -> baselinedata -> Rvali -> TUvalidation -> Dissemination
+}")
+```
+
+
+
+
+## **Pending activities**
+
+### Validation comment
+
+  - Need more clarifications on what "remind to use a source for each data point" means.
+
+### National dam capacity time-series (using SWS dam data table)
+
+  - easy to implement by creating an R module. 
+
+### Show the latest value and the corresponding year
+
+  - Is this a dissemination tool?
+
+### Automatic generation of PDF
+
+  - Need clarification from the technical unit.
+  
+  - What does the technical unit want to report? To whom?
+  
+  - Potential solution after settling the doubts: a shiny app (overcomes outdated R packages for data reporting in SWS)
+  
+  
+### Aggregations
+
+  - Once the baseline output is validated, the technical unit needs to clarify the regions and/or special regions the aggregation should be compiled for. 
+  - An SWS plugin, tailored for aggregating the results by the regions defined by the technical unit, can easily be implemented.
+  
+  
+  
+  
+  

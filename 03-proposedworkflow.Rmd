@@ -1,0 +1,53 @@
+# **AQUASTAT UPDATE workflow** {#nextsteps}
+
+## **From input to dissemination**
+The main R plugins are ready. With the **faoswsAquastatBaseline** and **faoswsAquastatValidation** at the phase of small adjustments, it will possible to go from data collection to dissemination (speaking only about data) after finishing the **faoswsAquastatUpdate module** that will be a small variation of the faoswsAquastatBaseline module. Therefore, the proposed workflow is:
+
+
+
+```{r fig21, echo=FALSE, out.width="100%", fig.cap='AQUASTAT - SWS framework: from input to dissemination.'}
+library(DiagrammeR)
+DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = TB]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = Linen]
+
+# Inputs
+Quest[label = 'Source: \n Data from questionnaire', shape = folder, fillcolor = Beige]
+
+# Processing
+QH [label = 'Processing: \n Questionnaire harvesting \n by CIO - SWS', shape = folder, fillcolor = LightBlue]
+
+# Input
+
+SWSnew [label = 'Input: \n New data to be updated', shape = folder, fillcolor = LightBlue]
+
+SWSbase [label = 'Input: \n faoswsAquastatbaseline output', shape = folder, fillcolor = Beige]
+
+# Input
+FAOSTATDB [label = 'Source: \n FAOSTAT database', shape = folder, fillcolor = Beige]
+
+Rup [label = 'Processing: \n faoswsAquastatUpdate module\n 1. FAOSTAT annexation, 2. Calculation, 3. Imputation, 4. Recalculation, 5. Flag conversion', fillcolor = LightGrey]
+
+baselinedata [label = 'Input: \n faoswsAquastatUpdate output', shape = folder, fillcolor = Beige]
+
+Rvali [label = 'Processing: \n find errors in \n faoswsAquastatUpdate output \n using faoswsAquastatValidation module', fillcolor = LightBlue]
+
+TUvalidation [label = 'QA/QC: \n manual check of \n faoswsAquastatValidation output \n by the technical unit', fillcolor = LightBlue]
+
+Dissemination [label = 'Output: \n dissemination of the validated/corrected \n faoswsAquastatBaseline output' shape = folder, fillcolor = Beige]
+
+
+
+# Flow
+# edge definitions with the node IDs
+# {Literature, otherDB } -> AWS  
+{Quest} -> QH -> SWSnew 
+{SWSbase, SWSnew, FAOSTATDB} -> Rup
+{Rup} -> baselinedata -> Rvali -> TUvalidation -> Dissemination
+}")
+```
+
+

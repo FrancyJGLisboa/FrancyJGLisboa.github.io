@@ -4,6 +4,15 @@ p {
   
 }
 
+.table{
+  width:auto;
+  font-size: 7px;
+}
+
+.verysmall .table{
+  font-size: 7px;
+}
+
 .rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning {
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;

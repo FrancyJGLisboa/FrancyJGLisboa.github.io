@@ -1,8 +1,8 @@
-flagAquastat,flagAquastat_SWS
-E,X
-K,E
-L,E
-I,E
-F,E
-M,I
-blank,blank
+flagAquastat,SWS (SDMX)
+E (External value (other internationagencies),X (External organization)
+K (Aggregated from two or more sources or calculated),E (Estimate)
+L (modelled value),E (Estimate)
+I  (Internal estimate),E (Estimate)
+F (Internal estimate),E (Estimate)
+M (Missing),I (Imputed)
+blank,blank (Official)

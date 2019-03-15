@@ -98,9 +98,9 @@ After having seen the main motivations of the faoswsAquastatBaseline module, its
   - [GDP deflator](http://www.fao.org/faostat/en/#data/PD).
 2. Map FAOSTAT to AQUASATAT code using the **aquastat_faostat_mapping** data table;
 
-2. Download the data set **aquastat_enr** from SWS (no indicators in the data set);
+3. Read in the data set **aquastat_enr** from SWS database (no indicators in the data set);
 
-3. **Annex** the re coded FAOSTAT data to the AQUASTAT aquastat_enr data set to form a single data set used as **input** in the next steps of the faoswsAquastatBaseline Workflow.
+4. **Annex** the re coded FAOSTAT data to the AQUASTAT aquastat_enr data set to form a single data set used as **input** in the next steps of the faoswsAquastatBaseline Workflow.
 
 ```{r fig5, echo=FALSE, fig.cap='FAOSTAT annexation to AQUASTAT SWS data'}
 
@@ -139,6 +139,7 @@ Dataset1 [label = 'Output: \n SWS-AQUASTAT dataset \n with recoded FAOSTAT data'
   ii) Check and collect variables and/or indicators that do not exist in the data set.
   
 2. Add the detected missing variables and/or indicators to the data set in order to avoid crash when applying calculation rules;
+
 
 3. According to AQUASTAT focal point, before calculations, all variables belonging to calculation rules representing addiction or subtraction **MUST** be converted to zero **IF** their respective time-series are completely empty. Below the variables pre-defined by AQUASTAT for which this is applicable.
   
@@ -185,7 +186,7 @@ node [shape = rectangle, style = filled, fillcolor = Linen]
 Input [label = 'Input: \n SWS AQUASTAT dataset with FAOSTAT data', shape = folder, fillcolor = Beige]
 
 # processing
-Processing [label = 'Processing steps: \n 1 - Add missing elements to the input \n 2-NAs to zero if full TS is emmpty \n 3-Calculations using calculation_rule \n 4-Primary variable rule after calculation', shape = square, fillcolor = LightBlue]
+Processing [label = 'Processing steps: \n 1 - Add missing elements to the input \n 2-NAs to zero if full TS is empty \n 3-Calculations using calculation_rule \n 4- Apply primary variable rule after calculations', shape = square, fillcolor = LightBlue]
 
 # Output
 Output [label = 'Output: \n Calculated data', shape = folder, fillcolor = Beige]
@@ -204,7 +205,9 @@ The calculation step added new indicators but did not solve the issue of time-se
 
 1. Expands variables and indicators time-series **from the first observed value until 2018** as agreed by the technical unit;
 
-2. Fills the generated missing values using the following guideline:
+2. Removes **0M** value-flags to prevent the imputation algorithm, particularly the linear interpolation, from taking the zero values into account.
+
+3. Fills the generated missing values using the following guideline:
 
    - Applies **Last Observation Carried Forward** to missing values in time-series where the observed values **DO NOT VARY**;
    - Applies **Last Observation Carried Forward** to missing values in time-series of Long-Term average variables (see Table \@ref(tab:tab3) for reference);
@@ -282,7 +285,7 @@ Output [label = 'Output: \n Recalculated data', shape = folder, fillcolor = Beig
 
 ### Flag mapping (Observation)
 
-The mapping between the original flags in AQUASTAT to valid flags in the SWS was made possible with the following conversions:
+The SWS adheres to the [Statistical Data and Metadata eXchange](https://sdmx.org/) (SDMX) guidelines to flag observations in data sets living in the system. The migration of the AQUASTAT dataset into the SWS does not perform any action towards the mapping between mapping between AQUASTAT flags and SWS flags. To solve it, the faoswsAquastatBaseline module maps AQUASTAT to valid SWS flags using the following conversion table:
 
 ```{r tab8, echo=FALSE, message=FALSE}
 require(dplyr)
@@ -296,7 +299,9 @@ Besides the basic conversion described above, values emerged from the faoswsAqua
 
 1. All indicators emerging from calculations/recalculations have SWS flag **'E'**;
 
-2. All missing values filled by the imputations have  SWS flag **'I'**.
+2. All missing values filled by the imputations have  SWS flag **'I'**;
+
+3. The **M** becomes **I** because all M values were transformed into missing to avoid errors from linear interpolation.
 
 
 ### Flag mapping (Method)
@@ -319,7 +324,7 @@ With regard to the flag of methods in SWS, the conversion following criteria:
 ```{r tab9, echo=FALSE, message=FALSE}
 require(dplyr)
 d = readr::read_csv("tables/flagmeth.csv")
-knitr::kable(x = d %>% dplyr::mutate(flagObservationStatus = ifelse(is.na(flagObservationStatus), 'blank', flagObservationStatus)), 
+knitr::kable(x = d, 
              caption = paste("flagObservationStatus - flagMethod combination brought by the faoswsAquastatBaseline module"),
              booktabs = TRUE)
 ```

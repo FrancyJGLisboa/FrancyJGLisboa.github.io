@@ -30,7 +30,7 @@ lta <- c(4150L, 4151L, 4154L, 4155L, 4156L, 4157L, 4159L, 4160L,
          4549L)
 d = readr::read_csv("tables/aquastat_meta_FL_sources.csv")
 knitr::kable(x = d %>% dplyr::filter(element_code %in%  lta), 
-             caption = paste("The Long-term average variables in AQUASTAT"),
+             caption = paste("The Long-term average variables in AQUASTAT in the aquastat_reference datatable"),
              booktabs = TRUE)
 ```
 
@@ -160,7 +160,7 @@ require(dplyr)
 zeroel <- c(4308, 4309, 4310, 4312, 4316, 4314, 4315, 4264, 4265, 4451)
 d = readr::read_csv("tables/aquastat_meta_FL_sources.csv")
 knitr::kable(x = d %>% dplyr::filter(element_code %in%  zeroel), 
-             caption = paste("AQUASTAT variables with missing values made zero before calculations IF the time-series was fully empty"),
+             caption = paste("Primary - rule applicable elements in the aquastat_reference data table"),
              booktabs = TRUE)
 ```
 
@@ -169,7 +169,8 @@ knitr::kable(x = d %>% dplyr::filter(element_code %in%  zeroel),
 5. After calculations, replace missing values (NAs) by the value of the primary variable of the indicator when applicable following the rule:
 
 ```{block2 , type='rmdnote'}
- IF indicator/derived variable is empty after the calculation and its correspondent primary variable is available, replace the missing value of the indicator by the value of the primary variable.
+
+IF indicator/derived variable is empty after the calculation and its correspondent primary variable is available, replace the missing value of the indicator by the value of the primary variable.
 
 ```
   

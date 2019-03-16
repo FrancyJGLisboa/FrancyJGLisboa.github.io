@@ -25,15 +25,15 @@
 <meta name="author" content="Francy Lisboa (ESSD - Methodological Innovation Team)">
 
 
-<meta name="date" content="2019-03-15">
+<meta name="date" content="2019-03-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="new-aquastat-methodology.html">
-<link rel="next" href="current-aquastat-data.html">
+<link rel="prev" href="aquastat-in-sws-proposed-dataflow.html">
+<link rel="next" href="aquastat-elements.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -75,14 +75,18 @@
 <li><a href="new-aquastat-methodology.html#questionnaire"><strong>Questionnaire</strong></a></li>
 <li><a href="new-aquastat-methodology.html#the-current-aquastat-information-management"><strong>The current AQUASTAT information management</strong></a></li>
 </ul></li>
+<li><a href="aquastat-in-sws-proposed-dataflow.html#aquastat-in-sws-proposed-dataflow"><strong>AQUASTAT in SWS: proposed dataflow</strong></a></li>
 <li><a href="sws-resources.html#sws-resources"><strong>SWS resources</strong></a><ul>
 <li><a href="sws-resources.html#code-lists"><strong>Code lists</strong></a></li>
 <li><a href="sws-resources.html#data-tables"><strong>Data tables</strong></a></li>
 <li><a href="sws-resources.html#datasets"><strong>Datasets</strong></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="current-aquastat-data.html"><a href="current-aquastat-data.html"><i class="fa fa-check"></i>** Current AQUASTAT Data**</a><ul>
-<li><a href="current-aquastat-data.html#international-classification-systems"><strong>International Classification Systems</strong></a></li>
-<li><a href="current-aquastat-data.html#the-sws-aquastat_reference-data-table"><strong>The SWS aquastat_reference data table</strong></a></li>
+<li><a href="aquastat-elements.html#aquastat-elements"><strong>AQUASTAT Elements</strong></a><ul>
+<li><a href="aquastat-elements.html#international-classification-systems"><strong>International Classification Systems</strong></a></li>
+<li><a href="aquastat-elements.html#the-sws-aquastat_reference-data-table"><strong>The SWS aquastat_reference data table</strong></a><ul>
+<li><a href="aquastat-elements.html#current-aquastat-variables"><strong>Current AQUASTAT Variables</strong></a></li>
+<li><a href="aquastat-elements.html#current-aquastat-indicators"><strong>Current AQUASTAT indicators</strong></a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html"><i class="fa fa-check"></i><b>1</b> <strong>The faoswsAquastatBaseline module</strong></a><ul>
 <li class="chapter" data-level="1.1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#aims"><i class="fa fa-check"></i><b>1.1</b> <strong>Aims</strong></a><ul>
@@ -124,16 +128,13 @@
 <li class="chapter" data-level="2.4.1" data-path="AquastatValidation.html"><a href="AquastatValidation.html#execute-what-it-was-designed-for"><i class="fa fa-check"></i><b>2.4.1</b> execute what it was designed for?</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="propworkflow.html"><a href="propworkflow.html"><i class="fa fa-check"></i><b>3</b> <strong>AQUASTAT UPDATE workflow</strong></a><ul>
-<li class="chapter" data-level="3.1" data-path="propworkflow.html"><a href="propworkflow.html#from-input-to-dissemination"><i class="fa fa-check"></i><b>3.1</b> <strong>From input to dissemination</strong></a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="next.html"><a href="next.html"><i class="fa fa-check"></i><b>4</b> <strong>Next</strong></a><ul>
-<li class="chapter" data-level="4.1" data-path="next.html"><a href="next.html#pending-activities"><i class="fa fa-check"></i><b>4.1</b> <strong>Pending activities</strong></a><ul>
-<li class="chapter" data-level="4.1.1" data-path="next.html"><a href="next.html#validation-comment"><i class="fa fa-check"></i><b>4.1.1</b> Validation comment</a></li>
-<li class="chapter" data-level="4.1.2" data-path="next.html"><a href="next.html#national-dam-capacity-time-series-using-sws-dam-data-table"><i class="fa fa-check"></i><b>4.1.2</b> National dam capacity time-series (using SWS dam data table)</a></li>
-<li class="chapter" data-level="4.1.3" data-path="next.html"><a href="next.html#show-the-latest-value-and-the-corresponding-year"><i class="fa fa-check"></i><b>4.1.3</b> Show the latest value and the corresponding year</a></li>
-<li class="chapter" data-level="4.1.4" data-path="next.html"><a href="next.html#automatic-generation-of-pdf"><i class="fa fa-check"></i><b>4.1.4</b> Automatic generation of PDF</a></li>
-<li class="chapter" data-level="4.1.5" data-path="next.html"><a href="next.html#aggregations"><i class="fa fa-check"></i><b>4.1.5</b> Aggregations</a></li>
+<li class="chapter" data-level="3" data-path="next.html"><a href="next.html"><i class="fa fa-check"></i><b>3</b> <strong>Next</strong></a><ul>
+<li class="chapter" data-level="3.1" data-path="next.html"><a href="next.html#pending-activities"><i class="fa fa-check"></i><b>3.1</b> <strong>Pending activities</strong></a><ul>
+<li class="chapter" data-level="3.1.1" data-path="next.html"><a href="next.html#validation-comment"><i class="fa fa-check"></i><b>3.1.1</b> Validation comment</a></li>
+<li class="chapter" data-level="3.1.2" data-path="next.html"><a href="next.html#national-dam-capacity-time-series-using-sws-dam-data-table"><i class="fa fa-check"></i><b>3.1.2</b> National dam capacity time-series (using SWS dam data table)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="next.html"><a href="next.html#show-the-latest-value-and-the-corresponding-year"><i class="fa fa-check"></i><b>3.1.3</b> Show the latest value and the corresponding year</a></li>
+<li class="chapter" data-level="3.1.4" data-path="next.html"><a href="next.html#automatic-generation-of-pdf"><i class="fa fa-check"></i><b>3.1.4</b> Automatic generation of PDF</a></li>
+<li class="chapter" data-level="3.1.5" data-path="next.html"><a href="next.html#aggregations"><i class="fa fa-check"></i><b>3.1.5</b> Aggregations</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -156,9 +157,9 @@
 <div id="sws-resources" class="section level1 unnumbered">
 <h1><strong>SWS resources</strong></h1>
 <p>SWS resources are R modules, data tables, data sets, and code lists comprising a migration framework. Data tables are typically used as auxiliary data to help R modules to achieve their goals, often a long-format four-to-six dimensional data set. The dimensions of the data sets are defined by statistical domain-specific code lists (reference lists) containing codes and descriptions. Therefore, data sets are primarily used to store code list - referenced values as either input and/or output in the SWS. The generic relationship among data table, data sets, and R modules is given as follow:</p>
-<div class="figure"><span id="fig:fig1"></span>
-<div id="htmlwidget-49036c2eddfb8ba16c45" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-49036c2eddfb8ba16c45">{"x":{"diagram":"digraph {\n                  \n                  graph [layout = dot, rankdir = TB]\n                  \n                  # define the global styles of the nodes. We can override these in box if we wish\n                  node [shape = rectangle, style = filled, fillcolor = Linen]\n                  \n                  # Inputs\n                  SWSdb [label = \"Input \n data living in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive [label = \"Input \n  data living in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession [label = \"Input \n  data living in the session\", shape = folder, fillcolor = Beige]\n\n                  SWSdb2 [label = \"Output \n  data saved in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive2 [label = \"Output \n  data saved in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession2 [label = \"Output \n  data saved in the session\", shape = folder, fillcolor = Beige]\n\n\n                  dataset1 [label = \"Input \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  module [label = \"R module \n data processing and analysis\", shape = square, fillcolor = LightBlue]\n                  datatable1 [label = \"Data table(s) \n (auxiliary information)\", shape = folder, fillcolor = LightGrey]\n                  dataset2 [label =  \"Output \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  \n                  # Flow\n                  # edge definitions with the node IDs\n                  {SWSdb, SWSsharedrive, SWSsession} -> dataset1 -> module  \n                  {datatable1} -> module\n                  dataset2 -> {SWSdb2, SWSsharedrive2, SWSsession2}\n                  {module} -> dataset2\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="figure"><span id="fig:fig3"></span>
+<div id="htmlwidget-104c50f5d08f26da185d" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-104c50f5d08f26da185d">{"x":{"diagram":"digraph {\n                  \n                  graph [layout = dot, rankdir = TB]\n                  \n                  # define the global styles of the nodes. We can override these in box if we wish\n                  node [shape = rectangle, style = filled, fillcolor = Linen]\n                  \n                  # Inputs\n                  SWSdb [label = \"Input \n data living in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive [label = \"Input \n  data living in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession [label = \"Input \n  data living in the session\", shape = folder, fillcolor = Beige]\n\n                  SWSdb2 [label = \"Output \n  data saved in SWS datatabe\", shape = folder, fillcolor = Beige]\n                  SWSsharedrive2 [label = \"Output \n  data saved in the SWS share drive\", shape = folder, fillcolor = Beige]\n                  SWSsession2 [label = \"Output \n  data saved in the session\", shape = folder, fillcolor = Beige]\n\n\n                  dataset1 [label = \"Input \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  module [label = \"R module \n data processing and analysis\", shape = square, fillcolor = LightBlue]\n                  datatable1 [label = \"Data table(s) \n (auxiliary information)\", shape = folder, fillcolor = LightGrey]\n                  dataset2 [label =  \"Output \n long-format four-to-six dimensional dataset\", shape = folder, fillcolor = Beige]\n                  \n                  # Flow\n                  # edge definitions with the node IDs\n                  {SWSdb, SWSsharedrive, SWSsession} -> dataset1 -> module  \n                  {datatable1} -> module\n                  dataset2 -> {SWSdb2, SWSsharedrive2, SWSsession2}\n                  {module} -> dataset2\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure .: Generic data table, dataset, and R module relationship in the SWS context
 </p>
@@ -181,9 +182,9 @@ The <strong>aquastatElement</strong> variable in the aquastat_legacy dataset is 
 <li><p><strong>Flag</strong> (A standardized label indicating origin and/or nature of a number in the data set, e.g. <blank> (Official number)). In SWS, the flag dimension used by AQUASTAT data sets is named <strong>flagObservationStatus</strong>. Please check the <a href="http://intranet.fao.org/statistics_coordination_portal/standards_for_quality_compliance/">OCS statistical standards</a> and the <a href="http://intranet.fao.org/fileadmin/user_upload/scp/Standards_for_quality_compliance/SSS1_Flags.pdf">flags document</a> to understand the flagObservationStatus rational and obtain the description of flags.</p></li>
 <li><p><strong>Method</strong> (A standardized label indicating method utilized to obtain a number in the data set. In SWS, the method dimension used by AQUASTAT data sets is named <strong>flagMethod</strong>. Please check the <a href="http://intranet.fao.org/statistics_coordination_portal/standards_for_quality_compliance/">OCS statistical standards</a> and the <a href="http://intranet.fao.org/fileadmin/user_upload/scp/Standards_for_quality_compliance/SSS1_Flags.pdf">flags document</a> to understand the flagMethod rational and obtain the description of flags.</p></li>
 </ol>
-<div class="figure"><span id="fig:fig2"></span>
-<div id="htmlwidget-f78995b9f8c8d1ef1879" style="width:100%;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f78995b9f8c8d1ef1879">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\narea [label = \"geographicAreaM49\", shape = folder, fillcolor = Beige]\nelement [label = \"measuredElement\", shape = folder, fillcolor = Beige]\ntime [label = \"timePointYears\", shape = folder, fillcolor = Beige]\nflagObs [label = \"flagObservationStatus\", shape = folder, fillcolor = Beige]\nflagMeth [label = \"flagMethod\", shape = folder, fillcolor = Beige]\naquadataset [label = \"Typical aquastat dataset\",  fillcolor = LightBlue]\n\n\n# Flow\n# edge definitions with the node IDs\n{area, element, time, flagObs, flagMeth} -> aquadataset \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="figure"><span id="fig:fig4"></span>
+<div id="htmlwidget-145f5e29947f6f62e903" style="width:100%;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-145f5e29947f6f62e903">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\narea [label = \"geographicAreaM49\", shape = folder, fillcolor = Beige]\nelement [label = \"measuredElement\", shape = folder, fillcolor = Beige]\ntime [label = \"timePointYears\", shape = folder, fillcolor = Beige]\nflagObs [label = \"flagObservationStatus\", shape = folder, fillcolor = Beige]\nflagMeth [label = \"flagMethod\", shape = folder, fillcolor = Beige]\naquadataset [label = \"Typical SWS-compliant aquastat dataset\", shape = folder, fillcolor = LightBlue]\n\n\n# Flow\n# edge definitions with the node IDs\n{area, element, time, flagObs, flagMeth} -> aquadataset \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure .: Typical dimensions (SWS code/reference lists) composing a AQUASTAT SWS - compliant input/output dataset.
 </p>
@@ -191,11 +192,10 @@ Figure .: Typical dimensions (SWS code/reference lists) composing a AQUASTAT SWS
 </div>
 <div id="data-tables" class="section level2 unnumbered">
 <h2><strong>Data tables</strong></h2>
-<p>As mentioned, data tables are mainly used to store information helping R modules to output analytical results. Information in data tables can be of a number of types. For example, conversion factors, arithmetic formulas, mapping between flags, mapping between international classifications, etc. In SWS hierarchy. all data tables reside in a given statistical domain. In the AQUASTAT - SWS migration framework, the data tables are in the <strong>Aquastat domain</strong>. Below is a list of current available and filled data tables in the Aquastat domain:</p>
+<p>Data tables are mainly used to store information helping R modules to output analytical results. Information in data tables can be of a number of types. For example, conversion factors, arithmetic formulas, mapping between flags, mapping between international classifications, etc. In SWS hierarchy. all data tables reside in a given statistical domain. In the AQUASTAT - SWS migration framework, the data tables are in the <strong>Aquastat domain</strong>. Below is a list of current available and filled data tables in the Aquastat domain:</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>aquastat_reference</strong>. A data table listing AQUASTAT element codes, names, dissemination status, nature, and sources. See more details in the AQUASTAT data section.</p></li>
+<li><p><strong>aquastat_reference</strong>. A data table listing AQUASTAT element codes, names, dissemination status, variable/indicator status, sources, long-term avergae variable status, the primary variable rule status.</p></li>
 <li><p><strong>aquastat_faostat_mapping</strong>. A data table mapping out AQUASTAT elements to FAOSTAT elements.</p></li>
-<li><p><strong>aquastat_lta</strong>. A data table mapping out AQUASTAT long-term average variables.</p></li>
 <li><p><strong>aquastat_sources</strong>. A data table storing AQUASTAT data source references.</p></li>
 <li><p><strong>calculation_rule</strong>. A data table storing the pre-defined calculation rules used to obtain AQUASTAT indicators/derived variables.</p></li>
 <li><p><strong>aquastat_validation</strong>. A data table storing the a set of logic tests to be applied to AQUASTAT inputs and outputs for the purpose of quality assurance and quality check</p></li>
@@ -205,7 +205,7 @@ Figure .: Typical dimensions (SWS code/reference lists) composing a AQUASTAT SWS
 </ol>
 <div class="rmdnote">
 <p>
-Variable (aka column names) in SWS data tables are more flexible in terms of names they can take than SWS datasets. One can find SWS data tables naming variables as element_code, element_code_sws, element_code_faostat, etc. Likewise, columns describing countries across different data table may have different classification systems. In these cases, a conversion must be done before <strong>IF the ouptut of the module using such data table is a SWS dataset (more restricted SWS structure)</strong>.
+Variable names (aka column names) in SWS data tables are more flexible in terms of the names they can take than SWS datasets. One can find SWS data tables naming variables as element_code, element_code_sws, element_code_faostat, etc. Likewise, columns describing countries across different data table may have different classification systems. This flexibility in data tables is benefitial as it allows to accomodate different auxiliary information.
 </p>
 </div>
 </div>
@@ -215,7 +215,7 @@ Variable (aka column names) in SWS data tables are more flexible in terms of nam
 <ol style="list-style-type: decimal">
 <li><strong>aquastat_legacy</strong>. Currently named as <strong>aquastat_enr</strong>, the <strong>aquastat_legacy</strong> is an SWS dataset with the legacy data from the ‘Old’ AQUASTAT working system. The CIO - SWS has migrated the aquastat_legacy dataset into the SWS in order to be used as the starting point for the faoswsAquastatBaseline module (see <a href="AquastatBaseline.html#AquastatBaseline">1</a>). The <strong>aquastat_legacy</strong> dataset is the bare minimum of AQUASTAT, meaning that none analytical process has been applied to it, including the calculation of AQUASTAT indicators (aka derived variables) and imputations. Therefore, the <strong>aquastat_legacy</strong> is only used to derive the <strong>aquastat_baseline</strong> dataset, which in turn, is going to be the new AQUASTAT benchmark in the SWS and dataset to be updated after every end of questionnaire - based data collection - compilation cycle.</li>
 </ol>
-<div class="figure"><span id="fig:fig3"></span>
+<div class="figure"><span id="fig:fig5"></span>
 <img src="images/aquastat_enr.jpg" alt="Snapshot of the aquastat_legacy dataset in SWS." width="100%" />
 <p class="caption">
 Figure .: Snapshot of the aquastat_legacy dataset in SWS.
@@ -224,7 +224,7 @@ Figure .: Snapshot of the aquastat_legacy dataset in SWS.
 <ol start="2" style="list-style-type: decimal">
 <li><strong>aquastat_baseline</strong>. An SWS dataset output from the faoswsAquastatBaseline module which is going to be periodically updated by the new data made available after data collection - compilation cycle. With the new data, the aquastat_baseline dataset will be the input of a SWS module called <strong>faoswsAquastatUpdate</strong> which will add these new data to the aquastat_baseline dataset.</li>
 </ol>
-<div class="figure"><span id="fig:fig4"></span>
+<div class="figure"><span id="fig:fig6"></span>
 <img src="images/aquastatbaseline.jpg" alt="Snapshot of the aquastat_baseline dataset as the benchmark (input) for the future updates of AQUASTAT data collected via questionnaire" width="100%" />
 <p class="caption">
 Figure .: Snapshot of the aquastat_baseline dataset as the benchmark (input) for the future updates of AQUASTAT data collected via questionnaire
@@ -240,8 +240,8 @@ Figure .: Snapshot of the aquastat_baseline dataset as the benchmark (input) for
           </div>
         </div>
       </div>
-<a href="new-aquastat-methodology.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="current-aquastat-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="aquastat-in-sws-proposed-dataflow.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="aquastat-elements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

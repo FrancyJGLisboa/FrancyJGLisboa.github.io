@@ -357,3 +357,69 @@ knitr::kable(x = d[calculated %in% 'C'],
              booktabs = TRUE)
 ```
 
+
+<!--chapter:end:index.Rmd-->
+
+
+# **The faoswsAquastatBaseline module** {#AquastatBaseline}
+
+Placeholder
+
+
+## **Aims**
+### Add indicators
+### Long-term variables
+### Time-Series completeness 
+### Geographic coverage
+### FAOSTAT data sourcing
+## **Workflow** 
+### FAOSTAT annexation 
+### Calculation
+### Imputations
+### Recalculation
+### Flag mapping (Observation)
+### Flag mapping (Method)
+## **Running the module in the SWS**
+## **Did the module...**
+### Add new indicators ?
+### promote time-series completeness and higher geographic coverage ?
+### correct values of Long-Term Average variables ?
+
+<!--chapter:end:01-faoswsAquastatBaseline.Rmd-->
+
+
+# **The faoswsAquastatValidation module** {#AquastatValidation}
+
+Placeholder
+
+
+## **Aims**
+### **Use validation rules**
+### **Focus on high priority rules**
+### **Output as an email attachment**
+### **Generalization**
+## **Workflow**
+### The input dataset
+### Apply validation rules 
+### Output to the user 
+## **Running the module in the SWS**
+## **Did the module**...
+### execute what it was designed for?
+
+<!--chapter:end:02-faoswsAquastatValidation.Rmd-->
+
+
+# **Next** 
+
+Placeholder
+
+
+## **Pending activities**
+### Validation comment
+### National dam capacity time-series (using SWS dam data table)
+### Show the latest value and the corresponding year
+### Automatic generation of PDF
+### Aggregations
+
+<!--chapter:end:03-NextSteps.Rmd-->
+

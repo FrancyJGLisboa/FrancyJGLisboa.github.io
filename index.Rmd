@@ -132,7 +132,7 @@ Diss [label = 'Dissemination: \n  Web, publications, Apps', shape = folder, fill
 
 ```{block , type='rmdnote'}
 
-Notice that the questionnaire harvester produced by CIO represents the first contact of the questionnaire - collected AQUASTAT  with the SWS. The harvester outputs an SWS compliant dataset that goes through the chain of SWS processes where inputs and outputs datasets are also adhering to SWS standards. 
+Notice that the questionnaire harvester produced by CIO - SWS counterpart represents the first contact of the questionnaire - based data with the SWS. The harvester outputs an SWS compliant dataset that goes through the chain of SWS processes where inputs and outputs datasets are also adhering to SWS standards. 
 
 Apart from the questionnaire harvesting, the processes in green are those performed by AQUASTAT modules **already operating in the QA environment in the SWS**. The **faoswsAquastatUpdate module** is yet to be built after the final endorsement of the faoswsAquastaBaseline output by the technical unit. Again, the aquastat_baseline dataset is going to be the starting point for the periodical updates of the AQUASTAT data obtained from questionnaires and other sources. Therefore, the plan is that whenever the technical unit needs to update the AQUASTAT dataset, the **faoswsAquastatUpdate** executes on the latest version of the aquastat_baseline dataset. 
 
@@ -198,11 +198,20 @@ The **aquastatElement** variable in the aquastat_legacy dataset is not SWS compl
 4. **Time** (the time unit the data is displayed for: year, months, etc). In SWS, the time dimension used by AQUASTAT data sets is named **timePointYears**.
 
 5. **Flag** (A standardized label indicating origin and/or nature of a number in the data set, e.g. <blank> (Official number)). In SWS, the flag dimension used by AQUASTAT data sets is named **flagObservationStatus**. Please check the [OCS statistical standards](http://intranet.fao.org/statistics_coordination_portal/standards_for_quality_compliance/) and the [flags document](http://intranet.fao.org/fileadmin/user_upload/scp/Standards_for_quality_compliance/SSS1_Flags.pdf) to understand the flagObservationStatus rational and  obtain the description of flags. 
+```{r  fig4, echo=FALSE, out.width="100%", fig.cap=' Description of flag of observations in the SWS'}
+knitr::include_graphics("images/flagobstatus_rev2.png")
 
+```
 6. **Method** (A standardized label indicating method utilized to obtain a number in the data set. In SWS, the method dimension used by AQUASTAT data sets is named **flagMethod**. Please check the [OCS statistical standards](http://intranet.fao.org/statistics_coordination_portal/standards_for_quality_compliance/) and the [flags document](http://intranet.fao.org/fileadmin/user_upload/scp/Standards_for_quality_compliance/SSS1_Flags.pdf) to understand the flagMethod rational and  obtain the description of flags. 
 
+```{r  fig5, echo=FALSE, out.width="100%", fig.cap=' Description of flag of methods in the SWS'}
+knitr::include_graphics("images/flagmethod_rev2.png")
 
-```{r fig4, echo=FALSE, out.width="100%", fig.cap='Typical dimensions (SWS code/reference lists) composing a AQUASTAT SWS - compliant input/output dataset.', message=FALSE, warning=FALSE}
+```
+
+
+
+```{r fig6, echo=FALSE, out.width="100%", fig.cap='Typical dimensions (SWS code/reference lists) composing a AQUASTAT SWS - compliant input/output dataset.', message=FALSE, warning=FALSE}
 require(DiagrammeR)
 DiagrammeR::grViz("digraph {
 
@@ -261,22 +270,28 @@ Datasets in the SWS are interchangeably used as module inputs/outputs and are co
 1. **aquastat_legacy**. Currently named as **aquastat_enr**, the **aquastat_legacy** is an SWS dataset with the legacy data from the 'Old' AQUASTAT working system. The CIO - SWS has migrated the aquastat_legacy dataset into the SWS in order to be used as the starting point for the faoswsAquastatBaseline module (see \@ref(AquastatBaseline)). The **aquastat_legacy** dataset is the bare minimum of AQUASTAT, meaning that none analytical process has been applied to it, including the calculation of AQUASTAT indicators (aka derived variables) and imputations. Therefore, the **aquastat_legacy** is only used to derive the **aquastat_baseline** dataset, which in turn, is going to be the new AQUASTAT benchmark in the SWS and dataset to be updated after every end of questionnaire - based data collection - compilation cycle.
 
 
-```{r  fig5, echo=FALSE, out.width="100%", fig.cap='Snapshot of the aquastat_legacy dataset in SWS.'}
+```{r  fig7, echo=FALSE, out.width="100%", fig.cap='Snapshot of the aquastat_legacy dataset in SWS.'}
 knitr::include_graphics("images/aquastat_enr.jpg")
 ```
 
 
 2. **aquastat_baseline**. An SWS dataset output from the faoswsAquastatBaseline module which is going to be periodically updated by the new data made available after data collection - compilation cycle. With the new data, the aquastat_baseline dataset will be the input of a SWS module called **faoswsAquastatUpdate** which will add these new data to the aquastat_baseline dataset. 
 
-```{r  fig6, echo=FALSE, out.width="100%", fig.cap='Snapshot of the aquastat_baseline dataset as the benchmark (input) for the future updates of AQUASTAT data collected via questionnaire'}
+```{r  fig8, echo=FALSE, out.width="100%", fig.cap='Snapshot of the aquastat_baseline dataset as the benchmark (input) for the future updates of AQUASTAT data collected via questionnaire'}
 knitr::include_graphics("images/aquastatbaseline.jpg")
 ```  
 
+<<<<<<< HEAD
+
+```{block, type='rmdnote'}
+For the moment, the **aquastat_legacy** and **aquastat_baseline** datasets are using the same SWS element reference list called **aquastatElement**, which does not align with SWS standards. Therefore, for the sake of standadization, the AQUASTAT element reference list in the SWS MUST be named **measuredElement** at some point in the future.
+=======
  
 ```{block , type='rmdnote'}
 
 At the moment, the **aquastat_baseline** dataset has been using the same SWS code list to refer to AQUASTAT elements as the **aquastat_legacy** dataset, which is called **aquastatElement**. It will change in the near future and the aquastatElement name in the aquastat_baseline will take an SWS - compliant name - **measuredElement**. 
 
+>>>>>>> 7c4f3e555d7976d32d6dc32e799a80d001592b7b
 ```
 
 # **AQUASTAT Elements**{-}
@@ -315,11 +330,9 @@ With the agreement of the AQUASTAT focal point, the ESS - SWS team has adapted a
 7. **PR**. A binary variable indicating whther the element is part of the validation rules where the primary rule approach can be applied.
 
 ```{block , type='rmdnote'}
-In the **validation_rule** data table, some of the expressions are OK for the application of the primary variable rules. The rule grounds on the principle that some indicators have a primary variable that is used as a substitute for a missing value. This approach only applies to addition and subtraction expressions. Therefore, the **PR** variable in the **aquastat_reference** data table is used to help the SWS modules to identify the elements in these expressions.
+In the **validation_rule** data table, some of the expressions are OK for the application of the primary variable rules. The rule grounds on the principle that some indicators have a primary variable that can be used as a substitute in case iof the indicator value is missing. This approach only applies to indicators obtained from addition and subtraction expressions. Therefore, the **PR** variable in the **aquastat_reference** data table is used to help the SWS modules to identify the elements in these expressions.
 
-The **lta**, variable in turn, is identifying the variable with low variation over time. 
-
-Both **lta** and **PR** are ONLY used by the faoswsAquastatBaseline that, once has its output cleared by the technical unit, will no longer be needed.
+The **lta**, variable in turn, is identifying the variable with low variation over time according to the technical unit.  
 
 ```
 

@@ -25,7 +25,7 @@
 <meta name="author" content="Francy Lisboa (ESSD - Methodological Innovation Team)">
 
 
-<meta name="date" content="2019-03-16">
+<meta name="date" content="2019-03-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -190,13 +190,10 @@
 </ol>
 <div class="rmdnote">
 <p>
-In the <strong>validation_rule</strong> data table, some of the expressions are OK for the application of the primary variable rules. The rule grounds on the principle that some indicators have a primary variable that is used as a substitute for a missing value. This approach only applies to addition and subtraction expressions. Therefore, the <strong>PR</strong> variable in the <strong>aquastat_reference</strong> data table is used to help the SWS modules to identify the elements in these expressions.
+In the <strong>validation_rule</strong> data table, some of the expressions are OK for the application of the primary variable rules. The rule grounds on the principle that some indicators have a primary variable that can be used as a substitute in case iof the indicator value is missing. This approach only applies to indicators obtained from addition and subtraction expressions. Therefore, the <strong>PR</strong> variable in the <strong>aquastat_reference</strong> data table is used to help the SWS modules to identify the elements in these expressions.
 </p>
 <p>
-The <strong>lta</strong>, variable in turn, is identifying the variable with low variation over time.
-</p>
-<p>
-Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAquastatBaseline that, once has its output cleared by the technical unit, will no longer be needed.
+The <strong>lta</strong>, variable in turn, is identifying the variable with low variation over time according to the technical unit.
 </p>
 </div>
 <div id="current-aquastat-variables" class="section level3 unnumbered">
@@ -211,6 +208,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <th align="left">disseminated</th>
 <th align="left">calculated</th>
 <th align="left">source</th>
+<th align="right">lta</th>
+<th align="right">PR</th>
 </tr>
 </thead>
 <tbody>
@@ -220,6 +219,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">FAOSTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4101</td>
@@ -227,6 +228,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">FAOSTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4102</td>
@@ -234,6 +237,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">FAOSTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4104</td>
@@ -241,6 +246,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">FAOSTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4106</td>
@@ -248,6 +255,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">FAOSTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4109</td>
@@ -255,6 +264,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">ILO</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4110</td>
@@ -262,6 +273,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">ILO</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4111</td>
@@ -269,6 +282,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">UNDP</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4112</td>
@@ -276,6 +291,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">WORLD_BANK</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4113</td>
@@ -283,6 +300,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">WORLD_BANK</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4114</td>
@@ -290,6 +309,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">JMP(WHO/UNICEF)</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4115</td>
@@ -297,6 +318,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">JMP(WHO/UNICEF)</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4116</td>
@@ -304,6 +327,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">JMP(WHO/UNICEF)</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4151</td>
@@ -311,6 +336,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">CRU CL 2.0 dataset</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4152</td>
@@ -318,6 +345,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4153</td>
@@ -325,6 +354,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4154</td>
@@ -332,6 +363,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4155</td>
@@ -339,6 +372,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4156</td>
@@ -346,6 +381,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4159</td>
@@ -353,6 +390,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4160</td>
@@ -360,6 +399,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4161</td>
@@ -367,6 +408,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4162</td>
@@ -374,6 +417,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4165</td>
@@ -381,6 +426,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4168</td>
@@ -388,6 +435,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4171</td>
@@ -395,6 +444,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4172</td>
@@ -402,6 +453,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4173</td>
@@ -409,6 +462,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4174</td>
@@ -416,6 +471,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4177</td>
@@ -423,6 +480,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4178</td>
@@ -430,6 +489,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4193</td>
@@ -437,6 +498,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4194</td>
@@ -444,6 +507,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4195</td>
@@ -451,6 +516,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4197</td>
@@ -458,6 +525,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4250</td>
@@ -465,6 +534,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4251</td>
@@ -472,6 +543,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4252</td>
@@ -479,6 +552,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4260</td>
@@ -486,6 +561,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4261</td>
@@ -493,6 +570,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4262</td>
@@ -500,6 +579,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4264</td>
@@ -507,6 +588,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="right">4265</td>
@@ -514,6 +597,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="right">4266</td>
@@ -521,6 +606,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4267</td>
@@ -528,6 +615,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4268</td>
@@ -535,6 +624,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4269</td>
@@ -542,6 +633,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4270</td>
@@ -549,6 +642,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4303</td>
@@ -556,6 +651,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4304</td>
@@ -563,6 +660,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4306</td>
@@ -570,6 +669,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4307</td>
@@ -577,6 +678,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4308</td>
@@ -584,6 +687,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="right">4309</td>
@@ -591,6 +696,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="right">4310</td>
@@ -598,6 +705,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="right">4312</td>
@@ -605,6 +714,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="right">4314</td>
@@ -612,6 +723,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="right">4315</td>
@@ -619,6 +732,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="right">4316</td>
@@ -626,6 +741,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="right">4318</td>
@@ -633,6 +750,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4320</td>
@@ -640,6 +759,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4321</td>
@@ -647,6 +768,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4322</td>
@@ -654,6 +777,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4326</td>
@@ -661,6 +786,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4329</td>
@@ -668,6 +795,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4332</td>
@@ -675,6 +804,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4333</td>
@@ -682,6 +813,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4334</td>
@@ -689,6 +822,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4335</td>
@@ -696,6 +831,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4336</td>
@@ -703,6 +840,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4337</td>
@@ -710,6 +849,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4338</td>
@@ -717,6 +858,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4339</td>
@@ -724,6 +867,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4340</td>
@@ -731,6 +876,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4341</td>
@@ -738,6 +885,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4342</td>
@@ -745,6 +894,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4343</td>
@@ -752,6 +903,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4344</td>
@@ -759,6 +912,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4345</td>
@@ -766,6 +921,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4346</td>
@@ -773,6 +930,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4347</td>
@@ -780,6 +939,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4348</td>
@@ -787,6 +948,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4349</td>
@@ -794,6 +957,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4350</td>
@@ -801,6 +966,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4351</td>
@@ -808,6 +975,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4352</td>
@@ -815,6 +984,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4353</td>
@@ -822,6 +993,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4354</td>
@@ -829,6 +1002,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4355</td>
@@ -836,6 +1011,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4356</td>
@@ -843,6 +1020,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4357</td>
@@ -850,6 +1029,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4358</td>
@@ -857,6 +1038,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4359</td>
@@ -864,6 +1047,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4360</td>
@@ -871,6 +1056,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4361</td>
@@ -878,6 +1065,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4362</td>
@@ -885,6 +1074,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4363</td>
@@ -892,6 +1083,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4364</td>
@@ -899,6 +1092,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4365</td>
@@ -906,6 +1101,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4366</td>
@@ -913,6 +1110,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4367</td>
@@ -920,6 +1119,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4368</td>
@@ -927,6 +1128,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4369</td>
@@ -934,6 +1137,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4370</td>
@@ -941,6 +1146,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4371</td>
@@ -948,6 +1155,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4372</td>
@@ -955,6 +1164,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4373</td>
@@ -962,6 +1173,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4374</td>
@@ -969,6 +1182,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4375</td>
@@ -976,6 +1191,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4376</td>
@@ -983,6 +1200,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4377</td>
@@ -990,6 +1209,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4378</td>
@@ -997,6 +1218,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4379</td>
@@ -1004,6 +1227,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4400</td>
@@ -1011,6 +1236,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4401</td>
@@ -1018,6 +1245,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4403</td>
@@ -1025,6 +1254,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4410</td>
@@ -1032,6 +1263,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4411</td>
@@ -1039,6 +1272,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4412</td>
@@ -1046,6 +1281,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4413</td>
@@ -1053,6 +1290,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4414</td>
@@ -1060,6 +1299,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4415</td>
@@ -1067,6 +1308,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4416</td>
@@ -1074,6 +1317,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4417</td>
@@ -1081,6 +1326,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4418</td>
@@ -1088,6 +1335,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4419</td>
@@ -1095,6 +1344,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4420</td>
@@ -1102,6 +1353,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4421</td>
@@ -1109,6 +1362,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4422</td>
@@ -1116,6 +1371,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4423</td>
@@ -1123,6 +1380,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4424</td>
@@ -1130,6 +1389,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4425</td>
@@ -1137,6 +1398,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4426</td>
@@ -1144,6 +1407,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4427</td>
@@ -1151,6 +1416,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4428</td>
@@ -1158,6 +1425,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4429</td>
@@ -1165,6 +1434,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4430</td>
@@ -1172,6 +1443,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4431</td>
@@ -1179,6 +1452,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4432</td>
@@ -1186,6 +1461,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4433</td>
@@ -1193,6 +1470,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4434</td>
@@ -1200,6 +1479,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4435</td>
@@ -1207,6 +1488,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4436</td>
@@ -1214,6 +1497,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4437</td>
@@ -1221,6 +1506,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4438</td>
@@ -1228,6 +1515,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4439</td>
@@ -1235,6 +1524,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4440</td>
@@ -1242,6 +1533,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4441</td>
@@ -1249,6 +1542,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4449</td>
@@ -1256,6 +1551,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">ILO</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4451</td>
@@ -1263,6 +1560,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="right">4452</td>
@@ -1270,6 +1569,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4453</td>
@@ -1277,6 +1578,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4454</td>
@@ -1284,6 +1587,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4460</td>
@@ -1291,6 +1596,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4461</td>
@@ -1298,6 +1605,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4465</td>
@@ -1305,6 +1614,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4469</td>
@@ -1312,6 +1623,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4472</td>
@@ -1319,6 +1632,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">FAOCLIMPAG</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4473</td>
@@ -1326,6 +1641,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">FAOSTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4474</td>
@@ -1333,6 +1650,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">FAOSTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4475</td>
@@ -1340,6 +1659,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4476</td>
@@ -1347,6 +1668,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4477</td>
@@ -1354,6 +1677,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4478</td>
@@ -1361,6 +1686,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4479</td>
@@ -1368,6 +1695,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4480</td>
@@ -1375,6 +1704,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4481</td>
@@ -1382,6 +1713,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4482</td>
@@ -1389,6 +1722,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4483</td>
@@ -1396,6 +1731,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4484</td>
@@ -1403,6 +1740,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4485</td>
@@ -1410,6 +1749,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4486</td>
@@ -1417,6 +1758,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4487</td>
@@ -1424,6 +1767,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4488</td>
@@ -1431,6 +1776,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4489</td>
@@ -1438,6 +1785,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4490</td>
@@ -1445,6 +1794,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4491</td>
@@ -1452,6 +1803,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4492</td>
@@ -1459,6 +1812,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4493</td>
@@ -1466,6 +1821,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4494</td>
@@ -1473,6 +1830,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4495</td>
@@ -1480,6 +1839,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4496</td>
@@ -1487,6 +1848,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4497</td>
@@ -1494,6 +1857,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4498</td>
@@ -1501,6 +1866,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4499</td>
@@ -1508,6 +1875,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4500</td>
@@ -1515,6 +1884,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4501</td>
@@ -1522,6 +1893,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4502</td>
@@ -1529,6 +1902,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4503</td>
@@ -1536,6 +1911,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4504</td>
@@ -1543,6 +1920,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4505</td>
@@ -1550,6 +1929,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4506</td>
@@ -1557,6 +1938,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4507</td>
@@ -1564,6 +1947,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4508</td>
@@ -1571,6 +1956,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4510</td>
@@ -1578,6 +1965,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4511</td>
@@ -1585,6 +1974,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4512</td>
@@ -1592,6 +1983,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4513</td>
@@ -1599,6 +1992,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4515</td>
@@ -1606,6 +2001,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4516</td>
@@ -1613,6 +2010,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4517</td>
@@ -1620,6 +2019,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4520</td>
@@ -1627,6 +2028,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4521</td>
@@ -1634,6 +2037,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4522</td>
@@ -1641,6 +2046,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4523</td>
@@ -1648,6 +2055,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4524</td>
@@ -1655,6 +2064,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4525</td>
@@ -1662,6 +2073,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4526</td>
@@ -1669,6 +2082,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4530</td>
@@ -1676,6 +2091,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4537</td>
@@ -1683,6 +2100,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">UNDP</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4539</td>
@@ -1690,6 +2109,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4541</td>
@@ -1697,6 +2118,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">WORLD_RESOURCES_INSTITUTE</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4542</td>
@@ -1704,6 +2127,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">WORLD_RESOURCES_INSTITUTE</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4543</td>
@@ -1711,6 +2136,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">WORLD_RESOURCES_INSTITUTE</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4544</td>
@@ -1718,6 +2145,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4545</td>
@@ -1725,6 +2154,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4546</td>
@@ -1732,6 +2163,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">WORLD_BANK</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4547</td>
@@ -1739,6 +2172,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">WORLD_BANK</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4548</td>
@@ -1746,6 +2181,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">WORLD_BANK</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4549</td>
@@ -1753,6 +2190,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">D</td>
 <td align="left">V</td>
 <td align="left">FAO/IWMI</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4557</td>
@@ -1760,6 +2199,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">AQUASTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4559</td>
@@ -1767,6 +2208,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">FAOSTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4560</td>
@@ -1774,6 +2217,8 @@ Both <strong>lta</strong> and <strong>PR</strong> are ONLY used by the faoswsAqu
 <td align="left">I</td>
 <td align="left">V</td>
 <td align="left">FAOSTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 </tbody>
 </table>
@@ -1795,6 +2240,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <th align="left">disseminated</th>
 <th align="left">calculated</th>
 <th align="left">source</th>
+<th align="right">lta</th>
+<th align="right">PR</th>
 </tr>
 </thead>
 <tbody>
@@ -1804,6 +2251,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">FAOSTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4105</td>
@@ -1811,6 +2260,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">FAOSTAT</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4107</td>
@@ -1818,6 +2269,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4108</td>
@@ -1825,6 +2278,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4150</td>
@@ -1832,6 +2287,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4157</td>
@@ -1839,6 +2296,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4158</td>
@@ -1846,6 +2305,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4164</td>
@@ -1853,6 +2314,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4176</td>
@@ -1860,6 +2323,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4182</td>
@@ -1867,6 +2332,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4185</td>
@@ -1874,6 +2341,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4187</td>
@@ -1881,6 +2350,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4188</td>
@@ -1888,6 +2359,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4190</td>
@@ -1895,6 +2368,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4192</td>
@@ -1902,6 +2377,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4196</td>
@@ -1909,6 +2386,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4253</td>
@@ -1916,6 +2395,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4254</td>
@@ -1923,6 +2404,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4255</td>
@@ -1930,6 +2413,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4256</td>
@@ -1937,6 +2422,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4257</td>
@@ -1944,6 +2431,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4263</td>
@@ -1951,6 +2440,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4271</td>
@@ -1958,6 +2449,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4273</td>
@@ -1965,6 +2458,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4275</td>
@@ -1972,6 +2467,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4300</td>
@@ -1979,6 +2476,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4305</td>
@@ -1986,6 +2485,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4311</td>
@@ -1993,6 +2494,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4313</td>
@@ -2000,6 +2503,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4317</td>
@@ -2007,6 +2512,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4319</td>
@@ -2014,6 +2521,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4323</td>
@@ -2021,6 +2530,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4324</td>
@@ -2028,6 +2539,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4325</td>
@@ -2035,6 +2548,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4327</td>
@@ -2042,6 +2557,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4328</td>
@@ -2049,6 +2566,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4330</td>
@@ -2056,6 +2575,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4331</td>
@@ -2063,6 +2584,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4445</td>
@@ -2070,6 +2593,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4446</td>
@@ -2077,6 +2602,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4448</td>
@@ -2084,6 +2611,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4450</td>
@@ -2091,6 +2620,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4455</td>
@@ -2098,6 +2629,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4457</td>
@@ -2105,6 +2638,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4458</td>
@@ -2112,6 +2647,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4459</td>
@@ -2119,6 +2656,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4462</td>
@@ -2126,6 +2665,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4463</td>
@@ -2133,6 +2674,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4464</td>
@@ -2140,6 +2683,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4466</td>
@@ -2147,6 +2692,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4467</td>
@@ -2154,6 +2701,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4468</td>
@@ -2161,6 +2710,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4470</td>
@@ -2168,6 +2719,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4471</td>
@@ -2175,6 +2728,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4509</td>
@@ -2182,6 +2737,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4514</td>
@@ -2189,6 +2746,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4527</td>
@@ -2196,6 +2755,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4531</td>
@@ -2203,6 +2764,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4532</td>
@@ -2210,6 +2773,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4533</td>
@@ -2217,6 +2782,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4534</td>
@@ -2224,6 +2791,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4535</td>
@@ -2231,6 +2800,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4536</td>
@@ -2238,6 +2809,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4538</td>
@@ -2245,6 +2818,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4540</td>
@@ -2252,6 +2827,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4550</td>
@@ -2259,6 +2836,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">D</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4551</td>
@@ -2266,6 +2845,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4552</td>
@@ -2273,6 +2854,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4553</td>
@@ -2280,6 +2863,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4554</td>
@@ -2287,6 +2872,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4555</td>
@@ -2294,6 +2881,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">4556</td>
@@ -2301,6 +2890,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">4558</td>
@@ -2308,6 +2899,8 @@ The AQUASTAT calculated variables <strong>Rural Population</strong> and <strong>
 <td align="left">I</td>
 <td align="left">C</td>
 <td align="left">DERIVED</td>
+<td align="right">0</td>
+<td align="right">0</td>
 </tr>
 </tbody>
 </table>

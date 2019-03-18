@@ -126,19 +126,20 @@ graph [layout = dot, rankdir = TB]
 node [shape = rectangle, style = filled, fillcolor = Linen]
 
 # Inputs
-FAOSTAT [label = ' Input: \n Downloaded FAOSTAT data \n from FAOSTAT website', shape = folder, fillcolor = Beige]
+FAOSTAT [label = 'Dataset: \n Downloaded FAOSTAT data \n from FAOSTAT website', shape = folder, fillcolor = Beige]
+SWSenr [label = 'Dataset: \n aquastat_legacy \n from Old AQUASTAT working system',  shape = folder, fillcolor = Beige]
 
-FAOSTATSWS [label = ' Processing: \n FAOSTAT - AQUASTAT mapping \n using aquastat_faostat_mapping data table', fillcolor = LightBlue]
-SWSenr [label = 'Input: \n downloaded AQUASTAT dataset \n from SWS',  shape = folder, fillcolor = Beige]
+
+FAOSTATSWS [label = ' Processing: \n FAOSTAT - AQUASTAT merge using:\n 1. faostat_mapping data table, \n 2. aquastat_legacy data, \n 3. FAOSTAT data', shape = square, fillcolor = LightBlue]
+
 
 # Output
-Dataset1 [label = 'Output: \n SWS-AQUASTAT dataset \n with recoded FAOSTAT data', shape = folder, fillcolor = Beige]
+Dataset1 [label = 'Dataset: \n SWS-AQUASTAT dataset \n merged with FAOSTAT data', shape = folder, fillcolor = Beige]
 
 # Flow
 # edge definitions with the node IDs
-{SWSenr} -> Dataset1  
-{FAOSTAT} -> FAOSTATSWS
-{FAOSTATSWS} -> Dataset1
+{SWSenr, FAOSTAT} -> FAOSTATSWS -> Dataset1 
+
 }")
 
 ```
@@ -157,10 +158,10 @@ Dataset1 [label = 'Output: \n SWS-AQUASTAT dataset \n with recoded FAOSTAT data'
 3. According to AQUASTAT focal point, before calculations, all variables belonging to calculation rules representing addiction or subtraction **MUST** be converted to zero **IF** their respective time-series are completely empty. Below the variables pre-defined by AQUASTAT for which this is applicable.
   
 ```{r tab6, echo=FALSE, message=FALSE}
-require(dplyr)
-zeroel <- c(4308, 4309, 4310, 4312, 4316, 4314, 4315, 4264, 4265, 4451)
-d = readr::read_csv("tables/aquastat_meta_FL_sources.csv")
-knitr::kable(x = d %>% dplyr::filter(element_code %in%  zeroel), 
+require(data.table)
+# zeroel <- c(4308, 4309, 4310, 4312, 4316, 4314, 4315, 4264, 4265, 4451)
+d = data.table::fread("tables/aquastat_meta_FL_sources.csv")
+knitr::kable(x = d[PR == 1L, .(element_code, element_name, disseminated, calculated, source)], 
              caption = paste("Primary - rule applicable elements in the aquastat_reference data table"),
              booktabs = TRUE)
 ```
@@ -197,13 +198,13 @@ graph [layout = dot, rankdir = TB]
 node [shape = rectangle, style = filled, fillcolor = Linen]
 
 # Inputs
-Input [label = 'Input: \n SWS AQUASTAT dataset with FAOSTAT data', shape = folder, fillcolor = Beige]
+Input [label = 'Dataset: \n SWS AQUASTAT dataset with FAOSTAT data', shape = folder, fillcolor = Beige]
 
 # processing
-Processing [label = 'Processing steps: \n 1 - Add missing elements to the input \n 2-NAs to zero if full TS is empty \n 3-Calculations using calculation_rule \n 4- Apply primary variable rule after calculations', shape = square, fillcolor = LightBlue]
+Processing [label = 'Processing: \n 1 - Add missing elements to the input \n 2-NAs to zero if full TS is empty \n 3-Calculations using calculation_rule \n 4- Apply primary variable rule after calculations', shape = square, fillcolor = LightBlue]
 
 # Output
-Output [label = 'Output: \n Calculated data', shape = folder, fillcolor = Beige]
+Output [label = 'Dataset: \n Calculated data', shape = folder, fillcolor = Beige]
 
 # Flow
 # edge definitions with the node IDs
@@ -239,14 +240,14 @@ graph [layout = dot, rankdir = TB]
 node [shape = rectangle, style = filled, fillcolor = Linen]
 
 # Inputs
-Input [label = 'Input: \n Calculated data', shape = folder, fillcolor = Beige]
+Input [label = 'Dataset: \n Calculated data', shape = folder, fillcolor = Beige]
 
 # processing
 Expansion  [label = 'Time-series expansion: \n from first observation to 2018', fillcolor = LightBlue]
 Imputation [label = 'Imputations: \n LOCF \n Linear Interpolation', fillcolor = LightBlue]
 
 # Output
-Output [label = 'Output: \n Imputed data', shape = folder, fillcolor = Beige]
+Output [label = 'Dataset: \n Imputed data', shape = folder, fillcolor = Beige]
 
 # Flow
 # edge definitions with the node IDs
@@ -278,7 +279,7 @@ graph [layout = dot, rankdir = TB]
 node [shape = rectangle, style = filled, fillcolor = Linen]
 
 # Inputs
-Input [label = 'Input: \n Imputed data', shape = folder, fillcolor = Beige]
+Input [label = 'Dataset: \n Imputed data', shape = folder, fillcolor = Beige]
 
 # processing
 Calculation [label = 'Calculation: \n using calculation_rule data table', fillcolor = LightBlue]
@@ -287,7 +288,7 @@ Replacement  [label = 'Replace: \n imputed values by recalculated values', fillc
 
 
 # Output
-Output [label = 'Output: \n Recalculated data', shape = folder, fillcolor = Beige]
+Output [label = 'Dataset: \n Recalculated data', shape = folder, fillcolor = Beige]
 
 # Flow
 # edge definitions with the node IDs

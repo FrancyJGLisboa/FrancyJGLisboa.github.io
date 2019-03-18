@@ -422,7 +422,6 @@ knitr::kable(x = d,
 
 
 **And for the SDG 6.4.2 (Water Stress)...**
-
 ```{r tab12, echo=FALSE, message=FALSE}
 require(dplyr)
 require(data.table)

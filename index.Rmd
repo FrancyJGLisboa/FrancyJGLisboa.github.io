@@ -14,6 +14,12 @@ description: "This online book describes the migration the statistical processes
 
 AQUASTAT - FAO Global's Water Statistics System is migrating its statistical processes into the Corporate Statistical Working System (SWS). This online book documents the major steps that have been taken so far in regard to this migration. The book describes the main institutional actors involved in the migration as well as the AQUASTAT - SWS resources (**code lists**, **datasets**, **data tables**) that have been created to support the SWS plugins (R modules) to meet technical unit requirements. Furthermore, the SWS plugins are presented in the form of chapters providing detailed description of their workflows involving **input -> processing -> output** as well as results showing whether the modules have lived up to expectations. 
 
+```{block , type='rmdnote'}
+**IMPORTANT:**
+Use the **Chrome browser** to have a correct vizualization of HTML outputs in this online document.
+
+```
+
 
 # **Migration actors** {-}
 
@@ -95,27 +101,37 @@ focalpoint [label = 'Compilation: \n questionnaire filling \n by AQUASTAT \n nat
 
 SWSQH [label = 'Harvester: \n questionnaire harvesting \n by CIO - SWS', fillcolor = LightBlue]
 
-Newdata [label = 'Input: \n data harvested from questionnaire \n and SWS compliant', shape = folder, fillcolor = Beige]
+Newdata [label = 'Dataset: \n data harvested from questionnaire \n and SWS compliant', shape = folder, fillcolor = Beige]
 
-QA1 [label = 'QAQC \n Automate Quality control \n by faoswsAquatsatValidation module', fillcolor = PaleGreen]
+QA1 [label = 'QAQC \n Manual Quality control \n of data harvested from questionnaire', fillcolor = PaleGreen]
 
-Newdata_val [label = 'Input: \n new data validated', shape = folder, fillcolor = Beige]
+Newdata_val [label = 'Dataset: \n new data validated', shape = folder, fillcolor = Beige]
+
+oldsystem [label = 'Database: \n Old Aquastat Working System', shape = folder, fillcolor = Beige]
+
+Migration [label = 'Migration: \n legacy data into the SWS \n done by CIO - SWS', fillcolor = LightBlue]
+
+legacydata [label = 'Dataset: \n aquastat_legacy dataset ', shape = folder, fillcolor = Beige]
 
 
 faobaselineM [label = 'Process: \n SWS faoswsAquastatBaseline module \n (runs only once to produce \n the data to be periodically updated)',  fillcolor = PaleGreen]
 
-faobaseline [label = 'Input: \n SWS aquastat_baseline dataset \n (the data to be periodically updated)', shape = folder, fillcolor = Beige]
+faobaseline [label = 'Dataset: \n SWS aquastat_baseline dataset \n (the data to be periodically updated)', shape = folder, fillcolor = Beige]
 
-update [label = 'Process:: \n SWS faoswsAquastatUpdate module', fillcolor = LightSalmon]
+update [label = 'Process:: \n SWS faoswsAquastatUpdate module \n Updates aquastat_baseline \n with new data', fillcolor = PaleGreen]
 
-updateddata [label = 'Output: \n updated dataset \ from SWS faoswsAquastatUpdate module ', shape = folder, fillcolor = Beige]
+updateddata [label = 'Dataset: \n updated aquastat_baseline dataset \n from SWS faoswsAquastatUpdate module ', shape = folder, fillcolor = Beige]
 
 
 QA2 [label = 'Process: \n Automate Quality control \n by faoswsAquatsatValidation module', fillcolor = PaleGreen]
 
+validationemail [label = 'Dataset: \n Validation output \n sent to the user by email (.csv file)', shape = folder, fillcolor = Beige]
+
 QA3 [label = 'Process: \n Manual Quality control \n of faoswsAquatsatValidation module output', fillcolor = PaleGreen]
 
-AQUASWSdb [label = 'Output: \n updated AQUASTAT dataset \n saved in the SWS database', shape = folder, fillcolor = Beige]
+validated [label = 'Dataset: \n updated aquastat_baseline \n cleared by technical division', shape = folder, fillcolor = Beige]
+
+AQUASWSdb [label = 'Dataset: \n updated AQUASTAT dataset \n saved in the SWS database', shape = folder, fillcolor = Beige]
 
 Diss [label = 'Dissemination: \n  Web, publications, Apps', shape = folder, fillcolor = LightGrey]
 
@@ -123,8 +139,8 @@ Diss [label = 'Dissemination: \n  Web, publications, Apps', shape = folder, fill
 # Flow
 # edge definitions with the node IDs
 {coordination, Surveys, Literature} -> focalpoint -> SWSQH -> Newdata -> QA1 -> Newdata_val -> update
-{faobaselineM} -> faobaseline
-{faobaseline} -> update -> updateddata -> QA2 -> QA3 -> AQUASWSdb -> Diss
+{oldsystem} -> Migration -> legacydata -> faobaselineM -> faobaseline
+{faobaseline} -> update -> updateddata -> QA2 -> validationemail -> QA3 -> validated -> AQUASWSdb -> Diss
 }")
 
 ```
@@ -237,6 +253,7 @@ aquadataset [label = 'Typical SWS-compliant aquastat dataset', shape = folder, f
 
 
 
+
 ## **Data tables** {-} 
 
 Data tables are mainly used to store information helping R modules to output analytical results. Information in data tables can be of a number of types. For example, conversion factors, arithmetic formulas, mapping between flags, mapping between international classifications, etc. In SWS hierarchy. all data tables reside in a given statistical domain. In the AQUASTAT - SWS migration framework, the data tables are in the **Aquastat domain**. Below is a list of current available and filled data tables in the Aquastat domain:
@@ -281,17 +298,9 @@ knitr::include_graphics("images/aquastat_enr.jpg")
 knitr::include_graphics("images/aquastatbaseline.jpg")
 ```  
 
-<<<<<<< HEAD
 
 ```{block, type='rmdnote'}
 For the moment, the **aquastat_legacy** and **aquastat_baseline** datasets are using the same SWS element reference list called **aquastatElement**, which does not align with SWS standards. Therefore, for the sake of standadization, the AQUASTAT element reference list in the SWS MUST be named **measuredElement** at some point in the future.
-=======
- 
-```{block , type='rmdnote'}
-
-At the moment, the **aquastat_baseline** dataset has been using the same SWS code list to refer to AQUASTAT elements as the **aquastat_legacy** dataset, which is called **aquastatElement**. It will change in the near future and the aquastatElement name in the aquastat_baseline will take an SWS - compliant name - **measuredElement**. 
-
->>>>>>> 7c4f3e555d7976d32d6dc32e799a80d001592b7b
 ```
 
 # **AQUASTAT Elements**{-}

@@ -22,15 +22,16 @@ knitr::kable(x = d %>% dplyr::select(calculation_rule, indicator_name, component
 According to the technical unit, there a set of AQUASTAT variables and indicators that should have the same value over time. These variables are called by the technical unit **Long-term average variables** and are shown in the table below.
 
 ```{r tab3, echo=FALSE, message=FALSE}
-require(dplyr)
-lta <- c(4150L, 4151L, 4154L, 4155L, 4156L, 4157L, 4159L, 4160L,
-         4161L, 4162L, 4164L, 4165L, 4168L, 4170L, 4171L, 4172L, 4173L,
-         4174L, 4176L, 4177L, 4178L, 4182L, 4185L, 4187L, 4188L, 4192L,
-         4193L, 4194L, 4195L, 4196L, 4452L, 4453L, 4509L, 4536L,
-         4549L)
-d = readr::read_csv("tables/aquastat_meta_FL_sources.csv")
-knitr::kable(x = d %>% dplyr::filter(element_code %in%  lta), 
-             caption = paste("The Long-term average variables in AQUASTAT in the aquastat_reference datatable"),
+require(data.table)
+# lta <- c(4150L, 4151L, 4154L, 4155L, 4156L, 4157L, 4159L, 4160L,
+#          4161L, 4162L, 4164L, 4165L, 4168L, 4170L, 4171L, 4172L, 4173L,
+#          4174L, 4176L, 4177L, 4178L, 4182L, 4185L, 4187L, 4188L, 4192L,
+#          4193L, 4194L, 4195L, 4196L, 4452L, 4453L, 4509L, 4536L,
+#          4549L)
+d = data.table::fread("tables/aquastat_meta_FL_sources.csv")
+
+knitr::kable(x = d[lta == 1L, .(element_code, element_name, disseminated, calculated, source)],
+             caption = paste("The Long-term average variables in the aquastat_reference datatable"),
              booktabs = TRUE)
 ```
 

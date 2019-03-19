@@ -105,7 +105,11 @@ Newdata [label = 'Dataset: \n data harvested from questionnaire \n and SWS compl
 
 QA1 [label = 'QAQC \n Manual Quality control \n of data harvested from questionnaire', fillcolor = PaleGreen]
 
-Newdata_val [label = 'Dataset: \n new data validated', shape = folder, fillcolor = Beige]
+Newdata_val [label = 'Dataset: \n validated questionnaire data', shape = folder, fillcolor = Beige]
+
+APIsourcing [label = 'API: \n External data sourced \n by CIO - SWS', fillcolor = LightBlue]
+
+APIdata [label = 'Dataset: \n data from external sources', shape = folder, fillcolor = Beige]
 
 oldsystem [label = 'Database: \n Old Aquastat Working System', shape = folder, fillcolor = Beige]
 
@@ -118,7 +122,7 @@ faobaselineM [label = 'Process: \n SWS faoswsAquastatBaseline module \n (runs on
 
 faobaseline [label = 'Dataset: \n SWS aquastat_baseline dataset \n (the data to be periodically updated)', shape = folder, fillcolor = Beige]
 
-update [label = 'Process:: \n SWS faoswsAquastatUpdate module \n Updates aquastat_baseline \n with new data', fillcolor = PaleGreen]
+update [label = 'Process:: \n SWS faoswsAquastatUpdate module \n Updates aquastat_baseline \n with Quest. data \n and API data', fillcolor = PaleGreen]
 
 updateddata [label = 'Dataset: \n updated aquastat_baseline dataset \n from SWS faoswsAquastatUpdate module ', shape = folder, fillcolor = Beige]
 
@@ -140,6 +144,7 @@ Diss [label = 'Dissemination: \n  Web, publications, Apps', shape = folder, fill
 # edge definitions with the node IDs
 {coordination, Surveys, Literature} -> focalpoint -> SWSQH -> Newdata -> QA1 -> Newdata_val -> update
 {oldsystem} -> Migration -> legacydata -> faobaselineM -> faobaseline
+{APIsourcing} -> APIdata -> update 
 {faobaseline} -> update -> updateddata -> QA2 -> validationemail -> QA3 -> validated -> AQUASWSdb -> Diss
 }")
 

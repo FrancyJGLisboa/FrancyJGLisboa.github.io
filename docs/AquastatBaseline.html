@@ -25,7 +25,7 @@
 <meta name="author" content="Francy Lisboa (ESSD - Methodological Innovation Team)">
 
 
-<meta name="date" content="2019-03-18">
+<meta name="date" content="2019-03-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -905,8 +905,8 @@ Important to notice that while a new reference list for aquastat_baseline datase
 </p>
 </div>
 <div class="figure"><span id="fig:fig5"></span>
-<div id="htmlwidget-7e35f7b7c10853cdf0a3" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7e35f7b7c10853cdf0a3">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nFAOSTAT [label = \"Dataset: \n Downloaded FAOSTAT data \n from FAOSTAT website\", shape = folder, fillcolor = Beige]\nSWSenr [label = \"Dataset: \n aquastat_legacy \n from Old AQUASTAT working system\",  shape = folder, fillcolor = Beige]\n\n\nFAOSTATSWS [label = \" Processing: \n FAOSTAT - AQUASTAT merge using:\n 1. faostat_mapping data table, \n 2. aquastat_legacy data, \n 3. FAOSTAT data\", shape = square, fillcolor = LightBlue]\n\n\n# Output\nDataset1 [label = \"Dataset: \n SWS-AQUASTAT dataset \n merged with FAOSTAT data\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{SWSenr, FAOSTAT} -> FAOSTATSWS -> Dataset1 \n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-830242781385b559c0c7" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-830242781385b559c0c7">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nFAOSTAT [label = \"Dataset: \n Downloaded FAOSTAT data \n from FAOSTAT website\", shape = folder, fillcolor = Beige]\nSWSenr [label = \"Dataset: \n aquastat_legacy \n from Old AQUASTAT working system\",  shape = folder, fillcolor = Beige]\n\n\nFAOSTATSWS [label = \" Processing: \n FAOSTAT - AQUASTAT merge using:\n 1. faostat_mapping data table, \n 2. aquastat_legacy data, \n 3. FAOSTAT data\", shape = square, fillcolor = LightBlue]\n\n\n# Output\nDataset1 [label = \"Dataset: \n SWS-AQUASTAT dataset \n merged with FAOSTAT data\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{SWSenr, FAOSTAT} -> FAOSTATSWS -> Dataset1 \n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1.1: FAOSTAT annexation to AQUASTAT SWS data
 </p>
@@ -1062,8 +1062,8 @@ Figure 1.1: FAOSTAT annexation to AQUASTAT SWS data
 </tbody>
 </table>
 <div class="figure"><span id="fig:fig6"></span>
-<div id="htmlwidget-915227f71471db11417d" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-915227f71471db11417d">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nInput [label = \"Dataset: \n SWS AQUASTAT dataset with FAOSTAT data\", shape = folder, fillcolor = Beige]\n\n# processing\nProcessing [label = \"Processing: \n 1 - Add missing elements to the input \n 2-NAs to zero if full TS is empty \n 3-Calculations using calculation_rule \n 4- Apply primary variable rule after calculations\", shape = square, fillcolor = LightBlue]\n\n# Output\nOutput [label = \"Dataset: \n Calculated data\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{Input} -> Processing  -> Output\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b2a96da6b4731cf6f844" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b2a96da6b4731cf6f844">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nInput [label = \"Dataset: \n SWS AQUASTAT dataset with FAOSTAT data\", shape = folder, fillcolor = Beige]\n\n# processing\nProcessing [label = \"Processing: \n 1 - Add missing elements to the input \n 2-NAs to zero if full TS is empty \n 3-Calculations using calculation_rule \n 4- Apply primary variable rule after calculations\", shape = square, fillcolor = LightBlue]\n\n# Output\nOutput [label = \"Dataset: \n Calculated data\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{Input} -> Processing  -> Output\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1.2: AQUASTAT Calculation using SWS calculation_rule data table.
 </p>
@@ -1084,8 +1084,8 @@ Figure 1.2: AQUASTAT Calculation using SWS calculation_rule data table.
 <li>Applies <strong>Linear Interpolation</strong> to missing values in time-series with two or more different observed values.</li>
 </ul>
 <div class="figure"><span id="fig:fig7"></span>
-<div id="htmlwidget-eb9d9f3c7d7609cb2d2a" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eb9d9f3c7d7609cb2d2a">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nInput [label = \"Dataset: \n Calculated data\", shape = folder, fillcolor = Beige]\n\n# processing\nExpansion  [label = \"Time-series expansion: \n from first observation to 2018\", fillcolor = LightBlue]\nImputation [label = \"Imputations: \n LOCF \n Linear Interpolation\", fillcolor = LightBlue]\n\n# Output\nOutput [label = \"Dataset: \n Imputed data\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{Input} -> Expansion -> Imputation -> Output\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1e732ac26e0a9b05b7ff" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1e732ac26e0a9b05b7ff">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nInput [label = \"Dataset: \n Calculated data\", shape = folder, fillcolor = Beige]\n\n# processing\nExpansion  [label = \"Time-series expansion: \n from first observation to 2018\", fillcolor = LightBlue]\nImputation [label = \"Imputations: \n LOCF \n Linear Interpolation\", fillcolor = LightBlue]\n\n# Output\nOutput [label = \"Dataset: \n Imputed data\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{Input} -> Expansion -> Imputation -> Output\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1.3: AQUASTAT Imputations using the data resulting from the calculation step.
 </p>
@@ -1101,8 +1101,8 @@ Figure 1.3: AQUASTAT Imputations using the data resulting from the calculation s
 <li><p>Replace indicators brought by imputations by values brought by the recalculation when applicable.</p></li>
 </ol>
 <div class="figure"><span id="fig:fig8"></span>
-<div id="htmlwidget-027247d7448f7ca2577c" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-027247d7448f7ca2577c">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nInput [label = \"Dataset: \n Imputed data\", shape = folder, fillcolor = Beige]\n\n# processing\nCalculation [label = \"Calculation: \n using calculation_rule data table\", fillcolor = LightBlue]\nPrimaryVariable [label = \"Primary Variable rule: \n re-applied\", fillcolor = LightBlue]\nReplacement  [label = \"Replace: \n imputed values by recalculated values\", fillcolor = LightBlue]\n\n\n# Output\nOutput [label = \"Dataset: \n Recalculated data\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{Input} -> Calculation -> PrimaryVariable  -> Replacement -> Output\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f34a59791e1d15be7fe4" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f34a59791e1d15be7fe4">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = TB]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nInput [label = \"Dataset: \n Imputed data\", shape = folder, fillcolor = Beige]\n\n# processing\nCalculation [label = \"Calculation: \n using calculation_rule data table\", fillcolor = LightBlue]\nPrimaryVariable [label = \"Primary Variable rule: \n re-applied\", fillcolor = LightBlue]\nReplacement  [label = \"Replace: \n imputed values by recalculated values\", fillcolor = LightBlue]\n\n\n# Output\nOutput [label = \"Dataset: \n Recalculated data\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{Input} -> Calculation -> PrimaryVariable  -> Replacement -> Output\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1.4: Recalculations using imputed dataset and the calculation_rule data table.
 </p>

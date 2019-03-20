@@ -1,0 +1,31 @@
+# **Next** 
+
+## **Pending activities**
+
+
+### faoswsAquastatExternal module.
+
+  - The aqua_external_source.csv needs to completed by the technical unit. 
+
+### National dam capacity time-series (using SWS dam data table)
+
+  - easy to implement by creating an R module (faoswsAquastatDam);
+  - on hold for the moment as the implementation of the faoswsAquastatUpdate is **PRIORITY NUMBER 1**.
+
+### Aggregations
+
+  - An aggregation table has been produced by the technical unit to help the aggregation
+  - on hold for the moment as the implementation of the faoswsAquastatUpdate is **PRIORITY NUMBER 1**.
+  
+  
+### Timeline
+```{block , type='rmdnote'}
+
+The AQUASTAT - SWS MIGRATION **concernng statitsical processes** is likely to be finished by the **end of April**.
+
+```
+  
+  
+  
+  
+  

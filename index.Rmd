@@ -107,9 +107,9 @@ QA1 [label = 'QAQC \n Manual Quality control \n of data harvested from questionn
 
 Newdata_val [label = 'Dataset: \n validated questionnaire data', shape = folder, fillcolor = Beige]
 
-APIsourcing [label = 'API: \n External data sourced \n by CIO - SWS', fillcolor = LightBlue]
+APIsourcing [label = 'Process: \n faoswsAquastatExternal module', fillcolor = PaleGreen]
 
-APIdata [label = 'Dataset: \n data from external sources', shape = folder, fillcolor = Beige]
+APIdata [label = 'Dataset: \n AQUASTAT data from external sources', shape = folder, fillcolor = Beige]
 
 oldsystem [label = 'Database: \n Old Aquastat Working System', shape = folder, fillcolor = Beige]
 
@@ -118,11 +118,11 @@ Migration [label = 'Migration: \n legacy data into the SWS \n done by CIO - SWS'
 legacydata [label = 'Dataset: \n aquastat_legacy dataset ', shape = folder, fillcolor = Beige]
 
 
-faobaselineM [label = 'Process: \n SWS faoswsAquastatBaseline module \n (runs only once to produce \n the data to be periodically updated)',  fillcolor = PaleGreen]
+faobaselineM [label = 'Process: \n SWS faoswsAquastatBaseline module \n (runs only once to correct LTAs \n in the legacy data)',  fillcolor = PaleGreen]
 
-faobaseline [label = 'Dataset: \n SWS aquastat_baseline dataset \n (the data to be periodically updated)', shape = folder, fillcolor = Beige]
+faobaseline [label = 'Dataset: \n SWS aquastat_baseline dataset \n (the legacy data corrected for LTAs)', shape = folder, fillcolor = Beige]
 
-update [label = 'Process:: \n SWS faoswsAquastatUpdate module \n Updates aquastat_baseline \n with Quest. data \n and API data', fillcolor = PaleGreen]
+update [label = 'Process:: \n SWS faoswsAquastatUpdate module: \n 1. merges the questionnaire data, external data, and aquastat_baseline \n 2. flag conversion, \n 3. apply calculations, 4. impute data, 5.  apply recalculation', shape = square, fillcolor = PaleGreen]
 
 updateddata [label = 'Dataset: \n updated aquastat_baseline dataset \n from SWS faoswsAquastatUpdate module ', shape = folder, fillcolor = Beige]
 
@@ -155,7 +155,7 @@ Diss [label = 'Dissemination: \n  Web, publications, Apps', shape = folder, fill
 
 Notice that the questionnaire harvester produced by CIO - SWS counterpart represents the first contact of the questionnaire - based data with the SWS. The harvester outputs an SWS compliant dataset that goes through the chain of SWS processes where inputs and outputs datasets are also adhering to SWS standards. 
 
-Apart from the questionnaire harvesting, the processes in green are those performed by AQUASTAT modules **already operating in the QA environment in the SWS**. The **faoswsAquastatUpdate module** is yet to be built after the final endorsement of the faoswsAquastaBaseline output by the technical unit. Again, the aquastat_baseline dataset is going to be the starting point for the periodical updates of the AQUASTAT data obtained from questionnaires and other sources. Therefore, the plan is that whenever the technical unit needs to update the AQUASTAT dataset, the **faoswsAquastatUpdate** executes on the latest version of the aquastat_baseline dataset. 
+Apart from the questionnaire harvesting, the processes in green are those performed by AQUASTAT modules **already operating in the QA environment in the SWS**. The **faoswsAquastatUpdate module** is yet to be built after the final endorsement of the faoswsAquastaBaseline output by the technical unit. 
 
 ```
 
@@ -198,7 +198,6 @@ DiagrammeR::grViz("digraph {
                   }")
 ```
 
-
 ## **Code lists** {-}
 
 Code lists, also called reference lists in SWS parlance, are the dimensions making up the data sets that are designed by the user to store analytical results from SWS modules. The dimensions are statistical - domain specific and are defined by the technical unit in order to reflect its needs regarding data collection, processing, and dissemination while meeting FAO standards. Each data set dimension has a set of codes and their associated descriptions. Thus, code lists serve to the purpose of standardization, visualization, and metadata by associating standardized codes to  standardized names in the SWS data set outputs. A typical SWS compliant data set has, therefore, the following dimensions/reference lists:
@@ -212,7 +211,7 @@ Code lists, also called reference lists in SWS parlance, are the dimensions maki
 
 ```{block , type='rmdnote'}
 
-The **aquastatElement** variable in the aquastat_legacy dataset is not SWS compliant. However, the SWS reference list used by the system to map out element codes to definitions is also named **aquastatElement**. It is OK to keep **aquastatElement** as variable name in the legacy data, but the idea is that, for the **aquastat_baseline dataset**, all variables names should adhere to SWS standards.
+The **aquastatElement** variable in the aquastat_legacy dataset is not SWS compliant. However, the SWS reference list used by the system to map out element codes to definitions is also named **aquastatElement**. It is OK to keep **aquastatElement** as variable name in the legacy data, but the idea is that all datasets produced in the SWS should adhere to SWS standards.
 
 ```
 
@@ -263,7 +262,7 @@ aquadataset [label = 'Typical SWS-compliant aquastat dataset', shape = folder, f
 
 Data tables are mainly used to store information helping R modules to output analytical results. Information in data tables can be of a number of types. For example, conversion factors, arithmetic formulas, mapping between flags, mapping between international classifications, etc. In SWS hierarchy. all data tables reside in a given statistical domain. In the AQUASTAT - SWS migration framework, the data tables are in the **Aquastat domain**. Below is a list of current available and filled data tables in the Aquastat domain:
 
-1. **aquastat_reference**. A data table listing AQUASTAT element codes, names, dissemination status, variable/indicator status, sources, long-term avergae variable status, the primary variable rule status.
+1. **aquastat_reference**. A data table listing AQUASTAT element codes, names, dissemination status, variable/indicator status, sources, long-term average variable status, the primary variable rule status.
 
 2. **aquastat_faostat_mapping**. A data table mapping out AQUASTAT elements to FAOSTAT elements.
 
@@ -271,46 +270,46 @@ Data tables are mainly used to store information helping R modules to output ana
 
 4. **calculation_rule**. A data table storing the pre-defined calculation rules used to obtain AQUASTAT indicators/derived variables.
 
-5. **aquastat_validation**. A data table storing the a set of logic tests to be applied to AQUASTAT inputs and outputs for the purpose of quality assurance and quality check
+5. **aquastat_validation**. A data table storing the a set of logic tests to be applied to AQUASTAT inputs and outputs for the purpose of quality assurance and quality check.
 
-6. **Global Dam Reservoir**. A data table storing national expert - provided information on the major Dams at the country level.
+6. **Global Dam Reservoir**. A data table storing national expert - provided information on the major Dams at the country level and used to calculate Dam capacity time-series.
 
 7. **Global Map of Irrigated Area**. A data table storing information for the update of spatial representation of irrigated areas at the national level.
 
 8. **Global Map of Irrigated Area/subnational**. A data table storing information for the update of spatial representation of irrigated areas at the national and sub-national levels.
 
+9. **aqua_calculation_rule**. A data table storing the calculation rules to apply to aggregation of the SDG 6.4.2 (Water Stress) at the regional level
+
+10. **aqua_external_source**. A data table with the mapping between AQUASTAT and Data used by AQUASTAT from external agencies.
+
 
 ```{block , type='rmdnote'}
-Variable names (aka column names) in SWS data tables are more flexible in terms of the names they can take than SWS datasets. One can find SWS data tables naming variables as element_code, element_code_sws, element_code_faostat, etc. Likewise, columns describing countries across different data table may have different classification systems. This flexibility in data tables is benefitial as it allows to accomodate different auxiliary information. 
+Variable names (aka column names) in SWS data tables are more flexible in terms of the names they can take than SWS datasets. One can find SWS data tables naming variables as element_code, element_code_sws, element_code_faostat, etc. Likewise, columns describing countries across different data table may have different classification systems. This flexibility in data tables is beneficial as it allows to accommodate different auxiliary information. 
+
+**IMPORTANT**:
+The data tables **aqua_calculation_rule** and  **aqua_external_source** are work in progress.
 ```
 
 
 
 ## **Datasets** {-}
+
 Datasets in the SWS are interchangeably used as module inputs/outputs and are composed by dimensions (aka reference/code lists). Because SWS datasets contain code lists following international standards as dimensions, there is little space for variation of dimension names across SWS datasets for the sake of standardization. In the AQUASTAT - SWS framework, the available data sets are:
 
-1. **aquastat_legacy**. Currently named as **aquastat_enr**, the **aquastat_legacy** is an SWS dataset with the legacy data from the 'Old' AQUASTAT working system. The CIO - SWS has migrated the aquastat_legacy dataset into the SWS in order to be used as the starting point for the faoswsAquastatBaseline module (see \@ref(AquastatBaseline)). The **aquastat_legacy** dataset is the bare minimum of AQUASTAT, meaning that none analytical process has been applied to it, including the calculation of AQUASTAT indicators (aka derived variables) and imputations. Therefore, the **aquastat_legacy** is only used to derive the **aquastat_baseline** dataset, which in turn, is going to be the new AQUASTAT benchmark in the SWS and dataset to be updated after every end of questionnaire - based data collection - compilation cycle.
+1. **aquastat_legacy**. Currently named as **aquastat_enr**, the **aquastat_legacy** is an SWS dataset with the legacy data from the 'Old' AQUASTAT working system. The CIO - SWS has migrated the aquastat_legacy dataset into the SWS in order to be used as input for the faoswsAquastatBaseline module (see \@ref(AquastatBaseline)) responsible for its correction. The **aquastat_legacy** dataset is the bare minimum of AQUASTAT, meaning that none analytical process has been applied to it, including the calculation of AQUASTAT indicators (aka derived variables). The corrected **aquastat_legacy** dataset is used, along with the questionnaire data and external data, as an input by the **faoswsAquastatUpdate** module.
 
+2. **aquastat_baseline**. An SWS dataset output from the faoswsAquastatBaseline module which is going to correct the Long-Term average variables in the **aquastat_legacy dataset**. 
 
-```{r  fig7, echo=FALSE, out.width="100%", fig.cap='Snapshot of the aquastat_legacy dataset in SWS.'}
-knitr::include_graphics("images/aquastat_enr.jpg")
-```
+3. **aquastat_questionnaire**. An SWS dataset output from the questionnaire harvester produced by CIO. This dataset feeds, along with the aquastat_baseline and the aquastat_external datasets, the faoswsAquastatUpdate module.
 
+4. **aquastat_external**. An SWS dataset output from the questionnaire harvester produced by CIO. This dataset feeds, along with the aquastat_baseline and the aquastat_quest datasets, the faoswsAquastatUpdate module.
 
-2. **aquastat_baseline**. An SWS dataset output from the faoswsAquastatBaseline module which is going to be periodically updated by the new data made available after data collection - compilation cycle. With the new data, the aquastat_baseline dataset will be the input of a SWS module called **faoswsAquastatUpdate** which will add these new data to the aquastat_baseline dataset. 
+5. **aquastat_update**. An SWS dataset output from the **faoswsAquastatUpdate** module representing the up-to-date AQUASTAT dataset for dissemination purposes.
 
-```{r  fig8, echo=FALSE, out.width="100%", fig.cap='Snapshot of the aquastat_baseline dataset as the benchmark (input) for the future updates of AQUASTAT data collected via questionnaire'}
-knitr::include_graphics("images/aquastatbaseline.jpg")
-```  
-
-
-```{block, type='rmdnote'}
-For the moment, the **aquastat_legacy** and **aquastat_baseline** datasets are using the same SWS element reference list called **aquastatElement**, which does not align with SWS standards. Therefore, for the sake of standadization, the AQUASTAT element reference list in the SWS MUST be named **measuredElement** at some point in the future.
-```
 
 # **AQUASTAT Elements**{-}
 
-Chapter \@ref(AquastatBaseline) will treat the module as well as its data sets and data tables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at how the technical unist references its data and the list of the data collected, processed, and disseminated.
+Chapter \@ref(AquastatBaseline) will treat the module as well as its data sets and data tables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at how the technical units references its data and the list of the data collected, processed, and disseminated.
 
 ## **International Classification Systems** {-}
 
@@ -341,46 +340,64 @@ With the agreement of the AQUASTAT focal point, the ESS - SWS team has adapted a
     - **CRU CL 2.0**. Variable collected from the Tyndall Center for Climate Change Research. 
     - **UNDP**. Variable collected from United Nations Development Programme.
 6. **lta**. A binary variable indicating whether the element is a long-term average variable.
-7. **PR**. A binary variable indicating whther the element is part of the validation rules where the primary rule approach can be applied.
+7. **PR**. A binary variable indicating whether the element is part of the validation rules where the primary rule approach can be applied.
 
 ```{block , type='rmdnote'}
-In the **validation_rule** data table, some of the expressions are OK for the application of the primary variable rules. The rule grounds on the principle that some indicators have a primary variable that can be used as a substitute in case iof the indicator value is missing. This approach only applies to indicators obtained from addition and subtraction expressions. Therefore, the **PR** variable in the **aquastat_reference** data table is used to help the SWS modules to identify the elements in these expressions.
+In the **validation_rule** data table, some of the expressions are OK for the application of the primary variable rules. The rule grounds on the principle that some indicators have a primary variable that can be used as a substitute in case if the indicator value is missing. This approach only applies to indicators obtained from addition and subtraction expressions. Therefore, the **PR** variable in the **aquastat_reference** data table is used to help the SWS modules to identify the elements in these expressions.
 
 The **lta**, variable in turn, is identifying the variable with low variation over time according to the technical unit.  
-
 ```
 
 ### **Current AQUASTAT Variables** {-}
 
-Variables are AQUASTAT elements that are non-calculated. These can be frm different sources as described in the table below.
+Variables are AQUASTAT elements that are non-calculated. These can be from different sources as described in the table below.
 
 ```{r tab1, echo=FALSE, message=FALSE}
-require(data.table)
+library(data.table)
+library(kableExtra)
 d = data.table::fread("tables/aquastat_meta_FL_sources.csv")
 d[, Source := NULL]
-knitr::kable(x = d[calculated %in% 'V'], 
-             caption = paste("The SWS aquastat_reference data table. AQUASTAT variable codes and names actually collected"),
-             booktabs = TRUE)
+knitr::kable(d[calculated %in% 'V'],   
+             caption = paste("AQUASTAT variable codes and names actually collected."),
+             booktabs = TRUE) %>%
+  kableExtra::kable_styling(font_size = 12)
 ```
  
 
 ###**Current AQUASTAT indicators** {-}
 
 The indicators in AQUASTAT are calculated variables. 
-```{block , type='rmdnote'}
-
-The AQUASTAT calculated variables **Rural Population** and **Cultivated area (arable land + permanent crops)** are actually not calculated variables as they can be extracted from FAOSTAT. Since the faoswsAquastatBaseline produces the benchmark by downloading and using the data automatically from FAOSTAT, these variable MUST change their status to 'V' at the some point. 
+```{r tab2, echo=FALSE, message=FALSE}
+library(data.table)
+library(kableExtra)
+d = data.table::fread("tables/aquastat_meta_FL_sources.csv")
+d <- d[calculated %in% 'C',.(element_code, element_name, disseminated, calculated, source)]
+knitr::kable(d,   
+             caption = paste("AQUASTAT indicators"),
+             booktabs = TRUE) %>%
+  kableExtra::kable_styling(font_size = 12)
 
 
 ```
 
+###**Current External data**{-}
 
-```{r tab2, echo=FALSE, message=FALSE}
+The AQUASTAT calculated variables **Rural Population** and **Cultivated area (arable land + permanent crops)** are actually not calculated variables as they can be extracted from FAOSTAT. To solve it, the **faoswsAquastatExternal** module extracts these and other external data used by AQUASTAT and save them in the SWS-complaint **aquastat_external** dataset. This dataset is then used as one of the inputs of the **faoswsAquastatUpdate** module.
+
+```{r tab3, echo=FALSE, message=FALSE}
 require(data.table)
 d = data.table::fread("tables/aquastat_meta_FL_sources.csv")
-d[, Source := NULL]
-knitr::kable(x = d[calculated %in% 'C'], 
-             caption = paste("The aquastat_reference SWS data table. AQUASTAT indicators (derived/calculated) calculated by AQUASTAT"),
-             booktabs = TRUE)
+d <- d[Source == 'O']
+d <- d[,.(element_code, element_name, disseminated, calculated, source)]
+knitr::kable(d,   
+             caption = paste("AQUASTAT indicators (derived) calculated by AQUASTAT."),
+             booktabs = TRUE) %>%
+  kableExtra::kable_styling(font_size = 12)
+
 ```
 
+
+```{block , type='rmdnote'}
+**IMPORTANT:**
+FAOSTAT data used by AQUASTAT is an in-house source, but in the faoswsAquastatExternal module it is being treated as an external source to facilitate the workflow.
+```

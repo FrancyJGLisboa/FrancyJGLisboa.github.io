@@ -1,0 +1,135 @@
+# **The faoswsAquastaUpdate module** {#External}
+
+## **Aims**
+
+The faoswsAquastatExport emerges as a demand for making the AQUASTAT process of extracting and reshaping data from external easier.
+
+
+### **Download external data**
+
+The module needs to identify the external data used by AQUASTAT. This identification is done with the help of the SWS data aquas_external_source which has:
+
+- **element_code**. AQUASTAT element codes;
+
+- **element_name**. AQUASTAT element names;
+
+- **source_name**. External source name;
+
+- **source_item_code**. The item code of the AQUATSAT element in the external data source; If item is not applicable, cell is blank.
+
+- **source_element_code**. The element code of the AQUASTAT element in the external data source. If element is not applicable, cell is blank.
+
+- **data_link**. The electronic address containing a downloadable version of data (.xsl, .csv, .zip, .json files)
+
+
+```{r tab3, echo=FALSE, message=FALSE}
+require(data.table)
+require(kableExtra)
+d = data.table::fread("tables/aqua_external_source.csv")
+knitr::kable(d, escape = F, table.attr='class="table-fixed-header"') %>%
+  kableExtra::kable_styling(font_size = 12)
+```
+
+<br>
+<br>
+```{block , type='rmdimportant'}
+The **aqua_external_source** data table is being filled by the technical unit (AQUASTAT).
+
+```
+
+
+### **Reshape data**
+Data from different sources are likely to occur in different formats. Therefore, after the download of the data, the module needs to reshape every data source to an SWS long format with **geographicAreaM49**, **measuredElement**, **timePointYears**, **flagOvservationStatus**, **flagMethod**. 
+
+```{block , type='rmdnote'}
+
+The **flagOvservationStatus** and **flagMethod** are **"X"** and **"c"** for all data extracted by the faoswsAquasatExternal module.
+
+```
+
+
+### **Mapping data**
+With the data already reshaped, it is effortless for the module to keep relevant AQUASTAT elements since the **aqua_external_source** data table provides the means for correctly mapping the original external data code to AQUASTAT codes.
+
+### **Save data**
+The output is an SWS-compliant long-format dataset name **aquastat_external** that is saved by the user in the SWS and is ready to serve as an **input** of the **faoswsAquastatUpdate** module.
+
+
+## **Workflow**
+```{r fig1, echo=FALSE, fig.cap='Workflow of the faoswsAquastatExternal module.'}
+
+library(DiagrammeR)
+DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = LR]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = Linen]
+
+# Inputs
+FAO [label = 'Dataset: \n FAO data', shape = folder, fillcolor = Beige]
+ILO [label = 'Dataset: \n ILO data',  shape = folder, fillcolor = Beige]
+UNDP [label = 'Dataset: \n ILO data',  shape = folder, fillcolor = Beige]
+WB [label = 'Dataset: \n World Bank data',  shape = folder, fillcolor = Beige]
+JMP [label = 'Dataset: \n JMP(WHO/UNICEF) data',  shape = folder, fillcolor = Beige]
+WRI  [label = 'Dataset: \n WORLD_RESOURCES_INSTITUTE data',  shape = folder, fillcolor = Beige] 
+
+# data tables
+aquaexter [label = 'Data table: \n aqua_external_source data',  shape = folder, fillcolor = LightGrey]
+
+# processing
+externalmodule [label = ' Processing: \n faoswsAquastatExternal using:\n 1. Download and read in the data, \n 2. Reshape data \n to an long-format dataset, \n 3. Map out origin codes to AQUASTAT codes, \n 4. Retain relevant elements', shape = rectangle, fillcolor = LightBlue]
+
+
+# Output
+Output [label = 'Dataset: \n aquastat_external \n External data in an SWS compliant dataset', shape = folder, fillcolor = Beige]
+
+# Flow
+# edge definitions with the node IDs
+{FAO, ILO, UNDP, WB, JMP, WRI} -> externalmodule -> Output
+{aquaexter} -> externalmodule
+}")
+
+```
+
+## **Running the module**
+
+1. Log in the SWS;
+
+2. Click on **New Query**;
+
+3. Select **AQUASTAT domain** and **aquastat_external dataset**;
+
+4. Select whatever country, measured element, and timePointYears;
+
+```{block , type='rmdwarning'}
+
+The **faoswsAquastatExternal** searches and downloads data from external sources. Thus, what the user is actually selecting in the query is irrelevant for the module's output.
+
+```
+
+5. Run the query;
+
+6. Click on **Run plugin** on the top-right.
+
+7. Select the **faoswsAquastatExternal** module and click on **Run plugin**;
+
+```{block , type='rmdwarning'}
+
+The **faoswsAquastatExternal** module is still in progress as it depends on the completion of the aqua_external_source data table by the technical unit. 
+
+```
+
+8. Wait for the results to appear in the session;
+
+
+9. Click on **Save to dataset** after validation.
+
+
+## **Did the module..**
+
+```{block , type='rmdnote'}
+
+Module in progress...
+
+```

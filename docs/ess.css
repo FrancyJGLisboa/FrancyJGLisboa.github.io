@@ -1,7 +1,21 @@
+
 p {
   text-align: justify;
   line-height: 1.5em;
   
+}
+
+.table-fixed-header tbody{
+  display:block;
+  overflow:auto;
+  height:500px;
+  width:100%;
+}
+.table-fixed-header thead tr{
+  display:table-header-group;
+  overflow:auto;
+  height:100%;
+  width:100%;
 }
 
 .rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning {
@@ -23,6 +37,9 @@ p {
 }
 .rmdwarning {
   background-image: url("../images/warning.png");
+}
+.rmdremember {
+  background-image: url("../images/remember.png");
 }
 p.caption {
   color: #777;

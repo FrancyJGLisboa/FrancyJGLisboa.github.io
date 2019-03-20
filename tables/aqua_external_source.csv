@@ -1,0 +1,30 @@
+element_code,element_name,source,source_item_code,source_element_code,data_link
+4100,Total area of the country,FAOSTAT,6600,5110,http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip 
+4101,Arable land area,FAOSTAT,6621,5110,http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip 
+4102,Permanent crops area,FAOSTAT,6650,5110,http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip 
+4103,Cultivated area (arable land + permanent crops),FAOSTAT,6620,5110,http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip 
+4104,Total population,FAOSTAT,3010,511,http://fenixservices.fao.org/faostat/static/bulkdownloads/Population_E_All_Data_(Normalized).zip 
+4105,Rural population,FAOSTAT,3010,551,http://fenixservices.fao.org/faostat/static/bulkdownloads/Population_E_All_Data_(Normalized).zip 
+4106,Urban population,FAOSTAT,3010,561,http://fenixservices.fao.org/faostat/static/bulkdownloads/Population_E_All_Data_(Normalized).zip
+4109,Male population economically active in agriculture,ILO,,,
+4110,Female population economically active in agriculture,ILO,,,
+4111,Human Development Index (HDI) [highest = 1],UNDP,,137506,http://hdr.undp.org/sites/default/files/2018_all_indicators.xlsx
+4112,Gross Domestic Product (GDP),WORLD_BANK,,,
+4113,"Agriculture, value added (% GDP)",WORLD_BANK,,,
+4114,Total population with access to improved drinking-water source (JMP),JMP(WHO/UNICEF),,,
+4115,Rural population with access to improved drinking-water source (JMP),JMP(WHO/UNICEF),,,
+4116,Urban population with access to improved drinking-water source (JMP),JMP(WHO/UNICEF),,,
+4449,Population economically active,ILO,,,
+4472,National Rainfall Index (NRI),FAOCLIMPAG,,,
+4473,Number of people undernourished (3-year average),FAOSTAT,,,
+4474,Prevalence of undernourishment (3-year average),FAOSTAT,,,
+4537,Gender Inequality Index (GII),UNDP,,,
+4541,Interannual variability (WRI),WORLD_RESOURCES_INSTITUTE,,,
+4542,Seasonal variability (WRI),WORLD_RESOURCES_INSTITUTE,,,
+4543,Flood occurrence (WRI),WORLD_RESOURCES_INSTITUTE,,,
+4546,"Industry, value added to GDP",WORLD_BANK,,,
+4547,"Services, value added to GDP",WORLD_BANK,,,
+4548,"Agriculture, value added to GDP",WORLD_BANK,,,
+4549,Environmental Flow Requirements,FAO/IWMI,,,
+4559,Land area,FAOSTAT,6601,5110,http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip 
+4560,Inland waterd,FAOSTAT,6680,5110,http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip 

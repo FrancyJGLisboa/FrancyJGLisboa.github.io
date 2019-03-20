@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 3 The faoswsAquastaUpdate module | Migration of AQUASTAT Statistical Processes into the SWS</title>
+  <meta name="description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 3 The faoswsAquastaUpdate module | Migration of AQUASTAT Statistical Processes into the SWS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 The faoswsAquastaUpdate module | Migration of AQUASTAT Statistical Processes into the SWS" />
+  
+  <meta name="twitter:description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)" />
+  
+
+<meta name="author" content="Francy Lisboa (ESSD - Methodological Innovation Team)">
+
+
+<meta name="date" content="2019-03-20">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="AquastatValidation.html">
+<link rel="next" href="AquastatUpdate.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+
+
+
+<link rel="stylesheet" href="ess.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html#introduction"><strong>Introduction</strong></a><ul>
+<li><a href="index.html#data-collection"><strong>Data Collection</strong></a></li>
+<li><a href="index.html#questionnaire"><strong>Questionnaire</strong></a></li>
+<li><a href="index.html#the-current-aquastat-information-management"><strong>The current AQUASTAT information management</strong></a></li>
+<li><a href="index.html#code-lists"><strong>Code lists</strong></a></li>
+<li><a href="index.html#data-tables"><strong>Data tables</strong></a></li>
+<li><a href="index.html#datasets"><strong>Datasets</strong></a></li>
+<li><a href="index.html#international-classification-systems"><strong>International Classification Systems</strong></a></li>
+<li><a href="index.html#the-sws-aquastat_reference-data-table"><strong>The SWS aquastat_reference data table</strong></a><ul>
+<li><a href="index.html#current-aquastat-variables"><strong>Current AQUASTAT Variables</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html"><i class="fa fa-check"></i><b>1</b> <strong>The faoswsAquastatBaseline module</strong></a><ul>
+<li class="chapter" data-level="1.1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#aim"><i class="fa fa-check"></i><b>1.1</b> <strong>Aim</strong></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#identify-ltas"><i class="fa fa-check"></i><b>1.1.1</b> <strong>Identify LTAs</strong></a></li>
+<li class="chapter" data-level="1.1.2" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#calculations-before"><i class="fa fa-check"></i><b>1.1.2</b> <strong>Calculations before</strong></a></li>
+<li class="chapter" data-level="1.1.3" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#corrections"><i class="fa fa-check"></i><b>1.1.3</b> <strong>Corrections</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#workflow"><i class="fa fa-check"></i><b>1.2</b> <strong>Workflow</strong></a></li>
+<li class="chapter" data-level="1.3" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#running-the-module"><i class="fa fa-check"></i><b>1.3</b> <strong>Running the module</strong></a></li>
+<li class="chapter" data-level="1.4" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#did-the-module.."><i class="fa fa-check"></i><b>1.4</b> <strong>Did the module..</strong></a><ul>
+<li class="chapter" data-level="1.4.1" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#correct-values-of-long-term-average-variables"><i class="fa fa-check"></i><b>1.4.1</b> correct values of Long-Term Average variables ?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="AquastatBaseline.html"><a href="AquastatBaseline.html#output-feeds"><i class="fa fa-check"></i><b>1.5</b> <strong>Output feeds…</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="AquastatValidation.html"><a href="AquastatValidation.html"><i class="fa fa-check"></i><b>2</b> <strong>The faoswsAquastatValidation module</strong></a><ul>
+<li class="chapter" data-level="2.1" data-path="AquastatValidation.html"><a href="AquastatValidation.html#aims"><i class="fa fa-check"></i><b>2.1</b> <strong>Aims</strong></a><ul>
+<li class="chapter" data-level="2.1.1" data-path="AquastatValidation.html"><a href="AquastatValidation.html#use-validation-rules"><i class="fa fa-check"></i><b>2.1.1</b> <strong>Use validation rules</strong></a></li>
+<li class="chapter" data-level="2.1.2" data-path="AquastatValidation.html"><a href="AquastatValidation.html#focus-on-high-priority-rules"><i class="fa fa-check"></i><b>2.1.2</b> <strong>Focus on high priority rules</strong></a></li>
+<li class="chapter" data-level="2.1.3" data-path="AquastatValidation.html"><a href="AquastatValidation.html#output-as-an-email-attachment"><i class="fa fa-check"></i><b>2.1.3</b> <strong>Output as an email attachment</strong></a></li>
+<li class="chapter" data-level="2.1.4" data-path="AquastatValidation.html"><a href="AquastatValidation.html#generalization"><i class="fa fa-check"></i><b>2.1.4</b> <strong>Generalization</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="AquastatValidation.html"><a href="AquastatValidation.html#workflow-1"><i class="fa fa-check"></i><b>2.2</b> <strong>Workflow</strong></a><ul>
+<li class="chapter" data-level="2.2.1" data-path="AquastatValidation.html"><a href="AquastatValidation.html#the-input-dataset"><i class="fa fa-check"></i><b>2.2.1</b> The input dataset</a></li>
+<li class="chapter" data-level="2.2.2" data-path="AquastatValidation.html"><a href="AquastatValidation.html#apply-validation-rules"><i class="fa fa-check"></i><b>2.2.2</b> Apply validation rules</a></li>
+<li class="chapter" data-level="2.2.3" data-path="AquastatValidation.html"><a href="AquastatValidation.html#output-to-the-user"><i class="fa fa-check"></i><b>2.2.3</b> Output to the user</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="AquastatValidation.html"><a href="AquastatValidation.html#running-the-module-in-the-sws"><i class="fa fa-check"></i><b>2.3</b> <strong>Running the module in the SWS</strong></a></li>
+<li class="chapter" data-level="2.4" data-path="AquastatValidation.html"><a href="AquastatValidation.html#did-the-module"><i class="fa fa-check"></i><b>2.4</b> <strong>Did the module</strong>…</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="AquastatValidation.html"><a href="AquastatValidation.html#execute-what-it-was-designed-for"><i class="fa fa-check"></i><b>2.4.1</b> execute what it was designed for?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="External.html"><a href="External.html"><i class="fa fa-check"></i><b>3</b> <strong>The faoswsAquastaUpdate module</strong></a><ul>
+<li class="chapter" data-level="3.1" data-path="External.html"><a href="External.html#aims-1"><i class="fa fa-check"></i><b>3.1</b> <strong>Aims</strong></a><ul>
+<li class="chapter" data-level="3.1.1" data-path="External.html"><a href="External.html#download-external-data"><i class="fa fa-check"></i><b>3.1.1</b> <strong>Download external data</strong></a></li>
+<li class="chapter" data-level="3.1.2" data-path="External.html"><a href="External.html#reshape-data"><i class="fa fa-check"></i><b>3.1.2</b> <strong>Reshape data</strong></a></li>
+<li class="chapter" data-level="3.1.3" data-path="External.html"><a href="External.html#mapping-data"><i class="fa fa-check"></i><b>3.1.3</b> <strong>Mapping data</strong></a></li>
+<li class="chapter" data-level="3.1.4" data-path="External.html"><a href="External.html#save-data"><i class="fa fa-check"></i><b>3.1.4</b> <strong>Save data</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="External.html"><a href="External.html#workflow-2"><i class="fa fa-check"></i><b>3.2</b> <strong>Workflow</strong></a></li>
+<li class="chapter" data-level="3.3" data-path="External.html"><a href="External.html#running-the-module-1"><i class="fa fa-check"></i><b>3.3</b> <strong>Running the module</strong></a></li>
+<li class="chapter" data-level="3.4" data-path="External.html"><a href="External.html#did-the-module..-1"><i class="fa fa-check"></i><b>3.4</b> <strong>Did the module..</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html"><i class="fa fa-check"></i><b>4</b> <strong>The faoswsAquastaUpdate module</strong></a><ul>
+<li class="chapter" data-level="4.1" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#aims-2"><i class="fa fa-check"></i><b>4.1</b> <strong>Aims</strong></a><ul>
+<li class="chapter" data-level="4.1.1" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#harmonize-dimensions"><i class="fa fa-check"></i><b>4.1.1</b> <strong>Harmonize dimensions</strong></a></li>
+<li class="chapter" data-level="4.1.2" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#replacesupdates-the-legacy-data"><i class="fa fa-check"></i><b>4.1.2</b> <strong>replaces/updates the legacy data</strong></a></li>
+<li class="chapter" data-level="4.1.3" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#does-calculations"><i class="fa fa-check"></i><b>4.1.3</b> <strong>Does Calculations</strong></a></li>
+<li class="chapter" data-level="4.1.4" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#applies-primary-variable-approach"><i class="fa fa-check"></i><b>4.1.4</b> <strong>Applies Primary Variable Approach</strong></a></li>
+<li class="chapter" data-level="4.1.5" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#applies-imputations"><i class="fa fa-check"></i><b>4.1.5</b> <strong>Applies imputations</strong></a></li>
+<li class="chapter" data-level="4.1.6" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#recalculation"><i class="fa fa-check"></i><b>4.1.6</b> <strong>Recalculation</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#flag-mapping-observation"><i class="fa fa-check"></i><b>4.2</b> <strong>Flag mapping (Observation)</strong></a><ul>
+<li class="chapter" data-level="4.2.1" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#flag-mapping-method"><i class="fa fa-check"></i><b>4.2.1</b> <strong>Flag mapping (Method)</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#workflow-3"><i class="fa fa-check"></i><b>4.3</b> <strong>Workflow</strong></a></li>
+<li class="chapter" data-level="4.4" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#running-the-module-2"><i class="fa fa-check"></i><b>4.4</b> <strong>Running the module</strong></a></li>
+<li class="chapter" data-level="4.5" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#did-the-module-1"><i class="fa fa-check"></i><b>4.5</b> <strong>Did the module…</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="next.html"><a href="next.html"><i class="fa fa-check"></i><b>5</b> <strong>Next</strong></a><ul>
+<li class="chapter" data-level="5.1" data-path="next.html"><a href="next.html#pending-activities"><i class="fa fa-check"></i><b>5.1</b> <strong>Pending activities</strong></a><ul>
+<li class="chapter" data-level="5.1.1" data-path="next.html"><a href="next.html#faoswsaquastatexternal-module."><i class="fa fa-check"></i><b>5.1.1</b> faoswsAquastatExternal module.</a></li>
+<li class="chapter" data-level="5.1.2" data-path="next.html"><a href="next.html#national-dam-capacity-time-series-using-sws-dam-data-table"><i class="fa fa-check"></i><b>5.1.2</b> National dam capacity time-series (using SWS dam data table)</a></li>
+<li class="chapter" data-level="5.1.3" data-path="next.html"><a href="next.html#aggregations"><i class="fa fa-check"></i><b>5.1.3</b> Aggregations</a></li>
+<li class="chapter" data-level="5.1.4" data-path="next.html"><a href="next.html#timeline"><i class="fa fa-check"></i><b>5.1.4</b> Timeline</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Migration of AQUASTAT Statistical Processes into the SWS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="External" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> <strong>The faoswsAquastaUpdate module</strong></h1>
+<div id="aims-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> <strong>Aims</strong></h2>
+<p>The faoswsAquastatExport emerges as a demand for making the AQUASTAT process of extracting and reshaping data from external easier.</p>
+<div id="download-external-data" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> <strong>Download external data</strong></h3>
+<p>The module needs to identify the external data used by AQUASTAT. This identification is done with the help of the SWS data aquas_external_source which has:</p>
+<ul>
+<li><p><strong>element_code</strong>. AQUASTAT element codes;</p></li>
+<li><p><strong>element_name</strong>. AQUASTAT element names;</p></li>
+<li><p><strong>source_name</strong>. External source name;</p></li>
+<li><p><strong>source_item_code</strong>. The item code of the AQUATSAT element in the external data source; If item is not applicable, cell is blank.</p></li>
+<li><p><strong>source_element_code</strong>. The element code of the AQUASTAT element in the external data source. If element is not applicable, cell is blank.</p></li>
+<li><p><strong>data_link</strong>. The electronic address containing a downloadable version of data (.xsl, .csv, .zip, .json files)</p></li>
+</ul>
+<table class="table-fixed-header table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+element_code
+</th>
+<th style="text-align:left;">
+element_name
+</th>
+<th style="text-align:left;">
+source
+</th>
+<th style="text-align:right;">
+source_item_code
+</th>
+<th style="text-align:right;">
+source_element_code
+</th>
+<th style="text-align:left;">
+data_link
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+4100
+</td>
+<td style="text-align:left;">
+Total area of the country
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:right;">
+6600
+</td>
+<td style="text-align:right;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4101
+</td>
+<td style="text-align:left;">
+Arable land area
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:right;">
+6621
+</td>
+<td style="text-align:right;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4102
+</td>
+<td style="text-align:left;">
+Permanent crops area
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:right;">
+6650
+</td>
+<td style="text-align:right;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4103
+</td>
+<td style="text-align:left;">
+Cultivated area (arable land + permanent crops)
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:right;">
+6620
+</td>
+<td style="text-align:right;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4104
+</td>
+<td style="text-align:left;">
+Total population
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:right;">
+3010
+</td>
+<td style="text-align:right;">
+511
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Population_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Population_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4105
+</td>
+<td style="text-align:left;">
+Rural population
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:right;">
+3010
+</td>
+<td style="text-align:right;">
+551
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Population_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Population_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4106
+</td>
+<td style="text-align:left;">
+Urban population
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:right;">
+3010
+</td>
+<td style="text-align:right;">
+561
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Population_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Population_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4109
+</td>
+<td style="text-align:left;">
+Male population economically active in agriculture
+</td>
+<td style="text-align:left;">
+ILO
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4110
+</td>
+<td style="text-align:left;">
+Female population economically active in agriculture
+</td>
+<td style="text-align:left;">
+ILO
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4111
+</td>
+<td style="text-align:left;">
+Human Development Index (HDI) [highest = 1]
+</td>
+<td style="text-align:left;">
+UNDP
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+137506
+</td>
+<td style="text-align:left;">
+<a href="http://hdr.undp.org/sites/default/files/2018_all_indicators.xlsx" class="uri">http://hdr.undp.org/sites/default/files/2018_all_indicators.xlsx</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4112
+</td>
+<td style="text-align:left;">
+Gross Domestic Product (GDP)
+</td>
+<td style="text-align:left;">
+WORLD_BANK
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4113
+</td>
+<td style="text-align:left;">
+Agriculture, value added (% GDP)
+</td>
+<td style="text-align:left;">
+WORLD_BANK
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4114
+</td>
+<td style="text-align:left;">
+Total population with access to improved drinking-water source (JMP)
+</td>
+<td style="text-align:left;">
+JMP(WHO/UNICEF)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4115
+</td>
+<td style="text-align:left;">
+Rural population with access to improved drinking-water source (JMP)
+</td>
+<td style="text-align:left;">
+JMP(WHO/UNICEF)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4116
+</td>
+<td style="text-align:left;">
+Urban population with access to improved drinking-water source (JMP)
+</td>
+<td style="text-align:left;">
+JMP(WHO/UNICEF)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4449
+</td>
+<td style="text-align:left;">
+Population economically active
+</td>
+<td style="text-align:left;">
+ILO
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4472
+</td>
+<td style="text-align:left;">
+National Rainfall Index (NRI)
+</td>
+<td style="text-align:left;">
+FAOCLIMPAG
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4473
+</td>
+<td style="text-align:left;">
+Number of people undernourished (3-year average)
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4474
+</td>
+<td style="text-align:left;">
+Prevalence of undernourishment (3-year average)
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4537
+</td>
+<td style="text-align:left;">
+Gender Inequality Index (GII)
+</td>
+<td style="text-align:left;">
+UNDP
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4541
+</td>
+<td style="text-align:left;">
+Interannual variability (WRI)
+</td>
+<td style="text-align:left;">
+WORLD_RESOURCES_INSTITUTE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4542
+</td>
+<td style="text-align:left;">
+Seasonal variability (WRI)
+</td>
+<td style="text-align:left;">
+WORLD_RESOURCES_INSTITUTE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4543
+</td>
+<td style="text-align:left;">
+Flood occurrence (WRI)
+</td>
+<td style="text-align:left;">
+WORLD_RESOURCES_INSTITUTE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4546
+</td>
+<td style="text-align:left;">
+Industry, value added to GDP
+</td>
+<td style="text-align:left;">
+WORLD_BANK
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4547
+</td>
+<td style="text-align:left;">
+Services, value added to GDP
+</td>
+<td style="text-align:left;">
+WORLD_BANK
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4548
+</td>
+<td style="text-align:left;">
+Agriculture, value added to GDP
+</td>
+<td style="text-align:left;">
+WORLD_BANK
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4549
+</td>
+<td style="text-align:left;">
+Environmental Flow Requirements
+</td>
+<td style="text-align:left;">
+FAO/IWMI
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4559
+</td>
+<td style="text-align:left;">
+Land area
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:right;">
+6601
+</td>
+<td style="text-align:right;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4560
+</td>
+<td style="text-align:left;">
+Inland waterd
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:right;">
+6680
+</td>
+<td style="text-align:right;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+</tbody>
+</table>
+<br> <br>
+<div class="rmdimportant">
+<p>
+The <strong>aqua_external_source</strong> data table is being filled by the technical unit (AQUASTAT).
+</p>
+</div>
+</div>
+<div id="reshape-data" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> <strong>Reshape data</strong></h3>
+<p>Data from different sources are likely to occur in different formats. Therefore, after the download of the data, the module needs to reshape every data source to an SWS long format with <strong>geographicAreaM49</strong>, <strong>measuredElement</strong>, <strong>timePointYears</strong>, <strong>flagOvservationStatus</strong>, <strong>flagMethod</strong>.</p>
+<div class="rmdnote">
+<p>
+The <strong>flagOvservationStatus</strong> and <strong>flagMethod</strong> are <strong>“X”</strong> and <strong>“c”</strong> for all data extracted by the faoswsAquasatExternal module.
+</p>
+</div>
+</div>
+<div id="mapping-data" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> <strong>Mapping data</strong></h3>
+<p>With the data already reshaped, it is effortless for the module to keep relevant AQUASTAT elements since the <strong>aqua_external_source</strong> data table provides the means for correctly mapping the original external data code to AQUASTAT codes.</p>
+</div>
+<div id="save-data" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> <strong>Save data</strong></h3>
+<p>The output is an SWS-compliant long-format dataset name <strong>aquastat_external</strong> that is saved by the user in the SWS and is ready to serve as an <strong>input</strong> of the <strong>faoswsAquastatUpdate</strong> module.</p>
+</div>
+</div>
+<div id="workflow-2" class="section level2">
+<h2><span class="header-section-number">3.2</span> <strong>Workflow</strong></h2>
+<div class="figure"><span id="fig:fig1"></span>
+<div id="htmlwidget-b510c864da72b3d2e47d" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b510c864da72b3d2e47d">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nFAO [label = \"Dataset: \n FAO data\", shape = folder, fillcolor = Beige]\nILO [label = \"Dataset: \n ILO data\",  shape = folder, fillcolor = Beige]\nUNDP [label = \"Dataset: \n ILO data\",  shape = folder, fillcolor = Beige]\nWB [label = \"Dataset: \n World Bank data\",  shape = folder, fillcolor = Beige]\nJMP [label = \"Dataset: \n JMP(WHO/UNICEF) data\",  shape = folder, fillcolor = Beige]\nWRI  [label = \"Dataset: \n WORLD_RESOURCES_INSTITUTE data\",  shape = folder, fillcolor = Beige] \n\n# data tables\naquaexter [label = \"Data table: \n aqua_external_source data\",  shape = folder, fillcolor = LightGrey]\n\n# processing\nexternalmodule [label = \" Processing: \n faoswsAquastatExternal using:\n 1. Download and read in the data, \n 2. Reshape data \n to an long-format dataset, \n 3. Map out origin codes to AQUASTAT codes, \n 4. Retain relevant elements\", shape = rectangle, fillcolor = LightBlue]\n\n\n# Output\nOutput [label = \"Dataset: \n aquastat_external \n External data in an SWS compliant dataset\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{FAO, ILO, UNDP, WB, JMP, WRI} -> externalmodule -> Output\n{aquaexter} -> externalmodule\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 3.1: Workflow of the faoswsAquastatExternal module.
+</p>
+</div>
+</div>
+<div id="running-the-module-1" class="section level2">
+<h2><span class="header-section-number">3.3</span> <strong>Running the module</strong></h2>
+<ol style="list-style-type: decimal">
+<li><p>Log in the SWS;</p></li>
+<li><p>Click on <strong>New Query</strong>;</p></li>
+<li><p>Select <strong>AQUASTAT domain</strong> and <strong>aquastat_external dataset</strong>;</p></li>
+<li><p>Select whatever country, measured element, and timePointYears;</p></li>
+</ol>
+<div class="rmdwarning">
+<p>
+The <strong>faoswsAquastatExternal</strong> searches and downloads data from external sources. Thus, what the user is actually selecting in the query is irrelevant for the module’s output.
+</p>
+</div>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Run the query;</p></li>
+<li><p>Click on <strong>Run plugin</strong> on the top-right.</p></li>
+<li><p>Select the <strong>faoswsAquastatExternal</strong> module and click on <strong>Run plugin</strong>;</p></li>
+</ol>
+<div class="rmdwarning">
+<p>
+The <strong>faoswsAquastatExternal</strong> module is still in progress as it depends on the completion of the aqua_external_source data table by the technical unit.
+</p>
+</div>
+<ol start="8" style="list-style-type: decimal">
+<li><p>Wait for the results to appear in the session;</p></li>
+<li><p>Click on <strong>Save to dataset</strong> after validation.</p></li>
+</ol>
+</div>
+<div id="did-the-module..-1" class="section level2">
+<h2><span class="header-section-number">3.4</span> <strong>Did the module..</strong></h2>
+<div class="rmdnote">
+<p>
+Module in progress…
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="AquastatValidation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="AquastatUpdate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 --- 
 title: "Migration of AQUASTAT Statistical Processes into the SWS"
-author: "Francy Lisboa (ESSD - Methodological Innovation Team)"
+author: "Francy Lisboa (Agronomist/Statistician, ESSD - Methodological Innovation Team)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -118,13 +118,13 @@ Migration [label = 'Migration: \n legacy data into the SWS \n done by CIO - SWS'
 legacydata [label = 'Dataset: \n aquastat_legacy dataset ', shape = folder, fillcolor = Beige]
 
 
-faobaselineM [label = 'Process: \n SWS faoswsAquastatBaseline module \n (runs only once to correct LTAs \n in the legacy data)',  fillcolor = PaleGreen]
+faobaselineM [label = 'Process: \n SWS faoswsAquastatLegacy module \n (runs only once to correct LTAs \n in the legacy data)',  fillcolor = PaleGreen]
 
-faobaseline [label = 'Dataset: \n SWS aquastat_baseline dataset \n (the legacy data corrected for LTAs)', shape = folder, fillcolor = Beige]
+faobaseline [label = 'Dataset: \n SWS aquastat_legacy_corr dataset \n (the legacy data corrected for LTAs)', shape = folder, fillcolor = Beige]
 
-update [label = 'Process:: \n SWS faoswsAquastatUpdate module: \n 1. merges the questionnaire data, external data, and aquastat_baseline \n 2. flag conversion, \n 3. apply calculations, 4. impute data, 5.  apply recalculation', shape = square, fillcolor = PaleGreen]
+update [label = 'Process:: \n SWS faoswsAquastatUpdate module: \n 1. merges the questionnaire data, external data, and aquastat_legacy_corr \n 2. flag conversion, \n 3. apply calculations, 4. impute data, 5.  apply recalculation', shape = square, fillcolor = PaleGreen]
 
-updateddata [label = 'Dataset: \n updated aquastat_baseline dataset \n from SWS faoswsAquastatUpdate module ', shape = folder, fillcolor = Beige]
+updateddata [label = 'Dataset: \n updated aquastat_legacy_corr dataset \n from SWS faoswsAquastatUpdate module ', shape = folder, fillcolor = Beige]
 
 
 QA2 [label = 'Process: \n Automate Quality control \n by faoswsAquatsatValidation module', fillcolor = PaleGreen]
@@ -133,7 +133,7 @@ validationemail [label = 'Dataset: \n Validation output \n sent to the user by e
 
 QA3 [label = 'Process: \n Manual Quality control \n of faoswsAquatsatValidation module output', fillcolor = PaleGreen]
 
-validated [label = 'Dataset: \n updated aquastat_baseline \n cleared by technical division', shape = folder, fillcolor = Beige]
+validated [label = 'Dataset: \n updated aquastat_legacy_corr \n cleared by technical division', shape = folder, fillcolor = Beige]
 
 AQUASWSdb [label = 'Dataset: \n updated AQUASTAT dataset \n saved in the SWS database', shape = folder, fillcolor = Beige]
 
@@ -296,20 +296,20 @@ The data tables **aqua_calculation_rule** and  **aqua_external_source** are work
 
 Datasets in the SWS are interchangeably used as module inputs/outputs and are composed by dimensions (aka reference/code lists). Because SWS datasets contain code lists following international standards as dimensions, there is little space for variation of dimension names across SWS datasets for the sake of standardization. In the AQUASTAT - SWS framework, the available data sets are:
 
-1. **aquastat_legacy**. Currently named as **aquastat_enr**, the **aquastat_legacy** is an SWS dataset with the legacy data from the 'Old' AQUASTAT working system. The CIO - SWS has migrated the aquastat_legacy dataset into the SWS in order to be used as input for the faoswsAquastatBaseline module (see \@ref(AquastatBaseline)) responsible for its correction. The **aquastat_legacy** dataset is the bare minimum of AQUASTAT, meaning that none analytical process has been applied to it, including the calculation of AQUASTAT indicators (aka derived variables). The corrected **aquastat_legacy** dataset is used, along with the questionnaire data and external data, as an input by the **faoswsAquastatUpdate** module.
+1. **aquastat_legacy**. Currently named as **aquastat_enr**, the **aquastat_legacy** is an SWS dataset with the legacy data from the 'Old' AQUASTAT working system. The CIO - SWS has migrated the aquastat_legacy dataset into the SWS in order to be used as input for the faoswsAquastatLegacy module (see Chapter \@ref(AquastatLegacy)) responsible for its correction. The **aquastat_legacy** dataset is the bare minimum of AQUASTAT, meaning that none analytical process has been applied to it, including the calculation of AQUASTAT indicators (aka derived variables). The corrected **aquastat_legacy** dataset is used, along with the questionnaire data and external data, as an input by the **faoswsAquastatUpdate** module.
 
-2. **aquastat_baseline**. An SWS dataset output from the faoswsAquastatBaseline module which is going to correct the Long-Term average variables in the **aquastat_legacy dataset**. 
+2. **aquastat_legacy_corr**. An SWS dataset output from the faoswsAquastatLegacy module which is going to correct the Long-Term average variables in the **aquastat_legacy dataset**. 
 
-3. **aquastat_questionnaire**. An SWS dataset output from the questionnaire harvester produced by CIO. This dataset feeds, along with the aquastat_baseline and the aquastat_external datasets, the faoswsAquastatUpdate module.
+3. **aquastat_questionnaire**. An SWS dataset output from the questionnaire harvester produced by CIO. This dataset feeds, along with the aquastat_legacy_corr and the aquastat_external datasets, the faoswsAquastatUpdate module.
 
-4. **aquastat_external**. An SWS dataset output from the questionnaire harvester produced by CIO. This dataset feeds, along with the aquastat_baseline and the aquastat_quest datasets, the faoswsAquastatUpdate module.
+4. **aquastat_external**. An SWS dataset output from the questionnaire harvester produced by CIO. This dataset feeds, along with the aquastat_legacy_corr and the aquastat_quest datasets, the faoswsAquastatUpdate module.
 
 5. **aquastat_update**. An SWS dataset output from the **faoswsAquastatUpdate** module representing the up-to-date AQUASTAT dataset for dissemination purposes.
 
 
 # **AQUASTAT Elements**{-}
 
-Chapter \@ref(AquastatBaseline) will treat the module as well as its data sets and data tables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at how the technical units references its data and the list of the data collected, processed, and disseminated.
+The next chapters will treat the modules as well as their datasets and datatables in more details. However, after describing the current SWS resources involved in the AQUASTAT - SWS migration framework, it is important to have a look at how the technical units references its data and the list of the data collected, processed, and disseminated.
 
 ## **International Classification Systems** {-}
 

@@ -6,16 +6,16 @@ The **faoswsAquastatUpdate** module is the *heart* of the AQUASTAT migration int
 
 ### **Harmonize dimensions**
 
-With the availability of the outputs from the **faoswsAquastatBaseline** and **faoswsAquastatExternal** modules as well as the  ***aquastat_questionnaire**  dataset output by the questionnaire harvester by CIO - SWS, the faoswsAquastatUpdate module uses these three datasets as inputs. After feeding on the inputs, the module proceeds to harmonize the inputs by harmonizing their dimension names to **geographicAreaM49**, **measuredElement**, **timePointYears**, and **flagObservationStatus**.
+With the availability of the outputs from the **faoswsAquastatLegacy** and **faoswsAquastatExternal** modules as well as the  ***aquastat_questionnaire**  dataset output by the questionnaire harvester by CIO - SWS, the faoswsAquastatUpdate module uses these three datasets as inputs. After feeding on the inputs, the module proceeds to harmonize the inputs by harmonizing their dimension names to **geographicAreaM49**, **measuredElement**, **timePointYears**, and **flagObservationStatus**.
 
 
-### **replaces/updates the legacy data**
+### **Replaces/updates the legacy data**
 
-The **aquastat_questionnaire** and **aquastat_external** datasets are the brand new data used to update the legacy data represented by the **aquastat_baseline** dataset. Thus, the faoswsAquastatUpdate module:
+The **aquastat_questionnaire** and **aquastat_external** datasets are the brand new data used to update the legacy data represented by the **aquastat_legacy_corr** dataset. Thus, the faoswsAquastatUpdate module:
 
-1. **Finds** and **replaces** rows in the *aquastat_baseline* dataset by the corresponding rows of the *aquastat_aquestionnaire* dataset.
+1. **Finds** and **replaces** rows in the *aquastat_legacy_corr* dataset by the corresponding rows of the *aquastat_aquestionnaire* dataset.
 
-2. **Finds** and **replaces** rows in the *aquastat_baseline* dataset by the corresponding rows of the *aquastat_external* dataset.
+2. **Finds** and **replaces** rows in the *aquastat_legacy_corr* dataset by the corresponding rows of the *aquastat_external* dataset.
 
 
 ### **Does Calculations**
@@ -62,14 +62,14 @@ The calculation step adds indicators to the data, but does not solve the issue o
 3. Fills the generated missing values using the following guideline:
 
    - Applies **Last Observation Carried Forward** to missing values in time-series where the observed values **DO NOT VARY**;
-   - Applies **Last Observation Carried Forward** to missing values in time-series of Long-Term average variables (see Chapter \@ref(AquastatBaseline) for reference);
+   - Applies **Last Observation Carried Forward** to missing values in time-series of Long-Term average variables (see Chapter \@ref(AquastatLegacy) for reference);
    - Applies **Last Observation Carried Forward** to missing values in time-series with only one observed value;
    - Applies **Linear Interpolation** to missing values in time-series with two or more different observed values.
 
 <br>
 
 
-### **Recalculation**
+### **Recalculates indicators**
 
 The time-series completeness brought by imputations is used by the recalculation step to replace indicator imputed values by calculated values. Thus, the faoswsAquastatUpdate:
 
@@ -83,9 +83,9 @@ The time-series completeness brought by imputations is used by the recalculation
 
 
 
-## **Flag mapping (Observation)**
+### **Maps out flags (Observation)**
 
-After the update of the aquastat_baseline by the aquastat_questionnaire and aquastat_external datasets, the the final step is the mapping between AQUASTAT and SWS flags. The faoswsAquastatUpdate module maps out AQUASTAT to valid SWS flags using the following conversion table:
+After the update of the aquastat_legacy_corr by the aquastat_questionnaire and aquastat_external datasets, the the final step is the mapping between AQUASTAT and SWS flags. The faoswsAquastatUpdate module maps out AQUASTAT to valid SWS flags using the following conversion table:
 <br>
 ```{r flagobs, echo=FALSE, message=FALSE}
 require(dplyr)
@@ -95,7 +95,7 @@ knitr::kable(x = d,
              booktabs = TRUE)
 ```
 <br>
-Besides the basic conversion described above, values emerged from the faoswsAquastatBaseline module processing were flagged as follow:
+Besides the basic conversion described above, values emerged from the faoswsAquastatLegacy module processing were flagged as follow:
 
 1. All indicators emerging from calculations/recalculations have SWS flagObservationStatus = **'E'**;
 
@@ -104,7 +104,7 @@ Besides the basic conversion described above, values emerged from the faoswsAqua
 3. The flagAquastat **M** becomes the flagObservationStatus **I** because all M values are transformed into missing to avoid errors from linear interpolation.
 
 
-### **Flag mapping (Method)**
+### **Maps out flags (Method)**
 
 With regard to the flag of methods in SWS, the conversion follows:
 
@@ -125,7 +125,7 @@ With regard to the flag of methods in SWS, the conversion follows:
 require(dplyr)
 d = readr::read_csv("tables/flagmeth.csv")
 knitr::kable(x = d, 
-             caption = paste("flagObservationStatus - flagMethod combination brought by the faoswsAquastatBaseline module"),
+             caption = paste("flagObservationStatus - flagMethod combination brought by the faoswsAquastatLegacy module"),
              booktabs = TRUE)
 ```
 <br>
@@ -143,7 +143,7 @@ graph [layout = dot, rankdir = LR]
 node [shape = rectangle, style = filled, fillcolor = Linen]
 
 # Inputs
-aquabase [label = 'Dataset: \n SWS aquastat_baseline \n from the faoswsAquastatBaseline module', shape = folder, fillcolor = Beige]
+aquabase [label = 'Dataset: \n SWS aquastat_legacy_corr \n from the faoswsAquastatLegacy module', shape = folder, fillcolor = Beige]
 aquaquest [label = 'Dataset: \n SWS aquastat_questionnaire \n from the questionnaire harvester', shape = folder, fillcolor = Beige]
 aquaexter [label = 'Dataset: \n SWS aquastat_external \n from the faoswsAquastatExternal module', shape = folder, fillcolor = Beige]
 
@@ -152,7 +152,7 @@ refer [label = 'Data table: \n SWS aquastat_reference data table', shape = folde
 calc [label = 'Data table: \n SWS calculation_rule data table', shape = folder, fillcolor = LightGrey]
 
 # processing
-Processing [label = 'Processing: \n 1. Harmonize dimensions \n 2. Replace/Update aquastat_baseline \n with aquastat_questionnaire \n and aquastat_external dataset, \n 3. Calculations, \n 4. Imputations, \n 5. Recalculations, \n 6. Flag conversion', shape = square, fillcolor = LightBlue]
+Processing [label = 'Processing: \n 1. Harmonize dimensions \n 2. Replace/Update aquastat_legacy_corr \n with aquastat_questionnaire \n and aquastat_external dataset, \n 3. Calculations, \n 4. Imputations, \n 5. Recalculations, \n 6. Flag conversion', shape = square, fillcolor = LightBlue]
 
 # Output
 Output [label = 'Dataset: \n aquastat_update dataset', shape = folder, fillcolor = Beige]
@@ -178,16 +178,12 @@ Save [label = 'Database: \n aquastat_update dataset \n saved in the SWS', shape 
 
 2. Click on **New Query**;
 
-```{r  newquery, echo=FALSE, out.width="100%"}
-knitr::include_graphics("images/newquery.jpg")
-```  
-
-3. Select **AQUASTAT domain** and **aquastat_baseline dataset**;
+3. Select **AQUASTAT domain** and **aquastat_update dataset**;
 
 4. Select whatever country, measured element, and timePointYears;
 
 ```{block , type='rmdnote'}
-The **faoswsAquastatUpdate** module updates the **aquastat_baseline** dataset (corrected legacy data) using the **aquastat_questionnarie** and **aquastat_export** datasets that were saved into the SWS database. It means that that the user's selections during this step are irrelevant for the module's output. 
+The **faoswsAquastatUpdate** module updates the **aquastat_legacy_corr** dataset (corrected legacy data) using the **aquastat_questionnarie** and **aquastat_export** datasets that were saved into the SWS database in the previous steps. It means that that the user's selections during this step are irrelevant for the module's output. 
 
 ```
 

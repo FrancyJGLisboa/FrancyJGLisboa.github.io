@@ -1,12 +1,11 @@
-# **The faoswsAquastaUpdate module** {#External}
+# **The faoswsAquastatExternal module** {#External}
 
 ## **Aims**
 
-The faoswsAquastatExport emerges as a demand for making the AQUASTAT process of extracting and reshaping data from external easier.
+The faoswsAquastatExternal emerges as a demand for making the AQUASTAT process of extracting and reshaping updated data from external sources (web databases) easier. Thus, the faoswsAquastatExternal module:
 
 
-### **Download external data**
-
+### **Identifies AQUASTAT external data sources**
 The module needs to identify the external data used by AQUASTAT. This identification is done with the help of the SWS data aquas_external_source which has:
 
 - **element_code**. AQUASTAT element codes;
@@ -38,8 +37,11 @@ The **aqua_external_source** data table is being filled by the technical unit (A
 ```
 
 
-### **Reshape data**
-Data from different sources are likely to occur in different formats. Therefore, after the download of the data, the module needs to reshape every data source to an SWS long format with **geographicAreaM49**, **measuredElement**, **timePointYears**, **flagOvservationStatus**, **flagMethod**. 
+After identification, the module downloads the data to temporary files and read it in to start the processing.
+
+
+### **Reshapes the data sources**
+Data from different sources are likely to occur in different formats. Therefore, after the download of the data, the module needs to apply a different reshaping strategy to each data source. Regardless the initial shape of the external AQUASTAT data sources, the module is going to convert **each** single source into an SWS long format dataset with **geographicAreaM49**, **aquastatElement**, **timePointYears**, **flagOvservationStatus**, **flagMethod**. 
 
 ```{block , type='rmdnote'}
 
@@ -48,11 +50,12 @@ The **flagOvservationStatus** and **flagMethod** are **"X"** and **"c"** for all
 ```
 
 
-### **Mapping data**
-With the data already reshaped, it is effortless for the module to keep relevant AQUASTAT elements since the **aqua_external_source** data table provides the means for correctly mapping the original external data code to AQUASTAT codes.
+### **Maps out AQUASTAT to external sources**
+With the data already reshaped, it is effortless for the module to keep relevant AQUASTAT elements since the **aqua_external_source** data table provides the means for correctly mapping out the original external data code to AQUASTAT codes. 
 
-### **Save data**
-The output is an SWS-compliant long-format dataset name **aquastat_external** that is saved by the user in the SWS and is ready to serve as an **input** of the **faoswsAquastatUpdate** module.
+
+### **Saves the output back into SWS**
+Finally, the module merges the sources into a single dataset. This output is an SWS-compliant long-format dataset name **aquastat_external** that is saved by the user in the SWS and will be ready to serve as an **input** of the **faoswsAquastatUpdate** module.
 
 
 ## **Workflow**
@@ -78,7 +81,7 @@ WRI  [label = 'Dataset: \n WORLD_RESOURCES_INSTITUTE data',  shape = folder, fil
 aquaexter [label = 'Data table: \n aqua_external_source data',  shape = folder, fillcolor = LightGrey]
 
 # processing
-externalmodule [label = ' Processing: \n faoswsAquastatExternal using:\n 1. Download and read in the data, \n 2. Reshape data \n to an long-format dataset, \n 3. Map out origin codes to AQUASTAT codes, \n 4. Retain relevant elements', shape = rectangle, fillcolor = LightBlue]
+externalmodule [label = ' Processing: \n faoswsAquastatExternal using:\n 1. Download and read in the data, \n 2. Reshape data \n to an long-format dataset, \n 3. Map out original codes to AQUASTAT codes, \n 4. Retain relevant elements', shape = rectangle, fillcolor = LightBlue]
 
 
 # Output

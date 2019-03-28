@@ -25,7 +25,7 @@
 <meta name="author" content="Francy Lisboa (Agronomist/Statistician, ESSD - Methodological Innovation Team)">
 
 
-<meta name="date" content="2019-03-21">
+<meta name="date" content="2019-03-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -98,9 +98,12 @@
 <li class="chapter" data-level="2.1.1" data-path="External.html"><a href="External.html#identifies-aquastat-external-data-sources"><i class="fa fa-check"></i><b>2.1.1</b> <strong>Identifies AQUASTAT external data sources</strong></a></li>
 <li class="chapter" data-level="2.1.2" data-path="External.html"><a href="External.html#reshapes-the-data-sources"><i class="fa fa-check"></i><b>2.1.2</b> <strong>Reshapes the data sources</strong></a></li>
 <li class="chapter" data-level="2.1.3" data-path="External.html"><a href="External.html#maps-out-aquastat-to-external-sources"><i class="fa fa-check"></i><b>2.1.3</b> <strong>Maps out AQUASTAT to external sources</strong></a></li>
-<li class="chapter" data-level="2.1.4" data-path="External.html"><a href="External.html#saves-the-output-back-into-sws"><i class="fa fa-check"></i><b>2.1.4</b> <strong>Saves the output back into SWS</strong></a></li>
+<li class="chapter" data-level="2.1.4" data-path="External.html"><a href="External.html#maps-out-faostat-areas-to-unsdm49"><i class="fa fa-check"></i><b>2.1.4</b> <strong>Maps out FAOSTAT areas to UNSDM49</strong></a></li>
+<li class="chapter" data-level="2.1.5" data-path="External.html"><a href="External.html#saves-the-output-back-into-sws"><i class="fa fa-check"></i><b>2.1.5</b> <strong>Saves the output back into SWS</strong></a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="External.html"><a href="External.html#workflow-1"><i class="fa fa-check"></i><b>2.2</b> <strong>Workflow</strong></a></li>
+<li class="chapter" data-level="2.2" data-path="External.html"><a href="External.html#workflow-1"><i class="fa fa-check"></i><b>2.2</b> <strong>Workflow</strong></a><ul>
+<li class="chapter" data-level="2.2.1" data-path="External.html"><a href="External.html#only-possible-workflow"><i class="fa fa-check"></i><b>2.2.1</b> <em>Only Possible</em> <strong>Workflow</strong></a></li>
+</ul></li>
 <li class="chapter" data-level="2.3" data-path="External.html"><a href="External.html#running-the-module-1"><i class="fa fa-check"></i><b>2.3</b> <strong>Running the module</strong></a></li>
 <li class="chapter" data-level="2.4" data-path="External.html"><a href="External.html#did-the-module..-1"><i class="fa fa-check"></i><b>2.4</b> <strong>Did the module..</strong></a></li>
 </ul></li>
@@ -375,8 +378,8 @@
 <div id="workflow-2" class="section level2">
 <h2><span class="header-section-number">3.2</span> <strong>Workflow</strong></h2>
 <div class="figure"><span id="fig:fig1"></span>
-<div id="htmlwidget-42ee33f78471fd101dcc" style="width:100%;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-42ee33f78471fd101dcc">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\naquabase [label = \"Dataset: \n SWS aquastat_legacy_corr \n from the faoswsAquastatLegacy module\", shape = folder, fillcolor = Beige]\naquaquest [label = \"Dataset: \n SWS aquastat_questionnaire \n from the questionnaire harvester\", shape = folder, fillcolor = Beige]\naquaexter [label = \"Dataset: \n SWS aquastat_external \n from the faoswsAquastatExternal module\", shape = folder, fillcolor = Beige]\n\n# data tables\nrefer [label = \"Data table: \n SWS aquastat_reference data table\", shape = folder, fillcolor = LightGrey]\ncalc [label = \"Data table: \n SWS calculation_rule data table\", shape = folder, fillcolor = LightGrey]\n\n# processing\nProcessing [label = \"Processing: \n 1. Harmonize dimensions \n 2. Replace/Update aquastat_legacy_corr \n with aquastat_questionnaire \n and aquastat_external dataset, \n 3. Calculations, \n 4. Imputations, \n 5. Recalculations, \n 6. Flag conversion\", shape = square, fillcolor = LightBlue]\n\n# Output\nOutput [label = \"Dataset: \n aquastat_update dataset\", shape = folder, fillcolor = Beige]\n\n#Save\nSave [label = \"Database: \n aquastat_update dataset \n saved in the SWS\", shape = folder, fillcolor = Beige]\n\n\n# Flow\n# edge definitions with the node IDs\n{aquaquest, aquabase, aquaexter} -> Processing  -> Output -> Save\n{refer, calc} -> Processing\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-382619a6181e13682eda" style="width:100%;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-382619a6181e13682eda">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\naquabase [label = \"Dataset: \n SWS aquastat_legacy_corr \n from the faoswsAquastatLegacy module\", shape = folder, fillcolor = Beige]\naquaquest [label = \"Dataset: \n SWS aquastat_questionnaire \n from the questionnaire harvester\", shape = folder, fillcolor = Beige]\naquaexter [label = \"Dataset: \n SWS aquastat_external \n from the faoswsAquastatExternal module\", shape = folder, fillcolor = Beige]\n\n# data tables\nrefer [label = \"Data table: \n SWS aquastat_reference data table\", shape = folder, fillcolor = LightGrey]\ncalc [label = \"Data table: \n SWS calculation_rule data table\", shape = folder, fillcolor = LightGrey]\n\n# processing\nProcessing [label = \"Processing: \n 1. Harmonize dimensions \n 2. Replace/Update aquastat_legacy_corr \n with aquastat_questionnaire \n and aquastat_external dataset, \n 3. Calculations, \n 4. Imputations, \n 5. Recalculations, \n 6. Flag conversion\", shape = square, fillcolor = LightBlue]\n\n# Output\nOutput [label = \"Dataset: \n aquastat_update dataset\", shape = folder, fillcolor = Beige]\n\n#Save\nSave [label = \"Database: \n aquastat_update dataset \n saved in the SWS\", shape = folder, fillcolor = Beige]\n\n\n# Flow\n# edge definitions with the node IDs\n{aquaquest, aquabase, aquaexter} -> Processing  -> Output -> Save\n{refer, calc} -> Processing\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 3.1: Workflow of the faoswsAquastatUpdate module.
 </p>

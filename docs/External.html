@@ -25,7 +25,7 @@
 <meta name="author" content="Francy Lisboa (Agronomist/Statistician, ESSD - Methodological Innovation Team)">
 
 
-<meta name="date" content="2019-03-21">
+<meta name="date" content="2019-03-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -99,9 +99,12 @@
 <li class="chapter" data-level="2.1.1" data-path="External.html"><a href="External.html#identifies-aquastat-external-data-sources"><i class="fa fa-check"></i><b>2.1.1</b> <strong>Identifies AQUASTAT external data sources</strong></a></li>
 <li class="chapter" data-level="2.1.2" data-path="External.html"><a href="External.html#reshapes-the-data-sources"><i class="fa fa-check"></i><b>2.1.2</b> <strong>Reshapes the data sources</strong></a></li>
 <li class="chapter" data-level="2.1.3" data-path="External.html"><a href="External.html#maps-out-aquastat-to-external-sources"><i class="fa fa-check"></i><b>2.1.3</b> <strong>Maps out AQUASTAT to external sources</strong></a></li>
-<li class="chapter" data-level="2.1.4" data-path="External.html"><a href="External.html#saves-the-output-back-into-sws"><i class="fa fa-check"></i><b>2.1.4</b> <strong>Saves the output back into SWS</strong></a></li>
+<li class="chapter" data-level="2.1.4" data-path="External.html"><a href="External.html#maps-out-faostat-areas-to-unsdm49"><i class="fa fa-check"></i><b>2.1.4</b> <strong>Maps out FAOSTAT areas to UNSDM49</strong></a></li>
+<li class="chapter" data-level="2.1.5" data-path="External.html"><a href="External.html#saves-the-output-back-into-sws"><i class="fa fa-check"></i><b>2.1.5</b> <strong>Saves the output back into SWS</strong></a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="External.html"><a href="External.html#workflow-1"><i class="fa fa-check"></i><b>2.2</b> <strong>Workflow</strong></a></li>
+<li class="chapter" data-level="2.2" data-path="External.html"><a href="External.html#workflow-1"><i class="fa fa-check"></i><b>2.2</b> <strong>Workflow</strong></a><ul>
+<li class="chapter" data-level="2.2.1" data-path="External.html"><a href="External.html#only-possible-workflow"><i class="fa fa-check"></i><b>2.2.1</b> <em>Only Possible</em> <strong>Workflow</strong></a></li>
+</ul></li>
 <li class="chapter" data-level="2.3" data-path="External.html"><a href="External.html#running-the-module-1"><i class="fa fa-check"></i><b>2.3</b> <strong>Running the module</strong></a></li>
 <li class="chapter" data-level="2.4" data-path="External.html"><a href="External.html#did-the-module..-1"><i class="fa fa-check"></i><b>2.4</b> <strong>Did the module..</strong></a></li>
 </ul></li>
@@ -162,10 +165,10 @@
 <h1><span class="header-section-number">Chapter 2</span> <strong>The faoswsAquastatExternal module</strong></h1>
 <div id="aims" class="section level2">
 <h2><span class="header-section-number">2.1</span> <strong>Aims</strong></h2>
-<p>The faoswsAquastatExternal emerges as a demand for making the AQUASTAT process of extracting and reshaping updated data from external sources (web databases) easier. Thus, the faoswsAquastatExternal module:</p>
+<p>The faoswsAquastatExternal is essentially an data harverster that emerges as a demand for making the AQUASTAT process of extracting and reshaping data from external sources (web databases) easier. Thus, the faoswsAquastatExternal module:</p>
 <div id="identifies-aquastat-external-data-sources" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> <strong>Identifies AQUASTAT external data sources</strong></h3>
-<p>The module needs to identify the external data used by AQUASTAT. This identification is done with the help of the SWS data aquas_external_source which has:</p>
+<p>The module needs to identify the external data used by AQUASTAT. This identification is done with the help of the SWS data table <strong>aquas_external_sources</strong> which has:</p>
 <ul>
 <li><p><strong>element_code</strong>. AQUASTAT element codes;</p></li>
 <li><p><strong>element_name</strong>. AQUASTAT element names;</p></li>
@@ -174,7 +177,12 @@
 <li><p><strong>source_element_code</strong>. The element code of the AQUASTAT element in the external data source. If element is not applicable, cell is blank.</p></li>
 <li><p><strong>data_link</strong>. The electronic address containing a downloadable version of data (.xsl, .csv, .zip, .json files)</p></li>
 </ul>
+<br>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table-fixed-header table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:tab3">Table 2.1: </span>AQUASTAT external sources
+</caption>
 <thead>
 <tr>
 <th style="text-align:right;">
@@ -186,10 +194,10 @@ element_name
 <th style="text-align:left;">
 source
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 source_item_code
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 source_element_code
 </th>
 <th style="text-align:left;">
@@ -203,15 +211,15 @@ data_link
 4100
 </td>
 <td style="text-align:left;">
-Total area of the country
+Total area of the country (excl. coastal water)
 </td>
 <td style="text-align:left;">
 FAOSTAT
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 6600
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 5110
 </td>
 <td style="text-align:left;">
@@ -228,10 +236,10 @@ Arable land area
 <td style="text-align:left;">
 FAOSTAT
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 6621
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 5110
 </td>
 <td style="text-align:left;">
@@ -248,10 +256,10 @@ Permanent crops area
 <td style="text-align:left;">
 FAOSTAT
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 6650
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 5110
 </td>
 <td style="text-align:left;">
@@ -268,10 +276,10 @@ Cultivated area (arable land + permanent crops)
 <td style="text-align:left;">
 FAOSTAT
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 6620
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 5110
 </td>
 <td style="text-align:left;">
@@ -288,10 +296,10 @@ Total population
 <td style="text-align:left;">
 FAOSTAT
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 3010
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 511
 </td>
 <td style="text-align:left;">
@@ -308,10 +316,10 @@ Rural population
 <td style="text-align:left;">
 FAOSTAT
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 3010
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 551
 </td>
 <td style="text-align:left;">
@@ -328,52 +336,14 @@ Urban population
 <td style="text-align:left;">
 FAOSTAT
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 3010
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 561
 </td>
 <td style="text-align:left;">
 <a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Population_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Population_E_All_Data_(Normalized).zip</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-4109
-</td>
-<td style="text-align:left;">
-Male population economically active in agriculture
-</td>
-<td style="text-align:left;">
-ILO
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-4110
-</td>
-<td style="text-align:left;">
-Female population economically active in agriculture
-</td>
-<td style="text-align:left;">
-ILO
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -386,10 +356,9 @@ Human Development Index (HDI) [highest = 1]
 <td style="text-align:left;">
 UNDP
 </td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 137506
 </td>
 <td style="text-align:left;">
@@ -404,15 +373,16 @@ NA
 Gross Domestic Product (GDP)
 </td>
 <td style="text-align:left;">
-WORLD_BANK
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+FAOSTAT
 </td>
 <td style="text-align:left;">
+22008
+</td>
+<td style="text-align:left;">
+6110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Macro-Statistics_Key_Indicators_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Macro-Statistics_Key_Indicators_E_All_Data_(Normalized).zip</a>
 </td>
 </tr>
 <tr>
@@ -423,15 +393,16 @@ NA
 Agriculture, value added (% GDP)
 </td>
 <td style="text-align:left;">
-WORLD_BANK
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+FAOSTAT
 </td>
 <td style="text-align:left;">
+22016
+</td>
+<td style="text-align:left;">
+6110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Macro-Statistics_Key_Indicators_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Macro-Statistics_Key_Indicators_E_All_Data_(Normalized).zip</a>
 </td>
 </tr>
 <tr>
@@ -444,13 +415,13 @@ Total population with access to improved drinking-water source (JMP)
 <td style="text-align:left;">
 JMP(WHO/UNICEF)
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
+Water Tab/ Column F
+</td>
+<td style="text-align:left;">
+<a href="https://washdata.org/data/country/WLD/download" class="uri">https://washdata.org/data/country/WLD/download</a>
 </td>
 </tr>
 <tr>
@@ -463,13 +434,13 @@ Rural population with access to improved drinking-water source (JMP)
 <td style="text-align:left;">
 JMP(WHO/UNICEF)
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
+Water Tab/ Column K
+</td>
+<td style="text-align:left;">
+<a href="https://washdata.org/data/country/WLD/download" class="uri">https://washdata.org/data/country/WLD/download</a>
 </td>
 </tr>
 <tr>
@@ -482,13 +453,13 @@ Urban population with access to improved drinking-water source (JMP)
 <td style="text-align:left;">
 JMP(WHO/UNICEF)
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
+Water Tab/ Column P
+</td>
+<td style="text-align:left;">
+<a href="https://washdata.org/data/country/WLD/download" class="uri">https://washdata.org/data/country/WLD/download</a>
 </td>
 </tr>
 <tr>
@@ -501,13 +472,33 @@ Population economically active
 <td style="text-align:left;">
 ILO
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
+EAP_2EAP_SEX_AGE_NB
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+<a href="https://www.ilo.org/ilostat-files/WEB_bulk_download/indicator/EAP_2EAP_SEX_AGE_NB_A.csv.gz" class="uri">https://www.ilo.org/ilostat-files/WEB_bulk_download/indicator/EAP_2EAP_SEX_AGE_NB_A.csv.gz</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4458
+</td>
+<td style="text-align:left;">
+GDP per capita
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:left;">
+22014
+</td>
+<td style="text-align:left;">
+6107
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Macro-Statistics_Key_Indicators_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Macro-Statistics_Key_Indicators_E_All_Data_(Normalized).zip</a>
 </td>
 </tr>
 <tr>
@@ -520,13 +511,12 @@ National Rainfall Index (NRI)
 <td style="text-align:left;">
 FAOCLIMPAG
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No regular update
 </td>
 </tr>
 <tr>
@@ -539,13 +529,14 @@ Number of people undernourished (3-year average)
 <td style="text-align:left;">
 FAOSTAT
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
+210011
 </td>
 <td style="text-align:left;">
+6132
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Food_Security_Data_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Food_Security_Data_E_All_Data_(Normalized).zip</a>
 </td>
 </tr>
 <tr>
@@ -558,13 +549,14 @@ Prevalence of undernourishment (3-year average)
 <td style="text-align:left;">
 FAOSTAT
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
+210041
 </td>
 <td style="text-align:left;">
+6121
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Food_Security_Data_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Food_Security_Data_E_All_Data_(Normalized).zip</a>
 </td>
 </tr>
 <tr>
@@ -577,13 +569,13 @@ Gender Inequality Index (GII)
 <td style="text-align:left;">
 UNDP
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
+68606
+</td>
+<td style="text-align:left;">
+<a href="http://hdr.undp.org/sites/default/files/2018_all_indicators.xlsx" class="uri">http://hdr.undp.org/sites/default/files/2018_all_indicators.xlsx</a>
 </td>
 </tr>
 <tr>
@@ -596,13 +588,12 @@ Interannual variability (WRI)
 <td style="text-align:left;">
 WORLD_RESOURCES_INSTITUTE
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No regular update
 </td>
 </tr>
 <tr>
@@ -615,13 +606,12 @@ Seasonal variability (WRI)
 <td style="text-align:left;">
 WORLD_RESOURCES_INSTITUTE
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No regular update
 </td>
 </tr>
 <tr>
@@ -634,13 +624,12 @@ Flood occurrence (WRI)
 <td style="text-align:left;">
 WORLD_RESOURCES_INSTITUTE
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No regular update
 </td>
 </tr>
 <tr>
@@ -651,15 +640,15 @@ NA
 Industry, value added to GDP
 </td>
 <td style="text-align:left;">
-WORLD_BANK
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+WORLD_BANK FAOSTAT? UNSD?
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Mining, Manufacturing, Utilities (ISIC C-E) + Construction (ISIC F)
+</td>
+<td style="text-align:left;">
+<a href="http://data.un.org/Data.aspx?q=gross+value+added+US+current&amp;d=SNAAMA&amp;f=grID%3a201%3bcurrID%3aUSD%3bpcFlag%3a0">http://data.un.org/Data.aspx?q=gross+value+added+US+current&amp;d=SNAAMA&amp;f=grID%3a201%3bcurrID%3aUSD%3bpcFlag%3a0</a>
 </td>
 </tr>
 <tr>
@@ -670,15 +659,15 @@ NA
 Services, value added to GDP
 </td>
 <td style="text-align:left;">
-WORLD_BANK
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+WORLD_BANK FAOSTAT? UNSD?
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Wholesale, retail trade, restaurants and hotels (ISIC G-H) + Transport, storage and communication (ISIC I) + Other Activities (ISIC J-P)
+</td>
+<td style="text-align:left;">
+<a href="http://data.un.org/Data.aspx?q=gross+value+added+US+current&amp;d=SNAAMA&amp;f=grID%3a201%3bcurrID%3aUSD%3bpcFlag%3a0">http://data.un.org/Data.aspx?q=gross+value+added+US+current&amp;d=SNAAMA&amp;f=grID%3a201%3bcurrID%3aUSD%3bpcFlag%3a0</a>
 </td>
 </tr>
 <tr>
@@ -689,15 +678,15 @@ NA
 Agriculture, value added to GDP
 </td>
 <td style="text-align:left;">
-WORLD_BANK
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+WORLD_BANK FAOSTAT? UNSD?
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Agriculture, hunting, forestry, fishing (ISIC A-B)
+</td>
+<td style="text-align:left;">
+<a href="http://data.un.org/Data.aspx?q=gross+value+added+US+current&amp;d=SNAAMA&amp;f=grID%3a201%3bcurrID%3aUSD%3bpcFlag%3a0">http://data.un.org/Data.aspx?q=gross+value+added+US+current&amp;d=SNAAMA&amp;f=grID%3a201%3bcurrID%3aUSD%3bpcFlag%3a0</a>
 </td>
 </tr>
 <tr>
@@ -710,13 +699,32 @@ Environmental Flow Requirements
 <td style="text-align:left;">
 FAO/IWMI
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No regular update (LTA)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4558
+</td>
+<td style="text-align:left;">
+GDP Deflators
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:left;">
+22024
+</td>
+<td style="text-align:left;">
+6107
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Deflators_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Deflators_E_All_Data_(Normalized).zip</a>
 </td>
 </tr>
 <tr>
@@ -729,10 +737,10 @@ Land area
 <td style="text-align:left;">
 FAOSTAT
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 6601
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 5110
 </td>
 <td style="text-align:left;">
@@ -744,15 +752,155 @@ FAOSTAT
 4560
 </td>
 <td style="text-align:left;">
-Inland waterd
+Inland watersd
 </td>
 <td style="text-align:left;">
 FAOSTAT
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 6680
 </td>
+<td style="text-align:left;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
 <td style="text-align:right;">
+4561
+</td>
+<td style="text-align:left;">
+Total area of the country (incl. coastal water)
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:left;">
+6600
+</td>
+<td style="text-align:left;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4562
+</td>
+<td style="text-align:left;">
+Land area equipped for irrigation
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:left;">
+6690
+</td>
+<td style="text-align:left;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4563
+</td>
+<td style="text-align:left;">
+Land area actually irrigated
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:left;">
+6616
+</td>
+<td style="text-align:left;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4564
+</td>
+<td style="text-align:left;">
+Agriculture area actually irrigated
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:left;">
+6611
+</td>
+<td style="text-align:left;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4565
+</td>
+<td style="text-align:left;">
+Cropland area actually irrigated
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:left;">
+6694
+</td>
+<td style="text-align:left;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4566
+</td>
+<td style="text-align:left;">
+Permanent meadows &amp; pastures area actually irrigated
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:left;">
+6657
+</td>
+<td style="text-align:left;">
+5110
+</td>
+<td style="text-align:left;">
+<a href="http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip" class="uri">http://fenixservices.fao.org/faostat/static/bulkdownloads/Inputs_LandUse_E_All_Data_(Normalized).zip</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4567
+</td>
+<td style="text-align:left;">
+Forestry area actually irrigated
+</td>
+<td style="text-align:left;">
+FAOSTAT
+</td>
+<td style="text-align:left;">
+6695
+</td>
+<td style="text-align:left;">
 5110
 </td>
 <td style="text-align:left;">
@@ -761,40 +909,66 @@ FAOSTAT
 </tr>
 </tbody>
 </table>
-<br> <br>
-<div class="rmdimportant">
-<p>
-The <strong>aqua_external_source</strong> data table is being filled by the technical unit (AQUASTAT).
-</p>
 </div>
+<p><br> <br></p>
 <p>After identification, the module downloads the data to temporary files and read it in to start the processing.</p>
 </div>
 <div id="reshapes-the-data-sources" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> <strong>Reshapes the data sources</strong></h3>
 <p>Data from different sources are likely to occur in different formats. Therefore, after the download of the data, the module needs to apply a different reshaping strategy to each data source. Regardless the initial shape of the external AQUASTAT data sources, the module is going to convert <strong>each</strong> single source into an SWS long format dataset with <strong>geographicAreaM49</strong>, <strong>aquastatElement</strong>, <strong>timePointYears</strong>, <strong>flagOvservationStatus</strong>, <strong>flagMethod</strong>.</p>
+<br>
 <div class="rmdnote">
 <p>
 The <strong>flagOvservationStatus</strong> and <strong>flagMethod</strong> are <strong>“X”</strong> and <strong>“c”</strong> for all data extracted by the faoswsAquasatExternal module.
 </p>
 </div>
+<p><br></p>
 </div>
 <div id="maps-out-aquastat-to-external-sources" class="section level3">
 <h3><span class="header-section-number">2.1.3</span> <strong>Maps out AQUASTAT to external sources</strong></h3>
 <p>With the data already reshaped, it is effortless for the module to keep relevant AQUASTAT elements since the <strong>aqua_external_source</strong> data table provides the means for correctly mapping out the original external data code to AQUASTAT codes.</p>
 </div>
+<div id="maps-out-faostat-areas-to-unsdm49" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> <strong>Maps out FAOSTAT areas to UNSDM49</strong></h3>
+<p>The SWS data table <strong>m49_fs_iso_mapping</strong> has the correspondence among different international codes (FAOSTAT, UNSDM49, ISO2, ISO3) for geographic areas and is used to convert area codes in the external sources to UNSDM49 codes which is the standard in the SWS.</p>
+</div>
 <div id="saves-the-output-back-into-sws" class="section level3">
-<h3><span class="header-section-number">2.1.4</span> <strong>Saves the output back into SWS</strong></h3>
+<h3><span class="header-section-number">2.1.5</span> <strong>Saves the output back into SWS</strong></h3>
 <p>Finally, the module merges the sources into a single dataset. This output is an SWS-compliant long-format dataset name <strong>aquastat_external</strong> that is saved by the user in the SWS and will be ready to serve as an <strong>input</strong> of the <strong>faoswsAquastatUpdate</strong> module.</p>
 </div>
 </div>
 <div id="workflow-1" class="section level2">
 <h2><span class="header-section-number">2.2</span> <strong>Workflow</strong></h2>
 <div class="figure"><span id="fig:fig1"></span>
-<div id="htmlwidget-4fd3d30b174f5db787d3" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4fd3d30b174f5db787d3">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nFAO [label = \"Dataset: \n FAO data\", shape = folder, fillcolor = Beige]\nILO [label = \"Dataset: \n ILO data\",  shape = folder, fillcolor = Beige]\nUNDP [label = \"Dataset: \n ILO data\",  shape = folder, fillcolor = Beige]\nWB [label = \"Dataset: \n World Bank data\",  shape = folder, fillcolor = Beige]\nJMP [label = \"Dataset: \n JMP(WHO/UNICEF) data\",  shape = folder, fillcolor = Beige]\nWRI  [label = \"Dataset: \n WORLD_RESOURCES_INSTITUTE data\",  shape = folder, fillcolor = Beige] \n\n# data tables\naquaexter [label = \"Data table: \n aqua_external_source data\",  shape = folder, fillcolor = LightGrey]\n\n# processing\nexternalmodule [label = \" Processing: \n faoswsAquastatExternal using:\n 1. Download and read in the data, \n 2. Reshape data \n to an long-format dataset, \n 3. Map out original codes to AQUASTAT codes, \n 4. Retain relevant elements\", shape = rectangle, fillcolor = LightBlue]\n\n\n# Output\nOutput [label = \"Dataset: \n aquastat_external \n External data in an SWS compliant dataset\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{FAO, ILO, UNDP, WB, JMP, WRI} -> externalmodule -> Output\n{aquaexter} -> externalmodule\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9ca83dc0014ff5ac5f5e" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9ca83dc0014ff5ac5f5e">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nFAO [label = \"Dataset: \n FAO data\", shape = folder, fillcolor = Beige]\nILO [label = \"Dataset: \n ILO data\",  shape = folder, fillcolor = Beige]\nUNDP [label = \"Dataset: \n ILO data\",  shape = folder, fillcolor = Beige]\nWB [label = \"Dataset: \n World Bank data\",  shape = folder, fillcolor = Beige]\nJMP [label = \"Dataset: \n JMP(WHO/UNICEF) data\",  shape = folder, fillcolor = Beige]\n\n# data tables\naquaexter [label = \"Data table: \n aqua_external_source data\",  shape = folder, fillcolor = LightGrey]\nm49iso [label = \"Data table: \n m49_fs_iso_mapping\",  shape = folder, fillcolor = LightGrey]\n\n\n# processing\nexternalmodule [label = \" Processing: \n faoswsAquastatExternal using:\n 1. Download and read in the data, \n 2. Reshape data \n to an long-format dataset, \n 3. Map out original codes to AQUASTAT codes, \n 4. Retain relevant elements\", shape = rectangle, fillcolor = LightBlue]\n\n\n# Output\nOutput [label = \"Dataset: \n aquastat_external \n External data in an SWS compliant dataset\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{FAO, ILO, UNDP, WB, JMP} -> externalmodule -> Output\n{aquaexter, m49iso} -> externalmodule\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.1: Workflow of the faoswsAquastatExternal module.
 </p>
+</div>
+<p><br> <br></p>
+<div id="only-possible-workflow" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> <em>Only Possible</em> <strong>Workflow</strong></h3>
+<br>
+<div class="rmdnote">
+<p>
+<strong>FAOSTAT, the ONLY REACHABLE DATA SOURCE:</strong>
+</p>
+<p>
+The harvest of all external data was proved to be not possible due to IT security reasons. During the development, it was noticed that SWS modules running in SWS could not access external downloadable links. The only exceptions are the data from FAOSTAT.
+</p>
+<p>
+Therefore, while the module does not have the clearance to download external data, the faoswsAquastatExternal data will only harvest FAOSTAT data.
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span id="fig:possiblewf"></span>
+<div id="htmlwidget-6e20bd579b0dad6a472f" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6e20bd579b0dad6a472f">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\nFAO [label = \"Dataset: \n FAO data\", shape = folder, fillcolor = Beige]\nILO [label = \"Source: \n ILO data\",  shape = folder, fillcolor = Red]\nUNDP [label = \"Source: \n ILO data\",  shape = folder, fillcolor = Red]\nWB [label = \"Source: \n World Bank data\",  shape = folder, fillcolor = Red]\nJMP [label = \"Source: \n JMP(WHO/UNICEF) data\",  shape = folder, fillcolor = Red]\n\n\nblocked [label = \"Blocked: \n Data sources with access denied by SWS\", fillcolor = Beige]\n\n# data tables\naquaexter [label = \"Data table: \n aqua_external_sources\",  shape = folder, fillcolor = LightGrey]\nm49iso [label = \"Data table: \n m49_fs_iso_mapping\",  shape = folder, fillcolor = LightGrey]\n\n\n# processing\nexternalmodule [label = \" Processing: \n faoswsAquastatExternal using:\n 1. Download and read in the data, \n 2. Reshape data \n to an long-format dataset, \n 3. Map out original codes to AQUASTAT codes, \n 4. Retain relevant elements\", shape = rectangle, fillcolor = LightBlue]\n\n\n# Output\nOutput [label = \"Dataset: \n aquastat_external \n External data in an SWS compliant dataset\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{FAO} -> externalmodule -> Output\nblocked -> {ILO, UNDP, WB, JMP}\n{aquaexter,m49iso} -> externalmodule\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 2.2: Workflow of the faoswsAquastatExternal module HARVESTING FAOSTAT data only.
+</p>
+</div>
 </div>
 </div>
 <div id="running-the-module-1" class="section level2">
@@ -803,33 +977,65 @@ Figure 2.1: Workflow of the faoswsAquastatExternal module.
 <li><p>Log in the SWS;</p></li>
 <li><p>Click on <strong>New Query</strong>;</p></li>
 <li><p>Select <strong>AQUASTAT domain</strong> and <strong>aquastat_external dataset</strong>;</p></li>
-<li><p>Select whatever country, measured element, and timePointYears;</p></li>
-</ol>
+<li>Select whatever country, measured element, and timePointYears; <br>
+<div class="figure"><span id="fig:extquery"></span>
+<img src="images/aqua_external_query.png" alt="Steps 1 to 4" width="100%" />
+<p class="caption">
+Figure 2.3: Steps 1 to 4
+</p>
+</div>
+<br> <br>
 <div class="rmdwarning">
 <p>
 The <strong>faoswsAquastatExternal</strong> searches and downloads data from external sources. Thus, what the user is actually selecting in the query is irrelevant for the module’s output.
 </p>
 </div>
-<ol start="5" style="list-style-type: decimal">
-<li><p>Run the query;</p></li>
+<br></li>
+<li>Run the query and get an empty session; <br>
+<div class="figure"><span id="fig:extempty"></span>
+<img src="images/aqua_external_empty.png" alt="Empty SWS session of the aquastat_external dataset" width="100%" />
+<p class="caption">
+Figure 2.4: Empty SWS session of the aquastat_external dataset
+</p>
+</div>
+<br></li>
 <li><p>Click on <strong>Run plugin</strong> on the top-right.</p></li>
 <li><p>Select the <strong>faoswsAquastatExternal</strong> module and click on <strong>Run plugin</strong>;</p></li>
 </ol>
-<div class="rmdwarning">
-<p>
-The <strong>faoswsAquastatExternal</strong> module is still in progress as it depends on the completion of the aqua_external_source data table by the technical unit.
+<br>
+<div class="figure"><span id="fig:extplugin"></span>
+<img src="images/aqua_external_plugin.png" alt="Select the AquastatExternal plugin and run it" width="100%" />
+<p class="caption">
+Figure 2.5: Select the AquastatExternal plugin and run it
 </p>
 </div>
-<ol start="8" style="list-style-type: decimal">
-<li><p>Wait for the results to appear in the session;</p></li>
-<li><p>Click on <strong>Save to dataset</strong> after validation.</p></li>
+<p><br> 8. Wait for the results to appear in the session;</p>
+<br>
+<div class="figure"><span id="fig:extoutput"></span>
+<img src="images/aqua_external_output.png" alt="Select the AquastatExternal plugin output in the session" width="100%" />
+<p class="caption">
+Figure 2.6: Select the AquastatExternal plugin output in the session
+</p>
+</div>
+<p><br></p>
+<ol start="9" style="list-style-type: decimal">
+<li><p>Click on <strong>Save to dataset</strong>;</p></li>
+<li><p>Email to the user.</p></li>
 </ol>
+<br>
+<div class="figure"><span id="fig:extemail"></span>
+<img src="images/aqua_external_email.png" alt="Select the AquastatExternal output is emailed to the user." width="100%" />
+<p class="caption">
+Figure 2.7: Select the AquastatExternal output is emailed to the user.
+</p>
+</div>
+<p><br></p>
 </div>
 <div id="did-the-module..-1" class="section level2">
 <h2><span class="header-section-number">2.4</span> <strong>Did the module..</strong></h2>
 <div class="rmdnote">
 <p>
-Module in progress…
+The module has met the expectations concerning data from FAOSTAT. However, due to security reasons, the downloadable links could not be accessed by the plugin. In any case, *ALL FAOSTAT VARIABLES WERE CORRECTLY HARVESTED AND MAPPED TO AQUASTAT**.
 </p>
 </div>
 

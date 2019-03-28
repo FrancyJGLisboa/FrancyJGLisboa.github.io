@@ -1,6 +1,7 @@
 # **The faoswsAquastatLegacy module** {#AquastatLegacy}
 
 ## **Aim**
+
 According to the technical unit, there is a set of AQUASTAT variables that should have the same value over time. These variables are collectivelly known as Long-term average variables. However, it was observed that, for an unidentified reason, some of these variables have wrong values in the old AQUATSAT Working System and these errors persisted after the migration from the old system into SWS **aquastat_legacy** dataset.  Therefore, the **faoswsAquastatLegacy** module has the task of correcting these wrong values.
 
 ### **Identify LTAs**
@@ -147,7 +148,7 @@ The corrected version of the **aquasat_legacy** dataset output by the **faoswsAq
 
 ```{block , type='rmdimportant'}
 
-The **aquastat_legacy_corr** keeps the same dimension  names as the legacy dataset: **geographicAreaM49**, **aquastatElement**, **timePointYears**, and **flagAquastat**. 
+The **aquastat_legacy_corr** keeps the same dimension  names as the legacy dataset: **geographicAreaM49**, **aquastatElement**, **timePointYears**, **flagAquastat**, **flagAquastatVisibility**. 
 
 The change of aquastatElement to measuredElement (SWS compliant) as well as the flag conversion from flagAquast to flagObaservationStatus are tasked to the faoswsAquastatUpdate module.
 

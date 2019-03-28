@@ -12,7 +12,7 @@ description: "This online book describes the migration the statistical processes
 
 # **Introduction** {-}
 
-AQUASTAT - FAO Global's Water Statistics System is migrating its statistical processes into the Corporate Statistical Working System (SWS). This online book documents the major steps that have been taken so far in regard to this migration. The book describes the main institutional actors involved in the migration as well as the AQUASTAT - SWS resources (**code lists**, **datasets**, **data tables**) that have been created to support the SWS plugins (R modules) to meet technical unit requirements. Furthermore, the SWS plugins are presented in the form of chapters providing detailed description of their workflows involving **input -> processing -> output** as well as results showing whether the modules have lived up to expectations. 
+AQUASTAT - FAO Global's Water Statistics System is migrating its statistical processes into the Corporate Statistical Working System (SWS). This online book documents the significant steps that have been taken so far concerning this migration. The document describes the main institutional actors involved in the migration as well as the AQUASTAT - SWS resources (**code lists**, **datasets**, **data tables**) that have been created to support the SWS plugins (R modules) to meet technical unit requirements. Furthermore, the SWS plugins are presented in the form of chapters providing a detailed description of their workflows involving **input -> processing -> output** as well as results showing whether the modules have lived up to expectations.  
 
 ```{block , type='rmdnote'}
 **IMPORTANT:**
@@ -54,9 +54,10 @@ The book focuses on SWS statistical processes on progress. However, for those in
 
   3. Alternate correspondents from different agencies are also used to improve the data collection;
 
-  4. The annual **Water and Agriculture** questionnaire was cleared by **FAO Office of the Chief Statistician (OCS)**;
+  4. The **FAO Office of the Chief Statistician (OCS)** has endorsed the annual **Water and Agriculture** questionnaire;
 
-  5. The Questionnaire compiles **water and irrigation** statistics collected by National Correspondents and is sent out the first semester of each year.
+  5. AQUASTAT sents out the questionnaire in the first semester of each year.
+
 
 ## **Questionnaire** {-}
 
@@ -80,7 +81,7 @@ knitr::include_graphics("images/aqua_methodology_new.png")
 
 # **AQUASTAT in SWS: proposed dataflow** {-}
 
-AQUASTAT dataflow will predominatly be triggered by the filling and compilation of the **Water and Agriculture questionnaire** by the AQUASTAT network of National Correspondents. The CIO - SWS counterpart is the responsible for creating tailored questionnaire harvesters to automatically extract data from filled questionnaires and output it as an SWS compliant dataset. Once in the SWS, the technical will benefit from the tools and other features that have been developed to make the AQUASTAT dataflow as seamless as possible. On this basis, the flowchart below gives the AQUASTAT dataflow that has been fostered by the ESS - SWS team.
+AQUASTAT dataflow will predominantly be triggered by the filling and compilation of the **Water and Agriculture questionnaire** by the AQUASTAT network of National Correspondents. The CIO - SWS counterpart is responsible for creating a tailored questionnaire harvesters to automatically extract data from filled surveys and output it as an SWS compliant dataset. Once in the SWS, the technical unit will benefit from the tools and other features that have been developed to make the AQUASTAT dataflow as seamless as possible. On this basis, the flowchart below gives the AQUASTAT dataflow that has been fostered by the ESS - SWS team.
 
 ```{r fig2, echo=FALSE, fig.cap='Proposed AQUATAST - SWS dataflow', message=FALSE, warning=FALSE}
 
@@ -162,7 +163,7 @@ Apart from the questionnaire harvesting, the processes in green are those perfor
 
 # **SWS resources** {-}
 
-SWS resources are R modules, data tables, data sets, and code lists comprising a migration framework. Data tables are typically used as auxiliary data to help R modules to achieve their goals, often a long-format four-to-six dimensional data set. The dimensions of the data sets are defined by statistical domain-specific code lists (reference lists) containing codes and descriptions. Therefore, data sets are primarily used to store code list - referenced values as either input and/or output in the SWS. The generic relationship among data table, data sets, and R modules is given as follow:
+SWS resources are R modules, data tables, data sets, and code lists comprising a migration framework. Data tables are typically used as auxiliary data to help R modules to achieve their goals, often a long-format four-to-six dimensional data set. The statistical domains in SWS, through code/reference lists, define the dimensions of the datasets. Therefore, datasets are primarily used to store code list - referenced values as either input and output in the SWS. The general relationship between the data table, datasets, and R modules is :
 
 
 ```{r fig3, echo=FALSE, fig.cap='Generic data table, dataset, and R module relationship in the SWS context', message=FALSE, warning=FALSE}
@@ -200,7 +201,7 @@ DiagrammeR::grViz("digraph {
 
 ## **Code lists** {-}
 
-Code lists, also called reference lists in SWS parlance, are the dimensions making up the data sets that are designed by the user to store analytical results from SWS modules. The dimensions are statistical - domain specific and are defined by the technical unit in order to reflect its needs regarding data collection, processing, and dissemination while meeting FAO standards. Each data set dimension has a set of codes and their associated descriptions. Thus, code lists serve to the purpose of standardization, visualization, and metadata by associating standardized codes to  standardized names in the SWS data set outputs. A typical SWS compliant data set has, therefore, the following dimensions/reference lists:
+Code lists, also called reference lists in SWS parlance, are the dimensions making up the data sets that are designed by the user to store analytical results from SWS modules. The dimensions are statistical - domain-specific and are defined by the technical unit to reflect its needs regarding data collection, processing, and dissemination while meeting FAO standards. Each data set dimension has a set of codes and their associated descriptions. Thus, code lists serve to the purpose of standardization, visualization, and metadata by associating standardized codes to standardized names in the SWS data set outputs. A typical SWS compliant data set has, therefore, the following dimensions/reference lists:
 
 
 1. **Geographic area**. Representing a spatial scale the information is measured at. For example, countries, territories, regional aggregates, regional special groups aggregates, global aggregates. In SWS, the geographic area dimension used by AQUASTAT data sets is named **geographicAreaM49**.
@@ -281,6 +282,8 @@ Data tables are mainly used to store information helping R modules to output ana
 9. **aqua_calculation_rule**. A data table storing the calculation rules to apply to aggregation of the SDG 6.4.2 (Water Stress) at the regional level
 
 10. **aqua_external_source**. A data table with the mapping between AQUASTAT and Data used by AQUASTAT from external agencies.
+
+11. **m49_fs_iso_mapping**. A data table with the correspondence between FAOSTAT, UNSDM49, ISO3, and ISO3 codes.
 
 
 ```{block , type='rmdnote'}
@@ -401,3 +404,5 @@ knitr::kable(d,
 **IMPORTANT:**
 FAOSTAT data used by AQUASTAT is an in-house source, but in the faoswsAquastatExternal module it is being treated as an external source to facilitate the workflow.
 ```
+
+

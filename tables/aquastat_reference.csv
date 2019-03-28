@@ -1,0 +1,297 @@
+element_code,element_name,disseminated,calculated,Source,lta,pr
+4100,Total area of the country,D,V,O,0,0
+4101,Arable land area,D,V,O,0,0
+4102,Permanent crops area,D,V,O,0,0
+4103,Cultivated area (arable land + permanent crops),D,C,O,0,0
+4104,Total population,D,V,O,0,0
+4105,Rural population,D,C,O,0,0
+4106,Urban population,D,V,O,0,0
+4107,Population density,D,C,C,0,0
+4108,Population economically active in agriculture,I,C,C,0,0
+4109,Male population economically active in agriculture,I,V,O,0,0
+4110,Female population economically active in agriculture,I,V,O,0,0
+4111,Human Development Index (HDI) [highest = 1],D,V,O,0,0
+4112,Gross Domestic Product (GDP),D,V,O,0,0
+4113,"Agriculture, value added (% GDP)",D,V,O,0,0
+4114,Total population with access to improved drinking-water source (JMP),D,V,O,0,0
+4115,Rural population with access to improved drinking-water source (JMP),D,V,O,0,0
+4116,Urban population with access to improved drinking-water source (JMP),D,V,O,0,0
+4150,Long-term average annual precipitation in volume,D,C,C,1,0
+4151,Long-term average annual precipitation in depth,D,V,O,1,0
+4152,Evaporation from artificial lakes and reservoirs,I,V,A,0,0
+4153,Water resources produced internally in a 10th dry year frequency,I,V,A,0,0
+4154,Groundwater produced internally,D,V,A,1,0
+4155,Surface water produced internally,D,V,A,1,0
+4156,Overlap between surface water and groundwater,D,V,A,1,0
+4157,Total internal renewable water resources (IRWR),D,C,C,1,0
+4158,Total internal renewable water resources per capita,D,C,C,0,0
+4159,Surface water: entering the country (total),D,V,A,1,0
+4160,Surface water: inflow not submitted to treaties,D,V,A,1,0
+4161,Surface water: inflow submitted to treaties,D,V,A,1,0
+4162,Surface water: inflow secured through treaties,D,V,A,1,0
+4164,Surface water: accounted inflow,D,C,C,1,0
+4165,Surface water: total flow of border rivers,D,V,A,1,0
+4168,Surface water: accounted flow of border rivers,D,V,A,1,0
+4171,Surface water: leaving the country to other countries (total),D,V,A,1,0
+4172,Surface water: outflow to other countries not submitted to treaties,D,V,A,1,0
+4173,Surface water: outflow to other countries submitted to treaties,D,V,A,1,0
+4174,Surface water: outflow to other countries secured through treaties,D,V,A,1,0
+4176,Surface water: total external renewable,D,C,C,1,0
+4177,Groundwater: entering the country (total),D,V,A,1,0
+4178,Groundwater: leaving the country to other countries (total),D,V,A,1,0
+4182,Water resources: total external renewable,D,C,C,1,0
+4185,Total renewable surface water,D,C,C,1,0
+4187,Total renewable groundwater,D,C,C,1,0
+4188,Total renewable water resources,D,C,C,1,0
+4190,Total renewable water resources per capita,D,C,C,0,0
+4192,Dependency ratio,D,C,C,1,0
+4193,Exploitable: regular renewable surface water,D,V,A,1,0
+4194,Exploitable: irregular renewable surface water,D,V,A,1,0
+4195,Exploitable: regular renewable groundwater,D,V,A,1,0
+4196,Total exploitable water resources,D,C,C,1,0
+4197,Total dam capacity,D,V,A,0,0
+4250,Agricultural water withdrawal,D,V,A,0,0
+4251,Municipal water withdrawal,D,V,A,0,0
+4252,Industrial water withdrawal,D,V,A,0,0
+4253,Total water withdrawal,D,C,C,0,0
+4254,Agricultural water withdrawal as % of total water withdrawal,D,C,C,0,0
+4255,Municipal water withdrawal as % of total withdrawal,D,C,C,0,0
+4256,Industrial water withdrawal as % of total water withdrawal,D,C,C,0,0
+4257,Total water withdrawal per capita,D,C,C,0,0
+4260,Irrigation water requirement,D,V,A,0,0
+4261,Fresh surface water withdrawal (primary and secondary),D,V,A,0,0
+4262,Fresh groundwater withdrawal (primary and secondary),D,V,A,0,0
+4263,Total freshwater withdrawal (primary and secondary),D,C,C,0,0
+4264,Desalinated water produced,D,V,A,0,1
+4265,Direct use of treated municipal wastewater,D,V,A,0,1
+4266,Depletion rate of renewable groundwater resources,I,V,A,0,0
+4267,Abstraction of fossil groundwater,I,V,A,0,0
+4268,Expected time that fossil groundwater will last,I,V,A,0,0
+4269,Produced municipal wastewater,D,V,A,0,0
+4270,Treated municipal wastewater,D,V,A,0,0
+4271,Agricultural water requirement as % of agricultural water withdrawal,I,C,C,0,0
+4273,Agricultural water withdrawal as % of total renewable water resources,D,C,C,0,0
+4275,MDG 7.5. Freshwater withdrawal as % of total renewable water resources,D,C,C,0,0
+4300,Total cultivated area drained,D,C,C,0,0
+4303,Area equipped for irrigation drained,D,V,A,0,0
+4304,Non-irrigated cultivated area drained,D,V,A,0,0
+4305,% of total cultivated area drained,D,C,C,0,0
+4306,Water harvesting area,I,V,A,0,0
+4307,Irrigation potential,D,V,A,0,0
+4308,Area equipped for full control irrigation: surface irrigation,D,V,A,0,1
+4309,Area equipped for full control irrigation: sprinkler irrigation,D,V,A,0,1
+4310,Area equipped for full control irrigation: localized irrigation,D,V,A,0,1
+4311,Area equipped for full control irrigation: total,D,C,C,0,0
+4312,Area equipped for irrigation: equipped lowland areas,D,V,A,0,1
+4313,Area equipped for irrigation: total,D,C,C,0,0
+4314,Flood recession cropping area non-equipped,D,V,A,0,1
+4315,Cultivated wetlands and inland valley bottoms non-equipped,D,V,A,0,1
+4316,Area equipped for irrigation: spate irrigation,D,V,A,0,1
+4317,Total agricultural water managed area,D,C,C,0,0
+4318,Area equipped for irrigation: actually irrigated,D,V,A,0,0
+4319,% of agricultural water managed area equipped for irrigation,D,C,C,0,0
+4320,Area equipped for irrigation by groundwater,D,V,A,0,0
+4321,Area equipped for irrigation by surface water,D,V,A,0,0
+4322,Area equipped for irrigation by mixed surface water and groundwater,D,V,A,0,0
+4323,% of area equipped for irrigation by groundwater,D,C,C,0,0
+4324,% of area equipped for irrigation by surface water,D,C,C,0,0
+4325,% of area equipped for irrigation by mixed surface water and groundwater,D,C,C,0,0
+4326,Area equipped for power irrigation (surface water or groundwater),D,V,A,0,0
+4327,% of area equipped for irrigation power irrigated,D,C,C,0,0
+4328,% of the area equipped for irrigation actually irrigated,D,C,C,0,0
+4329,% of total grain production irrigated,D,V,A,0,0
+4330,% of irrigation potential equipped for irrigation,D,C,C,0,0
+4331,% of the cultivated area equipped for irrigation,D,C,C,0,0
+4332,Total area of small irrigation schemes,I,V,A,0,0
+4333,Total area of medium irrigation schemes,I,V,A,0,0
+4334,Total area of large irrigation schemes,I,V,A,0,0
+4335,Average cost of irrigation development in public schemes,I,V,A,0,0
+4336,Average cost of operation and maintenance in public schemes,I,V,A,0,0
+4337,Average cost of drainage development in public schemes,I,V,A,0,0
+4338,Average cost of irrigation rehabilitation in public schemes,I,V,A,0,0
+4339,Average cost of irrigation development in private schemes,I,V,A,0,0
+4340,Average cost of operation and maintenance cost in private schemes,I,V,A,0,0
+4341,Average cost of drainage development in private schemes,I,V,A,0,0
+4342,Average cost of irrigation rehabilitation in private schemes,I,V,A,0,0
+4343,Average cost of installation of sprinkler irrigation: on farm,I,V,A,0,0
+4344,Average cost of installation of localized irrigation: on farm,I,V,A,0,0
+4345,Harvested irrigated temporary crop area: Wheat,D,V,A,0,0
+4346,Harvested irrigated temporary crop area: Rice,D,V,A,0,0
+4347,Harvested irrigated temporary crop area: Barley,D,V,A,0,0
+4348,Harvested irrigated temporary crop area: Maize,D,V,A,0,0
+4349,Harvested irrigated temporary crop area: Millet,D,V,A,0,0
+4350,Harvested irrigated temporary crop area: Sorghum,D,V,A,0,0
+4351,Harvested irrigated temporary crop area: Other cereals,D,V,A,0,0
+4352,Harvested irrigated temporary crop area: Potatoes,D,V,A,0,0
+4353,Harvested irrigated temporary crop area: Sweet Potatoes,D,V,A,0,0
+4354,Harvested irrigated temporary crop area: Cassava,D,V,A,0,0
+4355,Harvested irrigated temporary crop area: Other roots and tubers,D,V,A,0,0
+4356,Harvested irrigated permanent crop area: Plantains,D,V,A,0,0
+4357,Harvested irrigated temporary crop area: Sugarcane,D,V,A,0,0
+4358,Harvested irrigated temporary crop area: Sugar beet,D,V,A,0,0
+4359,Harvested irrigated temporary crop area: Leguminous crops,D,V,A,0,0
+4360,Harvested irrigated temporary crop area: Vegetables,D,V,A,0,0
+4361,Harvested irrigated permanent crop area: Bananas,D,V,A,0,0
+4362,Harvested irrigated permanent crop area: Citrus,D,V,A,0,0
+4363,Harvested irrigated permanent crop area: Cocoa beans,D,V,A,0,0
+4364,Harvested irrigated permanent crop area: Coffee,D,V,A,0,0
+4365,Harvested irrigated permanent crop area: Tea,D,V,A,0,0
+4366,Harvested irrigated temporary crop area: tobacco,D,V,A,0,0
+4367,Harvested irrigated temporary crop area: Cotton,D,V,A,0,0
+4368,Harvested irrigated permanent crop area: Rubber,D,V,A,0,0
+4369,Harvested irrigated temporary crop area: Fodder,D,V,A,0,0
+4370,Harvested irrigated permanent crop area: Oil palm,D,V,A,0,0
+4371,Harvested irrigated temporary crop area: Soybeans,D,V,A,0,0
+4372,Harvested irrigated temporary crop area: Groundnuts,D,V,A,0,0
+4373,Harvested irrigated temporary crop area: Sunflower,D,V,A,0,0
+4374,Harvested irrigated temporary crop area: Sesame,D,V,A,0,0
+4375,Harvested irrigated permanent crop area: Coconuts,D,V,A,0,0
+4376,Harvested irrigated temporary crop area: Flowers,D,V,A,0,0
+4377,Harvested irrigated temporary crop area: Other crops,D,V,A,0,0
+4378,Harvested irrigated permanent crop area: Other crops,D,V,A,0,0
+4379,Total harvested irrigated crop area (full control irrigation),D,V,A,0,0
+4400,Area salinized by irrigation,D,V,A,0,0
+4401,Area waterlogged by irrigation,D,V,A,0,0
+4403,Population affected by water related disease,D,V,A,0,0
+4410,Irrigated crop yield: Wheat,I,V,A,0,0
+4411,Irrigated crop yield: Rice,I,V,A,0,0
+4412,Irrigated crop yield: Barley,I,V,A,0,0
+4413,Irrigated crop yield: Maize,I,V,A,0,0
+4414,Irrigated crop yield: Millet,I,V,A,0,0
+4415,Irrigated crop yield: Sorghum,I,V,A,0,0
+4416,Irrigated crop yield: Other cereals,I,V,A,0,0
+4417,Irrigated crop yield: Potatoes,I,V,A,0,0
+4418,Irrigated crop yield: Sweet potatoes,I,V,A,0,0
+4419,Irrigated crop yield: Cassava,I,V,A,0,0
+4420,Irrigated crop yield: Other roots and tubers,I,V,A,0,0
+4421,Irrigated crop yield: Plantain,I,V,A,0,0
+4422,Irrigated crop yield: Sugar cane,I,V,A,0,0
+4423,Irrigated crop yield: Sugar beet,I,V,A,0,0
+4424,Irrigated crop yield: Pulses,I,V,A,0,0
+4425,Irrigated crop yield: Vegetables,I,V,A,0,0
+4426,Irrigated crop yield: Bananas,I,V,A,0,0
+4427,Irrigated crop yield: Citrus,I,V,A,0,0
+4428,Irrigated crop yield: Cocoa beans,I,V,A,0,0
+4429,Irrigated crop yield: Coffee,I,V,A,0,0
+4430,Irrigated crop yield: Tea,I,V,A,0,0
+4431,Irrigated crop yield: Tobacco,I,V,A,0,0
+4432,Irrigated crop yield: Cotton,I,V,A,0,0
+4433,Irrigated crop yield: Rubber,I,V,A,0,0
+4434,Irrigated crop yield: Fodder,I,V,A,0,0
+4435,Irrigated crop yield: Oil palm,I,V,A,0,0
+4436,Irrigated crop yield: Soybeans,I,V,A,0,0
+4437,Irrigated crop yield: Groundnuts,I,V,A,0,0
+4438,Irrigated crop yield: Sunflower,I,V,A,0,0
+4439,Irrigated crop yield: Sesame,I,V,A,0,0
+4440,Irrigated crop yield: Coconuts,I,V,A,0,0
+4441,Irrigated crop yield: Flowers,I,V,A,0,0
+4445,% of area equipped for irrigation salinized,D,C,C,0,0
+4446,% of area equipped for irrigation drained,D,C,C,0,0
+4448,Other agricultural water managed area,I,C,C,0,0
+4449,Population economically active,I,V,O,0,0
+4450,Freshwater withdrawal as % of internal renewable water resources,I,C,C,0,0
+4451,Direct use of agricultural drainage water,D,V,A,0,1
+4452,Groundwater: accounted inflow,D,V,A,1,0
+4453,Groundwater: accounted outflow to other countries,D,V,A,1,0
+4454,Conservation agriculture area,D,V,A,0,0
+4455,Conservation agriculture area as % of arable land area,D,C,C,0,0
+4457,Municipal water withdrawal per capita (total population),I,C,C,0,0
+4458,GDP per Capita,D,C,C,0,0
+4459,Area equipped for full control irrigation: pressurized (sprinkler + localized),I,C,C,0,0
+4460,Water withdrawal for cooling of thermoelectric plants,I,V,A,0,0
+4461,Area equipped for full control irrigation: actually irrigated,D,V,A,0,0
+4462,Harvested irrigated crop area as % of the full control irrigation area actually irrigated,I,C,C,0,0
+4463,% of area equipped for full control irrigation actually irrigated,D,C,C,0,0
+4464,Irrigated cropping intensity,D,C,C,0,0
+4465,Area equipped by direct use of treated municipal wastewater,D,V,A,0,0
+4466,% of area equipped by direct use of treated municipal wastewater,D,C,C,0,0
+4467,Freshwater withdrawal as % of total water withdrawal,I,C,C,0,0
+4468,Municipal water withdrawal per capita (urban population),I,C,C,0,0
+4469,Permanent meadows and pastures irrigated,D,V,A,0,0
+4470,% of total country area cultivated,D,C,C,0,0
+4471,Dam capacity per capita,D,C,C,0,0
+4472,National Rainfall Index (NRI),D,V,O,0,0
+4473,Number of people undernourished (3-year average),D,V,O,0,0
+4474,Prevalence of undernourishment (3-year average),D,V,O,0,0
+4475,Irrigation water withdrawal,D,V,A,0,0
+4476,Water withdrawal for livestock (water and cleaning),I,V,A,0,0
+4477,Water withdrawal for aquaculture,I,V,A,0,0
+4478,Freshwater withdrawal by households (self-abstracted),I,V,A,0,0
+4479,Water withdrawal for manufactured products,I,V,A,0,0
+4480,Water withdrawal for other industries,I,V,A,0,0
+4481,Agricultural fresh surface water withdrawal (self-abstracted),I,V,A,0,0
+4482,Industrial fresh surface water withdrawal (self-abstracted),I,V,A,0,0
+4483,Municipal fresh surface water withdrawal (self-abstracted),I,V,A,0,0
+4484,Agricultural fresh groundwater withdrawal (self-abstracted),I,V,A,0,0
+4485,Industrial fresh groundwater withdrawal (self-abstracted),I,V,A,0,0
+4486,Municipal fresh groundwater withdrawal (self-abstracted),I,V,A,0,0
+4487,Agricultural freshwater withdrawal (self-abstracted),I,V,A,0,0
+4488,Industrial freshwater withdrawal (self-abstracted),I,V,A,0,0
+4489,Municipal freshwater withdrawal (total),I,V,A,0,0
+4490,Direct use of treated municipal wastewater for irrigation purposes,D,V,A,0,0
+4491,Not treated municipal wastewater,D,V,A,0,0
+4492,Fresh groundwater withdrawal for irrigation (self-abstracted),I,V,A,0,0
+4493,Collected municipal wastewater,D,V,A,0,0
+4494,Desalinated water for municipalities,I,V,A,0,0
+4495,Desalinated water for agriculture,I,V,A,0,0
+4496,Freshwater withdrawal by water supply entity,I,V,A,0,0
+4497,Fresh surface water withdrawal for irrigation (self-abstracted),I,V,A,0,0
+4498,Freshwater withdrawal by services (self-abstracted),I,V,A,0,0
+4499,Water from Water Supply Entity used by agriculture,I,V,A,0,0
+4500,Water from Water Supply Entity used by industry,I,V,A,0,0
+4501,Water from Water Supply Entity used by households,I,V,A,0,0
+4502,Total water used (withdrawal + WSE),I,V,A,0,0
+4503,Total water used by agriculture,I,V,A,0,0
+4504,Total water used by industry,I,V,A,0,0
+4505,Total water used by households,I,V,A,0,0
+4506,Total Water Supply Entity (WSE) water used,I,V,A,0,0
+4507,Freshwater withdrawal for irrigation (self-abstracted),I,V,A,0,0
+4508,In-stream water usage by hydropower plants,I,V,A,0,0
+4509,Exploitable: total renewable surface water,D,C,C,1,0
+4510,Treated municipal wastewater discharged (secondary water),D,V,A,0,0
+4511,Water reserved for ecosystems,I,V,A,0,0
+4512,Direct use of the not treated municipal wastewater for irrigation purposes,D,V,A,0,0
+4513,Area equipped for irrigation by direct use of non-treated municipal wastewater,D,V,A,0,0
+4514,% of area equipped for irrigation by direct use of non-treated municipal wastewater,D,C,C,0,0
+4515,Number of municipal wastewater treatment facilities,D,V,A,0,0
+4516,Capacity of the municipal wastewater treatment facilities,D,V,A,0,0
+4517,Not treated municipal wastewater discharged (secondary water),D,V,A,0,0
+4520,Harvested irrigated temporary crop area: Total,D,V,A,0,0
+4521,Harvested irrigated permanent crop area: Total,D,V,A,0,0
+4522,Harvested irrigated permanent crop area: Grass and Fodder,D,V,A,0,0
+4523,Harvested irrigated permanent crop area: Grapes,D,V,A,0,0
+4524,Harvested irrigated permanent crop area: Other fruits,D,V,A,0,0
+4525,Harvested irrigated permanent crop area: Olives,D,V,A,0,0
+4526,Area equipped for irrigation by direct use of agricultural drainage water,D,V,A,0,0
+4527,% of area equipped for irrigation by direct use of agricultural drainage water,D,C,C,0,0
+4530,Produced industrial wastewater,I,V,A,0,0
+4531,Industrial water withdrawal per capita,I,C,C,0,0
+4532,Agricultural water withdrawal per capita,I,C,C,0,0
+4533,Area equipped by direct use of treated municipal wastewater,D,C,C,0,0
+4534,Area equipped by direct use of not treated municipal wastewater,D,C,C,0,0
+4535,Direct use of treated municipal wastewater,D,C,C,0,0
+4536,Overlap: between surface water and groundwater,D,C,C,1,0
+4537,Gender Inequality Index (GII),D,V,O,0,0
+4538,% of economically active population active in agriculture,I,C,C,0,0
+4539,Area equipped for irrigation by desalinated water,D,V,A,0,0
+4540,% of area equipped for irrigation by desalinated water,D,C,C,0,0
+4541,Interannual variability (WRI),D,V,O,0,0
+4542,Seasonal variability (WRI),D,V,O,0,0
+4543,Flood occurrence (WRI),D,V,O,0,0
+4544,% of the area equipped for irrigation managed by women,D,V,A,0,0
+4545,% of the agricultural holdings with irrigation managed by women,D,V,A,0,0
+4546,"Industry, value added to GDP",I,V,O,0,0
+4547,"Services, value added to GDP",I,V,O,0,0
+4548,"Agriculture, value added to GDP",I,V,O,0,0
+4549,Environmental Flow Requirements,D,V,O,1,0
+4550,SDG 6.4.2. Water Stress,D,C,C,0,0
+4551,SDG 6.4.1. Water Use Efficiency,I,C,C,0,0
+4552,SDG 6.4.1. Irrigated Agriculture Water Use Efficiency,I,C,C,0,0
+4553,SDG 6.4.1. Industrial Water Use Efficiency,I,C,C,0,0
+4554,SDG 6.4.1. Services Water Use Efficiency,I,C,C,0,0
+4555,% of agricultural GVA produced by irrigated agriculture,I,C,C,0,0
+4556,% of arable land irrigated,I,C,C,0,0
+4557,Ratio between rainfed and irrigated yields,I,V,A,0,0
+4558,GDP deflator (2015),I,C,C,0,0
+4559,Land area,I,V,O,0,0
+4560,Inland waterd,I,V,O,0,0

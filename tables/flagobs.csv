@@ -1,8 +1,8 @@
-flagAquastat,SWS (SDMX)
-E (External value (other internationagencies),X (External organization)
-K (Aggregated from two or more sources or calculated),E (Estimate)
-L (modelled value),E (Estimate)
-I  (Internal estimate),E (Estimate)
-F (Internal estimate),E (Estimate)
-M (Missing),I (Imputed)
-blank,blank (Official)
+Initial(all sources),Final (sws)
+E (External value (other internationagencies),X 
+K (Aggregated from two or more sources or calculated),E 
+L (modelled value),E 
+I  (Internal estimate),E 
+F (Internal estimate),E
+M (Missing),I 
+blank (Official),blank 

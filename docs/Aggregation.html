@@ -1,0 +1,2502 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 3 The faoswsAquastatAggregation module | Migration of AQUASTAT Statistical Processes into the SWS</title>
+  <meta name="description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 3 The faoswsAquastatAggregation module | Migration of AQUASTAT Statistical Processes into the SWS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 The faoswsAquastatAggregation module | Migration of AQUASTAT Statistical Processes into the SWS" />
+  
+  <meta name="twitter:description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)" />
+  
+
+<meta name="author" content="Francy Lisboa (Agronomist/Statistician, ESSD - Methodological Innovation Team)">
+
+
+<meta name="date" content="2019-04-12">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="AquastatUpdate.html">
+<link rel="next" href="AquastatValidation.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+
+
+
+<link rel="stylesheet" href="ess.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html#introduction"><strong>Introduction</strong></a><ul>
+<li><a href="index.html#data-collection"><strong>Data Collection</strong></a></li>
+<li><a href="index.html#questionnaire"><strong>Questionnaire</strong></a></li>
+<li><a href="index.html#the-current-aquastat-information-management"><strong>The current AQUASTAT information management</strong></a></li>
+<li><a href="index.html#code-lists"><strong>Code lists</strong></a></li>
+<li><a href="index.html#data-tables"><strong>Data tables</strong></a></li>
+<li><a href="index.html#datasets"><strong>Datasets</strong></a></li>
+<li><a href="index.html#international-classification-systems"><strong>International Classification Systems</strong></a></li>
+<li><a href="index.html#the-sws-aquastat_reference-data-table"><strong>The SWS aquastat_reference data table</strong></a><ul>
+<li><a href="index.html#current-aquastat-variables"><strong>Current AQUASTAT Variables</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="External.html"><a href="External.html"><i class="fa fa-check"></i><b>1</b> <strong>The faoswsAquastatExternal module</strong></a><ul>
+<li class="chapter" data-level="1.1" data-path="External.html"><a href="External.html#aims"><i class="fa fa-check"></i><b>1.1</b> <strong>Aims</strong></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="External.html"><a href="External.html#identifies-aquastat-external-data-sources"><i class="fa fa-check"></i><b>1.1.1</b> <strong>Identifies AQUASTAT external data sources</strong></a></li>
+<li class="chapter" data-level="1.1.2" data-path="External.html"><a href="External.html#reshapes-the-data-sources"><i class="fa fa-check"></i><b>1.1.2</b> <strong>Reshapes the data sources</strong></a></li>
+<li class="chapter" data-level="1.1.3" data-path="External.html"><a href="External.html#maps-out-aquastat-to-external-sources"><i class="fa fa-check"></i><b>1.1.3</b> <strong>Maps out AQUASTAT to external sources</strong></a></li>
+<li class="chapter" data-level="1.1.4" data-path="External.html"><a href="External.html#maps-out-faostat-areas-to-unsdm49"><i class="fa fa-check"></i><b>1.1.4</b> <strong>Maps out FAOSTAT areas to UNSDM49</strong></a></li>
+<li class="chapter" data-level="1.1.5" data-path="External.html"><a href="External.html#saves-the-output-back-into-sws"><i class="fa fa-check"></i><b>1.1.5</b> <strong>Saves the output back into SWS</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="External.html"><a href="External.html#workflow"><i class="fa fa-check"></i><b>1.2</b> <strong>Workflow</strong></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="External.html"><a href="External.html#only-possible-workflow"><i class="fa fa-check"></i><b>1.2.1</b> <em>Only Possible</em> <strong>Workflow</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="External.html"><a href="External.html#running-the-module"><i class="fa fa-check"></i><b>1.3</b> <strong>Running the module</strong></a></li>
+<li class="chapter" data-level="1.4" data-path="External.html"><a href="External.html#did-the-module.."><i class="fa fa-check"></i><b>1.4</b> <strong>Did the module..</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html"><i class="fa fa-check"></i><b>2</b> <strong>The faoswsAquastaUpdate module</strong></a><ul>
+<li class="chapter" data-level="2.1" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#aims-1"><i class="fa fa-check"></i><b>2.1</b> <strong>Aims</strong></a><ul>
+<li class="chapter" data-level="2.1.1" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#harmonize-data-source-dimensions"><i class="fa fa-check"></i><b>2.1.1</b> <strong>Harmonize data source dimensions</strong></a></li>
+<li class="chapter" data-level="2.1.2" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#replaceupdate-the-legacy-data"><i class="fa fa-check"></i><b>2.1.2</b> <strong>Replace/update the legacy data</strong></a></li>
+<li class="chapter" data-level="2.1.3" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#map-out-flags-observation"><i class="fa fa-check"></i><b>2.1.3</b> <strong>Map out flags (Observation)</strong></a></li>
+<li class="chapter" data-level="2.1.4" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#calculate-indicators"><i class="fa fa-check"></i><b>2.1.4</b> <strong>Calculate indicators</strong></a></li>
+<li class="chapter" data-level="2.1.5" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#apply-primary-variable-approach"><i class="fa fa-check"></i><b>2.1.5</b> <strong>Apply Primary Variable Approach</strong></a></li>
+<li class="chapter" data-level="2.1.6" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#impute-missing-data"><i class="fa fa-check"></i><b>2.1.6</b> <strong>Impute missing data</strong></a></li>
+<li class="chapter" data-level="2.1.7" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#recalculate-indicators"><i class="fa fa-check"></i><b>2.1.7</b> <strong>Recalculate indicators</strong></a></li>
+<li class="chapter" data-level="2.1.8" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#map-out-flags-method"><i class="fa fa-check"></i><b>2.1.8</b> <strong>Map out flags (Method)</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#workflow-1"><i class="fa fa-check"></i><b>2.2</b> <strong>Workflow</strong></a></li>
+<li class="chapter" data-level="2.3" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#running-the-module-1"><i class="fa fa-check"></i><b>2.3</b> <strong>Running the module</strong></a></li>
+<li class="chapter" data-level="2.4" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#did-the-module"><i class="fa fa-check"></i><b>2.4</b> <strong>Did the module…</strong></a><ul>
+<li class="chapter" data-level="2.4.1" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#add-new-indicators"><i class="fa fa-check"></i><b>2.4.1</b> Add new indicators ?</a></li>
+<li class="chapter" data-level="2.4.2" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#promote-time-series-completeness-and-higher-geographic-coverage"><i class="fa fa-check"></i><b>2.4.2</b> promote time-series completeness and higher geographic coverage ?</a></li>
+<li class="chapter" data-level="2.4.3" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#correct-values-of-long-term-average-variables"><i class="fa fa-check"></i><b>2.4.3</b> correct values of Long-Term Average variables ?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Aggregation.html"><a href="Aggregation.html"><i class="fa fa-check"></i><b>3</b> <strong>The faoswsAquastatAggregation module</strong></a><ul>
+<li class="chapter" data-level="3.1" data-path="Aggregation.html"><a href="Aggregation.html#aims-2"><i class="fa fa-check"></i><b>3.1</b> <strong>Aims</strong></a><ul>
+<li class="chapter" data-level="3.1.1" data-path="Aggregation.html"><a href="Aggregation.html#calculate-region-specific-aggregations-for-sdg-6.4.2"><i class="fa fa-check"></i><b>3.1.1</b> <strong>Calculate region-specific aggregations for SDG 6.4.2</strong></a></li>
+<li class="chapter" data-level="3.1.2" data-path="Aggregation.html"><a href="Aggregation.html#calculate-region-specific-aggregations-for-sdg-6.4.1"><i class="fa fa-check"></i><b>3.1.2</b> <strong>Calculate region-specific aggregations for SDG 6.4.1</strong></a></li>
+<li class="chapter" data-level="3.1.3" data-path="Aggregation.html"><a href="Aggregation.html#send-the-result-to-the-user-email"><i class="fa fa-check"></i><b>3.1.3</b> <strong>Send the result to the user email</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="Aggregation.html"><a href="Aggregation.html#workflow-2"><i class="fa fa-check"></i><b>3.2</b> <strong>Workflow</strong></a></li>
+<li class="chapter" data-level="3.3" data-path="Aggregation.html"><a href="Aggregation.html#running-the-module-2"><i class="fa fa-check"></i><b>3.3</b> <strong>Running the module</strong></a></li>
+<li class="chapter" data-level="3.4" data-path="Aggregation.html"><a href="Aggregation.html#did-the-module..-1"><i class="fa fa-check"></i><b>3.4</b> <strong>Did the module..</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="AquastatValidation.html"><a href="AquastatValidation.html"><i class="fa fa-check"></i><b>4</b> <strong>The faoswsAquastatValidation module</strong></a><ul>
+<li class="chapter" data-level="4.1" data-path="AquastatValidation.html"><a href="AquastatValidation.html#aims-3"><i class="fa fa-check"></i><b>4.1</b> <strong>Aims</strong></a><ul>
+<li class="chapter" data-level="4.1.1" data-path="AquastatValidation.html"><a href="AquastatValidation.html#applies-validation-rules"><i class="fa fa-check"></i><b>4.1.1</b> <strong>Applies validation rules</strong></a></li>
+<li class="chapter" data-level="4.1.2" data-path="AquastatValidation.html"><a href="AquastatValidation.html#focuses-on-high-priority-rules"><i class="fa fa-check"></i><b>4.1.2</b> <strong>Focuses on high priority rules</strong></a></li>
+<li class="chapter" data-level="4.1.3" data-path="AquastatValidation.html"><a href="AquastatValidation.html#reshapes-and-adds-names-to-data"><i class="fa fa-check"></i><b>4.1.3</b> <strong>Reshapes and adds names to data</strong></a></li>
+<li class="chapter" data-level="4.1.4" data-path="AquastatValidation.html"><a href="AquastatValidation.html#sends-the-output-to-the-user-email"><i class="fa fa-check"></i><b>4.1.4</b> <strong>Sends the output to the user email</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="AquastatValidation.html"><a href="AquastatValidation.html#workflow-3"><i class="fa fa-check"></i><b>4.2</b> <strong>Workflow</strong></a></li>
+<li class="chapter" data-level="4.3" data-path="AquastatValidation.html"><a href="AquastatValidation.html#running-the-module-in-the-sws"><i class="fa fa-check"></i><b>4.3</b> <strong>Running the module in the SWS</strong></a></li>
+<li class="chapter" data-level="4.4" data-path="AquastatValidation.html"><a href="AquastatValidation.html#did-the-module-1"><i class="fa fa-check"></i><b>4.4</b> <strong>Did the module</strong>…</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="AquastatValidation.html"><a href="AquastatValidation.html#execute-what-it-was-designed-for"><i class="fa fa-check"></i><b>4.4.1</b> execute what it was designed for?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Migration of AQUASTAT Statistical Processes into the SWS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Aggregation" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> <strong>The faoswsAquastatAggregation module</strong></h1>
+<div id="aims-2" class="section level2">
+<h2><span class="header-section-number">3.1</span> <strong>Aims</strong></h2>
+<p>The faoswsAquastatAggregation produces the regional aggregations of the SDG 6.4.1 (Water Use Efficiency) and 6.4.2 (Water Stress) following the guidelines for SDG regional aggregates. The input for this module is the dataset from the <strong>faoswsAquastatUpdate</strong> module.</p>
+<div id="calculate-region-specific-aggregations-for-sdg-6.4.2" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> <strong>Calculate region-specific aggregations for SDG 6.4.2</strong></h3>
+<p>The aggregation of the SDG 6.4.1 (Water Stress) is region-specific, which means that for each region there is a specific equation. The equations differ from each other in terms of an element(s) that need to add or discount from the aggregates final regional aggregates. These elements, in turn, are country-specific. Therefore, the equations have a fixed part that aggregates elements at the regional level a variable part representing element values at the country level.</p>
+<p>To account for the information necessary to aggregate the SDGs, the SWS has a data table named <strong>aqua_sdg_agg</strong>, which contains the fixed and variable part of the aggregating equations. In the table below, <strong>aqua_sdg_agg</strong>, the columns are:</p>
+<ul>
+<li><p><strong>regional_el_code</strong>. This column tells the faoswsAquastatAggregation module which elements MUST be aggregated at the regional level <strong>fixed part</strong> of the equation.</p></li>
+<li><p><strong>relevant_el_code</strong>. This column has the elements whose values should be added/discount to the fixed part of the equation;</p></li>
+<li><p><strong>countr_el_code</strong>. This column indicates the countries in each regional aggregate the elements in the column <strong>relevant_el_code</strong> should be taken from;</p></li>
+<li><p><strong>addition</strong>. The formulas with the country-specific elements that should be added/discounted to the final region-specific aggregate.</p></li>
+<li><p><strong>sdg_region</strong>. The codes of the regions the SDG should be aggregated for;</p></li>
+<li><p><strong>group_order_name</strong>. The name of the regions the SDG should be aggregated for;</p></li>
+<li><p><strong>column_to_select</strong>. The columns in the SWS data table <strong>a2017regionalgroupings_SDG_02Feb2017</strong> from each the codes in the <strong>sdg_region</strong> code were taken from. This data table comes from the Loss and Waste SWS domain, and its use in the <strong>faoswsAquastatAggregation</strong> module was kindly granted by Ms <strong>Alicia English</strong> (Food Waste and Loss consultant in the ESS - SWS team).</p></li>
+<li><p><strong>transboundary</strong>. A binary column with 1 (equations accounting for country-specific elements, i.e., using the column addition) and 0 ( equation where country-specific elements do not need to be considered for);</p></li>
+<li><p><strong>indicator</strong>. A column with the aquastatElement code for the SDG 6.4.1 (4551) and SDG 6.4.2 (4550).</p></li>
+</ul>
+<br>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
+<table class="table-fixed-header table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:aquasdgdt">Table 3.1: </span>The SWS aqua_sdg_agg data table
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+region_el_code
+</th>
+<th style="text-align:right;">
+relevant_el_code
+</th>
+<th style="text-align:right;">
+country_el_code
+</th>
+<th style="text-align:left;">
+addition
+</th>
+<th style="text-align:right;">
+sdg_region
+</th>
+<th style="text-align:left;">
+group_order_name
+</th>
+<th style="text-align:left;">
+column_to_select
+</th>
+<th style="text-align:right;">
+transboundary
+</th>
+<th style="text-align:right;">
+indicator
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+484
+</td>
+<td style="text-align:left;">
+X4160 + X4162 - X4174
+</td>
+<td style="text-align:right;">
+419
+</td>
+<td style="text-align:left;">
+LAC
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4162
+</td>
+<td style="text-align:right;">
+484
+</td>
+<td style="text-align:left;">
+X4160 + X4162 - X4174
+</td>
+<td style="text-align:right;">
+419
+</td>
+<td style="text-align:left;">
+LAC
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4174
+</td>
+<td style="text-align:right;">
+484
+</td>
+<td style="text-align:left;">
+X4160 + X4162 - X4174
+</td>
+<td style="text-align:right;">
+419
+</td>
+<td style="text-align:left;">
+LAC
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+356
+</td>
+<td style="text-align:left;">
+X4160
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+Southern Asia
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+458
+</td>
+<td style="text-align:left;">
+X4160
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+SouthEastern Asia
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4168
+</td>
+<td style="text-align:right;">
+643
+</td>
+<td style="text-align:left;">
+X4168 + X4160
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:left;">
+m49_level1_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+643
+</td>
+<td style="text-align:left;">
+X4168 + X4160
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:left;">
+m49_level1_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4168
+</td>
+<td style="text-align:right;">
+643
+</td>
+<td style="text-align:left;">
+X4168 + X4160
+</td>
+<td style="text-align:right;">
+513
+</td>
+<td style="text-align:left;">
+North America and Europe
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+643
+</td>
+<td style="text-align:left;">
+X4168 + X4160
+</td>
+<td style="text-align:right;">
+513
+</td>
+<td style="text-align:left;">
+North America and Europe
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+X4160
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+Central Asia and Southern Asia
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+156
+</td>
+<td style="text-align:left;">
+X4160
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+Eastern Asia
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+156
+</td>
+<td style="text-align:left;">
+X4160
+</td>
+<td style="text-align:right;">
+753
+</td>
+<td style="text-align:left;">
+Eastern Asia and Southern Asia
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4168
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+X4168
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4168
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+X4168
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+268
+</td>
+<td style="text-align:left;">
+X4160 + X4162
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4162
+</td>
+<td style="text-align:right;">
+268
+</td>
+<td style="text-align:left;">
+X4160 + X4162
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4168
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+X4168
+</td>
+<td style="text-align:right;">
+747
+</td>
+<td style="text-align:left;">
+Western Asia and Northern Africa
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4168
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+X4168
+</td>
+<td style="text-align:right;">
+747
+</td>
+<td style="text-align:left;">
+Western Asia and Northern Africa
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+268
+</td>
+<td style="text-align:left;">
+X4160 + X4162
+</td>
+<td style="text-align:right;">
+747
+</td>
+<td style="text-align:left;">
+Western Asia and Northern Africa
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4162
+</td>
+<td style="text-align:right;">
+268
+</td>
+<td style="text-align:left;">
+X4160 + X4162
+</td>
+<td style="text-align:right;">
+747
+</td>
+<td style="text-align:left;">
+Western Asia and Northern Africa
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+729
+</td>
+<td style="text-align:left;">
+X4160 + X4162
+</td>
+<td style="text-align:right;">
+747
+</td>
+<td style="text-align:left;">
+Western Asia and Northern Africa
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4162
+</td>
+<td style="text-align:right;">
+729
+</td>
+<td style="text-align:left;">
+X4160 + X4162
+</td>
+<td style="text-align:right;">
+747
+</td>
+<td style="text-align:left;">
+Western Asia and Northern Africa
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:right;">
+729
+</td>
+<td style="text-align:left;">
+X4160 + X4162
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Northern Africa
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4162
+</td>
+<td style="text-align:right;">
+729
+</td>
+<td style="text-align:left;">
+X4160 + X4162
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Northern Africa
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4174
+</td>
+<td style="text-align:right;">
+728
+</td>
+<td style="text-align:left;">
+X4174
+</td>
+<td style="text-align:right;">
+202
+</td>
+<td style="text-align:left;">
+Sub-Saharan Africa
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4157, 4549
+</td>
+<td style="text-align:right;">
+4174
+</td>
+<td style="text-align:right;">
+484
+</td>
+<td style="text-align:left;">
+X4174
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+North America
+</td>
+<td style="text-align:left;">
+m49_level1_code
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4188, 4549
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+513
+</td>
+<td style="text-align:left;">
+Oceania
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4188, 4549
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;">
+AUS + NZL
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4188, 4549
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+199
+</td>
+<td style="text-align:left;">
+LDC
+</td>
+<td style="text-align:left;">
+ldcs_code
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4188, 4549
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+432
+</td>
+<td style="text-align:left;">
+LLDC
+</td>
+<td style="text-align:left;">
+lldcssids_code
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4263, 4188, 4549
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+722
+</td>
+<td style="text-align:left;">
+SIDS
+</td>
+<td style="text-align:left;">
+lldcssids_code
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4550
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+419
+</td>
+<td style="text-align:left;">
+LAC
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+Southern Asia
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+SouthEastern Asia
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:left;">
+m49_level1_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+X4556 = 100*X4379/X4103
+</td>
+<td style="text-align:right;">
+513
+</td>
+<td style="text-align:left;">
+North America and Europe
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+X4555 = 1/(1+((1-(X4556/100))/((X4556/100)*X4557)))
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+Central Asia and Southern Asia
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+X4552 = ((( X4548 / X4558 <em>100)</em>X4555/100)/X4250)/10000000
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+Eastern Asia
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+X4553 = (( X4546 / X4558 *100)/ X4252 )/1000000000
+</td>
+<td style="text-align:right;">
+753
+</td>
+<td style="text-align:left;">
+Eastern Asia and Southern Asia
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+X4554 = (( X4547 / X4558 *100)/ X4251 )/1000000000
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+X4551 = ( X4552 * X4254 /100)+( X4553 * X4256 /100)+( X4554 * X4255 /100)
+</td>
+<td style="text-align:right;">
+747
+</td>
+<td style="text-align:left;">
+Western Asia and Northern Africa
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Northern Africa
+</td>
+<td style="text-align:left;">
+m49_level2_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+202
+</td>
+<td style="text-align:left;">
+Sub-Saharan Africa
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+North America
+</td>
+<td style="text-align:left;">
+m49_level1_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+513
+</td>
+<td style="text-align:left;">
+Oceania
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;">
+AUS + NZL
+</td>
+<td style="text-align:left;">
+sdgregion_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+199
+</td>
+<td style="text-align:left;">
+LDC
+</td>
+<td style="text-align:left;">
+ldcs_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+432
+</td>
+<td style="text-align:left;">
+LLDC
+</td>
+<td style="text-align:left;">
+lldcssids_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4103, 4379, 4250, 4251, 4252, 4253, 4254, 4255, 4256, 4546, 4547, 4548,4557, 4558
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+722
+</td>
+<td style="text-align:left;">
+SIDS
+</td>
+<td style="text-align:left;">
+lldcssids_code
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+4551
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br> <br> <br></p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:relnames">Table 3.2: </span>Relevant AQUASTAT elements in the aqua_sdg_agg data table
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+element_code
+</th>
+<th style="text-align:left;">
+element_name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+4103
+</td>
+<td style="text-align:left;">
+Cultivated area (arable land + permanent crops)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4157
+</td>
+<td style="text-align:left;">
+Total internal renewable water resources (IRWR)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4160
+</td>
+<td style="text-align:left;">
+Surface water: inflow not submitted to treaties
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4162
+</td>
+<td style="text-align:left;">
+Surface water: inflow secured through treaties
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4168
+</td>
+<td style="text-align:left;">
+Surface water: accounted flow of border rivers
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4174
+</td>
+<td style="text-align:left;">
+Surface water: outflow to other countries secured through treaties
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4188
+</td>
+<td style="text-align:left;">
+Total renewable water resources
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4250
+</td>
+<td style="text-align:left;">
+Agricultural water withdrawal
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4251
+</td>
+<td style="text-align:left;">
+Municipal water withdrawal
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4252
+</td>
+<td style="text-align:left;">
+Industrial water withdrawal
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4253
+</td>
+<td style="text-align:left;">
+Total water withdrawal
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4254
+</td>
+<td style="text-align:left;">
+Agricultural water withdrawal as % of total water withdrawal
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4255
+</td>
+<td style="text-align:left;">
+Municipal water withdrawal as % of total withdrawal
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4256
+</td>
+<td style="text-align:left;">
+Industrial water withdrawal as % of total water withdrawal
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4263
+</td>
+<td style="text-align:left;">
+Total freshwater withdrawal (primary and secondary)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4379
+</td>
+<td style="text-align:left;">
+Total harvested irrigated crop area (full control irrigation)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4546
+</td>
+<td style="text-align:left;">
+Industry, value added to GDP
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4547
+</td>
+<td style="text-align:left;">
+Services, value added to GDP
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4548
+</td>
+<td style="text-align:left;">
+Agriculture, value added to GDP
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4549
+</td>
+<td style="text-align:left;">
+Environmental Flow Requirements
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4557
+</td>
+<td style="text-align:left;">
+Ratio between rainfed and irrigated yields
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4558
+</td>
+<td style="text-align:left;">
+GDP deflator (2015)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br> <br></p>
+</div>
+<div id="calculate-region-specific-aggregations-for-sdg-6.4.1" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> <strong>Calculate region-specific aggregations for SDG 6.4.1</strong></h3>
+<p>Different from the SDG 6.4.2, the regional aggregations of the SDG 6.4.2 do not have a national component that varies from region to region. Therefore, the aggregates are done by summarizing the elements composing the SDG 6.4.1 intermediates and then obtain the SDG 6.4.1 aggregation at the regional level. The formulas for the SDG 6.4.1 and its intermediates are in the column <strong>addition</strong> of the SWS <strong>aqua_sdg_agg</strong> data table.</p>
+</div>
+<div id="send-the-result-to-the-user-email" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> <strong>Send the result to the user email</strong></h3>
+<p>The output of the faoswsAquastatAggregation module is a large pivot dataset that is sent by email to the user (FAO corporate email). The output looks like the table below. <br></p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
+<table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:aggout">Table 3.3: </span>Relevant AQUASTAT elements in the aqua_sdg_agg data table
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+geographicAreaM49_description
+</th>
+<th style="text-align:right;">
+geographicAreaM49
+</th>
+<th style="text-align:right;">
+aquastatElement
+</th>
+<th style="text-align:left;">
+aquastatElement_description
+</th>
+<th style="text-align:right;">
+timePointYears
+</th>
+<th style="text-align:right;">
+Value
+</th>
+<th style="text-align:left;">
+unit
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4550
+</td>
+<td style="text-align:left;">
+SDG 6.4.2. Water Stress
+</td>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:right;">
+0.4557873
+</td>
+<td style="text-align:left;">
+%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4550
+</td>
+<td style="text-align:left;">
+SDG 6.4.2. Water Stress
+</td>
+<td style="text-align:right;">
+1993
+</td>
+<td style="text-align:right;">
+0.5971864
+</td>
+<td style="text-align:left;">
+%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4550
+</td>
+<td style="text-align:left;">
+SDG 6.4.2. Water Stress
+</td>
+<td style="text-align:right;">
+1994
+</td>
+<td style="text-align:right;">
+0.6109164
+</td>
+<td style="text-align:left;">
+%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4550
+</td>
+<td style="text-align:left;">
+SDG 6.4.2. Water Stress
+</td>
+<td style="text-align:right;">
+1995
+</td>
+<td style="text-align:right;">
+0.6377857
+</td>
+<td style="text-align:left;">
+%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4550
+</td>
+<td style="text-align:left;">
+SDG 6.4.2. Water Stress
+</td>
+<td style="text-align:right;">
+1996
+</td>
+<td style="text-align:right;">
+0.6539950
+</td>
+<td style="text-align:left;">
+%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4550
+</td>
+<td style="text-align:left;">
+SDG 6.4.2. Water Stress
+</td>
+<td style="text-align:right;">
+1997
+</td>
+<td style="text-align:right;">
+0.6683262
+</td>
+<td style="text-align:left;">
+%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4550
+</td>
+<td style="text-align:left;">
+SDG 6.4.2. Water Stress
+</td>
+<td style="text-align:right;">
+1998
+</td>
+<td style="text-align:right;">
+0.6772031
+</td>
+<td style="text-align:left;">
+%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4550
+</td>
+<td style="text-align:left;">
+SDG 6.4.2. Water Stress
+</td>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+0.6924796
+</td>
+<td style="text-align:left;">
+%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4550
+</td>
+<td style="text-align:left;">
+SDG 6.4.2. Water Stress
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+0.7102366
+</td>
+<td style="text-align:left;">
+%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4550
+</td>
+<td style="text-align:left;">
+SDG 6.4.2. Water Stress
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:right;">
+0.7114118
+</td>
+<td style="text-align:left;">
+%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2006
+</td>
+<td style="text-align:right;">
+0.8629216
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2007
+</td>
+<td style="text-align:right;">
+0.9281061
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+0.9136426
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:right;">
+0.9379750
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+1.0588836
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:right;">
+1.0666686
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:right;">
+1.1361312
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:right;">
+1.1913405
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:right;">
+1.2245824
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:right;">
+1.3013408
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:right;">
+1.3593825
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+1.3593825
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Western Asia
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+4551
+</td>
+<td style="text-align:left;">
+SDG 6.4.1. Water Use Efficiency
+</td>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:right;">
+1.3593825
+</td>
+<td style="text-align:left;">
+USD/m3
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="workflow-2" class="section level2">
+<h2><span class="header-section-number">3.2</span> <strong>Workflow</strong></h2>
+<div class="figure"><span id="fig:fig1"></span>
+<div id="htmlwidget-d77fd6e4cb96a2f07455" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d77fd6e4cb96a2f07455">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\ninput [label = \"Dataset: \n aquastat_update\", shape = folder, fillcolor = Beige]\n\n# data tables\naquasdg [label = \"Data table: \n aqua_sdg_agg dataset \n with equations for SDG aggregation\",  shape = folder, fillcolor = LightGrey]\ncgcsv [label = \"Data table: \n a2017regionalgroupings_sdg_feb2017 data \n with sdg reional codes\",  shape = folder, fillcolor = LightGrey]\n\n\n# processing\naggmodule [label = \" Processing: \n faoswsAquastatAggregate using:\n 1. read in aquastat_update dataset from the session, \n 2. extracts information from data tables, \n 3. use information to aggregate SDGs at the regional level, \n 4. Sent the result to the user email\", shape = losangle, fillcolor = PaleGreen]\n\n\n# Output\nOutput [label = \"Dataset: \n aquastat_aggregation \n SDG aggregated data sent to the user\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{input} -> aggmodule -> Output\n{aquasdg, cgcsv} -> aggmodule\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 3.1: Workflow of the faoswsAquastatExternal module.
+</p>
+</div>
+<p><br> <br></p>
+</div>
+<div id="running-the-module-2" class="section level2">
+<h2><span class="header-section-number">3.3</span> <strong>Running the module</strong></h2>
+<ol style="list-style-type: decimal">
+<li>After running the <strong>faoswsAquastatUpdate</strong> module, wait for the result to pop up in the session; <br>
+<div class="figure"><span id="fig:popsession"></span>
+<img src="images/agg_popsession.png" alt="aquastat_update populated session from the faoswsAquastatUpdate module." width="100%" />
+<p class="caption">
+Figure 3.2: aquastat_update populated session from the faoswsAquastatUpdate module.
+</p>
+</div>
+<br></li>
+<li><p>Once the session is populated with the aquastat_update dataset, click on <strong>Run plugin</strong>;</p></li>
+<li>Select <strong>faoswsAquastatAggregation</strong> module and Choose the region to get the SDG aggregates from; <br>
+<div class="figure"><span id="fig:choosereg"></span>
+<img src="images/agg_choosereg.PNG" alt="Choose the Aggregation module and the region." width="100%" />
+<p class="caption">
+Figure 3.3: Choose the Aggregation module and the region.
+</p>
+</div>
+<br></li>
+<li><p>Click on <strong>Run plugin</strong> and wait for the end of the processing;</p></li>
+<li><p>Check your FAO corporate email;</p></li>
+</ol>
+<div class="figure"><span id="fig:aggcheckemail"></span>
+<img src="images/agg_checkemail.png" alt="Steps 1 to 4" width="100%" />
+<p class="caption">
+Figure 3.4: Steps 1 to 4
+</p>
+</div>
+<br> <br>
+<div class="rmdimportant">
+<p>
+The <strong>faoswsAquastatAggregation</strong> DOES NOT SAVE any result on the session. Aggregates are meant to be performed on the fly at the user convenience using as input the aquastat_update dataset.
+</p>
+</div>
+</div>
+<div id="did-the-module..-1" class="section level2">
+<h2><span class="header-section-number">3.4</span> <strong>Did the module..</strong></h2>
+<div class="rmdnote">
+<p>
+The module has met the expectations concerning SDG regional aggregations.
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="AquastatUpdate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="AquastatValidation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

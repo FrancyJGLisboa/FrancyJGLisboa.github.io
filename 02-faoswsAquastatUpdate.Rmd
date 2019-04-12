@@ -1,0 +1,309 @@
+# **The faoswsAquastaUpdate module** {#AquastatUpdate}
+
+## **Aims**
+
+The **faoswsAquastatUpdate** module is the *heart* of the AQUASTAT migration into the SWS since it runs the periodic update of the AQUASTAT legacy whenever new data from questionnaire and/or external sources are available. The module  aims to:
+
+
+### **Harmonize data source dimensions**
+
+The module uses the **aquastat_legacy**, **aquastat_questionnaire**, and **aquastat_external** as inputs. The very first thing that the modules does after reading in these inputs is to ensure that all inputs have the same variable names:  **geographicAreaM49**, **measuredElement**, **timePointYears**, and **flagAquastat**. The variable **flagAquastat** persists until the end of the processing when the module replaces it by **flagObservationStatus**. 
+
+
+### **Replace/update the legacy data**
+
+After harmonizing variable names, the faoswsAquastatUpdate module proceeds to update the **aquastat_legacy** dataset. The update works by hierarchizing the datasets. Data values and flags from the questionnaire have precedence over data from aquastat_external and aquastat_legacy. For example, case the same geographicAreaM49 - aquastatElement - timePointYears combination has three different values; the value and flag from the questionnaire takes precedence. Likewise, when the same geographicAreaM49 - aquastatElement - timePointYears combination has only values and flags from aquastat_external and aquastat_legacy, the values and flags from aquastat_external have precedence.   The general hierarchy applied by the module is **aquastat_questionnaire data > aquastat_external > aquastat_legacy**.
+
+### **Map out flags (Observation)**
+
+With all inputs already combinated, a second harmonization refers to the mapping of the input flags to SWS compliant flags. The faoswsAquastatUpdate module maps out AQUASTAT to valid SWS flags using the following conversion table:
+
+<br>
+```{r flagobs, echo=FALSE, message=FALSE}
+require(dplyr)
+require(data.table)
+require(kableExtra)
+d = readr::read_csv("tables/flagobs.csv")
+knitr::kable(x = d, 
+             caption = paste("AQUASTAT to SWS flag conversion"),
+             booktabs = TRUE) %>% 
+  kableExtra::kable_styling(font_size = 12)
+```
+
+### **Calculate indicators**
+
+After updating the rows of the legacy data with the data from questionnaire and external source, the faoswsAquastatupdate module implements the **calculation** of indicators by applying the information in the SWS **calculation_rule** data table.
+
+```{r calcs, width='100%', echo=FALSE, message=FALSE}
+require(data.table)
+require(kableExtra)
+d = data.table::fread("tables/calculation_rule.csv")
+d = d[,.(calculation_rule, indicator_name, component_name)]
+knitr::kable(d,   
+             escape = TRUE,
+             table.attr='class="table-fixed-header"',
+             caption = paste("Calculation rules in AQUASTAT."),
+             booktabs = TRUE) %>%
+  kableExtra::kable_styling(font_size = 12)
+```
+
+
+### **Apply Primary Variable Approach**
+
+After calculations, the module applies the primary variable approach for the indicators whose calculation rules are either addition only or subtraction-only. 
+
+The modules identifies AQUASTAT elements making part of calculation rules where the primary variable approach is applicable by using the SWS **aquastat_reference** data table containing the binary variable **'PR'**. This variables uses **1** to identify the primary-variable-approach elements.
+
+<br>
+
+```{block , type='rmdtip'}
+
+**PRIMARY VARIABLE APPROACH:**
+
+*'IF indicator/derived variable is empty after the calculation and its correspondent primary variable is available, replace the missing value of the indicator by the value of the primary variable'*.
+
+```
+  
+<br>
+  
+```{r pr, echo=FALSE, message=FALSE}
+require(dplyr)
+d = readr::read_csv("tables/primary_variable.csv")
+knitr::kable(x = d, 
+             #table.attr='class="table-fixed-header"',
+             caption = paste("Indicators which the primary variable rule was applied to after the calculations"),
+             booktabs = TRUE) %>% 
+  kableExtra::kable_styling(font_size = 12)
+```
+<br>
+
+### **Impute missing data**
+
+The calculation step adds indicators to the data, but it does not solve the problem of time-series completeness. The Imputation step comes in the faoswsAquastatUpdate module to:
+
+1. Expands variables and indicators time-series **from the first observed value last observed value** as agreed by the technical unit;
+
+2. Removes **0M** value-flags to prevent the imputation algorithm, particularly the linear interpolation, from taking the zero values into account.
+
+3. Fills the generated missing values using the following guideline:
+
+   - Applies **Last Observation Carried Forward** to missing values in time-series where the observed values **DO NOT VARY**;
+   - Applies **Last Observation Carried Forward** to missing values in time-series of Long-Term average variables;
+   - Applies **Last Observation Carried Forward** to missing values in time-series with only one observed value;
+   - Applies **Linear Interpolation** to missing values in time-series with two or more different observed values.
+
+<br>
+
+
+### **Recalculate indicators**
+
+The time-series completeness brought by imputations is used by the recalculation step to replace indicator imputed values by calculated values. Thus, the faoswsAquastatUpdate:
+
+1. Takes the imputed dataset resulting from the Imputation step;
+
+2. **Re-applies** the calculation rules to the imputed dataset;
+
+3. **Re-applies** the primary variable rule to the imputed dataset;
+
+4. Replaces indicators brought by imputations by values brought by the recalculation when applicable.
+
+
+
+### **Map out flags (Method)**
+
+With regard to the flag of methods in SWS, the conversion follows:
+
+1. When the value is imputed from the module AND the imputation method is LOCF, the flag method is **'t'**;
+
+2. When the value is imputed from the module and the method is LOCF, the flag of method is **'e'**;
+
+3. When the value is calculated or recalculated the flag of method is **'i'**.
+
+4. When the value has flagObservationStatus **'E'** and DOES NOT COME FROM PROCESSING, the flag of method is **'-'**;
+
+5. When the value has flagObservationStatus **blank** and DOES NOT COME FROM PROCESSING, the flag of method is **'p'** ;
+
+6. When the value has flagObservationStatus **'X'** and DOES NOT COME FROM PROCESSING, the flag of method is **'c'**;
+
+<br>
+```{r flagmeth, echo=FALSE, message=FALSE}
+require(dplyr)
+require(data.table)
+require(kableExtra)
+d = readr::read_csv("tables/flagmeth.csv")
+knitr::kable(x = d, 
+             # table.attr='class="table-fixed-header"',
+             caption = paste("flagObservationStatus - flagMethod combination brought by the faoswsAquastatUpdate module"),
+             booktabs = TRUE) %>% 
+  kableExtra::kable_styling(font_size = 12)
+```
+<br>
+
+
+## **Workflow**
+```{r fig1, echo=FALSE, out.width='100%', out.width='100%', fig.cap='Workflow of the faoswsAquastatUpdate module.'}
+
+library(DiagrammeR)
+DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = LR]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = Linen]
+
+# Inputs
+aquabase [label = 'Dataset: \n SWS aquastat_legacy \n from the faoswsAquastatLegacy module', shape = folder, fillcolor = Beige]
+aquaquest [label = 'Dataset: \n SWS aquastat_questionnaire \n from the questionnaire harvester', shape = folder, fillcolor = Beige]
+aquaexter [label = 'Dataset: \n SWS aquastat_external \n from the faoswsAquastatExternal module', shape = folder, fillcolor = Beige]
+
+# data tables
+refer [label = 'Data table: \n SWS aquastat_reference data table', shape = folder, fillcolor = LightGrey]
+calc [label = 'Data table: \n SWS calculation_rule data table', shape = folder, fillcolor = LightGrey]
+
+# processing
+Processing [label = 'Processing: \n 1. Harmonize dimensions \n 2. Replace/Update aquastat_legacy \n with aquastat_questionnaire \n and aquastat_external dataset, \n 3. Map out flag of observation, \n 4. Calculation, \n 5. Imputation (LOCF, Linear Interpolation), \n 6. Recalculation, \n 7. Map out flag Method', shape = square, fillcolor = LightBlue]
+
+# Output
+Output [label = 'Dataset: \n aquastat_update dataset', shape = folder, fillcolor = Beige]
+
+#Save
+Save [label = 'Database: \n aquastat_update dataset \n saved in the SWS', shape = folder, fillcolor = Beige]
+
+
+# Flow
+# edge definitions with the node IDs
+{aquaquest, aquabase, aquaexter} -> Processing  -> Output -> Save
+{refer, calc} -> Processing
+}")
+
+```
+
+<br>
+<br>
+
+```{block , type='rmdimportant'}
+**AGAIN...**
+<br>
+The harvester for data in AQUASTAT questionnaire has not yet been developed by CIO; therefore, the faoswsAquastat module is currently using the aquastat_questionnaire data saved in the sws-share drive (**/AquastatValidation/data/Update/aquastat_questionnaire.csv**).
+
+It is also important to underscore that When updating the aquastat_questionnaire file to be saved in the (**/AquastatValidation/data/Update/aquastat_questionnaire.csv**) please remember that the columns must be named as **geographicAreaM49** (M49 codes), **aquastatElement**, **timePointYears**, **flagAquastat**.
+```
+
+
+## **Running the module**
+
+1. Log in the SWS;
+
+2. Click on **New Query**;
+
+3. Select **AQUASTAT domain** and **aquastat_update dataset**;
+
+4. Select whatever country, measured element, and timePointYears;
+
+5. Run the query by clicking on the **Run** button;
+
+```{r  up124, echo=FALSE, out.width="100%", fig.cap='Steps 1 to 5 to run the module in the SWS.'}
+knitr::include_graphics("images/update_1_to_4.png")
+
+```
+<br>
+```{block , type='rmdtip'}
+If the aquastat_update dataset has never been generated and saved in the SWS database before, the session will be empty and waiting to be populated by the faoswsAquastatUpdate module. Otherwise, the session will be populated by the data generated and saved by the last time the module ran. It is an intrisinc SWS feature and the user should not be worried about it. 
+
+```
+
+6. Click on **Run plugin** on the top-right (see figure above).
+
+7. Select the **faoswsAquastatUpdate** module and click on **Run plugin**;
+
+<br>
+```{r  up7, echo=FALSE, out.width="100%", fig.cap='Select the faoswsAquastatUpdate and run it in the SWS.'}
+knitr::include_graphics("images/update_7PNG.png")
+
+```
+<br>
+8. Wait for the results to appear in the session;
+<br>
+```{r  up8, echo=FALSE, out.width="100%", fig.cap='Wait for the end of the processing (~ 15 minutes).'}
+knitr::include_graphics("images/update_8.png")
+
+```
+<br>
+9. Check the populated session and click on **Save to dataset** after validation.
+
+<br>
+```{r  up9, echo=FALSE, out.width="100%", fig.cap='Wait for the end of the processing (~ 15 minutes).'}
+knitr::include_graphics("images/update_9.png")
+
+```
+<br>
+
+## **Did the module...**
+
+### Add new indicators ?
+```{r tab10, echo=FALSE, message=FALSE}
+require(dplyr)
+d = readr::read_csv("tables/base_add_indicators.csv")
+knitr::kable(x = d,
+             #table.attr='class="table-fixed-header"',
+             caption = paste("The new indicators resulting from the faoswsAquastatBaseline module"),
+             booktabs = TRUE) %>% 
+  kableExtra::kable_styling(font_size = 12)
+```
+
+### promote time-series completeness and higher geographic coverage ?
+**For the SDG 6.4.1 (Water Use Efficiency)...**
+```{r tab11, echo=FALSE, message=FALSE}
+require(dplyr)
+require(data.table)
+d = data.table::fread("tables/map4551.csv")
+d <- d[,.(geographicAreaM49_description, count_bef, count_after)]
+setnames(d, 'count_bef', 'before_module')
+setnames(d, 'count_after','after_module')
+knitr::kable(x = d,
+             #table.attr='class="table-fixed-header"',
+             caption = paste("Increase in time-series completeness and geographic expansion of SDG 6.4.1 (Water Use Efficiency"),
+             booktabs = TRUE) %>% 
+kableExtra::kable_styling(font_size = 12)
+```
+
+
+
+**And for the SDG 6.4.2 (Water Stress)...**
+
+```{r tab12, echo=FALSE, message=FALSE}
+require(dplyr)
+require(data.table)
+d = data.table::fread("tables/map4550.csv")
+d <- d[,.(geographicAreaM49_description, count_bef, count_after)]
+setnames(d, 'count_bef', 'before_module')
+setnames(d, 'count_after','after_module')
+knitr::kable(x = d,
+             #table.attr='class="table-fixed-header"',
+             caption = paste("Increase in time-series completeness and geographic expansion of SDG 6.4.2 (Water Stress"),
+             booktabs = TRUE)%>% 
+  kableExtra::kable_styling(font_size = 12)
+```
+
+
+### correct values of Long-Term Average variables ?
+```{r tab13, echo=FALSE, message=FALSE}
+require(dplyr)
+require(data.table)
+d = data.table::fread("tables/daf4157.csv")
+knitr::kable(x = d,
+             #table.attr='class="table-fixed-header"',
+             caption = paste("LTA correction in Afghanistan on the element 'Total internal renewable water resources (IRWR) [10^9 m3/year]'"),
+             booktabs = TRUE)%>% 
+  kableExtra::kable_styling(font_size = 12)
+```
+ <br>
+ <br>
+ 
+```{block , type='rmdnote'}
+
+**FINAL REMARKS:**
+The faoswsAquastatUpdate lives up to expectations by doing what it was maily designed for, i.e. update the aquastat_legacy dataset with new data coming from questionnaire and external datasources are available.
+
+```
+ 

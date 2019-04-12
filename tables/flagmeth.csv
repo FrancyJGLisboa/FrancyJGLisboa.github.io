@@ -1,7 +1,7 @@
 flagObservationStatus ,flagMethod
 X (External organization),c (copied in the system)
 I (Imputed),t (Carry-forward estimate)
-I (Imputed),e Estimate by statistical algorithm)
-E (Estimate),i (calculated as identity)
-E (Estimate),"""-"" (unknown method)"
+I (Imputed),e (Estimate by statistical algorithm)
+E (Estimate),i (Calculated as identity)
+E (Estimate),"""-"" (Unknown method)"
 """<blank>"" (Official)",p (Collected manually from databases)

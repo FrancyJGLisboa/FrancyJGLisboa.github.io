@@ -9,7 +9,7 @@ The faoswsAquastatValidation emerges as a demand for quality assurance and quali
 
 The validation module uses the AQUASTAT domain-knowledge converted into validation rules to identify errors in the data. The validation rules are logical test pre-defined by the technical unit and stored by the ESS-SWS team as an SWS data table called **validation_rule_clone** see \@ (tab:tab14).
 
-- The columns **lhs** and **rhs** represent the left and right side of the validation rule expression. 
+- The columns **lhs** and **rhs** represent the left and right sides of the validation rule expression. 
 - The **operator** the relationship between lhs and rhs that should be tested. 
 - The **priority** is a binary variable with 1 (MUST CHECK) and 0 (SHOULD CHECK).
 

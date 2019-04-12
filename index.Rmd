@@ -56,7 +56,7 @@ The book focuses on SWS statistical processes on progress. However, for those in
 
   4. The **FAO Office of the Chief Statistician (OCS)** has endorsed the annual **Water and Agriculture** questionnaire;
 
-  5. AQUASTAT sents out the questionnaire in the first semester of each year.
+  5. AQUASTAT sends out the questionnaire in the first semester of each year.
 
 
 ## **Questionnaire** {-}
@@ -83,7 +83,7 @@ knitr::include_graphics("images/aqua_methodology_new.png")
 
 AQUASTAT dataflow will predominantly be triggered by the filling and compilation of the **Water and Agriculture questionnaire** by the AQUASTAT network of National Correspondents. The CIO - SWS counterpart is responsible for creating a tailored questionnaire harvesters to automatically extract data from filled surveys and output it as an SWS compliant dataset. Once in the SWS, the technical unit will benefit from the tools and other features that have been developed to make the AQUASTAT dataflow as seamless as possible. On this basis, the flowchart below gives the AQUASTAT dataflow that has been fostered by the ESS - SWS team.
 
-```{r fig2, echo=FALSE, fig.cap='Proposed AQUATAST - SWS dataflow', message=FALSE, warning=FALSE}
+```{r fig2, echo=FALSE, fig.cap='Developed AQUATAST - SWS dataflow', message=FALSE, warning=FALSE}
 
 require(DiagrammeR)
 DiagrammeR::grViz("digraph {
@@ -106,11 +106,11 @@ Newdata [label = 'Dataset: \n data harvested from questionnaire \n and SWS compl
 
 QA1 [label = 'QAQC \n Manual Quality control \n of data harvested from questionnaire', fillcolor = PaleGreen]
 
-Newdata_val [label = 'Dataset: \n validated questionnaire data', shape = folder, fillcolor = Beige]
+Newdata_val [label = 'Dataset: \n aquastat_questionnaire', shape = folder, fillcolor = Beige]
 
 APIsourcing [label = 'Process: \n faoswsAquastatExternal module', fillcolor = PaleGreen]
 
-APIdata [label = 'Dataset: \n AQUASTAT data from external sources', shape = folder, fillcolor = Beige]
+APIdata [label = 'Dataset: \n aquastat_external', shape = folder, fillcolor = Beige]
 
 oldsystem [label = 'Database: \n Old Aquastat Working System', shape = folder, fillcolor = Beige]
 
@@ -118,15 +118,12 @@ Migration [label = 'Migration: \n legacy data into the SWS \n done by CIO - SWS'
 
 legacydata [label = 'Dataset: \n aquastat_legacy dataset ', shape = folder, fillcolor = Beige]
 
+update [label = 'Process:: \n SWS faoswsAquastatUpdate module: \n 1. merges the questionnaire data, external data, and aquastat_legacy_corr \n 2. flag conversion, \n 3. apply calculations, 4. impute data, 5.  apply recalculations', shape = losangle, fillcolor = PaleGreen]
 
-faobaselineM [label = 'Process: \n SWS faoswsAquastatLegacy module \n (runs only once to correct LTAs \n in the legacy data)',  fillcolor = PaleGreen]
+updateddata [label = 'Dataset: \n aquastat_update \n from SWS faoswsAquastatUpdate module ', shape = folder, fillcolor = Beige]
 
-faobaseline [label = 'Dataset: \n SWS aquastat_legacy_corr dataset \n (the legacy data corrected for LTAs)', shape = folder, fillcolor = Beige]
-
-update [label = 'Process:: \n SWS faoswsAquastatUpdate module: \n 1. merges the questionnaire data, external data, and aquastat_legacy_corr \n 2. flag conversion, \n 3. apply calculations, 4. impute data, 5.  apply recalculation', shape = square, fillcolor = PaleGreen]
-
-updateddata [label = 'Dataset: \n updated aquastat_legacy_corr dataset \n from SWS faoswsAquastatUpdate module ', shape = folder, fillcolor = Beige]
-
+agg_proc [label = 'Process: \n faoswsAquastatAggregation module \n (Get regional SDG aggregations)', fillcolor = PaleGreen]
+agg_out [label = 'Dataset: \n aquastat_aggregation \n sent to the user by email (.csv file)', shape = folder, fillcolor = Beige]
 
 QA2 [label = 'Process: \n Automate Quality control \n by faoswsAquatsatValidation module', fillcolor = PaleGreen]
 
@@ -134,9 +131,9 @@ validationemail [label = 'Dataset: \n Validation output \n sent to the user by e
 
 QA3 [label = 'Process: \n Manual Quality control \n of faoswsAquatsatValidation module output', fillcolor = PaleGreen]
 
-validated [label = 'Dataset: \n updated aquastat_legacy_corr \n cleared by technical division', shape = folder, fillcolor = Beige]
+validated [label = 'Dataset: \n aquastat_update \n cleared by technical division', shape = folder, fillcolor = Beige]
 
-AQUASWSdb [label = 'Dataset: \n updated AQUASTAT dataset \n saved in the SWS database', shape = folder, fillcolor = Beige]
+AQUASWSdb [label = 'Dataset: \n aquastat_update \n saved in the SWS database', shape = folder, fillcolor = Beige]
 
 Diss [label = 'Dissemination: \n  Web, publications, Apps', shape = folder, fillcolor = LightGrey]
 
@@ -144,22 +141,26 @@ Diss [label = 'Dissemination: \n  Web, publications, Apps', shape = folder, fill
 # Flow
 # edge definitions with the node IDs
 {coordination, Surveys, Literature} -> focalpoint -> SWSQH -> Newdata -> QA1 -> Newdata_val -> update
-{oldsystem} -> Migration -> legacydata -> faobaselineM -> faobaseline
-{APIsourcing} -> APIdata -> update 
-{faobaseline} -> update -> updateddata -> QA2 -> validationemail -> QA3 -> validated -> AQUASWSdb -> Diss
+{oldsystem} -> Migration -> legacydata -> update 
+{APIsourcing} -> APIdata -> update -> updateddata -> QA2 -> validationemail -> QA3 -> validated -> AQUASWSdb -> Diss
+{validated} -> agg_proc -> agg_out -> Diss
 }")
 
 ```
+<br>
+<br>
+```{block , type='rmdimportant'}
+**IMPORTANT:**
 
+Notice that the questionnaire harvester produced by CIO - SWS counterpart represents the first contact of the questionnaire - based data with the SWS. The harvester for data in AQUASTAT questionnaire has not yet been developed by CIO; therefore, while the CIO harvester is not in place, the faoswsAquastatUpdate module reads the **aquastat_questionnaire** from the sws-share drive. The file location is:
+(**//hqlprsws1.hq.un.fao.org/sws_r_share/AquastatValidation/data/Update/aquastat_questionnaire.csv**).
 
-```{block , type='rmdnote'}
+**WARNING!!!**
 
-Notice that the questionnaire harvester produced by CIO - SWS counterpart represents the first contact of the questionnaire - based data with the SWS. The harvester outputs an SWS compliant dataset that goes through the chain of SWS processes where inputs and outputs datasets are also adhering to SWS standards. 
-
-Apart from the questionnaire harvesting, the processes in green are those performed by AQUASTAT modules **already operating in the QA environment in the SWS**. The **faoswsAquastatUpdate module** is yet to be built after the final endorsement of the faoswsAquastaBaseline output by the technical unit. 
-
+When updating the aquastat_questionnaire file to be saved in the (**/AquastatValidation/data/Update/aquastat_questionnaire.csv**) please remember that the columns must be named as **geographicAreaM49** (M49 codes), **aquastatElement**, **timePointYears**, **flagAquastat**.
 ```
-
+<br>
+<br>
 
 # **SWS resources** {-}
 
@@ -219,10 +220,12 @@ The **aquastatElement** variable in the aquastat_legacy dataset is not SWS compl
 4. **Time** (the time unit the data is displayed for: year, months, etc). In SWS, the time dimension used by AQUASTAT data sets is named **timePointYears**.
 
 5. **Flag** (A standardized label indicating origin and/or nature of a number in the data set, e.g. <blank> (Official number)). In SWS, the flag dimension used by AQUASTAT data sets is named **flagObservationStatus**. Please check the [OCS statistical standards](http://intranet.fao.org/statistics_coordination_portal/standards_for_quality_compliance/) and the [flags document](http://intranet.fao.org/fileadmin/user_upload/scp/Standards_for_quality_compliance/SSS1_Flags.pdf) to understand the flagObservationStatus rational and  obtain the description of flags. 
+<br>
 ```{r  fig4, echo=FALSE, out.width="100%", fig.cap=' Description of flag of observations in the SWS'}
 knitr::include_graphics("images/flagobstatus_rev2.png")
 
 ```
+<br>
 6. **Method** (A standardized label indicating method utilized to obtain a number in the data set. In SWS, the method dimension used by AQUASTAT data sets is named **flagMethod**. Please check the [OCS statistical standards](http://intranet.fao.org/statistics_coordination_portal/standards_for_quality_compliance/) and the [flags document](http://intranet.fao.org/fileadmin/user_upload/scp/Standards_for_quality_compliance/SSS1_Flags.pdf) to understand the flagMethod rational and  obtain the description of flags. 
 
 ```{r  fig5, echo=FALSE, out.width="100%", fig.cap=' Description of flag of methods in the SWS'}
@@ -230,7 +233,7 @@ knitr::include_graphics("images/flagmethod_rev2.png")
 
 ```
 
-
+<br>
 
 ```{r fig6, echo=FALSE, out.width="100%", fig.cap='Typical dimensions (SWS code/reference lists) composing a AQUASTAT SWS - compliant input/output dataset.', message=FALSE, warning=FALSE}
 require(DiagrammeR)
@@ -255,9 +258,7 @@ aquadataset [label = 'Typical SWS-compliant aquastat dataset', shape = folder, f
 {area, element, time, flagObs, flagMeth} -> aquadataset 
 }")
 ```
-
-
-
+<br>
 
 ## **Data tables** {-} 
 
@@ -269,9 +270,9 @@ Data tables are mainly used to store information helping R modules to output ana
 
 3. **aquastat_sources**. A data table storing AQUASTAT data source references. 
 
-4. **calculation_rule**. A data table storing the pre-defined calculation rules used to obtain AQUASTAT indicators/derived variables.
+4. **calculation_rule**. A data table storing the pre-defined calculation rules used to obtain AQUASTAT indicators/derived variables. This table is used by the **faoswsAquastatUpdate** module
 
-5. **aquastat_validation**. A data table storing the a set of logic tests to be applied to AQUASTAT inputs and outputs for the purpose of quality assurance and quality check.
+5. **aquastat_validation**. A data table storing the a set of logic tests to be applied to AQUASTAT inputs and outputs for the purpose of quality assurance and quality check. This table is used by the **faoswsAquastatValidation** module.
 
 6. **Global Dam Reservoir**. A data table storing national expert - provided information on the major Dams at the country level and used to calculate Dam capacity time-series.
 
@@ -279,11 +280,11 @@ Data tables are mainly used to store information helping R modules to output ana
 
 8. **Global Map of Irrigated Area/subnational**. A data table storing information for the update of spatial representation of irrigated areas at the national and sub-national levels.
 
-9. **aqua_calculation_rule**. A data table storing the calculation rules to apply to aggregation of the SDG 6.4.2 (Water Stress) at the regional level
+9. **aqua_sdg_agg**. A data table storing the calculation rules to apply to aggregation of the SDG 6.4.2 (Water Stress) at the regional level and used by the **faoswsAquastatAggregation**.
 
-10. **aqua_external_source**. A data table with the mapping between AQUASTAT and Data used by AQUASTAT from external agencies.
+10. **aqua_external_source**. A data table with the mapping between AQUASTAT and Data used by AQUASTAT from external agencies and used by the **faoswsAquastatExternal** module.
 
-11. **m49_fs_iso_mapping**. A data table with the correspondence between FAOSTAT, UNSDM49, ISO3, and ISO3 codes.
+11. **m49_fs_iso_mapping**. A data table with the correspondence between FAOSTAT, UNSDM49, ISO3, and ISO3 codes. This table is used by the **faoswsAquastatExternal** module.
 
 
 ```{block , type='rmdnote'}
@@ -294,20 +295,25 @@ The data tables **aqua_calculation_rule** and  **aqua_external_source** are work
 ```
 
 
-
 ## **Datasets** {-}
 
 Datasets in the SWS are interchangeably used as module inputs/outputs and are composed by dimensions (aka reference/code lists). Because SWS datasets contain code lists following international standards as dimensions, there is little space for variation of dimension names across SWS datasets for the sake of standardization. In the AQUASTAT - SWS framework, the available data sets are:
 
-1. **aquastat_legacy**. Currently named as **aquastat_enr**, the **aquastat_legacy** is an SWS dataset with the legacy data from the 'Old' AQUASTAT working system. The CIO - SWS has migrated the aquastat_legacy dataset into the SWS in order to be used as input for the faoswsAquastatLegacy module (see Chapter \@ref(AquastatLegacy)) responsible for its correction. The **aquastat_legacy** dataset is the bare minimum of AQUASTAT, meaning that none analytical process has been applied to it, including the calculation of AQUASTAT indicators (aka derived variables). The corrected **aquastat_legacy** dataset is used, along with the questionnaire data and external data, as an input by the **faoswsAquastatUpdate** module.
+1. **aquastat_legacy**. Currently named as **aquastat_enr**, the **aquastat_legacy** is an SWS dataset with the legacy data from the 'Old' AQUASTAT working system. The CIO - SWS has migrated the aquastat_legacy dataset into the SWS in order to be updated by the faoswsAquastatUpdate module (see Chapter \@ref(AquastatUpdate)). The **aquastat_legacy** dataset is the bare minimum of AQUASTAT, meaning that none analytical process has been applied to it, including the calculation of AQUASTAT indicators (aka derived variables). 
 
-2. **aquastat_legacy_corr**. An SWS dataset output from the faoswsAquastatLegacy module which is going to correct the Long-Term average variables in the **aquastat_legacy dataset**. 
+2. **aquastat_questionnaire**. An SWS dataset output from the questionnaire harvester produced by CIO. This dataset feeds, along with the aquastat_legacy_corr and the aquastat_external datasets, the faoswsAquastatUpdate module.
 
-3. **aquastat_questionnaire**. An SWS dataset output from the questionnaire harvester produced by CIO. This dataset feeds, along with the aquastat_legacy_corr and the aquastat_external datasets, the faoswsAquastatUpdate module.
+```{block , type='rmdnote'}
+**REMEMBER**
 
-4. **aquastat_external**. An SWS dataset output from the questionnaire harvester produced by CIO. This dataset feeds, along with the aquastat_legacy_corr and the aquastat_quest datasets, the faoswsAquastatUpdate module.
+The harvester for data in AQUASTAT questionnaire has not yet been developed by CIO; therefore, the Update module is currently using the aquastat_questionnaire dataset saved in the sws-share drive. The file path is: (**/AquastatValidation/data/Update/aquastat_questionnaire.csv**).
+<br>
+When updating the aquastat_questionnaire file to be saved in the (**/AquastatValidation/data/Update/aquastat_questionnaire.csv**) please remember that the columns must be named as **geographicAreaM49** (M49 codes), **aquastatElement**, **timePointYears**, **flagAquastat**
+```
 
-5. **aquastat_update**. An SWS dataset output from the **faoswsAquastatUpdate** module representing the up-to-date AQUASTAT dataset for dissemination purposes.
+3. **aquastat_external**. An SWS dataset output from the **faoswsAquastatExternal** module which replaces the lack of a proper CIO-developed harvester for external source data used by AQUASTAT. This dataset feeds, along with the aquastat_legacy_corr and the aquastat_quest datasets, the faoswsAquastatUpdate module.
+
+4. **aquastat_aggregation**. An **Non-**SWS dataset output from the **faoswsAquastatAggregation** module with the regional aggregation of SDG 6.4.1 (Water Use Efficiency) and SDG 6.4.2 (Water Stress) at regional level following SDG regional aggregation guidelines.
 
 
 # **AQUASTAT Elements**{-}

@@ -2,11 +2,11 @@
 
 ## **Aims**
 
-The faoswsAquastatExternal is essentially an data harverster that emerges as a demand for making the AQUASTAT process of extracting and reshaping data from external sources (web databases) easier. Thus, the faoswsAquastatExternal module:
+The faoswsAquastatExternal is essentially a data harvester that emerges as demand for making the AQUASTAT process of extracting and reshaping data from external sources (web databases) easier. Thus, the faoswsAquastatExternal module:
 
 
 ### **Identifies AQUASTAT external data sources**
-The module needs to identify the external data used by AQUASTAT. This identification is done with the help of the SWS data table **aquas_external_sources** which has:
+The module needs to identify the external data used by AQUASTAT. This identification is made with the help of the SWS data table **aquas_external_sources** which has:
 
 - **element_code**. AQUASTAT element codes;
 
@@ -14,9 +14,9 @@ The module needs to identify the external data used by AQUASTAT. This identifica
 
 - **source_name**. External source name;
 
-- **source_item_code**. The item code of the AQUATSAT element in the external data source; If item is not applicable, cell is blank.
+- **source_item_code**. The item code of the AQUASTAT element in the external data source; If the item is not applicable, the cell is blank.
 
-- **source_element_code**. The element code of the AQUASTAT element in the external data source. If element is not applicable, cell is blank.
+- **source_element_code**. The element code of the AQUASTAT element in the external data source. If the element is not applicable, the cell is blank.
 
 - **data_link**. The electronic address containing a downloadable version of data (.xsl, .csv, .zip, .json files)
 
@@ -171,7 +171,7 @@ blocked -> {ILO, UNDP, WB, JMP}
 
 3. Select **AQUASTAT domain** and **aquastat_external dataset**;
 
-4. Select whatever country, measured element, and timePointYears;
+4. Select whatever geographicM49Area, aquastatElement, and timePointYears;
 <br>
 ```{r extquery,  echo=FALSE, out.width="100%", fig.cap='Steps 1 to 4'}
 knitr::include_graphics("images/aqua_external_query.png")
@@ -180,7 +180,7 @@ knitr::include_graphics("images/aqua_external_query.png")
 <br>
 ```{block , type='rmdwarning'}
 
-The **faoswsAquastatExternal** searches and downloads data from external sources. Thus, what the user is actually selecting in the query is irrelevant for the module's output.
+The **faoswsAquastatExternal** searches and downloads data from external sources.; therefore, what the user is selecting in the query is irrelevant for the module's output.
 
 ```
 <br>

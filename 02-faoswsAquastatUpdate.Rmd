@@ -303,7 +303,8 @@ knitr::kable(x = d,
 ```{block , type='rmdnote'}
 
 **FINAL REMARKS:**
-The faoswsAquastatUpdate lives up to expectations by doing what it was maily designed for, i.e. update the aquastat_legacy dataset with new data coming from questionnaire and external datasources are available.
+
+*The faoswsAquastatUpdate lives up to expectations by doing what it was  designed for, i.e., to update the aquastat_legacy dataset with new data coming from questionnaire and external data sources are available, and apply calculations and imputation on the fly.*
 
 ```
  

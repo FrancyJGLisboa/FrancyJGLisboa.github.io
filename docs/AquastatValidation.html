@@ -1,0 +1,2943 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 4 The faoswsAquastatValidation module | Migration of AQUASTAT Statistical Processes into the SWS</title>
+  <meta name="description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 4 The faoswsAquastatValidation module | Migration of AQUASTAT Statistical Processes into the SWS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 The faoswsAquastatValidation module | Migration of AQUASTAT Statistical Processes into the SWS" />
+  
+  <meta name="twitter:description" content="This online book describes the migration the statistical processes associated with the AQUASTAT - FAO Global’s Water Information System into the Corporate Statistical Working System (SWS)" />
+  
+
+<meta name="author" content="Francy Lisboa (Agronomist/Statistician, ESSD - Methodological Innovation Team)">
+
+
+<meta name="date" content="2019-04-12">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="Aggregation.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+
+
+
+<link rel="stylesheet" href="ess.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html#introduction"><strong>Introduction</strong></a><ul>
+<li><a href="index.html#data-collection"><strong>Data Collection</strong></a></li>
+<li><a href="index.html#questionnaire"><strong>Questionnaire</strong></a></li>
+<li><a href="index.html#the-current-aquastat-information-management"><strong>The current AQUASTAT information management</strong></a></li>
+<li><a href="index.html#code-lists"><strong>Code lists</strong></a></li>
+<li><a href="index.html#data-tables"><strong>Data tables</strong></a></li>
+<li><a href="index.html#datasets"><strong>Datasets</strong></a></li>
+<li><a href="index.html#international-classification-systems"><strong>International Classification Systems</strong></a></li>
+<li><a href="index.html#the-sws-aquastat_reference-data-table"><strong>The SWS aquastat_reference data table</strong></a><ul>
+<li><a href="index.html#current-aquastat-variables"><strong>Current AQUASTAT Variables</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="External.html"><a href="External.html"><i class="fa fa-check"></i><b>1</b> <strong>The faoswsAquastatExternal module</strong></a><ul>
+<li class="chapter" data-level="1.1" data-path="External.html"><a href="External.html#aims"><i class="fa fa-check"></i><b>1.1</b> <strong>Aims</strong></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="External.html"><a href="External.html#identifies-aquastat-external-data-sources"><i class="fa fa-check"></i><b>1.1.1</b> <strong>Identifies AQUASTAT external data sources</strong></a></li>
+<li class="chapter" data-level="1.1.2" data-path="External.html"><a href="External.html#reshapes-the-data-sources"><i class="fa fa-check"></i><b>1.1.2</b> <strong>Reshapes the data sources</strong></a></li>
+<li class="chapter" data-level="1.1.3" data-path="External.html"><a href="External.html#maps-out-aquastat-to-external-sources"><i class="fa fa-check"></i><b>1.1.3</b> <strong>Maps out AQUASTAT to external sources</strong></a></li>
+<li class="chapter" data-level="1.1.4" data-path="External.html"><a href="External.html#maps-out-faostat-areas-to-unsdm49"><i class="fa fa-check"></i><b>1.1.4</b> <strong>Maps out FAOSTAT areas to UNSDM49</strong></a></li>
+<li class="chapter" data-level="1.1.5" data-path="External.html"><a href="External.html#saves-the-output-back-into-sws"><i class="fa fa-check"></i><b>1.1.5</b> <strong>Saves the output back into SWS</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="External.html"><a href="External.html#workflow"><i class="fa fa-check"></i><b>1.2</b> <strong>Workflow</strong></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="External.html"><a href="External.html#only-possible-workflow"><i class="fa fa-check"></i><b>1.2.1</b> <em>Only Possible</em> <strong>Workflow</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="External.html"><a href="External.html#running-the-module"><i class="fa fa-check"></i><b>1.3</b> <strong>Running the module</strong></a></li>
+<li class="chapter" data-level="1.4" data-path="External.html"><a href="External.html#did-the-module.."><i class="fa fa-check"></i><b>1.4</b> <strong>Did the module..</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html"><i class="fa fa-check"></i><b>2</b> <strong>The faoswsAquastaUpdate module</strong></a><ul>
+<li class="chapter" data-level="2.1" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#aims-1"><i class="fa fa-check"></i><b>2.1</b> <strong>Aims</strong></a><ul>
+<li class="chapter" data-level="2.1.1" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#harmonize-data-source-dimensions"><i class="fa fa-check"></i><b>2.1.1</b> <strong>Harmonize data source dimensions</strong></a></li>
+<li class="chapter" data-level="2.1.2" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#replaceupdate-the-legacy-data"><i class="fa fa-check"></i><b>2.1.2</b> <strong>Replace/update the legacy data</strong></a></li>
+<li class="chapter" data-level="2.1.3" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#map-out-flags-observation"><i class="fa fa-check"></i><b>2.1.3</b> <strong>Map out flags (Observation)</strong></a></li>
+<li class="chapter" data-level="2.1.4" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#calculate-indicators"><i class="fa fa-check"></i><b>2.1.4</b> <strong>Calculate indicators</strong></a></li>
+<li class="chapter" data-level="2.1.5" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#apply-primary-variable-approach"><i class="fa fa-check"></i><b>2.1.5</b> <strong>Apply Primary Variable Approach</strong></a></li>
+<li class="chapter" data-level="2.1.6" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#impute-missing-data"><i class="fa fa-check"></i><b>2.1.6</b> <strong>Impute missing data</strong></a></li>
+<li class="chapter" data-level="2.1.7" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#recalculate-indicators"><i class="fa fa-check"></i><b>2.1.7</b> <strong>Recalculate indicators</strong></a></li>
+<li class="chapter" data-level="2.1.8" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#map-out-flags-method"><i class="fa fa-check"></i><b>2.1.8</b> <strong>Map out flags (Method)</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#workflow-1"><i class="fa fa-check"></i><b>2.2</b> <strong>Workflow</strong></a></li>
+<li class="chapter" data-level="2.3" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#running-the-module-1"><i class="fa fa-check"></i><b>2.3</b> <strong>Running the module</strong></a></li>
+<li class="chapter" data-level="2.4" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#did-the-module"><i class="fa fa-check"></i><b>2.4</b> <strong>Did the module…</strong></a><ul>
+<li class="chapter" data-level="2.4.1" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#add-new-indicators"><i class="fa fa-check"></i><b>2.4.1</b> Add new indicators ?</a></li>
+<li class="chapter" data-level="2.4.2" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#promote-time-series-completeness-and-higher-geographic-coverage"><i class="fa fa-check"></i><b>2.4.2</b> promote time-series completeness and higher geographic coverage ?</a></li>
+<li class="chapter" data-level="2.4.3" data-path="AquastatUpdate.html"><a href="AquastatUpdate.html#correct-values-of-long-term-average-variables"><i class="fa fa-check"></i><b>2.4.3</b> correct values of Long-Term Average variables ?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Aggregation.html"><a href="Aggregation.html"><i class="fa fa-check"></i><b>3</b> <strong>The faoswsAquastatAggregation module</strong></a><ul>
+<li class="chapter" data-level="3.1" data-path="Aggregation.html"><a href="Aggregation.html#aims-2"><i class="fa fa-check"></i><b>3.1</b> <strong>Aims</strong></a><ul>
+<li class="chapter" data-level="3.1.1" data-path="Aggregation.html"><a href="Aggregation.html#calculate-region-specific-aggregations-for-sdg-6.4.2"><i class="fa fa-check"></i><b>3.1.1</b> <strong>Calculate region-specific aggregations for SDG 6.4.2</strong></a></li>
+<li class="chapter" data-level="3.1.2" data-path="Aggregation.html"><a href="Aggregation.html#calculate-region-specific-aggregations-for-sdg-6.4.1"><i class="fa fa-check"></i><b>3.1.2</b> <strong>Calculate region-specific aggregations for SDG 6.4.1</strong></a></li>
+<li class="chapter" data-level="3.1.3" data-path="Aggregation.html"><a href="Aggregation.html#send-the-result-to-the-user-email"><i class="fa fa-check"></i><b>3.1.3</b> <strong>Send the result to the user email</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="Aggregation.html"><a href="Aggregation.html#workflow-2"><i class="fa fa-check"></i><b>3.2</b> <strong>Workflow</strong></a></li>
+<li class="chapter" data-level="3.3" data-path="Aggregation.html"><a href="Aggregation.html#did-the-module..-1"><i class="fa fa-check"></i><b>3.3</b> <strong>Did the module..</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="AquastatValidation.html"><a href="AquastatValidation.html"><i class="fa fa-check"></i><b>4</b> <strong>The faoswsAquastatValidation module</strong></a><ul>
+<li class="chapter" data-level="4.1" data-path="AquastatValidation.html"><a href="AquastatValidation.html#aims-3"><i class="fa fa-check"></i><b>4.1</b> <strong>Aims</strong></a><ul>
+<li class="chapter" data-level="4.1.1" data-path="AquastatValidation.html"><a href="AquastatValidation.html#applies-validation-rules"><i class="fa fa-check"></i><b>4.1.1</b> <strong>Applies validation rules</strong></a></li>
+<li class="chapter" data-level="4.1.2" data-path="AquastatValidation.html"><a href="AquastatValidation.html#focuses-on-high-priority-rules"><i class="fa fa-check"></i><b>4.1.2</b> <strong>Focuses on high priority rules</strong></a></li>
+<li class="chapter" data-level="4.1.3" data-path="AquastatValidation.html"><a href="AquastatValidation.html#reshapes-and-adds-names-to-data"><i class="fa fa-check"></i><b>4.1.3</b> <strong>Reshapes and adds names to data</strong></a></li>
+<li class="chapter" data-level="4.1.4" data-path="AquastatValidation.html"><a href="AquastatValidation.html#sends-the-output-to-the-user-email"><i class="fa fa-check"></i><b>4.1.4</b> <strong>Sends the output to the user email</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="AquastatValidation.html"><a href="AquastatValidation.html#workflow-3"><i class="fa fa-check"></i><b>4.2</b> <strong>Workflow</strong></a></li>
+<li class="chapter" data-level="4.3" data-path="AquastatValidation.html"><a href="AquastatValidation.html#running-the-module-in-the-sws"><i class="fa fa-check"></i><b>4.3</b> <strong>Running the module in the SWS</strong></a></li>
+<li class="chapter" data-level="4.4" data-path="AquastatValidation.html"><a href="AquastatValidation.html#did-the-module-1"><i class="fa fa-check"></i><b>4.4</b> <strong>Did the module</strong>…</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Migration of AQUASTAT Statistical Processes into the SWS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="AquastatValidation" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> <strong>The faoswsAquastatValidation module</strong></h1>
+<div id="aims-3" class="section level2">
+<h2><span class="header-section-number">4.1</span> <strong>Aims</strong></h2>
+<p>The faoswsAquastatValidation emerges as a demand for quality assurance and quality checking tool (QA/QC) that screens AQUASTAT data sets to identify potential issues in the data. The idea is to identify and output a data set containing the information on <strong>what</strong> (elements), <strong>where</strong> (geographic areas), and <strong>when</strong> (year) the domain-knowledge in form of validation rules (logical tests) was violated. Thus, the faoswsAquastatValidation module:</p>
+<div id="applies-validation-rules" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> <strong>Applies validation rules</strong></h3>
+<p>The validation module uses the AQUASTAT domain-knowledge converted into validation rules to identify errors in the data. The validation rules are logical test pre-defined by the technical unit and stored by the ESS-SWS team as an SWS data table called <strong>validation_rule_clone</strong> see @ (tab:tab14).</p>
+<ul>
+<li>The columns <strong>lhs</strong> and <strong>rhs</strong> represent the left and right sides of the validation rule expression.</li>
+<li>The <strong>operator</strong> the relationship between lhs and rhs that should be tested.</li>
+<li>The <strong>priority</strong> is a binary variable with 1 (MUST CHECK) and 0 (SHOULD CHECK).</li>
+</ul>
+<table class="table-fixed-header table" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:tab14">Table 4.1: </span>Validation rule data table in SWS
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+lhs
+</th>
+<th style="text-align:left;">
+operator
+</th>
+<th style="text-align:left;">
+rhs
+</th>
+<th style="text-align:right;">
+priority
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4300
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4317
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4102
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4303
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4304
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4306
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4307
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4308
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4309
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4310
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4311
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4314
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4315
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4316
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4318
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4321
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4320
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4322
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4326
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4333
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4334
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4345
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4379
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4400
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4401
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4402
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4465
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4526
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4513
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4101
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4100
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4102
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4101
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4300
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4102
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4304
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4314
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4315
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4303
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4332
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4333
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4334
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4400
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4401
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4402
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4316
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4318
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4320
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4321
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4322
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4326
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4308
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4309
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4311
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4101
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4465
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4513
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4526
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4104 *Value_4114
+</td>
+<td style="text-align:left;">
+“”==“”
+</td>
+<td style="text-align:left;">
+Value_4105<em>Value_4115</em>Value_4106*Value_4116
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4105/Value_4104
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+0.12
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4105/Value_4104
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4106/Value_4104
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+0.14
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4106/Value_4104
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.88
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4111
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+1.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4113
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4114
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4114
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+48.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4114
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+90.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4115
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4115
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+36.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4115
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+90.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4116
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4116
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+76.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4116
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+90.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(Value_4150*100000)/Value_4100
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+50.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(Value_4150*100000)/Value_4100
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+2000.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4154
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4157
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4154
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4150
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4155
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4157
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4155
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4150
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4156
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4154
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4156
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4155
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4157
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4150
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4157/Value_4150
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.5
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(Value_4157*100000)/Value_4100
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+10.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(Value_4157*100000)/Value_4100
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+1500.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4158
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+350.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4160
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4159
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4161
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4159
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4167
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4165
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4168
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4167
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4170
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4169
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4171
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4157+Value_4456
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4174
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4173
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4188
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4157
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4188
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4182
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4190
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+560.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4190
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+93500.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4192
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4250/Value_4253
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+0.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4250/Value_4253
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.9
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4250/Value_4317
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+0.002
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4250/Value_4317
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.02
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4250/Value_4317
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+0.005
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4250/Value_4317
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.025
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4251/Value_4253
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+0.03
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4251/Value_4253
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.46
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4252/Value_4253
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+0.01
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4252/Value_4253
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.45
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4254
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4255
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4256
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4257
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+50.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4258
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+1430.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4263
+</td>
+<td style="text-align:left;">
+“”==“”
+</td>
+<td style="text-align:left;">
+Value_4261+Value_4262
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4263
+</td>
+<td style="text-align:left;">
+&lt;
+</td>
+<td style="text-align:left;">
+2000.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4263
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4253
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4265
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4490
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4269
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4253
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4269
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4493
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4269
+</td>
+<td style="text-align:left;">
+“”==“”
+</td>
+<td style="text-align:left;">
+Value_4270+Value_4491
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4270
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4269
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4270
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4265
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4271
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4273
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4275
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4300
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4317
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4303
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4300
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4303+Value_4304
+</td>
+<td style="text-align:left;">
+“”==“”
+</td>
+<td style="text-align:left;">
+Value_4300
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4304
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4300
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4305
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4305
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+70.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4308/Value_4313
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+0.5
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4308+Value_4309+Value_4310
+</td>
+<td style="text-align:left;">
+“”==“”
+</td>
+<td style="text-align:left;">
+Value_4332+Value_4333+Value_4334
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4309/Value_4313
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.6
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4310/Value_4313
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.2
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4311
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4308
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4311
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4310
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4311
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4310
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4317
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4326
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4320+Value_4321+Value_4322+Value_4465+Value_4513+Value_4526
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4311
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4321
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4322
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4303
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4465
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4513
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Value_4526
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4317
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4103
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4318
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4319
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4320/Value_4313
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.7
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4321/Value_4313
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.9
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4323
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4324
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4325
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4327
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4328
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4329
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4330
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4331
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4335
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+1000.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4335
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+20000.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4339
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+1000.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4339
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+20000.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4343
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+1000.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4343
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+20000.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4344
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+1000.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4344
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+20000.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4379/Value_4317
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+0.5
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4400
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4401
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4313
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4401/Value_4313
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+0.5
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4403
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4104
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4445
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4446
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4450
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4475
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4250
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4493
+</td>
+<td style="text-align:left;">
+&gt;=
+</td>
+<td style="text-align:left;">
+Value_4270
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4546
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4112
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4547
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4112
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4548
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+Value_4112
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4550
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4555
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Value_4556
+</td>
+<td style="text-align:left;">
+&lt;=
+</td>
+<td style="text-align:left;">
+100.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="focuses-on-high-priority-rules" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> <strong>Focuses on high priority rules</strong></h3>
+<p>The module ratains the rows in the input dataset that violated one or more <strong>PRIORITY</strong> validation rules.</p>
+</div>
+<div id="reshapes-and-adds-names-to-data" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> <strong>Reshapes and adds names to data</strong></h3>
+<p>The modules reshapes the faulty-rules dataset to a long-format and adds to it the geographicAreaM49 and AQUASTAT element names.</p>
+</div>
+<div id="sends-the-output-to-the-user-email" class="section level3">
+<h3><span class="header-section-number">4.1.4</span> <strong>Sends the output to the user email</strong></h3>
+<p>With geographicAreaM49 and AQUASTAT elements in the output facilitating the interpretation, the module sends the output as <strong>.csv file</strong> to the user email (FAO corporate account). The .csv file attached in the email is named <strong>validation_name of the dataset input in SWS.csv</strong> and has the following columns:</p>
+<ul>
+<li><p><strong>geographic_area_description</strong>. The name of the country indicating <em>where</em> the validation rule (expression) did not pass the logical test;</p></li>
+<li><p><strong>timePointYears</strong>. The year indicating <em>when</em> the validation rule (expression) did not pass the logical test;</p></li>
+<li><p><strong>aquastatElement</strong>. The aquastatElement code;</p></li>
+<li><p><strong>aquastatElement description</strong>. The aquastatElement name(s) in the failing validation rule (expression);</p></li>
+<li><p><strong>Value</strong>. The values of aquastatElement(s) in the geographic area and year that may be potentially erroneous;</p></li>
+<li><p><strong>flagObservationStatus</strong> (if input has the flagObservationStatus dimension) or <strong>flagAquastat</strong> (if input is the aquastat_enr data set). The flag of the potentially erroneous values;</p></li>
+<li><p><strong>flagMethod</strong> (if input has the flagMethod dimension). The flag pointing the method used to obtain the potentially erroneous values;</p></li>
+<li><p><strong>expression</strong>. The validation rule that was violated and detected by the module.</p></li>
+</ul>
+</div>
+</div>
+<div id="workflow-3" class="section level2">
+<h2><span class="header-section-number">4.2</span> <strong>Workflow</strong></h2>
+<div class="figure"><span id="fig:val"></span>
+<div id="htmlwidget-20e9ce242a429a1aa55f" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-20e9ce242a429a1aa55f">{"x":{"diagram":"digraph {\n                  \n                  graph [layout = dot, rankdir = TB]\n                  \n                  # define the global styles of the nodes. We can override these in box if we wish\n                  node [shape = rectangle, style = filled, fillcolor = Linen]\n                  \n                  # Inputs\n                  aqualegorig [label = \"Dataset: \n aquastat_legacy\", shape = folder, fillcolor = Beige]\n                  aquaext [label = \"Dataset: \n aquastat_external\", shape = folder, fillcolor = Beige]    \n                  aquaquest [label = \"Dataset: \n aquastat_questionnaire\", shape = folder, fillcolor = Beige] \n                  aquaup [label = \"Dataset: \n aquastat_update\", shape = folder, fillcolor = Beige] \n\n\n                  module [label = \"Processing: \n faoswsAquastatValidation module \n 1.Applies validation rules \n 2. Retains violated rows, \n 3. Reshape data and add names \n to geographicAreaM49 and AQUASTAT element codes\", shape = folder, fillcolor = LightBlue]\n                  \n                  # Output\n                  output [label = \"Email: \n validation_.csv to the user\", shape = folder, fillcolor = Yellow] \n                \n                  # Flow\n                  # edge definitions with the node IDs\n                  {aqualegorig, aquaext,aquaquest, aquaup } -> module  -> output\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 4.1: faoswsAquastatValidation module workflow
+</p>
+</div>
+<p><br> <br></p>
+</div>
+<div id="running-the-module-in-the-sws" class="section level2">
+<h2><span class="header-section-number">4.3</span> <strong>Running the module in the SWS</strong></h2>
+<ol style="list-style-type: decimal">
+<li><p>Log into the SWS;</p></li>
+<li><p>Click on the <strong>New Query</strong> button;</p></li>
+<li><p>Choose <strong>Aquastat domain</strong>;</p></li>
+<li><p>Choose an AQUASTAT dataset to be screened (remember they are the inputs!);</p></li>
+<li><p>Select all countries, all elements, and all years;</p></li>
+<li><p>Click on <strong>Run</strong> beside the save button to query the data;</p></li>
+</ol>
+<div class="figure"><span id="fig:fig17"></span>
+<img src="images/query.JPG" alt=" Running the module in SWS: steps 1 to 6" width="100%" />
+<p class="caption">
+Figure 4.2:  Running the module in SWS: steps 1 to 6
+</p>
+</div>
+<ol start="7" style="list-style-type: decimal">
+<li><p>Click on the <strong>Run plugin</strong> button;</p></li>
+<li><p>Select the faoswsAquastatValidation module and click on the <strong>Run plugin</strong> button;</p></li>
+</ol>
+<div class="figure"><span id="fig:fig18"></span>
+<img src="images/validationselectplugin.PNG" alt=" Running the module in SWS: steps 7 to 8" width="100%" />
+<p class="caption">
+Figure 4.3:  Running the module in SWS: steps 7 to 8
+</p>
+</div>
+<ol start="9" style="list-style-type: decimal">
+<li>Wait for the output in your FAO email inbox;
+<div class="figure"><span id="fig:fig19"></span>
+<img src="images/validationwaitemail.PNG" alt=" Running the module in SWS: step 9" width="100%" />
+<p class="caption">
+Figure 4.4:  Running the module in SWS: step 9
+</p>
+</div></li>
+<li>Check your inbox.</li>
+</ol>
+<ul>
+<li>The send is <strong>‘<a href="mailto:sws@fao.org">sws@fao.org</a>’</strong>.</li>
+<li>The subject is <strong>‘The AquastatValidation is finished’</strong>.</li>
+<li>The .csv file name is <strong>validation_nameofthedataset.csv</strong>.</li>
+</ul>
+<div class="figure"><span id="fig:fig20"></span>
+<img src="images/validationfaoemail.PNG" alt=" Running the module in SWS: step 10" width="100%" />
+<p class="caption">
+Figure 4.5:  Running the module in SWS: step 10
+</p>
+</div>
+</div>
+<div id="did-the-module-1" class="section level2">
+<h2><span class="header-section-number">4.4</span> <strong>Did the module</strong>…</h2>
+<div class="rmdnote">
+<p>
+<strong>FINAL REMARKS:</strong>
+</p>
+<p>
+<em>The faoswsAquastatValidation module shows that it is possible to use the domain-knowledge translated into validation rules stored as SWS data table to identify and locate potential errors in AQUASTAT - SWS framework data sets. By returning the areas, years, elements, values, flags, and expressions with potentially erroneous values, the module gives ammunition to the user to reduce the scope of the Quality Assurance and Quality Control process. As a consequence, the tool makes it easier to identify the nature of the errors and implement data correction based on the user domain - knowledge.</em>
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Aggregation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

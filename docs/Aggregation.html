@@ -133,9 +133,7 @@
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="AquastatValidation.html"><a href="AquastatValidation.html#workflow-3"><i class="fa fa-check"></i><b>4.2</b> <strong>Workflow</strong></a></li>
 <li class="chapter" data-level="4.3" data-path="AquastatValidation.html"><a href="AquastatValidation.html#running-the-module-in-the-sws"><i class="fa fa-check"></i><b>4.3</b> <strong>Running the module in the SWS</strong></a></li>
-<li class="chapter" data-level="4.4" data-path="AquastatValidation.html"><a href="AquastatValidation.html#did-the-module-1"><i class="fa fa-check"></i><b>4.4</b> <strong>Did the module</strong>…</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="AquastatValidation.html"><a href="AquastatValidation.html#execute-what-it-was-designed-for"><i class="fa fa-check"></i><b>4.4.1</b> execute what it was designed for?</a></li>
-</ul></li>
+<li class="chapter" data-level="4.4" data-path="AquastatValidation.html"><a href="AquastatValidation.html#did-the-module-1"><i class="fa fa-check"></i><b>4.4</b> <strong>Did the module</strong>…</a></li>
 </ul></li>
 </ul>
 
@@ -2392,8 +2390,8 @@ USD/m3
 <div id="workflow-2" class="section level2">
 <h2><span class="header-section-number">3.2</span> <strong>Workflow</strong></h2>
 <div class="figure"><span id="fig:fig1"></span>
-<div id="htmlwidget-d77fd6e4cb96a2f07455" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d77fd6e4cb96a2f07455">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\ninput [label = \"Dataset: \n aquastat_update\", shape = folder, fillcolor = Beige]\n\n# data tables\naquasdg [label = \"Data table: \n aqua_sdg_agg dataset \n with equations for SDG aggregation\",  shape = folder, fillcolor = LightGrey]\ncgcsv [label = \"Data table: \n a2017regionalgroupings_sdg_feb2017 data \n with sdg reional codes\",  shape = folder, fillcolor = LightGrey]\n\n\n# processing\naggmodule [label = \" Processing: \n faoswsAquastatAggregate using:\n 1. read in aquastat_update dataset from the session, \n 2. extracts information from data tables, \n 3. use information to aggregate SDGs at the regional level, \n 4. Sent the result to the user email\", shape = losangle, fillcolor = PaleGreen]\n\n\n# Output\nOutput [label = \"Dataset: \n aquastat_aggregation \n SDG aggregated data sent to the user\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{input} -> aggmodule -> Output\n{aquasdg, cgcsv} -> aggmodule\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ba4f97707e0a829d2015" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ba4f97707e0a829d2015">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\n# Inputs\ninput [label = \"Dataset: \n aquastat_update\", shape = folder, fillcolor = Beige]\n\n# data tables\naquasdg [label = \"Data table: \n aqua_sdg_agg dataset \n with equations for SDG aggregation\",  shape = folder, fillcolor = LightGrey]\ncgcsv [label = \"Data table: \n a2017regionalgroupings_sdg_feb2017 data \n with sdg reional codes\",  shape = folder, fillcolor = LightGrey]\n\n\n# processing\naggmodule [label = \" Processing: \n faoswsAquastatAggregate using:\n 1. read in aquastat_update dataset from the session, \n 2. extracts information from data tables, \n 3. use information to aggregate SDGs at the regional level, \n 4. Sent the result to the user email\", shape = losangle, fillcolor = PaleGreen]\n\n\n# Output\nOutput [label = \"Dataset: \n aquastat_aggregation \n SDG aggregated data sent to the user\", shape = folder, fillcolor = Beige]\n\n# Flow\n# edge definitions with the node IDs\n{input} -> aggmodule -> Output\n{aquasdg, cgcsv} -> aggmodule\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 3.1: Workflow of the faoswsAquastatExternal module.
 </p>

@@ -67,7 +67,6 @@ DiagrammeR::grViz("digraph {
                   
                   # Inputs
                   aqualegorig [label = 'Dataset: \n aquastat_legacy', shape = folder, fillcolor = Beige]
-                  aqualegcorr [label = 'Dataset: \n aquastat_legacy_corr ', shape = folder, fillcolor = Beige]
                   aquaext [label = 'Dataset: \n aquastat_external', shape = folder, fillcolor = Beige]    
                   aquaquest [label = 'Dataset: \n aquastat_questionnaire', shape = folder, fillcolor = Beige] 
                   aquaup [label = 'Dataset: \n aquastat_update', shape = folder, fillcolor = Beige] 
@@ -80,7 +79,7 @@ DiagrammeR::grViz("digraph {
                 
                   # Flow
                   # edge definitions with the node IDs
-                  {aqualegorig, aqualegcorr, aquaext,aquaquest, aquaup } -> module  -> output
+                  {aqualegorig, aquaext,aquaquest, aquaup } -> module  -> output
                   }")
 ```
 
@@ -131,9 +130,14 @@ knitr::include_graphics("images/validationfaoemail.PNG")
 
 ## **Did the module**...
 
-### execute what it was designed for?
+```{block , type='rmdnote'}
 
-The faoswsAquastatValidation module shows that it is possible to use the domain-knowledge translated into validation rules stored as SWS data table to identify and locate potential errors in AQUASTAT - SWS framework data sets. By returning the areas, years, elements, values, flags, and expressions with potentially erroneous values, the module gives ammunition to the user to reduce the scope of the Quality Assurance and Quality Control process. As a consequence, the tool makes easier to identify the nature of the errors and implement data correction based on the user domain - knowledge. 
+**FINAL REMARKS:**
+
+*The faoswsAquastatValidation module shows that it is possible to use the domain-knowledge translated into validation rules stored as SWS data table to identify and locate potential errors in AQUASTAT - SWS framework data sets. By returning the areas, years, elements, values, flags, and expressions with potentially erroneous values, the module gives ammunition to the user to reduce the scope of the Quality Assurance and Quality Control process. As a consequence, the tool makes it easier to identify the nature of the errors and implement data correction based on the user domain - knowledge.*
+
+```
+ 
 
 
 

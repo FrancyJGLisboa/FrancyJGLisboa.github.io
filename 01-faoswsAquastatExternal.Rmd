@@ -190,6 +190,11 @@ The **faoswsAquastatExternal** searches and downloads data from external sources
 knitr::include_graphics("images/aqua_external_empty.png")
 ```
 <br>
+
+```{block , type='rmdtip'}
+The aquastat_external dataset has already been saved in the SWS database to prop up the faoswsAquastatUpdate module development. It means that rather than obtaining an empty session, the user will see the session populated with the latest run of the faoswsAquastatExternal. If the user knows that the External sources HAVE BEEN UPDATED, he/she can run the module to get a current external dataset.
+```
+<br>
 6. Click on **Run plugin** on the top-right.
 
 7. Select the **faoswsAquastatExternal** module and click on **Run plugin**;
@@ -209,10 +214,17 @@ knitr::include_graphics("images/aqua_external_output.png")
 
 9. Click on **Save to dataset**;
 
+
+```{block , type='rmdtip'}
+The aquastat_external dataset has already been saved in the SWS database to prop up the faoswsAquastatUpdate module development. If the user knows that the External sources have not been updated, he/she does not neeed to save the dataset gain.
+
+```
+
+<br>
 10. Email to the user.
 
 <br>
-```{r extemail,  echo=FALSE, out.width="100%", fig.cap='Select the AquastatExternal output is emailed to the user.'}
+```{r extemail,  echo=FALSE, out.width="100%", fig.cap='The AquastatExternal output is emailed to the user.'}
 knitr::include_graphics("images/aqua_external_email.png")
 ```
 <br>
